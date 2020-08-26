@@ -1,0 +1,113 @@
+#csstabs li {
+    padding: .2em;
+}
+
+#csstabs {
+    position: relative;
+    margin: 2em;
+    width: 31em;
+    height: 18em;
+}
+
+.tabcontent li a {font-size: 1.5em; font-weight: bold;}
+
+#csstabs h3 {
+    font-size: 1em;
+    padding-top: .5em;
+    height: 2em;
+    text-align: center;
+    cursor: hand;
+    font-weight: bold;
+    color: magenta;
+    width: 15em;
+    background: black;
+    border-radius: 5px 5px 0 0;
+    position: absolute;
+    border: 1px solid white;
+    border-bottom-width: 0;
+}
+
+form {
+    margin: 2em;
+    width: 31em;
+}
+
+.tabcontent {
+    position: absolute;
+    border: 1px solid white;
+    padding: 1em;
+    font-size: 1em;
+    top: 2.5em;
+    height: 17em;
+    width: 29em;
+}
+
+div.tablong .tabcontent{height: auto; }
+/*
+.js .tabcontent { width: 45em; height: 17em }
+.js form {margin: 0}
+.js #csstabs {
+    width: 47em;
+    height: 22em;
+}
+*/
+#tab1 h3 {
+    z-index: 1;
+}
+
+#tab2 .tabcontent {
+    opacity: 0;
+}
+
+#tab2 h3 {
+    left: 16em;
+}
+
+#tab3 h3 {
+    left: 32em;
+}
+
+
+#csstabs .tabcontent{
+    background: black;
+}
+
+#csstabs:hover .tabcontent{
+    opacity: 0;
+    transition : opacity .75s ease-in;
+}
+
+#csstabs:hover h3{
+    background: none;
+}
+
+#tab3:hover .tabcontent, #tab2:hover .tabcontent, #tab1:hover .tabcontent {
+    opacity: 1;
+    z-index: 2;
+}
+
+#tab1:hover h3, #tab2:hover h3, #tab3:hover h3{
+    z-index: 3;
+    background: black;
+}
+
+#csstabs div:last-child .tabcontent{ opacity: 1;  }
+
+#csstabs div:last-child h3{
+    z-index: 1;
+    background: black;
+}
+
+#csstabs div.onclick .tabcontent {  transition : opacity .75s ease-in;  }
+
+.js #csstabs div .tabcontent { opacity: 0; background: none;}
+.js #csstabs div h3 {  background: none;  }
+#csstabs div.current .tabcontent { opacity: 1;}
+.js #csstabs div.current h3 {
+	z-index: 3;
+    background: black;
+}
+
+iframe {margin-left: 2em; clear:both; }
+
+
