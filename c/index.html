@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+   <meta charset="utf-8"><!-- IE compatibility mode issue -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta content="width=device-width, initial-scale=1" name="viewport">
+	<title></title>
+       <script>
+	document.cookie='resolution='+Math.max(screen.width,screen.height)+'; path=/'; 
+	</script>
+    </head>
+    <body>
+        <div id="controls" class="static">
+        <a id="backbutton" href="https://www.bbc.co.uk/weather/2645093">Back</a>
+        <a id="playbutton" href="https://www.bbc.co.uk/weather/2645093">Play</a>
+        <a id="forwardbutton" href="https://medium.com/dailyjs/functional-js-2-functions-duh-70bf22f87bb8">Forward</a>
+        </div>
+        <style>
+        
+           .gold {
+                background-color: gold
+            }
+            .red {
+                background-color: red;
+            }
+            .green {
+                background-color: green;
+            }
+        
+        </style>
+        <script src='../js/underscore.js'></script>
+        <script src='../js/eventcache.js'></script>
+        <script src='../js/eventing.js'></script>
+        <script>
+            
+            function yella(el, colors, i){
+                return {
+                perform: function(){
+                    el.classList.remove(colors[i-1]);
+                    i = i % colors.length;
+                    el.classList.add(colors[i++]);
+                },
+                    get: function(){
+                        return colors[i-1];
+                    }
+                
+            };
+            }
+            
+            var red = {
+                
+                exec: function(){
+                    
+                }
+                
+            },
+                gold = {
+                    
+                },
+                
+                green = {}
+            
+            function getResult(arg) {
+                return _.isFunction(arg) ? arg() : arg;
+            }
+            function prepareListener(extent) {
+                return function(handler, fn, el) {
+                    var listener,
+                        wrapper = function(func) {
+                            var args = _.rest(arguments),
+                                e = _.last(arguments);
+                            extent = extent || 'prevent';
+                            listener[extent](e);
+                            //avoid sending Event object as it may wind up as the useCapture argument in the listener
+                            func.apply(el || null, args.splice(-1, 1));
+                        },
+                        wrapped = _.wrap(fn, wrapper);
+                    //calls addHandler which calls addListener which invokes the addEventListener/attachEvent method
+                    listener = handler(wrapped);
+                    return listener;
+                };
+            }
+            
+            function addHandler(type, func, el) {
+                return Booze.Eventing.init.call(Booze.Eventing, type, func, el).addListener();
+            }
+            
+            function addEvent(handler, func, extent) {
+                return function(el) {
+                    el = getResult(el);
+                    var partial = el && _.isElement(el) ? _.partial(handler, el) : _.partial(handler);
+                    return prepareListener(extent)(partial, func, el);
+                };
+            }
+            
+            var clicker = _.partial(addHandler, 'click'),
+                performer = yella(document.body,['red', 'gold', 'green'], 0);
+            addEvent(clicker, _.bind(performer.perform, performer))(document.getElementById('backbutton'));
+                
+        </script>
+    </body>
