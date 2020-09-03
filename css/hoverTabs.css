@@ -9,9 +9,6 @@
 	font-weight: bold;
 }
 
-
-
-
 #csstabs {
 	margin: 2em;
 }
@@ -19,7 +16,6 @@
 #csstabs > * {
 	float: left;
     width: 100%;
-    background: red;
     } 
 
 #tab1 {
