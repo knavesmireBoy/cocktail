@@ -69,27 +69,29 @@ div.tablong .tabcontent {
 #tab3 h3 {
 	left: 32em;
 }
-#tab2 .tabcontent {
+#tab2 ul {
 	opacity: 0;
 }
-#csstabs .tabcontent {
+#csstabs ul {
 	background: black;
 }
 
 #csstabs:hover h3 {
 	background: none;
 }
-#tab3:hover .tabcontent, #tab2:hover .tabcontent, #tab1:hover .tabcontent {
-	opacity: 1;
-	z-index: 2;
-}
-#tab1:hover h3, #tab2:hover h3, #tab3:hover h3 {
+
+#tab2:hover h3, #tab3:hover h3 {
 	z-index: 3;
 	background: black;
 }
-#csstabs:hover .tabcontent {
+#csstabs:hover ul {
 	opacity: 0;
 	transition: opacity .75s ease-in;
+}
+
+#tab2:hover ul, #tab1:hover ul {
+	opacity: 1;
+	z-index: 2;
 }
 
 #csstabs div:last-child h3 {
@@ -97,7 +99,7 @@ div.tablong .tabcontent {
 	background: black;
 }
 
-#csstabs div:last-child .tabcontent {
+#csstabs div:last-child ul {
 	opacity: 1;
 }
 
