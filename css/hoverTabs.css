@@ -35,12 +35,14 @@ div.tablong .tabcontent {
 #csstabs {
 	position: relative;
 	margin: 2em;
-	width: 31em;
-	height: 18em;
 }
 
 #csstabs li {
 	padding: .2em;
+}
+
+#csstabs ul, #csstabs h3 {
+	background: black;
 }
 
 #csstabs h3 {
@@ -52,7 +54,6 @@ div.tablong .tabcontent {
 	font-weight: bold;
 	color: magenta;
 	width: 15em;
-	background: black;
 	border-radius: 5px 5px 0 0;
 	position: absolute;
 	border: 1px solid white;
@@ -66,20 +67,9 @@ div.tablong .tabcontent {
 #tab2 h3 {
 	left: 16em;
 }
-#tab3 h3 {
-	left: 32em;
-}
+
 #tab2 ul {
 	opacity: 0;
-}
-#csstabs ul {
-	background: black;
-}
-
-
-#csstabs:hover ul {
-	opacity: 0;
-	transition: opacity .75s ease-in;
 }
 
 #tab2 h3:hover+ul{
@@ -87,12 +77,15 @@ div.tablong .tabcontent {
 	z-index: 2;
 }
 
+#csstabs:hover ul {
+	transition: opacity .75s ease-in;
+}
+
 #tab2 h3:hover{
 	z-index: 3;
 }
 
-
-#csstabs div:last-child ul {
+#tab1 ul {
 	opacity: 1;
 }
 
