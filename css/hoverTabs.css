@@ -1,19 +1,10 @@
-form {
-	margin: 2em;
-	width: 31em;
-}
-iframe {
-	margin-left: 2em;
-	clear: both;
-}
 .tabcontent {
-	position: absolute;
 	border: 1px solid white;
 	padding: 1em;
 	font-size: 1em;
-	top: 2.5em;
 	height: 17em;
 	width: 29em;
+    position: relative;
 }
 .tabcontent li a {
 	font-size: 1.5em;
@@ -23,6 +14,8 @@ iframe {
 div.tablong .tabcontent {
 	height: auto;
 }
+
+
 /*
 .js .tabcontent { width: 45em; height: 17em }
 .js form {margin: 0}
@@ -36,6 +29,10 @@ div.tablong .tabcontent {
 	position: relative;
 	margin: 2em;
 }
+
+#csstabs > * {
+	position: absolute;
+    } 
 
 #csstabs li {
 	padding: .2em;
@@ -55,14 +52,13 @@ div.tablong .tabcontent {
 	color: magenta;
 	width: 15em;
 	border-radius: 5px 5px 0 0;
-	position: absolute;
+	position: relative;
 	border: 1px solid white;
-	border-bottom-width: 0;
+    margin-bottom: -1px;
+    z-index: 1;
 }
 
-#tab1 h3 {
-	z-index: 1;
-}
+
 
 #tab2 h3 {
 	left: 16em;
@@ -77,6 +73,11 @@ div.tablong .tabcontent {
 	z-index: 2;
 }
 
+#tab2 h3:hover{
+	border-bottom-color: black;
+}
+
+
 #csstabs:hover ul {
 	transition: opacity .75s ease-in;
 }
@@ -88,7 +89,10 @@ div.tablong .tabcontent {
 #tab1 ul {
 	opacity: 1;
 }
-
+#tab1 h3 {
+    border-bottom-color: black;
+}
+/*
 #csstabs div.onclick .tabcontent {
 	transition: opacity .75s ease-in;
 }
@@ -107,3 +111,4 @@ div.tablong .tabcontent {
 	z-index: 3;
 	background: black;
 }
+*/
