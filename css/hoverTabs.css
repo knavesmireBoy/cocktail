@@ -82,15 +82,15 @@ div.tablong .tabcontent {
 	transition: opacity .75s ease-in;
 }
 
-#csstabs h3:hover+ul{
+#tab2 h3:hover+ul{
 	opacity: 1;
 	z-index: 2;
 }
 
-#csstabs div:last-child h3 {
-	z-index: 1;
-	background: black;
+#tab2 h3:hover{
+	z-index: 3;
 }
+
 
 #csstabs div:last-child ul {
 	opacity: 1;
