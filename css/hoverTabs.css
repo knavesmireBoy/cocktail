@@ -2,8 +2,6 @@
 	border: 1px solid white;
 	padding: 1em;
 	font-size: 1em;
-	height: 17em;
-	width: 29em;
     position: relative;
 }
 .tabcontent li a {
@@ -11,28 +9,22 @@
 	font-weight: bold;
 }
 
-div.tablong .tabcontent {
-	height: auto;
-}
 
 
-/*
-.js .tabcontent { width: 45em; height: 17em }
-.js form {margin: 0}
-.js #csstabs {
-    width: 47em;
-    height: 22em;
-}
-*/
 
 #csstabs {
-	position: relative;
 	margin: 2em;
 }
 
 #csstabs > * {
-	position: absolute;
+	float: left;
+    width: 100%;
+    background: red;
     } 
+
+#tab1 {
+    margin-left: -100%;
+}
 
 #csstabs li {
 	padding: .2em;
@@ -44,13 +36,12 @@ div.tablong .tabcontent {
 
 #csstabs h3 {
 	font-size: 1em;
-	padding-top: .5em;
-	height: 2em;
+	padding: .75em 0;
 	text-align: center;
 	cursor: hand;
 	font-weight: bold;
 	color: magenta;
-	width: 15em;
+    max-width: 15em;
 	border-radius: 5px 5px 0 0;
 	position: relative;
 	border: 1px solid white;
@@ -76,7 +67,6 @@ div.tablong .tabcontent {
 #tab2 h3:hover{
 	border-bottom-color: black;
 }
-
 
 #csstabs:hover ul {
 	transition: opacity .75s ease-in;
