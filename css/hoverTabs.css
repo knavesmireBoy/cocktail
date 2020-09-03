@@ -76,20 +76,13 @@ div.tablong .tabcontent {
 	background: black;
 }
 
-#csstabs:hover h3 {
-	background: none;
-}
 
-#tab2:hover h3, #tab3:hover h3 {
-	z-index: 3;
-	background: black;
-}
 #csstabs:hover ul {
 	opacity: 0;
 	transition: opacity .75s ease-in;
 }
 
-#tab2:hover ul, #tab1:hover ul {
+#csstabs h3:hover+ul{
 	opacity: 1;
 	z-index: 2;
 }
