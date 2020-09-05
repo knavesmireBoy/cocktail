@@ -9,10 +9,8 @@
     <link rel="stylesheet" href="../css/hoverTabs.css">
 </head>
 
-<body id="c1">
-<div  id="header"><div><img src="../img/fc.jpg" /></div><h1><a href="..">The Little <em>Cocktail</em> Site</a></h1>
-</div>
-
+<body id="martini">
+<div id="header"><div><img src="../img/fc.jpg" /></div><h1><a href="..">The Little <em>Cocktail</em> Site</a></h1></div>
 <ul id="nav"><li><a href=".">Martini</a><ul><li><a href="../c1/recipe.html">Recipe</a></li>
 </ul>
 </li><li><a href="../c5/">Cosmopolitan</a><ul><li><a href="../c5/recipe.html">Recipe</a></li>
@@ -27,16 +25,101 @@
     <div><img src="../img/martini.jpg"></div>
 </div>
 <div id="content">
-    <h2><a href="http://www.esquire.com/food-drink/drinks/recipes/a3667/martini-drink-recipe/">Martini</a></h2>
+<h2><a href="http://www.esquire.com/food-drink/drinks/recipes/a3667/martini-drink-recipe/">Martini</a></h2>
 <p>More has been written about the Martini than about all the countries of Sub-Saharan Africa, put together. Whole books about it. It has a mystique. In actuality, though, it is the soul of simplicity: a goodly amount of gin, a splash of vermouth, and a garnish -- and that's <em>it</em> (as for all those other substances that claim to be martinis: they're not; we discard them). Stir liquids vigorously with ice, strain into a chilled, conical glass, and drop in garnish. Nothing to it.</p><p>That's the problem. Where mystique and simplicity collide, you get religion. Everyone swears their proportion of gin to vermouth, their choice of garnish, is the only true one; all others are in the way of heresy. Originally -- before Prohibition, anyway (the drink probably dates to the 1870s, but nobody's really sure; it's a debate we're happy to stay out of) -- it went something like this: two parts, or even one part, gin to one part red vermouth (the sweet kind), with an extra dash of sugar syrup and maybe some orange bitters. Garnish: twist of lemon peel. The <b>Dry Martini</b> -- dry, white vermouth and no syrup -- was a critter of the Gilded Age, coming in around 1900. Proportions were still seldom more sensible than two-to-one. By the '30s, though, you find the Stork Club pouring 'em at an entirely reasonable five parts gin to one vermouth. At the height of the martini's powers, in the gray-flannel-suit years, the "see-through" went something like eight parts gin to no parts vermouth, with an olive.</p><p>But which of these is the best martini? We've done extensive testing, which has taught us that the first is a pleasant tipple, but hardly a martini; the second shows some improvement, and the third is close to perfection. (The last is merely iced gin -- which is how, if that's what you want, you should have the courage to order it.) Still not satisfied, on November 19, 2002, we convened six of New York City's best bartenders -- Shinichi Ikeda from Angel's Share, Del Pedro from Grange Hall, Sasha Petraskefrom Milk &amp; Honey, Rhino from Chateau, Albert Trummer from Town, and Jason Woodruff from Joe Allen -- and set them to proving who bakes the best gin martini in town. To judge, we had Dale "King Cocktail" DeGroff, Gary "Cocktailian" Regan, and Lowell "Dr. Edmunds" Edmunds -- all stout men and true, and authorities on the matter at hand. The winner? Albert Trummer.</p>
-
-
+       <div class="csstabs">
+        <div id="tab2" class="tabbox">
+            <h3>Method</h3>
+            <ul class="tabcontent"><li>Fill a metal shaker with cracked ice.</li><li>Pour in the dry vermouth (we prefer Noilly Prat), stir briefly, and strain out (this may be discarded).</li><li>Add 4 ounces gin (we prefer Tanqueray, Bombay Sapphire, Beefeater) -- you want it around 94-proof.</li><li>Stir briskly for about 10 seconds, strain into chilled cocktail glass, and garnish with an olive.</li>
+               <li><!--This technique used to be known as the "in and out" martini, or -- if you were one of Ed McMahon's fellow USMC fighter pilots in Korea, the "McTini." (Yes, that Ed McMahon.)--> However you make it, if you garnish your martini with a cocktail onion, it becomes a <b>Gibson</b> <!--(although this was originally made with Plymouth gin; try it, the stuff is still around)-->. If you should happen to have some excess absinthe on hand, a couple of drops will transform that Gibson into a <b>Third Degree</b><!--(the driest of the traditional martini variants, with a ratio of 7:1)-->. And if you do find that Plymouth gin, mix it 2-to-1 with French vermouth, tip in a couple dashes of orange bitters, and you've got a <b>Hoffman House</b> -- with a twist, please.<!-- (New York's Hoffman House, on Twenty-fourth Street across from Madison Square, was famous for the stupendous nakedness of its bar nude and the superlative quality of its drinks; in fact, this is our favorite martini variant, although we make ours about 5-to-1.)--> If you like to live dangerously, there exists the Italian vermouth alternative; for that, see the <b>Hearst</b>.</li>
+            </ul>
+         </div>
+         <div id="tab1" class="tabbox">
+             <h3>Recipe</h3>
+             <ul class="tabcontent">
+                 <li><a href=".">Martini</a></li>
+                 <li>4 ounces gin</li>
+                 <li>1 ounce dry vermouth</li>
+                 <li><b>Cocktail Glass</b></li>
+             </ul></div>
+     </div>
 </div>
 </div>
 <div class="footer">
     <p><a href="http://www.hearst.com/">&copy;2015 Hearst Communications, Inc.</a> All Rights Reserved
     </p></div>
-    <script src="js/eventcache.js"></script>
-<script src="js/eventing.js"></script>
+    <script src="../js/viewportSize.js"></script>
+    <script src="../js/shims.js"></script>
+    <script src="../js/underscore.js"></script>
+    <script src="../js/eventcache.js"></script>
+    <script src="../js/classlist.js"></script>
+    <script src="../js/global.js"></script>
+       <script>
+ 
+           
+            function flow(isRoot, cb, /*validators && event*/){
+                var args = _.rest(arguments, 2),
+                    e = _.last(arguments),
+                    ret;
+                if(isRoot(e)){
+                    e.preventDefault();  
+                    return;
+                }
+                else {
+                    args.splice(-1, 1);
+                    args.unshift(true);
+                    ret = utils.silent_conditional.apply(null, args)(cb, e);                    
+                    if(!_.isArray(ret)){
+                        e.preventDefault();
+                        ret();
+                    }
+                                    console.log(ret);
+
+                }
+            }
+                   
+    var utils = window.Booze.Util,ptL = _.partial,
+        
+        mytarget = !window.addEventListener ? 'srcElement' : 'target',
+        clicker = ptL(utils.addHandler, 'click'),
+        isSubMenu = _.negate(_.compose(ptL(utils.isEqual, utils.$('nav')), utils.drillDown([mytarget, 'parentNode',  'parentNode']))),
+        doThrice = utils.curryThrice(),
+        doTwice = utils.curryTwice(),
+        showtime = ptL(utils.show, utils.getBody()),
+        getHeading = utils.getDomChild(utils.getNodeByTag('h2')),
+        getByClass = _.compose(utils.getZero, ptL(utils.getByClass, '.csstabs')),
+        cocktail_names = _.filter(_.map(utils.$$('a', utils.$('nav')), function(el){
+            return el.innerHTML;
+        }), function(name){
+            return name !== 'Recipe';
+        }),
+        sub_links = _.filter(_.map(utils.$$('a', utils.$('nav')), function(el){
+            return el;
+        }), function(el){
+            return el.innerHTML === 'Recipe';
+        }),
+        pageIndex = _.compose(ptL(_.findIndex, cocktail_names), doTwice(utils.isEqual), utils.drillDown(['innerHTML']), ptL(getHeading))(utils.$('sidebar')),
+         getRootIndex = _.compose(doTwice(utils.isEqual)(pageIndex), ptL(_.findIndex, cocktail_names), doTwice(utils.isEqual), utils.drillDown([mytarget, 'innerHTML'])),
+        isSubNav = utils.validator('Not A Sub Menu', isSubMenu),
+		getTarget = utils.drillDown([mytarget, 'parentNode']),
+        getCocktailIndex = _.compose(ptL(_.findIndex, cocktail_names), utils.always, utils.drillDown(['innerHTML']), getHeading),
+        isCurrentLink = _.compose(ptL(_.findIndex, sub_links), doTwice(utils.isEqual), utils.drillDown([mytarget])),
+        isCurrentPage = utils.validator('Not On Page', _.compose(ptL(utils.isEqual, pageIndex), isCurrentLink)),
+        //isRoot = utils.validator('Rooty', getRootIndex),
+        dummy = {target: sub_links[0]};
+        //doValidate = utils.silent_conditional(isRoot, doMatch, isSubNav);        
+    utils.addHandler('click', ptL(flow, getRootIndex, showtime, isSubNav, isCurrentPage), utils.$('nav'));
+   // utils.addHandler('click', _.compose(console.log, getRootIndex), utils.$('nav'));
+        utils.addHandler('click', _.compose(utils.show, getTarget), utils.$('tab2'));
+        utils.addHandler('click', _.compose(utils.hide, ptL(utils.$, 'tab2')), utils.$('tab1'));
+           /*
+           var g = ptL(getCocktailIndex, utils.$('sidebar')),
+               dummy = {target: sub_links[0]},
+               h = ptL(t, dummy),
+               j = ptL(utils.isEqual, ptL(getCocktailIndex, utils.$('sidebar')), t);*/
+           
+           console.log(isCurrentPage(dummy))
+           
+    </script>
 </body>
 </html>

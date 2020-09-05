@@ -10,6 +10,10 @@ body {
 	margin: 2em;
 	background-color: black;
 }
+
+body.show {
+    margin: 3em;
+}
 /*Don't show shadows when selecting text */
 
 ::-moz-selection, ::selection {
@@ -64,8 +68,6 @@ form li {
 	margin: .5em 0 0 1em;
 }
 
-
-
 textarea {
 	width: 28.15em;
 	height: 8em
@@ -116,6 +118,16 @@ a:hover {
 	text-decoration: underline
 }
 
+.show #content > * {
+    position: absolute;
+    left: -999em;
+}
+
+.show #content .csstabs {
+    position: relative;
+    left: 0;
+}
+
 fieldset.ingredients {
 	width: 70%;
 	margin-top: .5em;
@@ -150,7 +162,7 @@ form ul:last-child {
 	text-align: center;
 }
 
-body#c1, body#c1, body#c2, body#c3, body#c4, body#c5, body#c6 {
+body#martini, body#c2, body#c3, body#c4, body#c5, body#c6 {
 	background-color: black;
 	background-image: radial-gradient(white, rgba(255, 255, 255, .2) 2px, transparent 40px), radial-gradient(white, rgba(255, 255, 255, .15) 1px, transparent 30px), radial-gradient(white, rgba(255, 255, 255, .1) 2px, transparent 40px), radial-gradient(rgba(255, 255, 255, .4), rgba(255, 255, 255, .1) 2px, transparent 30px);
 	background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;

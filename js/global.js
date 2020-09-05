@@ -625,8 +625,9 @@ Booze.Util = (function() {
 					var args = _.rest(arguments),
 						e = _.last(arguments);
 					extent = extent || 'prevent';
+                    
 					listener[extent](e);
-					// el = el ? getResult(el) : null;
+                    
 					//avoid sending Event object as it may wind up as the useCapture argument in the listener
 					func.apply(el || null, args.splice(-1, 1));
 				},
@@ -644,7 +645,6 @@ Booze.Util = (function() {
 
 	function validator(message, fun) {
 		var f = function() {
-			//console.log(arguments)
 			return fun.apply(fun, arguments);
 		};
 		f.message = message;
@@ -781,6 +781,12 @@ Booze.Util = (function() {
 	return {
 		$: function(str) {
 			return document.getElementById(str);
+		},
+        $0: function(tag, context) {
+			return getResult(context)['getElementsByTagName'](tag)[0];
+		},
+        $$: function(tag, context) {
+			return getResult(context)['getElementsByTagName'](tag);
 		},
 		addClass: _.partial(setFromArray, always(true), 'add'),
 		/*handlers MAY need wrapping in a function that calls prevent default, stop propagation etc..
@@ -1042,17 +1048,21 @@ Booze.Util = (function() {
 		setText: curry3(setAdapter)('innerHTML'),
 		setter: setter,
 		show: _.partial(setFromArray, always(true), 'add', ['show']),
-		silent_conditional: function() {
-			var validators = _.toArray(arguments);
+		silent_conditional: function(flag) {
+            var validators = _.toArray(arguments);
+            if(_.isBoolean(flag)){
+                validators = _.toArray(_.rest(arguments));
+            }
 			return function(fun, arg) {
+                
 				var errors = mapcat(function(isValid) {
 					return isValid(arg) ? [] : [isValid.message];
 				}, validators);
+                
 				if (!_.isEmpty(errors)) {
 					return errors;
-					//throw new Error(errors.join(", "));
 				}
-				return fun(arg);
+				return flag ? _.partial(fun, arg) : fun(arg);
 			};
 		},
 		simple_conditional: function() {

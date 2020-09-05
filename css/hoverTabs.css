@@ -1,51 +1,53 @@
+.csstabs {
+	margin: 2em;
+    position: absolute;
+    left: -999em;
+}
 .tabcontent {
 	border: 1px solid white;
 	padding: 1em;
 	font-size: 1em;
-    position: relative;
-}
-.tabcontent li a {
-	font-size: 1.5em;
-	font-weight: bold;
+	position: relative;
 }
 
-#csstabs {
-	margin: 2em;
-}
-
-#csstabs > * {
+.csstabs>* {
 	float: left;
-    width: 100%;
-    } 
-
-#tab1 {
-    margin-left: -100%;
+	width: 100%;
 }
-
-#csstabs li {
-	padding: .2em;
-}
-
-#csstabs ul, #csstabs h3 {
-	background: black;
-}
-
-#csstabs h3 {
+.csstabs h3 {
 	font-size: 1em;
 	padding: .75em 0;
 	text-align: center;
 	cursor: hand;
 	font-weight: bold;
 	color: magenta;
-    max-width: 15em;
+	max-width: 15em;
 	border-radius: 5px 5px 0 0;
 	position: relative;
 	border: 1px solid white;
-    margin-bottom: -1px;
-    z-index: 1;
+	margin-bottom: -1px;
+	z-index: 1;
 }
 
+.csstabs li {
+	padding: .2em;
+}
+.csstabs ul, .csstabs h3 {
+	background: black;
+}
 
+.tabcontent li a {
+	font-size: 1.5em;
+	font-weight: bold;
+}
+
+.no-js .csstabs:hover ul, #tab2.show ul, #tab1 ul{
+	transition: opacity .75s ease-in;
+}
+
+#tab1 {
+	margin-left: -100%;
+}
 
 #tab2 h3 {
 	left: 16em;
@@ -54,47 +56,19 @@
 #tab2 ul {
 	opacity: 0;
 }
-
-#tab2 h3:hover+ul{
-	opacity: 1;
-	z-index: 2;
+#tab2.show+#tab1 ul {
+    opacity: .5;
 }
 
-#tab2 h3:hover{
+#tab1 h3, .no-js #tab2 h3:hover,  #tab2.show h3 {
 	border-bottom-color: black;
 }
 
-#csstabs:hover ul {
-	transition: opacity .75s ease-in;
-}
-
-#tab2 h3:hover{
+.no-js #tab2 h3:hover,  #tab2.show h3 {
 	z-index: 3;
 }
 
-#tab1 ul {
+.no-js #tab2 h3:hover+ul,  #tab2.show h3+ul{
 	opacity: 1;
+	z-index: 2;
 }
-#tab1 h3 {
-    border-bottom-color: black;
-}
-/*
-#csstabs div.onclick .tabcontent {
-	transition: opacity .75s ease-in;
-}
-
-.js #csstabs div .tabcontent {
-	opacity: 0;
-	background: none;
-}
-.js #csstabs div h3 {
-	background: none;
-}
-#csstabs div.current .tabcontent {
-	opacity: 1;
-}
-.js #csstabs div.current h3 {
-	z-index: 3;
-	background: black;
-}
-*/
