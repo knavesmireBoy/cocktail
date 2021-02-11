@@ -55,70 +55,70 @@
     <script src="../js/classlist.js"></script>
     <script src="../js/global.js"></script>
        <script>
- 
-           
-            function flow(isRoot, cb, /*validators && event*/){
-                var args = _.rest(arguments, 2),
-                    e = _.last(arguments),
-                    ret;
-                if(isRoot(e)){
-                    e.preventDefault();  
-                    return;
-                }
-                else {
-                    args.splice(-1, 1);
-                    args.unshift(true);
-                    ret = utils.silent_conditional.apply(null, args)(cb, e);                    
-                    if(!_.isArray(ret)){
-                        e.preventDefault();
-                        ret();
-                    }
-                                    console.log(ret);
-
-                }
-            }
-                   
-    var utils = window.Booze.Util,ptL = _.partial,
-        
-        mytarget = !window.addEventListener ? 'srcElement' : 'target',
-        clicker = ptL(utils.addHandler, 'click'),
-        isSubMenu = _.negate(_.compose(ptL(utils.isEqual, utils.$('nav')), utils.drillDown([mytarget, 'parentNode',  'parentNode']))),
-        doThrice = utils.curryThrice(),
-        doTwice = utils.curryTwice(),
-        showtime = ptL(utils.show, utils.getBody()),
-        getHeading = utils.getDomChild(utils.getNodeByTag('h2')),
-        getByClass = _.compose(utils.getZero, ptL(utils.getByClass, '.csstabs')),
-        cocktail_names = _.filter(_.map(utils.$$('a', utils.$('nav')), function(el){
-            return el.innerHTML;
-        }), function(name){
-            return name !== 'Recipe';
-        }),
-        sub_links = _.filter(_.map(utils.$$('a', utils.$('nav')), function(el){
-            return el;
-        }), function(el){
-            return el.innerHTML === 'Recipe';
-        }),
-        pageIndex = _.compose(ptL(_.findIndex, cocktail_names), doTwice(utils.isEqual), utils.drillDown(['innerHTML']), ptL(getHeading))(utils.$('sidebar')),
-         getRootIndex = _.compose(doTwice(utils.isEqual)(pageIndex), ptL(_.findIndex, cocktail_names), doTwice(utils.isEqual), utils.drillDown([mytarget, 'innerHTML'])),
-        isSubNav = utils.validator('Not A Sub Menu', isSubMenu),
-		getTarget = utils.drillDown([mytarget, 'parentNode']),
-        getCocktailIndex = _.compose(ptL(_.findIndex, cocktail_names), utils.always, utils.drillDown(['innerHTML']), getHeading),
-        isCurrentLink = _.compose(ptL(_.findIndex, sub_links), doTwice(utils.isEqual), utils.drillDown([mytarget])),
-        isCurrentPage = utils.validator('Not On Page', _.compose(ptL(utils.isEqual, pageIndex), isCurrentLink)),
-        //isRoot = utils.validator('Rooty', getRootIndex),
-        dummy = {target: sub_links[0]};
-        //doValidate = utils.silent_conditional(isRoot, doMatch, isSubNav);        
-    utils.addHandler('click', ptL(flow, getRootIndex, showtime, isSubNav, isCurrentPage), utils.$('nav'));
-   // utils.addHandler('click', _.compose(console.log, getRootIndex), utils.$('nav'));
-        utils.addHandler('click', _.compose(utils.show, getTarget), utils.$('tab2'));
-        utils.addHandler('click', _.compose(utils.hide, ptL(utils.$, 'tab2')), utils.$('tab1'));
-           /*
-           var g = ptL(getCocktailIndex, utils.$('sidebar')),
-               dummy = {target: sub_links[0]},
-               h = ptL(t, dummy),
-               j = ptL(utils.isEqual, ptL(getCocktailIndex, utils.$('sidebar')), t);*/
-           
-           console.log(isCurrentPage(dummy))
+  function flow(isRoot, cb, /*validators && event*/ ) {
+ 	var args = _.rest(arguments, 2),
+ 		e = _.last(arguments),
+ 		ret;
+ 	if (isRoot(e)) {
+ 		e.preventDefault();
+ 		return;
+ 	} else {
+ 		args.splice(-1, 1);
+ 		args.unshift(true);
+ 		ret = utils.silent_conditional.apply(null, args)(cb, e);
+ 		if (!_.isArray(ret)) {
+ 			e.preventDefault();
+ 			ret();
+ 		}
+ 	}
+ }
+ var utils = window.Booze.Util,
+ 	ptL = _.partial,
+ 	mytarget = !window.addEventListener ? 'srcElement' : 'target',
+ 	clicker = ptL(utils.addHandler, 'click'),
+ 	doThrice = utils.curryThrice(),
+ 	doTwice = utils.curryTwice(),
+ 	showtime = ptL(utils.show, utils.getBody()),
+ 	getHeading = utils.getDomChild(utils.getNodeByTag('h2')),
+ 	getByClass = _.compose(utils.getZero, ptL(utils.getByClass, '.csstabs')),
+ 	getTarget = utils.drillDown([mytarget, 'parentNode']),
+ 	dummy = {
+ 		//target: sub_links[0]
+ 	},
+ 	F = function(e) {
+ 		var cocktail_names = _.filter(_.map(utils.$$('a', utils.$('nav')), function(el) {
+ 				return el.innerHTML;
+ 			}), function(name) {
+ 				return name !== 'Recipe';
+ 			}),
+ 			sub_links = _.filter(_.map(utils.$$('a', utils.$('nav')), function(el) {
+ 				return el;
+ 			}), function(el) {
+ 				return el.innerHTML === 'Recipe';
+ 			}),
+ 			isSubMenu = _.negate(_.compose(ptL(utils.isEqual, utils.$('nav')), utils.drillDown([mytarget, 'parentNode', 'parentNode']))),
+ 			indexOfSubLink = _.compose(ptL(_.findIndex, sub_links), doTwice(utils.isEqual), utils.drillDown([mytarget])),
+ 			isTrueSubLink = utils.validator('Not On Page', _.compose(ptL(utils.isEqual, pageIndex), indexOfSubLink)),
+ 			pageIndex = _.compose(ptL(_.findIndex, cocktail_names), doTwice(utils.isEqual), utils.drillDown(['innerHTML']), ptL(getHeading))(utils.$('sidebar')),
+ 			getRootIndex = _.compose(doTwice(utils.isEqual)(pageIndex), ptL(_.findIndex, cocktail_names), doTwice(utils.isEqual), utils.drillDown([mytarget, 'innerHTML'])),
+ 			getCocktailIndex = _.compose(ptL(_.findIndex, cocktail_names), utils.always, utils.drillDown(['innerHTML']), getHeading),
+ 			dummyVal = utils.validator('X', utils.always(true)),
+ 			isSubNav = utils.validator('Not A Sub Menu', isSubMenu),
+ 			foregoSub = utils.getBest(ptL(getRootIndex, e), [dummyVal, isSubNav]),
+ 			foregoPage = utils.getBest(ptL(getRootIndex, e), [dummyVal, isTrueSubLink]),
+ 			showtime = ptL(utils.invokeWhen, ptL(_.negate(getRootIndex), e), ptL(utils.show, utils.getBody())),
+ 			cb = utils.silent_conditional(true, foregoSub)(showtime, e);
+ 		if (!_.isArray(cb)) {
+ 			e.preventDefault();
+ 			cb();
+ 		} else {
+ 			console.log(cb);
+ 		}
+ 	};
+ //utils.addHandler('click', _.compose(utils.show, getTarget), utils.$('tab2'));
+ //utils.addHandler('click', _.compose(utils.hide, ptL(utils.$, 'tab2')), utils.$('tab1'));
+ //utils.addHandler('click', ptL(flow, getRootIndex, showtime, isSubNav, isCurrentPage), utils.$('nav'));
+ utils.addHandler('click', F, utils.$('nav'));
            
     </script>
 </body>
