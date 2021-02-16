@@ -118,6 +118,10 @@ var margarita = ["Shake well with cracked ice, then strain into a chilled cockta
 recipes = [margarita];
 var utils = speakEasy.Util,
   con = window.console.log.bind(window),
+  con2 = function(arg){
+    con(arg);
+    return arg;
+  },
   ptL = _.partial,
   doComp = _.compose,
   Looper = speakEasy.LoopIterator,
@@ -157,6 +161,6 @@ anCr(x)('span');
 //_.each([1,2], ptL(anCr(anCr(utils.getBody)('div')),'span'));
 //_.each(margarita, ptL(paraFactory, doComp(doText, ptL(anCr(anCr(utils.getBody)('div')),'p'))));
 //_.each(margarita, ptL(paraFactory, doComp(doText, anCr(anCr(utils.getBody)('div')))));
-_.each(margarita, ptL(tagFactory, 'p', doComp(doText, anCr(  anCr(utils.getBody)('div')   ) )));
+_.each(margarita, ptL(tagFactory, 'p', doComp(doText, anCr(   anCr(utils.getBody)('div')   ) )));
 
 }());
