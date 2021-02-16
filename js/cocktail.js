@@ -156,7 +156,7 @@ var utils = speakEasy.Util,
   __tabcontent = ptL(klasAdd, 'tabcontent'),
   __tabbox = ptL(klasAdd, 'tabbox'),
   __ancr1 = anCr(doComp(__tabbox, __body)('div')),
-__ancr2 = anCr(__ancr1('div'));
+__ancr2 = anCr(doComp(__tabcontent, __ancr1)('div'));
 /*
 var x = anCr(utils.getBody)('div');
 anCr(x)('span');
