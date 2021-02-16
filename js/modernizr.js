@@ -117,7 +117,88 @@ Part of Device Access aspect of HTML5, same category as geolocation.
   Modernizr.addTest('devicemotion', 'DeviceMotionEvent' in window);
   Modernizr.addTest('deviceorientation', 'DeviceOrientationEvent' in window);
 
-  
+  /*!
+{
+  "name": "SVG",
+  "property": "svg",
+  "caniuse": "svg",
+  "tags": ["svg"],
+  "authors": ["Erik Dahlstrom"],
+  "polyfills": [
+    "svgweb",
+    "raphael",
+    "amplesdk",
+    "canvg",
+    "svg-boilerplate",
+    "sie",
+    "dojogfx",
+    "fabricjs"
+  ]
+}
+!*/
+/* DOC
+Detects support for SVG in `<embed>` or `<object>` elements.
+*/
+
+  Modernizr.addTest('svg', !!document.createElementNS && !!document.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect);
+    
+    
+/*!
+{
+  "name": "SVG as an <img> tag source",
+  "property": "svgasimg",
+  "caniuse" : "svg-img",
+  "tags": ["svg"],
+  "aliases": ["svgincss"],
+  "authors": ["Chris Coyier"],
+  "notes": [{
+    "name": "HTML5 Spec",
+    "href": "http://www.w3.org/TR/html5/embedded-content-0.html#the-img-element"
+  }]
+}
+!*/
+
+
+  // Original Async test by Stu Cox
+  // https://gist.github.com/chriscoyier/8774501
+
+  // Now a Sync test based on good results here
+  // http://codepen.io/chriscoyier/pen/bADFx
+
+  // Note http://www.w3.org/TR/SVG11/feature#Image is *supposed* to represent
+  // support for the `<image>` tag in SVG, not an SVG file linked from an `<img>`
+  // tag in HTML – but it’s a heuristic which works
+  Modernizr.addTest('svgasimg', document.implementation.hasFeature('http://www.w3.org/TR/SVG11/feature#Image', '1.1')); 
+
+    /*!
+{
+  "name": "Inline SVG",
+  "property": "inlinesvg",
+  "caniuse": "svg-html5",
+  "tags": ["svg"],
+  "notes": [{
+    "name": "Test page",
+    "href": "https://paulirish.com/demo/inline-svg"
+  }, {
+    "name": "Test page and results",
+    "href": "https://codepen.io/eltonmesquita/full/GgXbvo/"
+  }],
+  "polyfills": ["inline-svg-polyfill"],
+  "knownBugs": ["False negative on some Chromia browsers."]
+}
+!*/
+/* DOC
+Detects support for inline SVG in HTML (not within XHTML).
+*/
+
+  Modernizr.addTest('inlinesvg', function() {
+    var div = createElement('div');
+    div.innerHTML = '<svg/>';
+    return (typeof SVGRect != 'undefined' && div.firstChild && div.firstChild.namespaceURI) == 'http://www.w3.org/2000/svg';
+  });
+
+    
+
 /*!
 {
   "name": "SVG filters",
@@ -1686,6 +1767,23 @@ Part of Device Access aspect of HTML5, same category as geolocation.
    */
 
   var testStyles = ModernizrProto.testStyles = injectElementWithStyles;
+    
+    /*!
+{
+  "name": "classList",
+  "caniuse": "classlist",
+  "property": "classlist",
+  "tags": ["dom"],
+  "builderAliases": ["dataview_api"],
+  "notes": [{
+    "name": "MDN Docs",
+    "href": "https://developer.mozilla.org/en/DOM/element.classList"
+  }]
+}
+!*/
+
+  Modernizr.addTest('classlist', 'classList' in docElement);
+
   
 /*!
 {
@@ -2805,6 +2903,53 @@ eg `background-position: right 10px bottom 10px`
 
     Modernizr.addTest('cssvwunit', roundedEquals(compStyle, width));
   });
+    
+    /*!
+{
+  "name": "CSS Calc",
+  "property": "csscalc",
+  "caniuse": "calc",
+  "tags": ["css"],
+  "builderAliases": ["css_calc"],
+  "authors": ["@calvein"]
+}
+!*/
+/* DOC
+Method of allowing calculated values for length units. For example:
+
+```css
+//lem {
+  width: calc(100% - 3em);
+}
+```
+*/
+
+  Modernizr.addTest('csscalc', function() {
+    var prop = 'width:';
+    var value = 'calc(10px);';
+    var el = createElement('a');
+
+    el.style.cssText = prop + prefixes.join(value + prop);
+
+    return !!el.style.length;
+  });
+    
+      
+/*!
+{
+  "name": "CSS Object Fit",
+  "caniuse": "object-fit",
+  "property": "objectfit",
+  "tags": ["css"],
+  "builderAliases": ["css_objectfit"],
+  "notes": [{
+    "name": "Opera Article on Object Fit",
+    "href": "https://dev.opera.com/articles/css3-object-fit-object-position/"
+  }]
+}
+!*/
+
+  Modernizr.addTest('objectfit', !!prefixed('objectFit'), {aliases: ['object-fit']});
 
 
 

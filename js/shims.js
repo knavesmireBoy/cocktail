@@ -4,9 +4,9 @@
 /*global setTimeout: false */
 /*global clearTimeout: false */
 /*global Modernizr: false */
-/*global Booze: false */
-if (!window.Booze) {
-	window.Booze = {};
+/*global poloAF: false */
+if (!window.poloAF) {
+	window.poloAF = {};
 }
 /**
  * Shim for "fixing" IE's lack of support (IE < 9) for applying slice
@@ -24,9 +24,9 @@ if (!window.Booze) {
 		// Can't be used with DOM elements in IE < 9
 		slice.call(document.documentElement);
 	} catch (e) { // Fails in IE < 9
-		//AJS// Booze.shim indicates IE < 9; could test for attachEvent
-		Booze.slice_shim = true;
-		Booze.clone = function (object) {
+		//AJS// poloAF.shim indicates IE < 9; could test for attachEvent
+		poloAF.slice_shim = true;
+		poloAF.clone = function (object) {
 			function F() {}
 			F.prototype = object || F.prototype;
 			F.prototype.constructor = F;
@@ -215,7 +215,8 @@ function getNativeOpacity(bool) {
 		};
 	};
 }
-Booze.getOpacity = getNativeOpacity(Booze.slice_shim);
+poloAF.getOpacity = getNativeOpacity(!window.addEventListener);
+
 if (typeof Object.getPrototypeOf !== "function") {
 	if (typeof "test".__proto__ === "object") {
 		Object.getPrototypeOf = function (object) {

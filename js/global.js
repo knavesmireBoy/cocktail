@@ -1,16 +1,17 @@
 /*jslint nomen: true */
 /*global window: false */
-/*global Booze: false */
+/*global speakEasy: false */
 /*global document: false */
 /*global _: false */
-if (!window.Booze) {
-	window.Booze = {};
+if (!window.speakEasy) {
+	window.speakEasy = {};
 }
-Booze.Util = (function() {
+speakEasy.Util = (function() {
 	"use strict";
 
 	function spreadify(fn, fnThis) {
-		return function( /* accepts unlimited arguments */ ) {
+		/* accepts unlimited arguments */
+		return function() {
 			// Holds the processed arguments for use by `fn`
 			var i,
 				spreadArgs = [],
@@ -28,6 +29,14 @@ Booze.Util = (function() {
 		};
 	}
 
+    function FauxPromise (args) {
+		//must be an array of functions, AND the first gets run last
+		this.cbs = _.compose.apply(null, args);
+	}
+	FauxPromise.prototype.then = function() {
+		return this.cbs.apply(null, arguments);
+	};
+
 	function doOnce() {
 		return function(i) {
 			return function() {
@@ -44,10 +53,10 @@ Booze.Util = (function() {
 	}
 	Message.prototype.getKey = function() {
 		return this.key;
-	}
+	};
 	Message.prototype.getValue = function() {
 		return this.value;
-	}
+	};
 
 	function toCamelCase(variable) {
 		return variable.replace(/-([a-z])/g, function(str, letter) {
@@ -117,8 +126,8 @@ Booze.Util = (function() {
 	function construct(head, tail) {
 		return head && cat([head], _.toArray(tail));
 	}
-    
-    function mapcat(fun, coll) {
+
+	function mapcat(fun, coll) {
 		var res = _.map(coll, fun);
 		return cat.apply(null, res);
 	}
@@ -159,10 +168,15 @@ Booze.Util = (function() {
 	function byIndex(i, arg) {
 		return getResult(arg)[i];
 	}
-    
+
 	function simpleInvoke(o, m, arg) {
 		//console.log(arguments)
 		return o[m](arg);
+	}
+
+	function doInvoke(o, m) {
+		//console.log(_.rest(arguments, 2));
+		return o[m].apply(o, _.rest(arguments, 2));
 	}
 
 	function mittleInvoke(m, arg, o) {
@@ -177,7 +191,6 @@ Booze.Util = (function() {
 	function thunk(f) {
 		return f.apply(f, _.rest(arguments));
 	}
-    
 
 	function prefix(p, str) {
 		return str.charAt(0) === p ? str : p + str;
@@ -193,8 +206,8 @@ Booze.Util = (function() {
 		return function(actions) {
 			var f = _.partial(thunk, alternate(0, 2));
 			return function() {
-				//return Booze.Util.getBest(f, [_.partial(actions[0], arg), _.partial(actions[1], arg)])();
-				return Booze.Util.getBest(f, [_.partial.apply(null, construct(actions[0], arguments)), _.partial.apply(null, construct(actions[1], arguments))])();
+				//return speakEasy.Util.getBest(f, [_.partial(actions[0], arg), _.partial(actions[1], arg)])();
+				return speakEasy.Util.getBest(f, [_.partial.apply(null, construct(actions[0], arguments)), _.partial.apply(null, construct(actions[1], arguments))])();
 			};
 		};
 	}
@@ -311,12 +324,16 @@ Booze.Util = (function() {
 		return node.parentNode.removeChild(node);
 	}
 
+	function getElementWidth(el) {
+		return el.getBoundingClientRect().height || el.offsetWidth;
+	}
+
 	function getElementHeight(el) {
-		return el.offsetHeight || el.getBoundingClientRect().height;
+		return el.getBoundingClientRect().height || el.offsetHeight;
 	}
 
 	function baseNestedElements(ancor, outer, inner, hash) {
-		var anCr = Booze.Util.append();
+		var anCr = speakEasy.Util.append();
 		return _.compose(anCr(_.compose(anCr(ancor), utils.always(outer))))(inner);
 	}
 
@@ -341,17 +358,17 @@ Booze.Util = (function() {
 
 	function handleScroll($el, cb, klas) {
 		if (!$el.getElementsByTagName) {
-			if (Booze.Intaface) {
-				var inta = new Booze.Intaface('Element', ['render', 'unrender', 'getElement']);
-				Booze.Intaface.ensures($el, inta);
+			if (speakEasy.Intaface) {
+				var inta = new speakEasy.Intaface('Element', ['render', 'unrender', 'getElement']);
+				speakEasy.Intaface.ensures($el, inta);
 			}
 			handleElement($el, cb);
 		} else { //default treatment
 			//getPageOffset() > ($el.offsetTop - window.innerHeight)
 			if (getPageOffset() > cb($el)) {
-				Booze.Util.addClass(klas, $el);
+				speakEasy.Util.addClass(klas, $el);
 			} else {
-				Booze.Util.removeClass(klas, $el);
+				speakEasy.Util.removeClass(klas, $el);
 			}
 		}
 	}
@@ -376,7 +393,7 @@ Booze.Util = (function() {
 	}
 
 	function getScrollThreshold(el, percent) {
-		/*park this 
+		/*park this
 		var documentHeight = Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);
 		var po = getPageOffset(),
 		elementOffsetTop = utils.getElementOffset(el).top,
@@ -396,11 +413,119 @@ Booze.Util = (function() {
 		}
 	}
 
-	function getClassList(el) {
-		return el && (el.classList || Booze.ClassList(el));
+    function getClassList(el) {
+        if(el){
+        if(typeof el.classList === 'undefined'){
+            return speakEasy.ClassList(el);
+        }
+		return el.classList;
+        }
+        return '';
 	}
-    
 
+	function curryFactory(i, defer) {
+		function curry1(fun) {
+			return function(firstArg) {
+				return fun(firstArg);
+			};
+		}
+
+		function curry11(fun) {
+			return function(firstArg) {
+				return function() {
+					return fun(firstArg);
+				};
+			};
+		}
+
+		function curry2(fun) {
+			return function(secondArg) {
+				return function(firstArg) {
+					return fun(firstArg, secondArg);
+				};
+			};
+		}
+
+		function curry22(fun) {
+			return function(secondArg) {
+				return function(firstArg) {
+					return function() {
+						return fun(firstArg, secondArg);
+					};
+				};
+			};
+		}
+
+		function curry3(fun) {
+			return function(last) {
+				return function(middle) {
+					return function(first) {
+						return fun(first, middle, last);
+					};
+				};
+			};
+		}
+
+		function curry33(fun) {
+			return function(last) {
+				return function(middle) {
+					return function(first) {
+						return function() {
+							return fun(first, middle, last);
+						};
+					};
+				};
+			};
+		}
+
+		function curry4(fun) {
+			return function(fourth) {
+				return function(third) {
+					return function(second) {
+						return function(first) {
+							return fun(first, second, third, fourth);
+						};
+					};
+				};
+			};
+		}
+
+		function curry44(fun) {
+			return function(fourth) {
+				return function(third) {
+					return function(second) {
+						return function(first) {
+							return function() {
+								return fun(first, second, third, fourth);
+							};
+						};
+					};
+				};
+			};
+		}
+		var once = {
+				imm: curry1,
+				defer: curry11
+			},
+			twice = {
+				imm: curry2,
+				defer: curry22
+			},
+			thrice = {
+				imm: curry3,
+				defer: curry33
+			},
+			quart = {
+				imm: curry4,
+				defer: curry44
+			},
+			coll = [null, once, twice, thrice, quart],
+			ret = coll[i];
+		return ret && defer ? ret.defer : ret ? ret.imm : function() {};
+	} //factory
+	/*  imm: (f) => (arg) => f(arg),
+	    defer: (f) => (arg) => () => f(arg)
+	  },*/
 	function curry2(fun) {
 		return function(secondArg) {
 			return function(firstArg) {
@@ -472,7 +597,12 @@ Booze.Util = (function() {
 			res = validate.apply(null, args);
 		return res && action.apply(null, args);
 	}
-    
+
+    function invokeThen(validate, action) {
+		var args = _.rest(arguments, 2),
+			res = validate.apply(null, args);
+		return res && action(res);
+	}
 
 	function doWhen(cond, action) {
 		if (getResult(cond)) {
@@ -482,7 +612,7 @@ Booze.Util = (function() {
 		}
 	}
 
-	function invoker(NAME, METHOD) {
+    function invoker(NAME, METHOD) {
 		return function(target) {
 			if (!existy(target)) {
 				fail("Must provide a target");
@@ -541,14 +671,13 @@ Booze.Util = (function() {
 				//$('report').innerHTML = '!'+e.message;
 			}
 			bound = unbound;
-			bound = _.partial(Booze.Util.invokeWhen, validate, bound);
+			bound = _.partial(speakEasy.Util.invokeWhen, validate, bound);
 			doEachFactory(config, bound, target, bool)();
 			return target;
 		};
 	}
 
-	function setFromArray(validate, method, classArray, target) {
-		//console.log(arguments)
+	function setFromArray1(validate, method, classArray, target) {
 		//target may be a function returning a target element
 		if (!target) {
 			return null;
@@ -567,6 +696,38 @@ Booze.Util = (function() {
 		_.each(_.flatten([classArray]), fn);
 		return target;
 	}
+	//ALLOW toggleClass to have boolean argument del = _.partial(utils.toggleClass, 'del'),
+	function setFromArray(validate, method, classArray, target) {
+        //speakEasy.Util.report(target.classList);
+		//target may be a function returning a target element
+		var fn,
+			tgt,
+			args,
+			bool = false,
+			rest = 3;
+		if (_.isBoolean(target)) {
+			rest = 4;
+			bool = target;
+			target = _.rest(arguments, rest)[0];
+		} else if (!target) {
+			return null;
+		}
+		tgt = getClassList(getResult(target));
+		args = _.rest(arguments, rest);
+		validate = _.partial(applyFunction, validate, args);
+		if (!tgt) {
+			return target;
+		}
+		fn = tgt && _.partial(simpleInvoke, tgt, method);
+		if (rest === 4) {
+			fn = tgt && _.partial(doInvoke, tgt, method, classArray, bool);
+		}
+		if (validate) {
+			fn = _.partial(invokeWhen, validate, fn);
+		}
+		_.each(_.flatten([classArray]), fn);
+		return target;
+	}
 
 	function filterTagsByClass(el, tag, cb) {
 		var tags = _.toArray(el.getElementsByTagName(tag));
@@ -577,7 +738,7 @@ Booze.Util = (function() {
 		var classInvokers = [invoker('querySelectorAll', document.querySelectorAll), invoker('getElementsByClassName', document.getElementsByClassName)],
 			mefilter = function(elem) {
 				klas = klas.match(/^\./) ? klas.substring(1) : klas;
-				return Booze.Util.getClassList(elem).contains(klas);
+				return speakEasy.Util.getClassList(elem).contains(klas);
 			},
 			ran = false,
 			pre = _.partial(prefix, '.'),
@@ -594,16 +755,36 @@ Booze.Util = (function() {
 		return nested(pre(klas));
 	}
 
+	function attrMap(el, map, style) {
+		var k;
+		for (k in map) {
+			if (map.hasOwnProperty(k)) {
+				if (k.match(/^te?xt$/)) {
+					el.innerHTML = map[k];
+					continue;
+				}
+				if (style) {
+					el.style.setProperty(k, map[k]);
+				} else {
+					el.setAttribute(k, map[k]);
+                    //to support ie 6,7
+                    //speakEasy.Util.setAttributes({k: map[k]}, el);
+				}
+			}
+		}
+		return el;
+	}
+
 	function reverseArray(array) {
 		var i,
 			L = array.length,
 			old;
-        //FRWL, YOLT, OHMSS, LALD
+		//FRWL, YOLT, OHMSS, LALD
 		array = _.toArray(array);
 		for (i = 0; i < Math.floor(L / 2); i += 1) {
 			old = array[i];
-            //1:FRWL / LALD
-            //2: YOLT / OHMSS
+			//1:FRWL / LALD
+			//2: YOLT / OHMSS
 			array[i] = array[L - 1 - i];
 			array[L - 1 - i] = old;
 		}
@@ -625,9 +806,8 @@ Booze.Util = (function() {
 					var args = _.rest(arguments),
 						e = _.last(arguments);
 					extent = extent || 'prevent';
-                    
 					listener[extent](e);
-                    
+					// el = el ? getResult(el) : null;
 					//avoid sending Event object as it may wind up as the useCapture argument in the listener
 					func.apply(el || null, args.splice(-1, 1));
 				},
@@ -640,18 +820,20 @@ Booze.Util = (function() {
 
 	function addHandler(type, func, el) {
 		//console.log(arguments);
-		return Booze.Eventing.init.call(Booze.Eventing, type, func, el).addListener();
+		return speakEasy.Eventing.init.call(speakEasy.Eventing, type, func, el).addListener();
 	}
 
 	function validator(message, fun) {
 		var f = function() {
+			//console.log(arguments)
 			return fun.apply(fun, arguments);
 		};
 		f.message = message;
 		return f;
 	}
-	//note a function that ignores any state of x or y will return the first element if true and last if false
-	function best(fun, coll) {
+	//note a function that ignores any state of champ or contender will return the first element if true and last if false
+	function best(fun, coll, arg) {
+        fun = arg ? _.partial(fun, arg) : fun;
 		return _.reduce(_.toArray(coll), function(champ, contender) {
 			return fun(champ, contender) ? champ : contender;
 		});
@@ -682,6 +864,10 @@ Booze.Util = (function() {
 			return subject;
 		};
 		return adapter;
+	}
+
+	function getEventObject(e) {
+		return e || window.event;
 	}
 	var getNewElement = dispatch(curry2(cloneNode)(true), _.bind(document.createElement, document), _.bind(document.createDocumentFragment, document)),
 		removeNodeOnComplete = _.wrap(removeElement, function(f, node) {
@@ -742,6 +928,48 @@ Booze.Util = (function() {
 				}
 			};
 		},
+		myEventListener = (function(flag) {
+			if (flag) {
+				return {
+					add: function(el, type, fn) {
+						el.addEventListener(type, fn, false);
+					},
+					remove: function(el, type, fn) {
+						el.removeEventListener(type, fn, false);
+					},
+					preventers: {
+						preventDefault: function(e) {
+							e.preventDefault();
+						},
+						stopPropagation: function(e) {
+							e.stopPropagation();
+						},
+						stopImmediatePropagation: function(e) {
+							e.stopImmediatePropagation();
+						}
+					}
+				};
+			}
+			return {
+				add: function(el, type, fn) {
+					el.attachEvent('on' + type, fn);
+				},
+				remove: function(el, type, fn) {
+					el.detachEvent('on' + type, fn);
+				},
+				preventers: {
+					preventDefault: function(e) {
+						e = getEventObject(e);
+						e.returnValue = false;
+					},
+					stopPropagation: function(e) {
+						e = getEventObject(e);
+						e.cancelBubble = true;
+					},
+					stopImmediatePropagation: function() {}
+				}
+			};
+		}(window.addEventListener)),
 		SimpleXhrFactory = (function() {
 			// The three branches.
 			var standard = {
@@ -751,12 +979,12 @@ Booze.Util = (function() {
 				},
 				activeXNew = {
 					createXhrObject: function() {
-						return new ActiveXObject('Msxml2.XMLHTTP');
+						return new window.ActiveXObject('Msxml2.XMLHTTP');
 					}
 				},
 				activeXOld = {
 					createXhrObject: function() {
-						return new ActiveXObject('Microsoft.XMLHTTP');
+						return new window.ActiveXObject('Microsoft.XMLHTTP');
 					}
 				},
 				// To assign the branch, try each method; return whatever doesn't fail.
@@ -768,25 +996,19 @@ Booze.Util = (function() {
 				try {
 					testObject = activeXNew.createXhrObject();
 					return activeXNew; // Return this if no error was thrown.
-				} catch (e) {
+				} catch (er) {
 					try {
 						testObject = activeXOld.createXhrObject();
 						return activeXOld; // Return this if no error was thrown.
-					} catch (e) {
+					} catch (error) {
 						throw new Error('No XHR object found in this environment.');
 					}
 				}
 			}
-		})();
+		}());
 	return {
 		$: function(str) {
 			return document.getElementById(str);
-		},
-        $0: function(tag, context) {
-			return getResult(context)['getElementsByTagName'](tag)[0];
-		},
-        $$: function(tag, context) {
-			return getResult(context)['getElementsByTagName'](tag);
 		},
 		addClass: _.partial(setFromArray, always(true), 'add'),
 		/*handlers MAY need wrapping in a function that calls prevent default, stop propagation etc..
@@ -820,7 +1042,7 @@ Booze.Util = (function() {
 				return fun(arg);
 			};
 		},
-        construct: construct,
+		construct: construct,
 		createTextNode: function(text, ancor) {
 			getResult(ancor).appendChild(document.createTextNode(text));
 			return ancor;
@@ -835,8 +1057,25 @@ Booze.Util = (function() {
 		curryFourFold: function(flag) {
 			return flag ? curry44 : curry4;
 		},
+		curryFactory: curryFactory,
 		doAlternate: doAlternate,
-		/*USAGE: 
+		doMap: function doMap(el, v) {
+			if (Array.isArray(v[0][0])) {
+				_.each(v[0], function(sub) {
+					return attrMap(getResult(el), _.object([
+						[sub[0], sub[1]]
+					]), true);
+				});
+			} else {
+				_.each(v, function(sub) {
+					return attrMap(getResult(el), _.object([
+						[sub[0], sub[1]]
+					]));
+				});
+			}
+			return el;
+		},
+		/*USAGE:
         var once = doOnce(),
         actions = [func1, func2, ...];
         function (flag) {
@@ -846,12 +1085,36 @@ Booze.Util = (function() {
 		doOnce: doOnce,
 		doWhen: doWhen,
 		drillDown: drillDown,
+		//https://medium.com/@dtipson/creating-an-es6ish-compose-in-javascript-ac580b95104a
+		eventer: function(type, actions, fn, el) {
+			function preventer(wrapped, e) {
+				_.each(actions, function(a) {
+					myEventListener.preventers[a](e);
+				});
+				return wrapped(e);
+			}
+			fn = _.wrap(fn, preventer);
+			el = getResult(el);
+			return {
+				render: function() {
+					myEventListener.add(el, type, fn);
+					return this;
+				},
+				unrender: function() {
+					myEventListener.remove(el, type, fn);
+					return this;
+				},
+				getEl: function() {
+					return el;
+				}
+			};
+		},
 		fadeUp: function(element, red, green, blue) {
 			var fromFull = curry2(subtract)(255),
 				byTen = curry2(divideBy)(10),
 				mysums = _.map([red, green, blue], curry2(sum)),
 				ceil = _.compose(Math.ceil, byTen, fromFull),
-				terminate = curry2(Booze.Util.isEqual)(255),
+				terminate = curry2(speakEasy.Util.isEqual)(255),
 				repeat;
 			if (element.fade) {
 				window.clearTimeout(element.fade);
@@ -864,25 +1127,31 @@ Booze.Util = (function() {
 				return mysums[i](n);
 			});
 			repeat = function() {
-				Booze.Util.fadeUp.apply(null, [element].concat(mysums));
+				speakEasy.Util.fadeUp.apply(null, [element].concat(mysums));
 			};
 			element.fade = window.setTimeout(repeat, 100);
 		},
+        FauxPromise: FauxPromise,
+		findByClass: _.compose(curry2(getter)(0), _.partial(getPolyClass, document)),
 		findIndex: function(collection, predicate) {
 			return _.findIndex(collection, predicate || always(true));
 		},
 		getBest: best,
-		getBody: function() {
-			return document.body || document.getElementsByTagName('body')[0];
+		getBody: function(flag) {
+			var body = document.body || document.getElementsByTagName('body')[0];
+			if (flag) {
+				body.className = '';
+			}
+			return body;
 		},
 		getByClass: _.partial(getPolyClass, document),
 		getByTag: _.partial(mittleInvoke, 'getElementsByTagName'),
 		getClassList: getClassList,
-        getChild: _.compose(getNextElement, drillDown(['firstChild'])),
+		getChild: _.compose(getNextElement, drillDown(['firstChild'])),
 		getComputedStyle: function(element, styleProperty) {
-            if(!element || !styleProperty){
-                return null;
-            }
+			if (!element || !styleProperty) {
+				return null;
+			}
 			var computedStyle = null,
 				def = document.defaultView || window;
 			if (typeof element.currentStyle !== 'undefined') {
@@ -891,17 +1160,18 @@ Booze.Util = (function() {
 				computedStyle = def.getComputedStyle(element, null);
 			}
 			if (computedStyle) {
-                try {
-                    return computedStyle[styleProperty] || computedStyle[toCamelCase(styleProperty)];
-                }
-                catch(e){
-                    return computedStyle[styleProperty];
-                }
+				try {
+					return computedStyle[styleProperty] || computedStyle[toCamelCase(styleProperty)];
+				} catch (e) {
+					return computedStyle[styleProperty];
+				}
 			}
 		},
 		getDefaultAction: _.partial(best, noOp()),
 		getDomChild: curry3(getTargetNode)('firstChild'),
+		getDomChildDefer: curry33(getTargetNode)('firstChild'),
 		getDomParent: curry3(getTargetNode)('parentNode'),
+		getElementWidth: getElementWidth,
 		getElementHeight: getElementHeight,
 		getElementOffset: getElementOffset,
 		getFirstChild: getWhatElement('firstChild'),
@@ -910,13 +1180,19 @@ Booze.Util = (function() {
 		getNext: _.partial(nested, curry2(getter)('nextSibling'), getNextElement), // expects node //?//
 		getNextElement: getNextElement, //expects node.nextSibling
 		getNodeByTag: curry2(regExp)('i'),
-        getParent: drillDown(['parentNode']),
+		getParent: drillDown(['parentNode']),
 		getPredicate: function(cond, predicate) {
 			return predicate(getResult(cond)) ? predicate : _.negate(predicate);
 		},
 		getPreviousElement: getPreviousElement, //?//
 		getPrevious: _.partial(nested, curry2(getter)('previousSibling'), getPreviousElement),
 		getScrollThreshold: getScrollThreshold,
+		getSubArray: function(coll, tgt) {
+			function reducer(acc, cur) {
+				return _.contains(cur, tgt) ? cur : acc;
+			}
+			return _.reduce(coll, reducer);
+		},
 		getZero: _.partial(byIndex, 0),
 		getter: getter,
 		gtThan: gtThan,
@@ -924,29 +1200,29 @@ Booze.Util = (function() {
 			var html = document.documentElement || document.getElementsByTagName('html')[0];
 			return function(str, el) {
 				el = el || html;
-				return Booze.Util.getClassList(el).contains(str);
+				return speakEasy.Util.getClassList(el).contains(str);
 			};
 		}()),
 		hasFeature: (function() {
 			var html = document.documentElement || document.getElementsByTagName('html')[0];
 			return function(str) {
-				return Booze.Util.getClassList(html).contains(str);
+				return speakEasy.Util.getClassList(html).contains(str);
 			};
 		}()),
 		hide: _.partial(setFromArray, always(true), 'remove', ['show']),
 		highLighter: {
 			perform: function() {
-				if (!Booze.Util.hasFeature('nthchild')) { // utils.hasFeature('nthchild') || Modernizr.nthchild
+				if (!speakEasy.Util.hasFeature('nthchild')) { // utils.hasFeature('nthchild') || Modernizr.nthchild
 					this.perform = function() {
 						var ptL = _.partial,
 							getBody = curry3(simpleInvoke)('body')('getElementsByTagName'),
 							getLinks = curry3(simpleInvoke)('a')('getElementsByTagName'),
 							getTerm = _.compose(curry2(getter)('id'), ptL(byIndex, 0), getBody),
-							links = _.compose(getLinks, Booze.Util.getZero, curry3(simpleInvoke)('nav')('getElementsByTagName'))(document),
+							links = _.compose(getLinks, speakEasy.Util.getZero, curry3(simpleInvoke)('nav')('getElementsByTagName'))(document),
 							found = ptL(_.filter, _.toArray(links), function(link) {
 								return new RegExp(link.innerHTML.replace(/ /gi, '_'), 'i').test(getTerm(document));
 							});
-						_.compose(ptL(Booze.Util.addClass, 'current'), ptL(byIndex, 0), found)();
+						_.compose(ptL(speakEasy.Util.addClass, 'current'), ptL(byIndex, 0), found)();
 					};
 				} else {
 					this.perform = function() {};
@@ -968,10 +1244,11 @@ Booze.Util = (function() {
 		insertBefore: function(refnode, tgt) {
 			refnode.parentNode.insertBefore(tgt, refnode);
 		},
-        invokeOnFirst: _.partial(invokeWhen, _.compose(_.negate, always)),
+		invokeOnFirst: _.partial(invokeWhen, _.compose(_.negate, always)),
 		invokeRest: function(m, o) {
 			return o[m].apply(o, _.rest(arguments, 2));
 		},
+		invokeThen: invokeThen,
 		invokeWhen: invokeWhen,
 		invoker: invoker,
 		isDesktop: _.partial(gtThan, window.viewportSize.getWidth),
@@ -1003,20 +1280,24 @@ Booze.Util = (function() {
 		removeNodeOnComplete: removeNodeOnComplete,
 		render: render,
 		reverse: reverseArray,
-		/*https://gomakethings.com/how-to-serialize-form-data-into-an-object-with-vanilla-js/*/
+		//https://gomakethings.com/how-to-serialize-form-data-into-an-object-with-vanilla-js
 		serializeObject: function(form) {
 			var obj = {},
 				options = [];
 			// Loop through each field in the form
 			Array.prototype.slice.call(form.elements).forEach(function(field) {
 				// Skip some fields we don't need
-				if (!field.name || field.disabled || ['file', 'reset', 'submit', 'button'].indexOf(field.type) > -1) return;
+				if (!field.name || field.disabled || ['file', 'reset', 'submit', 'button'].indexOf(field.type) > -1) {
+					return;
+				}
 				// Handle multi-select fields
 				if (field.type === 'select-multiple') {
 					// Create an array of selected values
 					// Loop through the options and add selected ones
 					Array.prototype.slice.call(field.options).forEach(function(option) {
-						if (!option.selected) return;
+						if (!option.selected) {
+							return;
+						}
 						options.push(option.value);
 					});
 				}
@@ -1025,7 +1306,9 @@ Booze.Util = (function() {
 					obj[field.name] = options;
 				}
 				// If it's a checkbox or radio button and it's not checked, skip it
-				if (['checkbox', 'radio'].indexOf(field.type) > -1 && !field.checked) return;
+				if (['checkbox', 'radio'].indexOf(field.type) > -1 && !field.checked) {
+					return;
+				}
 				obj[field.name] = field.value;
 			});
 			// Do stuff with the field...
@@ -1041,28 +1324,34 @@ Booze.Util = (function() {
 			// for a good intro into throttling and debouncing, see:
 			// https://css-tricks.com/debouncing-throttling-explained-examples/
 			klas = klas || 'show';
-			var deferHandle = curry33(handleScroll)(klas)(getThreshold || Booze.Util.getScrollThreshold),
+			var deferHandle = curry33(handleScroll)(klas)(getThreshold || speakEasy.Util.getScrollThreshold),
 				funcs = _.map(collection, deferHandle);
 			return _.map(_.map(funcs, curry2(_.throttle)(100)), _.partial(addHandler, 'scroll', window));
 		},
 		setText: curry3(setAdapter)('innerHTML'),
 		setter: setter,
 		show: _.partial(setFromArray, always(true), 'add', ['show']),
-		silent_conditional: function(flag) {
-            var validators = _.toArray(arguments);
-            if(_.isBoolean(flag)){
-                validators = _.toArray(_.rest(arguments));
-            }
+		shuffleArray: function shuffle(coll) {
+			return function(start, deleteCount) {
+				if (start === -1) {
+					return coll;
+				}
+				deleteCount = isNaN(deleteCount) ? coll.length - 1 : deleteCount;
+				start = isNaN(start) ? 0 : start;
+				return coll.splice(start, deleteCount).concat(coll);
+			};
+		},
+		silent_conditional: function() {
+			var validators = _.toArray(arguments);
 			return function(fun, arg) {
-                
 				var errors = mapcat(function(isValid) {
 					return isValid(arg) ? [] : [isValid.message];
 				}, validators);
-                
 				if (!_.isEmpty(errors)) {
 					return errors;
+					//throw new Error(errors.join(", "));
 				}
-				return flag ? _.partial(fun, arg) : fun(arg);
+				return fun(arg);
 			};
 		},
 		simple_conditional: function() {
@@ -1087,7 +1376,7 @@ Booze.Util = (function() {
 		},
 		supportTest: function(el, prop, reg) {
 			var getBg = curry3(simpleInvoke)(reg)('match');
-			return getBg(Booze.Util.getComputedStyle(el, prop));
+			return getBg(speakEasy.Util.getComputedStyle(el, prop));
 		},
 		toggleClass: _.partial(setFromArray, always(true), 'toggle'),
 		toggle: _.partial(setFromArray, always(true), 'toggle', ['show']),
@@ -1100,8 +1389,8 @@ Booze.Util = (function() {
 			};
 		},
 		report: function(arg) {
-			document.getElementsByTagName('h2')[0].innerHTML = arg;
+            document.getElementsByTagName('h2')[0].innerHTML = arg ? arg : document.documentElement.className;
 		},
-        dog: 'spadger'
+		dog: 'spadger'
 	}; //end
 }());
