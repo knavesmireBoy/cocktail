@@ -161,6 +161,6 @@ anCr(x)('span');
 //_.each([1,2], ptL(anCr(anCr(utils.getBody)('div')),'span'));
 //_.each(margarita, ptL(paraFactory, doComp(doText, ptL(anCr(anCr(utils.getBody)('div')),'p'))));
 //_.each(margarita, ptL(paraFactory, doComp(doText, anCr(anCr(utils.getBody)('div')))));
-_.each(margarita, ptL(tagFactory, 'p', doComp(doText, anCr(   anCr(utils.getBody)('div')   ) )));
+_.each(margarita, ptL(tagFactory, 'p', doComp(doText, anCr(   doComp(ptL(klasAdd, 'p'), anCr(utils.getBody))('div')   ) )));
 
 }());
