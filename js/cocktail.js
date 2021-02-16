@@ -35,7 +35,6 @@
 	}
 
   function setter(v, o, p){
-    con(arguments);
     o[p] = v;
   }
 
@@ -156,6 +155,7 @@ var utils = speakEasy.Util,
   __tabcontent = ptL(klasAdd, 'tabcontent'),
   __tabbox = ptL(klasAdd, 'tabbox'),
   __ancr1 = anCr(doComp(__tabbox, __body)('div')),
+  __ancr3 = anCr(doComp(twice(invoke)('Method'), doText, __ancr1)('h3')),
 __ancr2 = anCr(doComp(__tabcontent, __ancr1)('div'));
 /*
 var x = anCr(utils.getBody)('div');
@@ -166,6 +166,6 @@ anCr(x)('span');
 //_.each([1,2], ptL(anCr(anCr(utils.getBody)('div')),'span'));
 //_.each(margarita, ptL(paraFactory, doComp(doText, ptL(anCr(anCr(utils.getBody)('div')),'p'))));
 //_.each(margarita, ptL(paraFactory, doComp(doText, anCr(anCr(utils.getBody)('div')))));
-_.each(margarita, ptL(tagFactory, 'p', doComp(doText,   __ancr2)   ));
+_.each(margarita, ptL(tagFactory, 'p', doComp(doText, __ancr2)));
 
 }());
