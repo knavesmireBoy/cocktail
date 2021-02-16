@@ -151,7 +151,12 @@ var utils = speakEasy.Util,
   doText = thrice(setter)('innerHTML'),
   tagFactory = function(tag, ptl, txt){
     ptl(tag)(txt);
-  };
+  },
+  __body = anCr(utils.getBody),
+  __tabcontent = ptL(klasAdd, 'tabcontent'),
+  __tabbox = ptL(klasAdd, 'tabbox'),
+  __ancr1 = anCr(doComp(__tabbox, __body)('div')),
+__ancr2 = anCr(__ancr1('div'));
 /*
 var x = anCr(utils.getBody)('div');
 anCr(x)('span');
@@ -161,6 +166,6 @@ anCr(x)('span');
 //_.each([1,2], ptL(anCr(anCr(utils.getBody)('div')),'span'));
 //_.each(margarita, ptL(paraFactory, doComp(doText, ptL(anCr(anCr(utils.getBody)('div')),'p'))));
 //_.each(margarita, ptL(paraFactory, doComp(doText, anCr(anCr(utils.getBody)('div')))));
-_.each(margarita, ptL(tagFactory, 'p', doComp(doText, anCr(   doComp(ptL(klasAdd, 'p'), anCr(utils.getBody))('div')   ) )));
+_.each(margarita, ptL(tagFactory, 'p', doComp(doText,   __ancr2)   ));
 
 }());
