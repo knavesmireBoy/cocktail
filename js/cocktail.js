@@ -154,27 +154,39 @@ doTog = ptL(utils.toggleClass, 'show'),
   tagFactory = function(tag, ptl, txt){
     ptl(tag)(txt);
   },
-  ev = ptL(eventing, 'click', event_actions.slice(0, 1), function (e) {
+  toggler = ptL(eventing, 'click', event_actions.slice(0, 1), function (e) {
     doTog(e.target.parentNode);
   }),
+  $id = thrice(doMapBridge)('id'),
+  $csstabs = $id('csstabs'),
+  $tab1 = $id('tab1'),
+  $tab2 = $id('tab2'),
+  $root = anCr($('content')),
 
-  __id = thrice(doMapBridge)('id'),
-  __csstabs = __id('csstabs'),
-  __tab1 = __id('tab1'),
-  __tab2 = __id('tab2'),
-  __root = anCr($('content')),
+  $tabcontent = ptL(klasAdd, 'tabcontent'),
+  $tabbox = ptL(klasAdd, 'tabbox'),
 
-  __tabcontent = ptL(klasAdd, 'tabcontent'),
-  __tabbox = ptL(klasAdd, 'tabbox'),
-  __node = anCr(doComp(ptL(klasAdd, 'csstabs'), __root)('div')),
-  __ancr2 = anCr(doComp(doGetEl, doRender, ev, __tab2, __tabbox, __node)('div')),
-  __ancr1 = anCr(doComp(__tab1, __tabbox, __node)('div')),
-  __ancr3 = anCr(doComp(twice(invoke)('Method'), doText, __ancr1)('h3')),
-  __recipe = anCr(doComp(twice(invoke)('Recipe'), doText, __ancr2)('h3')),
-__cb1 = anCr(doComp(__tabcontent, __ancr1)('div')),
-__cb2 = anCr(doComp(__tabcontent, __ancr2)('ul'));
+  doIt = function(){
+    //alert(9);
+    var $node = anCr(doComp(ptL(klasAdd, 'csstabs'), $root)('div')),
+      $ancr2 = anCr(doComp(doGetEl, doRender, toggler, $tab2, $tabbox, $node)('div')),
+      $ancr1 = anCr(doComp($tab1, $tabbox, $node)('div')),
+      $ancr3 = anCr(doComp(twice(invoke)('Method'), doText, $ancr1)('h3')),
+      $recipe = anCr(doComp(twice(invoke)('Recipe'), doText, $ancr2)('h3')),
+    $cb1 = anCr(doComp($tabcontent, $ancr1)('div')),
+    $cb2 = anCr(doComp($tabcontent, $ancr2)('ul'));
 
-_.each(margarita[0], ptL(tagFactory, 'p', doComp(doText, __cb1)));
-_.each(margarita[1], ptL(tagFactory, 'li', doComp(doText, __cb2)));
+    _.each(margarita[0], ptL(tagFactory, 'p', doComp(doText, $cb1)));
+    _.each(margarita[1], ptL(tagFactory, 'li', doComp(doText, $cb2)));
+  };
+
+
+
+  var e = eventing('click', [], doIt, document.getElementsByTagName('h2')[0]);
+  e.render();
+
+
+  //setTimeout(doIt, 2222);
+
 
 }());

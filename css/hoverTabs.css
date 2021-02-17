@@ -4,6 +4,10 @@
     left: -999em;*/
 }
 
+#content {
+	z-index: 33;
+}
+
 #tab1 {
 	margin: 0 0 2em;
 }
