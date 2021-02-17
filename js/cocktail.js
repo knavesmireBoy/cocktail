@@ -138,6 +138,7 @@ var utils = speakEasy.Util,
   anCrIn = utils.insert(),
   klasAdd = utils.addClass,
   klasRem = utils.removeClass,
+  doAltRecipe = utils.doAlternate(),
 doTog = ptL(utils.toggleClass, 'show'),
 
   $ = thrice(lazyVal)('getElementById')(document),
@@ -167,7 +168,6 @@ doTog = ptL(utils.toggleClass, 'show'),
   $tabbox = ptL(klasAdd, 'tabbox'),
 
   doIt = function(){
-    //alert(9);
     var $node = anCr(doComp(ptL(klasAdd, 'csstabs'), $root)('div')),
       $ancr2 = anCr(doComp(doGetEl, doRender, toggler, $tab2, $tabbox, $node)('div')),
       $ancr1 = anCr(doComp($tab1, $tabbox, $node)('div')),
@@ -175,15 +175,12 @@ doTog = ptL(utils.toggleClass, 'show'),
       $recipe = anCr(doComp(twice(invoke)('Recipe'), doText, $ancr2)('h3')),
     $cb1 = anCr(doComp($tabcontent, $ancr1)('div')),
     $cb2 = anCr(doComp($tabcontent, $ancr2)('ul'));
-
     _.each(margarita[0], ptL(tagFactory, 'p', doComp(doText, $cb1)));
     _.each(margarita[1], ptL(tagFactory, 'li', doComp(doText, $cb2)));
-  };
+  },
 
-
-
-  var e = eventing('click', [], doIt, document.getElementsByTagName('h2')[0]);
-  e.render();
+unDoIt = doComp(utils.removeNodeOnComplete, utils.getZero, ptL(utils.getByClass, 'csstabs', document));
+eventing('click', event_actions.slice(0,1), doAltRecipe([doIt, unDoIt]), $('content')).render();
 
 
   //setTimeout(doIt, 2222);
