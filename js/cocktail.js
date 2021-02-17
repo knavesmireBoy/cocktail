@@ -139,22 +139,14 @@ var utils = speakEasy.Util,
   klasAdd = utils.addClass,
   klasRem = utils.removeClass,
   doAltRecipe = utils.doAlternate(),
-  		doGet = twice(utils.getter),
-
+  doGet = twice(utils.getter),
   mytarget = !window.addEventListener ? 'srcElement' : 'target',
-  getDaddy = utils.drillDown(['parentNode']),
-  getBFG = utils.drillDown(['parentNode', 'parentNode']),
+  getTAB = utils.drillDown(['parentNode', 'parentNode']),
   getTarget = utils.drillDown([mytarget]),
-  id_from_target = doComp(doGet('id'), getDaddy),
-  isTab1 = doComp(utils.hide, getBFG),
-  isTab2 = doComp(doComp(ptL(utils.toggleClass, 'show'), getBFG)),
-isTabbed1 = ptL(utils.invokeWhen, doComp(ptL(utils.isEqual, 'tab1'), id_from_target), isTab1),
-isTabbed2 = ptL(utils.invokeWhen, doComp(ptL(utils.isEqual, 'tab2'), id_from_target), isTab2),
-
-
-  isToggled = ptL(utils.getBest, [ptL(utils.findByClass, 'show')], [isTabbed1, isTabbed2]),
-  doTog =  doComp(invoke, isToggled, getTarget),
-
+  id_from_target = doComp(doGet('id'), utils.drillDown(['parentNode'])),
+  isTab1 = ptL(utils.invokeWhen, doComp(ptL(utils.isEqual, 'tab1'), id_from_target), doComp(utils.hide, getTAB)),
+  isTab2 = ptL(utils.invokeWhen, doComp(ptL(utils.isEqual, 'tab2'), id_from_target), doComp(utils.show, getTAB)),
+  isRecipe = ptL(utils.getBest, [ptL(utils.findByClass, 'show')], [isTab1, isTab2]),
   $ = thrice(lazyVal)('getElementById')(document),
   $$ = thricedefer(lazyVal)('getElementById')(document),
   doMap = utils.doMap,
@@ -170,7 +162,7 @@ isTabbed2 = ptL(utils.invokeWhen, doComp(ptL(utils.isEqual, 'tab2'), id_from_tar
     ptl(tag)(txt);
   },
 
-  toggler = ptL(eventing, 'click', event_actions.slice(0, 1), doTog),
+  toggler = ptL(eventing, 'click', event_actions.slice(0, 1), doComp(invoke, isRecipe, getTarget)),
   $id = thrice(doMapBridge)('id'),
   $csstabs = $id('csstabs'),
   $tab1 = $id('tab1'),

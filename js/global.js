@@ -756,7 +756,8 @@ speakEasy.Util = (function() {
 	}
 
 	function attrMap(el, map, style) {
-		var k;
+		var k,
+		o;
 		for (k in map) {
 			if (map.hasOwnProperty(k)) {
 				if (k.match(/^te?xt$/)) {
@@ -766,9 +767,10 @@ speakEasy.Util = (function() {
 				if (style) {
 					el.style.setProperty(k, map[k]);
 				} else {
-					el.setAttribute(k, map[k]);
-                    //to support ie 6,7
-                    //speakEasy.Util.setAttributes({k: map[k]}, el);
+					//el.setAttribute(k, map[k]);
+                o = {};
+								o[k] =  map[k]; //to support ie 6,7
+          speakEasy.Util.setAttributes(o, el);
 				}
 			}
 		}
