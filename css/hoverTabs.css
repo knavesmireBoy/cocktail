@@ -1,7 +1,11 @@
 .csstabs {
-	margin: 2em;
-    position: absolute;
-    left: -999em;
+	margin: 2em 0 0;
+    /*position: absolute;
+    left: -999em;*/
+}
+
+#tab1 {
+	margin: 0 0 2em;
 }
 .tabcontent {
 	border: 1px solid white;
@@ -41,8 +45,8 @@
 	font-weight: bold;
 }
 
-.no-js .csstabs:hover ul, #tab2.show ul, #tab1 ul{
-	transition: opacity .75s ease-in;
+.no-js .csstabs:hover ul, #tab2.show ul{
+	transition: opacity 1s ease-in;
 }
 
 #tab1 {

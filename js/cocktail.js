@@ -138,7 +138,8 @@ var utils = speakEasy.Util,
   anCrIn = utils.insert(),
   klasAdd = utils.addClass,
   klasRem = utils.removeClass,
-  klasTog = utils.toggleClass,
+doTog = ptL(utils.toggleClass, 'show'),
+
   $ = thrice(lazyVal)('getElementById')(document),
   $$ = thricedefer(lazyVal)('getElementById')(document),
   doMap = utils.doMap,
@@ -147,10 +148,16 @@ var utils = speakEasy.Util,
       [k, v]
     ]);
   },
+  doRender = thrice(doMethod)('render')(null),
+  doGetEl = thrice(doMethod)('getEl')(null),
   doText = thrice(setter)('innerHTML'),
   tagFactory = function(tag, ptl, txt){
     ptl(tag)(txt);
   },
+  ev = ptL(eventing, 'click', event_actions.slice(0, 1), function (e) {
+    doTog(e.target.parentNode);
+  }),
+
   __id = thrice(doMapBridge)('id'),
   __csstabs = __id('csstabs'),
   __tab1 = __id('tab1'),
@@ -160,21 +167,13 @@ var utils = speakEasy.Util,
   __tabcontent = ptL(klasAdd, 'tabcontent'),
   __tabbox = ptL(klasAdd, 'tabbox'),
   __node = anCr(doComp(ptL(klasAdd, 'csstabs'), __root)('div')),
-  __ancr2 = anCr(doComp(__tab2, __tabbox, __node)('div')),
+  __ancr2 = anCr(doComp(doGetEl, doRender, ev, __tab2, __tabbox, __node)('div')),
   __ancr1 = anCr(doComp(__tab1, __tabbox, __node)('div')),
   __ancr3 = anCr(doComp(twice(invoke)('Method'), doText, __ancr1)('h3')),
   __recipe = anCr(doComp(twice(invoke)('Recipe'), doText, __ancr2)('h3')),
 __cb1 = anCr(doComp(__tabcontent, __ancr1)('div')),
 __cb2 = anCr(doComp(__tabcontent, __ancr2)('ul'));
-/*
-var x = anCr(utils.getBody)('div');
-anCr(x)('span');
-*/
 
-//_.each(['span', 'span'], anCr(anCr(utils.getBody)('div')));
-//_.each([1,2], ptL(anCr(anCr(utils.getBody)('div')),'span'));
-//_.each(margarita, ptL(paraFactory, doComp(doText, ptL(anCr(anCr(utils.getBody)('div')),'p'))));
-//_.each(margarita, ptL(paraFactory, doComp(doText, anCr(anCr(utils.getBody)('div')))));
 _.each(margarita[0], ptL(tagFactory, 'p', doComp(doText, __cb1)));
 _.each(margarita[1], ptL(tagFactory, 'li', doComp(doText, __cb2)));
 
