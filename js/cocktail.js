@@ -113,7 +113,7 @@
 	}
 
 
-var margarita = ["Shake well with cracked ice, then strain into a chilled cocktail glass that has had its rim rubbed with lime juice and dipped in coarse salt.", "A note on the <a href='http://www.esquire.com/features/tequila-drinks'>tequila</a>: It should be 100 percent agave, the plant from which the stuff is traditionally made. Save the great golden <em>añejos</em> for sipping.", "A note on the Cointreau: It yields results clearly superior to triple sec, most brands of which are marred by an unpleasant chemical aftertaste."],
+var margarita = [["Shake well with cracked ice, then strain into a chilled cocktail glass that has had its rim rubbed with lime juice and dipped in coarse salt.", "A note on the <a href='http://www.esquire.com/features/tequila-drinks'>tequila</a>: It should be 100 percent agave, the plant from which the stuff is traditionally made. Save the great golden <em>añejos</em> for sipping.", "A note on the Cointreau: It yields results clearly superior to triple sec, most brands of which are marred by an unpleasant chemical aftertaste."],["<a href='.'>Margarita</a>", "2 oz tequila -- silver tequila", "1 oz Cointreau","1 oz lime juice", "<b>Cocktail Glass</b>"]],
 recipes = [margarita];
 var utils = speakEasy.Util,
   con = window.console.log.bind(window),
@@ -151,12 +151,21 @@ var utils = speakEasy.Util,
   tagFactory = function(tag, ptl, txt){
     ptl(tag)(txt);
   },
-  __body = anCr(utils.getBody),
+  __id = thrice(doMapBridge)('id'),
+  __csstabs = __id('csstabs'),
+  __tab1 = __id('tab1'),
+  __tab2 = __id('tab2'),
+  __root = anCr($('content')),
+
   __tabcontent = ptL(klasAdd, 'tabcontent'),
   __tabbox = ptL(klasAdd, 'tabbox'),
-  __ancr1 = anCr(doComp(__tabbox, __body)('div')),
+  __node = anCr(doComp(ptL(klasAdd, 'csstabs'), __root)('div')),
+  __ancr2 = anCr(doComp(__tab2, __tabbox, __node)('div')),
+  __ancr1 = anCr(doComp(__tab1, __tabbox, __node)('div')),
   __ancr3 = anCr(doComp(twice(invoke)('Method'), doText, __ancr1)('h3')),
-__ancr2 = anCr(doComp(__tabcontent, __ancr1)('div'));
+  __recipe = anCr(doComp(twice(invoke)('Recipe'), doText, __ancr2)('h3')),
+__cb1 = anCr(doComp(__tabcontent, __ancr1)('div')),
+__cb2 = anCr(doComp(__tabcontent, __ancr2)('ul'));
 /*
 var x = anCr(utils.getBody)('div');
 anCr(x)('span');
@@ -166,6 +175,7 @@ anCr(x)('span');
 //_.each([1,2], ptL(anCr(anCr(utils.getBody)('div')),'span'));
 //_.each(margarita, ptL(paraFactory, doComp(doText, ptL(anCr(anCr(utils.getBody)('div')),'p'))));
 //_.each(margarita, ptL(paraFactory, doComp(doText, anCr(anCr(utils.getBody)('div')))));
-_.each(margarita, ptL(tagFactory, 'p', doComp(doText, __ancr2)));
+_.each(margarita[0], ptL(tagFactory, 'p', doComp(doText, __cb1)));
+_.each(margarita[1], ptL(tagFactory, 'li', doComp(doText, __cb2)));
 
 }());
