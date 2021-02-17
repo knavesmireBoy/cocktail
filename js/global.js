@@ -833,8 +833,20 @@ speakEasy.Util = (function() {
 	}
 	//note a function that ignores any state of champ or contender will return the first element if true and last if false
 	function best(fun, coll, arg) {
-        fun = arg ? _.partial(fun, arg) : fun;
-		return _.reduce(_.toArray(coll), function(champ, contender) {
+		if(_.isArray(fun)){
+			fun = fun[0];
+		}
+		if(arg){
+			coll = _.map(coll, function(ptl){
+				return _.partial(ptl, arg)
+			});
+		}
+		else {
+			coll = _.toArray(coll);
+		}
+		fun = arg ? _.partial(fun, arg) : fun;
+
+		return _.reduce(coll, function(champ, contender) {
 			return fun(champ, contender) ? champ : contender;
 		});
 	}

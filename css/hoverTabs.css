@@ -4,9 +4,6 @@
     left: -999em;*/
 }
 
-#content {
-	z-index: 33;
-}
 
 #tab1 {
 	margin: 0 0 2em;
@@ -49,7 +46,7 @@
 	font-weight: bold;
 }
 
-.no-js .csstabs:hover ul, #tab2.show ul{
+.no-js .csstabs:hover ul, .show #tab2 ul{
 	transition: opacity 1s ease-in;
 }
 
@@ -68,15 +65,15 @@
     opacity: .5;
 }
 
-#tab1 h3, .no-js #tab2 h3:hover,  #tab2.show h3 {
+#tab1 h3, .no-js #tab2 h3:hover,  .show #tab2 h3 {
 	border-bottom-color: black;
 }
 
-.no-js #tab2 h3:hover,  #tab2.show h3 {
+.no-js #tab2 h3:hover,  .show #tab2h3 {
 	z-index: 3;
 }
 
-.no-js #tab2 h3:hover+ul,  #tab2.show h3+ul{
+.no-js #tab2 h3:hover+ul,  .show #tab2 h3+ul{
 	opacity: 1;
 	z-index: 2;
 }

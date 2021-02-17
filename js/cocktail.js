@@ -139,7 +139,8 @@ var utils = speakEasy.Util,
   klasAdd = utils.addClass,
   klasRem = utils.removeClass,
   doAltRecipe = utils.doAlternate(),
-doTog = ptL(utils.toggleClass, 'show'),
+  isToggled = ptL(utils.getBest, [ptL(utils.findByClass, 'show')], [utils.hide, utils.show]),
+  doTog =  doComp(invoke, isToggled, utils.drillDown(['target', 'parentNode', 'parentNode'])),
 
   $ = thrice(lazyVal)('getElementById')(document),
   $$ = thricedefer(lazyVal)('getElementById')(document),
@@ -155,9 +156,8 @@ doTog = ptL(utils.toggleClass, 'show'),
   tagFactory = function(tag, ptl, txt){
     ptl(tag)(txt);
   },
-  toggler = ptL(eventing, 'click', event_actions.slice(0, 1), function (e) {
-    doTog(e.target.parentNode);
-  }),
+
+  toggler = ptL(eventing, 'click', event_actions.slice(0, 1), doTog),
   $id = thrice(doMapBridge)('id'),
   $csstabs = $id('csstabs'),
   $tab1 = $id('tab1'),
@@ -168,8 +168,8 @@ doTog = ptL(utils.toggleClass, 'show'),
   $tabbox = ptL(klasAdd, 'tabbox'),
 
   doIt = function(){
-    var $node = anCr(doComp(ptL(klasAdd, 'csstabs'), $root)('div')),
-      $ancr2 = anCr(doComp(doGetEl, doRender, toggler, $tab2, $tabbox, $node)('div')),
+    var $node = anCr(doComp(con2, doGetEl, doRender, toggler, ptL(klasAdd, 'csstabs'), $root)('div')),
+      $ancr2 = anCr(doComp($tab2, $tabbox, $node)('div')),
       $ancr1 = anCr(doComp($tab1, $tabbox, $node)('div')),
       $ancr3 = anCr(doComp(twice(invoke)('Method'), doText, $ancr1)('h3')),
       $recipe = anCr(doComp(twice(invoke)('Recipe'), doText, $ancr2)('h3')),
@@ -181,9 +181,5 @@ doTog = ptL(utils.toggleClass, 'show'),
 
 unDoIt = doComp(utils.removeNodeOnComplete, utils.getZero, ptL(utils.getByClass, 'csstabs', document));
 eventing('click', event_actions.slice(0,1), doAltRecipe([doIt, unDoIt]), doComp(ptL(utils.byIndex, 1), ptL(utils.getByClass, 'h2', document))).render();
-
-
-  //setTimeout(doIt, 2222);
-
-
+con(utils.findByClass('showing'));
 }());
