@@ -139,8 +139,21 @@ var utils = speakEasy.Util,
   klasAdd = utils.addClass,
   klasRem = utils.removeClass,
   doAltRecipe = utils.doAlternate(),
-  isToggled = ptL(utils.getBest, [ptL(utils.findByClass, 'show')], [utils.hide, utils.show]),
-  doTog =  doComp(invoke, isToggled, utils.drillDown(['target', 'parentNode', 'parentNode'])),
+  		doGet = twice(utils.getter),
+
+  mytarget = !window.addEventListener ? 'srcElement' : 'target',
+  getDaddy = utils.drillDown(['parentNode']),
+  getBFG = utils.drillDown(['parentNode', 'parentNode']),
+  getTarget = utils.drillDown([mytarget]),
+  id_from_target = doComp(doGet('id'), getDaddy),
+  isTab1 = doComp(utils.hide, getBFG),
+  isTab2 = doComp(doComp(ptL(utils.toggleClass, 'show'), getBFG)),
+isTabbed1 = ptL(utils.invokeWhen, doComp(ptL(utils.isEqual, 'tab1'), id_from_target), isTab1),
+isTabbed2 = ptL(utils.invokeWhen, doComp(ptL(utils.isEqual, 'tab2'), id_from_target), isTab2),
+
+
+  isToggled = ptL(utils.getBest, [ptL(utils.findByClass, 'show')], [isTabbed1, isTabbed2]),
+  doTog =  doComp(invoke, isToggled, getTarget),
 
   $ = thrice(lazyVal)('getElementById')(document),
   $$ = thricedefer(lazyVal)('getElementById')(document),
@@ -168,7 +181,7 @@ var utils = speakEasy.Util,
   $tabbox = ptL(klasAdd, 'tabbox'),
 
   doIt = function(){
-    var $node = anCr(doComp(con2, doGetEl, doRender, toggler, ptL(klasAdd, 'csstabs'), $root)('div')),
+    var $node = anCr(doComp(doGetEl, doRender, toggler, ptL(klasAdd, 'csstabs'), $root)('div')),
       $ancr2 = anCr(doComp($tab2, $tabbox, $node)('div')),
       $ancr1 = anCr(doComp($tab1, $tabbox, $node)('div')),
       $ancr3 = anCr(doComp(twice(invoke)('Method'), doText, $ancr1)('h3')),
@@ -181,5 +194,4 @@ var utils = speakEasy.Util,
 
 unDoIt = doComp(utils.removeNodeOnComplete, utils.getZero, ptL(utils.getByClass, 'csstabs', document));
 eventing('click', event_actions.slice(0,1), doAltRecipe([doIt, unDoIt]), doComp(ptL(utils.byIndex, 1), ptL(utils.getByClass, 'h2', document))).render();
-con(utils.findByClass('showing'));
 }());

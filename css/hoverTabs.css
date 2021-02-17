@@ -69,7 +69,7 @@
 	border-bottom-color: black;
 }
 
-.no-js #tab2 h3:hover,  .show #tab2h3 {
+.no-js #tab2 h3:hover,  .show #tab2 h3 {
 	z-index: 3;
 }
 
