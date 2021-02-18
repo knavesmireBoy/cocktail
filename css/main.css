@@ -40,10 +40,11 @@ ul {
 }
 
 h1 {
-	font-size: 4.5vw;
+	font-size: 4.5vmax;
 	margin: 10rem 0 1rem 0;
 	padding: 0 0 0 7em;
 	text-shadow: 2px 2px 4px silver;
+	position: relative;
 }
 
 h2, #sidebar a {
@@ -92,7 +93,7 @@ div>img {
 }
 
 h1 em, legend em {
-	color: gold
+	color: gold;
 }
 
 .wrapper {
@@ -198,7 +199,7 @@ body#martini, body#c2, body#c3, body#c4, body#c5, body#c6 {
 }
 
 #content {
-	padding: 1em 2em 30em;
+	padding: 1rem 1rem 30em;
 }
 h1, h2, legend, #nav>li a, #sidebar a {
 	font-family: cochin, 'latin_modern_roman10_bold', serif;
@@ -384,7 +385,7 @@ ul#bar li {
 	text-align: right;
 }
 #header a {
-	color: palegoldenrod
+	color: snow;
 }
 
 #user fieldset:first-child legend {
@@ -401,9 +402,23 @@ ul#bar li {
 	width: 58%;
 }
 
+@media only screen and (max-width: 1024px) {
+	#sidebar div, #sidebar img {
+		height: 100%;
+	}
+	#sidebar img {
+		position: relative;
+		object-fit: cover;
+	}
+}
+
 @media only screen and (max-width: 768px) {
 	#sidebar {
 		display: none;
+	}
+
+	#content {
+		padding: 1rem 0 30em;
 	}
 
 	#nav {
@@ -452,17 +467,17 @@ ul#bar li {
 
 	h1 {
 		background: rgba(0,0,0,.75);
-		margin: 10rem 0 0;
-		padding: 0 0 0 1em;
+		margin: 10rem 0 4em;
+		padding: 0;
 		border: dotted 1px white;
 		border-width: 1px 0;
+		top: 4em;
 	}
-}
-	@media only screen and (max-width: 667px) {
 	#header {
 		background-image: url("../img/margarita.jpg");
 	}
 }
+
 #menu-toggle {
 	position: absolute;
 	left: -9990px;
