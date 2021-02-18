@@ -114,8 +114,15 @@
 
 
 var margarita = [["Shake well with cracked ice, then strain into a chilled cocktail glass that has had its rim rubbed with lime juice and dipped in coarse salt.", "A note on the <a href='http://www.esquire.com/features/tequila-drinks'>tequila</a>: It should be 100 percent agave, the plant from which the stuff is traditionally made. Save the great golden <em>añejos</em> for sipping.", "A note on the Cointreau: It yields results clearly superior to triple sec, most brands of which are marred by an unpleasant chemical aftertaste."],["<a href='.'>Margarita</a>", "2 oz tequila -- silver tequila", "1 oz Cointreau","1 oz lime juice", "<b>Cocktail Glass</b>"]],
+lookup = {
+  c1: 'martini',
+  c2: 'Cosmopolitan',
+  c3: 'margarita',
+  c4: 'maitai',
+  c5: 'mintjulep',
+  c6: 'sidecar'
+}
 
-recipes = [margarita];
 var utils = speakEasy.Util,
   con = window.console.log.bind(window),
   con2 = function(arg){
@@ -184,9 +191,10 @@ var utils = speakEasy.Util,
       $ancr3 = anCr(doComp(twice(invoke)('Method'), doText, $ancr2)('h3')),
       $recipe = anCr(doComp(twice(invoke)('Recipe'), doText, $ancr1)('h3')),
     $cb1 = anCr(doComp($tabcontent, $ancr1)('div')),
-    $cb2 = anCr(doComp($tabcontent, $ancr2)('ul'));
-    _.each(margarita[0], ptL(tagFactory, 'p', doComp(doText, $cb2)));
-    _.each(margarita[1], ptL(tagFactory, 'li', doComp(doText, $cb1)));
+    $cb2 = anCr(doComp($tabcontent, $ancr2)('ul')),
+    page = lookup[utils.getBody().id];
+    _.each(page[0], ptL(tagFactory, 'p', doComp(doText, $cb2)));
+    _.each(page[1], ptL(tagFactory, 'li', doComp(doText, $cb1)));
     $showtime();
   },
 
