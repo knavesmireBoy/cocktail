@@ -98,9 +98,13 @@ h1 em, legend em {
 	display: flex;
 	width: 100%;
 }
-.innerwrap #sidebar {
-	flex: 1 1 200px;
-	min-width: 300px;
+#sidebar {
+	flex: 2 1 200px;
+	min-width: 320px;
+}
+
+#content {
+	flex: 3 1 auto;
 }
 
 .showtime #sidebar {
@@ -124,8 +128,6 @@ h1 em, legend em {
 	z-index: 1;
 	background-color: black
 }
-
-
 
 i, cite, b, .footer, .footer a {
 	color: #c0c0c0;
@@ -250,6 +252,7 @@ div#content {
 */
 #sidebar img {
 	display: block;
+	transition: all 2s;
 }
 
 #sidebar a {
