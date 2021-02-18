@@ -116,7 +116,6 @@ h1 em, legend em {
 }
 .showtime #sidebar img {
 	position: relative;
-	width: calc(100% * 490/400);
 	object-fit: cover;
 }
 
