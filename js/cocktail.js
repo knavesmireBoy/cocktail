@@ -171,6 +171,8 @@ var utils = speakEasy.Util,
 
   $tabcontent = ptL(klasAdd, 'tabcontent'),
   $tabbox = ptL(klasAdd, 'tabbox'),
+  $showtime = doComp(ptL(klasAdd, 'showtime'), utils.drillDown(['parentNode']), $$('content')),
+  $noShowtime = doComp(ptL(klasRem, 'showtime'), utils.drillDown(['parentNode']), $$('content')),
 
   doIt = function(){
     var $node = anCr(doComp(doGetEl, doRender, toggler, ptL(klasAdd, 'csstabs'), $root)('div')),
@@ -182,8 +184,9 @@ var utils = speakEasy.Util,
     $cb2 = anCr(doComp($tabcontent, $ancr2)('ul'));
     _.each(margarita[0], ptL(tagFactory, 'p', doComp(doText, $cb1)));
     _.each(margarita[1], ptL(tagFactory, 'li', doComp(doText, $cb2)));
+    $showtime();
   },
 
-unDoIt = doComp(utils.removeNodeOnComplete, utils.getZero, ptL(utils.getByClass, 'csstabs', document));
+unDoIt = doComp($noShowtime, utils.removeNodeOnComplete, utils.getZero, ptL(utils.getByClass, 'csstabs', document));
 eventing('click', event_actions.slice(0,1), doAltRecipe([doIt, unDoIt]), doComp(ptL(utils.byIndex, 1), ptL(utils.getByClass, 'h2', document))).render();
 }());
