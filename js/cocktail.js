@@ -188,5 +188,5 @@ var utils = speakEasy.Util,
   },
 
 unDoIt = doComp($noShowtime, utils.removeNodeOnComplete, utils.getZero, ptL(utils.getByClass, 'csstabs', document));
-eventing('click', event_actions.slice(0,1), doAltRecipe([doIt, unDoIt]), doComp(ptL(utils.byIndex, 1), ptL(utils.getByClass, 'h2', document))).render();
+eventing('click', event_actions.slice(0,1), doAltRecipe([doIt, unDoIt]), doComp(ptL(utils.byIndex, 0), ptL(utils.getByTag, 'h2', document))).render();
 }());

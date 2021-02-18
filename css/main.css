@@ -37,7 +37,7 @@ h1 {
 	text-shadow: 0 0 4px white;
 }
 
-h2 {
+h2, #sidebar a {
 	font-size: 2em;
 	color: rgba(204, 0, 204, 1);
 }
@@ -194,7 +194,7 @@ body#martini, body#c2, body#c3, body#c4, body#c5, body#c6 {
 #content {
 	padding: 1em 2em 30em;
 }
-h1, h2, legend, #nav>li a {
+h1, h2, legend, #nav>li a, #sidebar a {
 	font-family: cochin, 'latin_modern_roman10_bold', serif;
 }
 
@@ -256,10 +256,11 @@ div#content {
 	display: block;
 }
 
-#sidebar h2 {
+#sidebar a {
 	color: rgba(255, 255, 255, .9);
 	font-size: 2em;
 	text-align: center;
+	display: block;
 	padding: .5em 0;
 	position: relative;
 	text-shadow: 3px 3px 2px rgb(100, 0, 0);
