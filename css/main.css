@@ -458,8 +458,12 @@ ul#bar li {
 		border-width: 1px 0;
 	}
 }
-
-	#menu-toggle {
-		position: absolute;
-		left: -9990px;
+	@media only screen and (max-width: 667px) {
+	#header {
+		background-image: url("../img/margarita.jpg");
 	}
+}
+#menu-toggle {
+	position: absolute;
+	left: -9990px;
+}
