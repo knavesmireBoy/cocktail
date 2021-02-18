@@ -2,6 +2,8 @@
 <html class="no-js" lang="en">
 <head> <title>Margarita</title>
     <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
     <link rel="stylesheet" href="../css/fonts.css">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/hoverTabs.css">
@@ -15,9 +17,13 @@ document.cookie='resolution='+Math.max(screen.width,screen.height)+'; path=/';
 <![endif]-->
 </head>
 <body id="c3">
-    <div id="header"><div><img src="../img/fc.jpg" /></div><h1><a href="..">The Little <em>Cocktail</em> Site</a></h1>
+    <div id="header"><h1><a href="..">The Little <em>Cocktail</em> Site</a></h1>
 </div>
-<ul id="nav"><li><a href="../c1/">Martini</a><ul><li><a href="../c1/recipe.html">Recipe</a></li>
+<label class="menu" for="menu-toggle"></label>
+<input id="menu-toggle" type="checkbox">
+<ul id="nav">
+
+  <li><a href="../c1/">Martini</a><ul><li><a href="../c1/recipe.html">Recipe</a></li>
 </ul>
 </li><li><a href="../c5/">Cosmopolitan</a><ul><li><a href="../c5/recipe.html">Recipe</a></li>
 </ul></li><li><a href="../c3/">Margarita</a><ul><li><a href="../c3/recipe.html">Recipe</a></li>

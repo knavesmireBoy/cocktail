@@ -11,6 +11,15 @@ body {
 	background-color: black;
 }
 
+.menu {
+	position: absolute;
+	top: 1rem;
+	right: 3.5rem;
+	height: 3rem;
+	width: 3rem;
+}
+
+
 body.show {
     margin: 3em;
 }
@@ -31,10 +40,10 @@ ul {
 }
 
 h1 {
-	font-size: 3em;
-	margin: 3.3em 0 0 .5em;
-	float: left;
-	text-shadow: 0 0 4px white;
+	font-size: 4.5vw;
+	margin: 10rem 0 1rem 0;
+	padding: 0 0 0 7em;
+	text-shadow: 2px 2px 4px silver;
 }
 
 h2, #sidebar a {
@@ -101,6 +110,7 @@ h1 em, legend em {
 #sidebar {
 	flex: 2 1 200px;
 	min-width: 320px;
+	border-right: dotted 1px white;
 }
 
 #content {
@@ -109,7 +119,6 @@ h1 em, legend em {
 
 .showtime #sidebar {
 	overflow: hidden;
-	border-right: dotted 1px white;
 }
 .showtime #sidebar div, .showtime #sidebar img {
 	height: 100%;
@@ -204,18 +213,20 @@ h1, h2, legend, #nav>li a, #sidebar a {
 }
 
 #header {
-	height: 14em;
-	overflow: hidden
+	overflow: hidden;
+	background-image: url("../img/fc.jpg");
+	background-repeat: no-repeat;
+	background-size: contain;
 }
 
 #nav {
 	border-top: 1px solid white;
 	padding-left: 2%;
 	position: relative;
-	background: rgba(204, 0, 204, 1) linear-gradient(transparent, black);
-display: flex;
+	background-color: rgba(204, 0, 204, 1);
+	background-image: linear-gradient(transparent, black);
+	display: flex;
 	width: 100%;
-	box-shadow: 0 0 5em purple;
 }
 
 #header div {
@@ -230,10 +241,6 @@ display: flex;
 	text-align: center;
 	z-index: 2;
 	flex: 1 0 0;
-}
-
-#content {
-	border-left: dotted 1px white;
 }
 
 #sidebar img {
@@ -393,3 +400,66 @@ ul#bar li {
 	height: auto;
 	width: 58%;
 }
+
+@media only screen and (max-width: 768px) {
+	#sidebar {
+		display: none;
+	}
+
+	#nav {
+		position: absolute;
+		top: 4rem;
+		right: 1rem;
+		padding: 0 .5em;
+		flex-direction: column;
+		width: auto;
+		background-image: none;
+		background-color: transparent;
+		border-width: 0;
+		line-height: 1.6;
+	}
+
+	#nav li a {
+		padding: 0;
+		background-color: transparent;
+	}
+
+	#nav li{
+		height: 0;
+		font-size: 0;
+	}
+	#menu-toggle:checked+#nav li{
+		height: auto;
+		font-size: 1.2em;
+	}
+	.menu {
+		background: 50% 0% url("../img/polo_ball_sprite.png") no-repeat;
+		-o-background-size: 105%;
+		-moz-background-size: 100%;
+		-ms-background-size: 100%;
+		-webkit-background-size: 100%;
+		background-size: 100%;
+		cursor: pointer;
+		-webkit-transition: transform 1s;
+		-o-transition: transform 1s;
+		transition: transform 1s;
+	}
+	.menu:hover {
+		background-position: 50% 100%;
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+
+	h1 {
+		background: rgba(0,0,0,.75);
+		margin: 10rem 0 0;
+		padding: 0 0 0 1em;
+		border: dotted 1px white;
+		border-width: 1px 0;
+	}
+}
+
+	#menu-toggle {
+		position: absolute;
+		left: -9990px;
+	}

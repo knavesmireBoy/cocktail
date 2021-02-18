@@ -1,7 +1,6 @@
 .csstabs {
 	margin: 2em 0 0;
-    /*position: absolute;
-    left: -999em;*/
+	max-width: 600px;
 }
 
 
