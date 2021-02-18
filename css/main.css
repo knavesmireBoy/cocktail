@@ -99,11 +99,11 @@ h1 em, legend em {
 	width: 100%;
 }
 .innerwrap #sidebar {
-	flex: 1 1 400px;
+	flex: 1 1 auto;
 }
 
 .innerwrap #content {
-	flex: 10 1 400px;
+	flex: 10 1 0;
 }
 
 .footer {
