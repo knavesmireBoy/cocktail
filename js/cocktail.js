@@ -114,6 +114,7 @@
 
 
 var margarita = [["Shake well with cracked ice, then strain into a chilled cocktail glass that has had its rim rubbed with lime juice and dipped in coarse salt.", "A note on the <a href='http://www.esquire.com/features/tequila-drinks'>tequila</a>: It should be 100 percent agave, the plant from which the stuff is traditionally made. Save the great golden <em>añejos</em> for sipping.", "A note on the Cointreau: It yields results clearly superior to triple sec, most brands of which are marred by an unpleasant chemical aftertaste."],["<a href='.'>Margarita</a>", "2 oz tequila -- silver tequila", "1 oz Cointreau","1 oz lime juice", "<b>Cocktail Glass</b>"]],
+
 recipes = [margarita];
 var utils = speakEasy.Util,
   con = window.console.log.bind(window),
@@ -150,6 +151,8 @@ var utils = speakEasy.Util,
   $ = thrice(lazyVal)('getElementById')(document),
   $$ = thricedefer(lazyVal)('getElementById')(document),
   doMap = utils.doMap,
+  getRecipe = thrice(doMethod)('match')(/.+recipe\.html$/),
+
   doMapBridge = function (el, v, k) {
     return doMap(el, [
       [k, v]
@@ -189,4 +192,12 @@ var utils = speakEasy.Util,
 
 unDoIt = doComp($noShowtime, utils.removeNodeOnComplete, utils.getZero, ptL(utils.getByClass, 'csstabs', document));
 eventing('click', event_actions.slice(0,1), doAltRecipe([doIt, unDoIt]), doComp(ptL(utils.byIndex, 0), ptL(utils.getByTag, 'h2', document))).render();
+
+
+var links = _.filter(utils.getByTag('a', $('nav')), _.negate(doComp(getRecipe, ptL(add, ''))));
+//rem = doComp(utils.removeNodeOnComplete, utils.getNext);
+
+_.each(links, doComp(utils.removeNodeOnComplete, utils.getNext));
+
+
 }());
