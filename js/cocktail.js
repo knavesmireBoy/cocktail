@@ -181,12 +181,12 @@ var utils = speakEasy.Util,
     var $node = anCr(doComp(doGetEl, doRender, toggler, ptL(klasAdd, 'csstabs'), $root)('div')),
       $ancr2 = anCr(doComp($tab2, $tabbox, $node)('div')),
       $ancr1 = anCr(doComp($tab1, $tabbox, $node)('div')),
-      $ancr3 = anCr(doComp(twice(invoke)('Method'), doText, $ancr1)('h3')),
-      $recipe = anCr(doComp(twice(invoke)('Recipe'), doText, $ancr2)('h3')),
+      $ancr3 = anCr(doComp(twice(invoke)('Method'), doText, $ancr2)('h3')),
+      $recipe = anCr(doComp(twice(invoke)('Recipe'), doText, $ancr1)('h3')),
     $cb1 = anCr(doComp($tabcontent, $ancr1)('div')),
     $cb2 = anCr(doComp($tabcontent, $ancr2)('ul'));
-    _.each(margarita[0], ptL(tagFactory, 'p', doComp(doText, $cb1)));
-    _.each(margarita[1], ptL(tagFactory, 'li', doComp(doText, $cb2)));
+    _.each(margarita[0], ptL(tagFactory, 'p', doComp(doText, $cb2)));
+    _.each(margarita[1], ptL(tagFactory, 'li', doComp(doText, $cb1)));
     $showtime();
   },
 

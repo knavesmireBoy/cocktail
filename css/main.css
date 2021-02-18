@@ -217,38 +217,25 @@ display: flex;
 	width: 100%;
 	box-shadow: 0 0 5em purple;
 }
-/*
-#sidebar {
-	width: 30%;
-	float: left;
-}
-*/
+
 #header div {
 	width: 30%;
 	float: left
 }
 
 #nav>li {
-	display: inline-block;
-	margin-right: .25em;
 	position: relative;
 	white-space: nowrap;
+	font-size: 1.2em;
+	text-align: center;
 	z-index: 2;
 	flex: 1 0 0;
 }
-/*
-div#content {
-	width: 64%;
-	margin-left: -64%;
-	float: right;
+
+#content {
 	border-left: dotted 1px white;
 }
 
-#sidebar div {
-	margin-top: -4.4em;
-	margin-left: -20%;
-}
-*/
 #sidebar img {
 	display: block;
 	transition: all 2s;
@@ -277,9 +264,7 @@ div#content {
 	color: rgba(255, 255, 255, .8);
 	white-space: nowrap;
 }
-#nav>li>a {
-	font-size: 1.2em;
-}
+
 #nav>li>a:hover {
 	text-decoration: none;
 	opacity: .5
