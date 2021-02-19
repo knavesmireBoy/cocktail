@@ -9,6 +9,9 @@ body {
 	line-height: 1.2;
 	background-color: black;
 }
+#home {
+	margin: 1em 0 0;
+}
 
 .menu {
 	position: absolute;
@@ -51,11 +54,10 @@ h2, .sidebar a {
 	color: rgba(204, 0, 204, 1);
 }
 
-h2 {
+.content h2 {
 	background-color: transparent;
 	background-repeat: no-repeat;
-
-	 float: left;
+float: left;
  height: 111px;
  width: 111px;
  shape-outside: circle(50%);
@@ -63,6 +65,7 @@ h2 {
  border: solid 10px black;
  filter: grayscale(90%);
 }
+
 #c1 h2 {
 	background-image: url('../img/martini.jpg');
 	background-position: 50% 30%;
@@ -78,11 +81,22 @@ h2 {
 	background-position: 30% 60%;
 	background-size: 225%;
 }
+#c4 h2 {
+	background-image: url('../img/julep.jpg');
+	background-position: 90% 55%;
+	background-size: 170%;
+}
+#c5 h2 {
+	background-image: url('../img/cosmo.jpg');
+	background-position: 90% 30%;
+	background-size: 170%;
+}
 #c6 h2 {
 	background-image: url('../img/maitai.jpg');
 	background-position: 90% 55%;
 	background-size: 170%;
 }
+
 
 h2:hover {
 	filter: none;
@@ -148,6 +162,7 @@ div>img {
 
 h1 em {
 	color: rgb(255, 111, 0);
+	color: red;
 }
 
 
@@ -301,6 +316,9 @@ h1, h2, legend, #nav>li a, .sidebar a {
 	background-repeat: no-repeat;
 	background-size: contain;
 }
+#home #header {
+	background-image: none;
+}
 
 #nav {
 	border-top: 1px solid white;
@@ -445,7 +463,9 @@ ul#bar li {
 #home h1 {
 	float: none;
 	font-size: 2.5em;
-	margin: 0
+	margin: 0;
+	padding: 0 0 0 1em;
+
 }
 
 #header h2 {
@@ -543,6 +563,10 @@ ul#bar li {
 		top: 4em;
 		text-shadow: 1px 1px 2px black;
 	}
+	#header {
+		background-size: 60%;
+		background-position: -30% 0;
+	}
 	#c1 #header {
 		background-image: url("../img/martini.jpg");
 	}
@@ -551,6 +575,15 @@ ul#bar li {
 	}
 	#c3 #header {
 		background-image: url("../img/margarita.jpg");
+	}
+	#c4 #header {
+		background-image: url("../img/julep.jpg");
+	}
+	#c5 #header {
+		background-image: url("../img/cosmo.jpg");
+	}
+	#c6 #header {
+		background-image: url("../img/maitai.jpg");
 	}
 }
 
