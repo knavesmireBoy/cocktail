@@ -13,6 +13,28 @@ body {
 	margin: 1em 0 0;
 }
 
+blockquote {
+	color: silver;
+	border: 1px double;
+	width: 15em;
+	padding: 1rem;
+	margin: 1rem;
+	float: right;
+	font-size: 1.25rem;
+	font-style: italic;
+	text-align: right;
+}
+
+blockquote em {
+	font-size: .85rem;
+	font-style: normal;
+	color: snow;
+}
+
+blockquote em span{
+color: rgb(255, 251, 116);
+}
+
 .menu {
 	position: absolute;
 	top: 1rem;
@@ -54,17 +76,6 @@ h2, .sidebar a {
 	color: rgba(204, 0, 204, 1);
 }
 
-.content h2 {
-	background-color: transparent;
-	background-repeat: no-repeat;
-float: left;
- height: 111px;
- width: 111px;
- shape-outside: circle(50%);
- border-radius: 50%;
- border: solid 10px black;
- filter: grayscale(90%);
-}
 
 #c1 h2 {
 	background-image: url('../img/martini.jpg');
@@ -97,10 +108,6 @@ float: left;
 	background-size: 170%;
 }
 
-
-h2:hover {
-	filter: none;
-}
 
 h2 + p::first-letter {
   color: magenta;
@@ -162,7 +169,7 @@ div>img {
 
 h1 em {
 	color: rgb(255, 111, 0);
-	color: red;
+	color: #999;
 }
 
 
@@ -402,6 +409,10 @@ h1, h2, legend, #nav>li a, .sidebar a {
 	border-right: 1px dotted white
 }
 
+#chaps img:hover {
+	filter: sepia();
+}
+
 #result {
 	width: 40%;
 	border-top: 1px dotted palegoldenrod;
@@ -585,6 +596,25 @@ ul#bar li {
 	#c6 #header {
 		background-image: url("../img/maitai.jpg");
 	}
+	blockquote {
+display: none;
+	}
+}
+@media only screen and (min-width: 769px) {
+.content h2 {
+	background-color: transparent;
+	background-repeat: no-repeat;
+float: left;
+ height: 111px;
+ width: 111px;
+ shape-outside: circle(50%);
+ border-radius: 50%;
+ border: solid 10px black;
+ filter: grayscale(80%);
+}
+h2:hover {
+	filter: none;
+}
 }
 
 #menu-toggle {
