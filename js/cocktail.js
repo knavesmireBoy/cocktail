@@ -113,10 +113,16 @@
 	}
 
 
-var margarita = [["Shake well with cracked ice, then strain into a chilled cocktail glass that has had its rim rubbed with lime juice and dipped in coarse salt.", "A note on the <a href='http://www.esquire.com/features/tequila-drinks'>tequila</a>: It should be 100 percent agave, the plant from which the stuff is traditionally made. Save the great golden <em>añejos</em> for sipping.", "A note on the Cointreau: It yields results clearly superior to triple sec, most brands of which are marred by an unpleasant chemical aftertaste."],["<a href='.'>Margarita</a>", "2 oz tequila -- silver tequila", "1 oz Cointreau","1 oz lime juice", "<b>Cocktail Glass</b>"]],
+var instr = {
+
+margarita: [["Shake well with cracked ice, then strain into a chilled cocktail glass that has had its rim rubbed with lime juice and dipped in coarse salt.", "A note on the <a href='http://www.esquire.com/features/tequila-drinks'>tequila</a>: It should be 100 percent agave, the plant from which the stuff is traditionally made. Save the great golden <em>añejos</em> for sipping.", "A note on the Cointreau: It yields results clearly superior to triple sec, most brands of which are marred by an unpleasant chemical aftertaste."],["<a href='.'>Margarita</a>", "2 oz tequila -- silver tequila", "1 oz Cointreau","1 oz lime juice", "<b>Cocktail Glass</b>"]],
+martini: [["Fill a metal shaker with cracked ice.", "Pour in the dry vermouth (we prefer Noilly Prat), stir briefly, and strain out (this may be discarded).", "Add 4 ounces gin (we prefer Tanqueray, Bombay Sapphire, Beefeater) -- you want it around 94-proof.","Stir briskly for about 10 seconds, strain into chilled cocktail glass, and garnish with an olive."],["<a href='.'>Martini</a>", "4 oz gin", "1 Dry Vermouth", "<b>Cocktail Glass</b>"]],
+sidecar: [["Shake well with cracked ice, then strain into a chilled cocktail glass that has had its outside rim rubbed with lemon juice and dipped in sugar"] ,["<a href='.'>Sidecar</a>", "1 1/2 ounces cognac", "3/4 ounce Cointreau", "3/4 ounce lemon juice",  "<b>Cocktail Glass</b>"]],
+maitai: [['Stir the rum, lime juice, curaçao, orgeat syrup (an almond syrup sometimes inflicted on coffee; for all we know, you can pick some up at your local Starbucks), and "rock candy syrup" (no more than sugar syrup -- look that up in your <i>Joy of Cooking</i> -- made with a couple drops of vanilla extract) with cracked ice in a chilled cocktail shaker.', 'Shake well and pour unstrained into a large Collins glass (or, of course, tiki mug). If making two or more, you might want to strain the mixture into the glasses, <i>then</i> pour in the ice (to ensure even distribution). Garnish with half a lime shell and sprig of mint.'], ['<a href="../c6/">Mai Tai</a>','2 oz rum -- dark rum<','1 ounce lime juice,.','1/2 oz orange curacao','1.2 oz orgeat syrup','1/8 oz simple syrup','<b>Large collins glass</b>']]
+},
 lookup = {
   c1: 'martini',
-  c2: 'Cosmopolitan',
+  c2: 'sidecar',
   c3: 'margarita',
   c4: 'maitai',
   c5: 'mintjulep',
@@ -171,18 +177,20 @@ var utils = speakEasy.Util,
   tagFactory = function(tag, ptl, txt){
     ptl(tag)(txt);
   },
+  mycontent = doComp(utils.getZero, ptL(utils.getByClass, 'content')),
 
   toggler = ptL(eventing, 'click', event_actions.slice(0, 1), doComp(invoke, isRecipe, getTarget)),
   $id = thrice(doMapBridge)('id'),
   $csstabs = $id('csstabs'),
   $tab1 = $id('tab1'),
   $tab2 = $id('tab2'),
-  $root = anCr($('content')),
+
+  $root = anCr(mycontent()),
 
   $tabcontent = ptL(klasAdd, 'tabcontent'),
   $tabbox = ptL(klasAdd, 'tabbox'),
-  $showtime = doComp(ptL(klasAdd, 'showtime'), utils.drillDown(['parentNode']), $$('content')),
-  $noShowtime = doComp(ptL(klasRem, 'showtime'), utils.drillDown(['parentNode']), $$('content')),
+  $showtime = doComp(ptL(klasAdd, 'showtime'), utils.drillDown(['parentNode']), mycontent),
+  $noShowtime = doComp(ptL(klasRem, 'showtime'), utils.drillDown(['parentNode']), mycontent),
 
   doIt = function(){
     var $node = anCr(doComp(doGetEl, doRender, toggler, ptL(klasAdd, 'csstabs'), $root)('div')),
@@ -193,8 +201,8 @@ var utils = speakEasy.Util,
     $cb1 = anCr(doComp($tabcontent, $ancr1)('div')),
     $cb2 = anCr(doComp($tabcontent, $ancr2)('ul')),
     page = lookup[utils.getBody().id];
-    _.each(page[0], ptL(tagFactory, 'p', doComp(doText, $cb2)));
-    _.each(page[1], ptL(tagFactory, 'li', doComp(doText, $cb1)));
+    _.each(instr[page][0], ptL(tagFactory, 'p', doComp(doText, $cb2)));
+    _.each(instr[page][1], ptL(tagFactory, 'li', doComp(doText, $cb1)));
     $showtime();
   },
 

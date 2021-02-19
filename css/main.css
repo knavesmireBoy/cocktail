@@ -3,11 +3,10 @@
 	margin: 0
 }
 body {
-	color: #FBD872;
+	color: rgb(255, 251, 116);
 	font-family: cochin, 'latin_modern_roman10_regular', serif;
 	font-size: 1em;
 	line-height: 1.2;
-	margin: 2em;
 	background-color: black;
 }
 
@@ -43,17 +42,71 @@ h1 {
 	font-size: 4.5vmax;
 	margin: 10rem 0 1rem 0;
 	padding: 0 0 0 7em;
-	text-shadow: 2px 2px 4px silver;
+	text-shadow: 2px 2px 2px purple;
 	position: relative;
 }
 
-h2, #sidebar a {
+h2, .sidebar a {
 	font-size: 2em;
 	color: rgba(204, 0, 204, 1);
 }
 
+h2 {
+	background-color: transparent;
+	background-repeat: no-repeat;
+
+	 float: left;
+ height: 111px;
+ width: 111px;
+ shape-outside: circle(50%);
+ border-radius: 50%;
+ border: solid 10px black;
+ filter: grayscale(90%);
+}
+#c1 h2 {
+	background-image: url('../img/martini.jpg');
+	background-position: 50% 30%;
+	background-size: 250%;
+}
+#c2 h2 {
+	background-image: url('../img/sidecar.jpg');
+	background-position: 90% 10%;
+	background-size: 200%;
+}
+#c3 h2 {
+	background-image: url('../img/margarita.jpg');
+	background-position: 30% 60%;
+	background-size: 225%;
+}
+#c6 h2 {
+	background-image: url('../img/maitai.jpg');
+	background-position: 90% 55%;
+	background-size: 170%;
+}
+
+h2:hover {
+	filter: none;
+}
+
+h2 + p::first-letter {
+  color: magenta;
+  font-size: 300%;
+  margin: -4px 6px 0 0;
+  float: left;
+}
+
+p strong {
+	text-transform: uppercase;
+	font-size: .75rem;
+	font-weight: normal;
+}
+
 p {
 	margin-bottom: .5em;
+}
+
+p:nth-of-type(odd) strong {
+	color: white;
 }
 
 em {
@@ -92,7 +145,18 @@ div>img {
 	height: auto;
 }
 
-h1 em, legend em {
+
+h1 em {
+	color: rgb(255, 111, 0);
+}
+
+
+h1 em:hover {
+		color: cyan;
+}
+
+
+legend em {
 	color: gold;
 }
 
@@ -108,25 +172,45 @@ h1 em, legend em {
 	display: flex;
 	width: 100%;
 }
-#sidebar {
-	flex: 2 1 200px;
+.sidebar {
+	flex: 1 1 220px;
 	min-width: 320px;
 	border-right: dotted 1px white;
 }
 
-#content {
-	flex: 3 1 auto;
+.sidebar div {
+	margin: -1.5rem 0 0;
 }
 
-.showtime #sidebar {
+.content {
+	flex: 5 1 0;
+}
+
+.showtime .sidebar {
 	overflow: hidden;
 }
-.showtime #sidebar div, .showtime #sidebar img {
+.showtime .sidebar div, .showtime .sidebar img {
 	height: 100%;
 }
-.showtime #sidebar img {
+.showtime .sidebar img {
 	position: relative;
 	object-fit: cover;
+}
+.sidebar img {
+	display: block;
+	transition: all 2s;
+	object-fit: cover;
+}
+
+.sidebar a {
+	color: rgba(255, 255, 255, .9);
+	font-size: 2em;
+	text-align: center;
+	display: block;
+	position: relative;
+	z-index: 1;
+	text-shadow: 3px 3px 2px rgb(100, 0, 0);
+	top:  1em;
 }
 
 .footer {
@@ -135,7 +219,6 @@ h1 em, legend em {
 	clear: both;
 	padding-top: 1em;
 	z-index: 1;
-	background-color: black
 }
 
 i, cite, b, .footer, .footer a {
@@ -144,15 +227,14 @@ i, cite, b, .footer, .footer a {
 
 a:hover {
 	color: white;
-	text-decoration: underline
 }
 
-.show #content > * {
+.show .content > * {
     position: absolute;
     left: -999em;
 }
 
-.show #content .csstabs {
+.show .content .csstabs {
     position: relative;
     left: 0;
 }
@@ -198,18 +280,18 @@ body#martini, body#c2, body#c3, body#c4, body#c5, body#c6 {
 	background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
 }
 
-#content {
+.content {
 	padding: 1rem 1rem 30em;
 }
-h1, h2, legend, #nav>li a, #sidebar a {
+h1, h2, legend, #nav>li a, .sidebar a {
 	font-family: cochin, 'latin_modern_roman10_bold', serif;
 }
 
-#content p {
+.content p {
 	font-size: 1em
 }
 
-#content p:nth-child(odd) {
+.content p:nth-child(odd) {
 	color: white;
 }
 
@@ -244,21 +326,6 @@ h1, h2, legend, #nav>li a, #sidebar a {
 	flex: 1 0 0;
 }
 
-#sidebar img {
-	display: block;
-	transition: all 2s;
-}
-
-#sidebar a {
-	color: rgba(255, 255, 255, .9);
-	font-size: 2em;
-	text-align: center;
-	display: block;
-	padding: .5em 0;
-	position: relative;
-	text-shadow: 3px 3px 2px rgb(100, 0, 0);
-}
-
 #nav li ul {
 	position: absolute;
 	z-index: 22;
@@ -288,7 +355,7 @@ h1, h2, legend, #nav>li a, #sidebar a {
 	font-weight: 700;
 }
 
-#content, #sidebar {
+.content, .sidebar {
 	position: relative;
 	padding-bottom: 30em;
 	margin-bottom: -30em;
@@ -403,22 +470,22 @@ ul#bar li {
 }
 
 @media only screen and (max-width: 1024px) {
-	#sidebar div, #sidebar img {
+	.sidebar div, .sidebar img {
 		height: 100%;
 	}
-	#sidebar img {
+	.sidebar img {
 		position: relative;
 		object-fit: cover;
 	}
 }
 
 @media only screen and (max-width: 768px) {
-	#sidebar {
+	.sidebar {
 		display: none;
 	}
 
-	#content {
-		padding: 1rem 0 30em;
+	.content {
+		padding: 1rem 1rem 30em;
 	}
 
 	#nav {
@@ -437,15 +504,16 @@ ul#bar li {
 	#nav li a {
 		padding: 0;
 		background-color: transparent;
-		color: #fbd874;
+		color: rgba(239, 251, 116, 0.88);
 	}
 
 	#nav li{
 		height: 0;
 		font-size: 0;
+		transition: height .9s ease-out;
 	}
 	#menu-toggle:checked+#nav li{
-		height: auto;
+		height: 2em;
 		font-size: 1.2em;
 	}
 	.menu {
@@ -469,12 +537,19 @@ ul#bar li {
 	h1 {
 		background: rgba(0,0,0,.75);
 		margin: 10rem 0 4em;
-		padding: 0;
+		padding: 0 1rem;
 		border: dotted 1px white;
 		border-width: 1px 0;
 		top: 4em;
+		text-shadow: 1px 1px 2px black;
 	}
-	#header {
+	#c1 #header {
+		background-image: url("../img/martini.jpg");
+	}
+	#c2 #header {
+		background-image: url("../img/sidecar.jpg");
+	}
+	#c3 #header {
 		background-image: url("../img/margarita.jpg");
 	}
 }
