@@ -5,6 +5,20 @@
 /*global _: false */
 (function(){
 "use strict";
+    
+    
+    
+	function getNativeOpacity(bool) {
+		return {
+			getKey: function () {
+				return bool ? 'filter' : Modernizr.prefixedCSS('opacity');
+			},
+			getValue: function (val) {
+				return bool ? 'alpha(opacity=' + val * 100 + ')' : val;
+			}
+		};
+	}
+    
 function setter(v, o, p){
     o[p] = v;
   }
@@ -21,6 +35,15 @@ function invoke(f, arg) {
 	function lazyVal(v, o, p) {
 		return doMethod(o, v, p);
 	}
+    
+    	function modulo(n, i) {
+		return i % n;
+	}
+
+	function increment(i) {
+		return i + 1;
+	}
+
 
 var instr = {
 
@@ -38,9 +61,8 @@ lookup = {
   c6: 'maitai',
   c4: 'mintjulep',
   c5: 'cosmo'
-}
-
-var utils = speakEasy.Util,
+},
+utils = speakEasy.Util,
   con = window.console.log.bind(window),
   con2 = function(arg){
     con(arg);
@@ -76,6 +98,9 @@ var utils = speakEasy.Util,
   $$ = thricedefer(lazyVal)('getElementById')(document),
   doMap = utils.doMap,
   getRecipe = thrice(doMethod)('match')(/.+recipe\.html$/),
+    doInc = function (n) {
+			return doComp(ptL(modulo, n), increment);
+		},
 
   doMapBridge = function (el, v, k) {
     return doMap(el, [

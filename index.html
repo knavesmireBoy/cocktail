@@ -14,7 +14,12 @@
     <div id="circle"><div id="box"></div></div>
 <h2><em>What's it going to be...</em></h2></div>
     <ul id="bar"><li><a href="c1"></a></li><li><a href="c5"></a></li><li><a href="c3"></a></li><li><a href="c6"></a></li><li><a href="c4"></a></li><li><a href="c2"></a></li></ul>
-    <div id="chaps"><div><img src="img/fc.jpg"/></div>
+    <div id="chaps"><div><img src="img/fc.jpg" id="fc"/>
+        <section id="controls" class="static">
+            <button id="backbutton"></button>
+            <button id="playbutton"></button>
+            <button id="forwardbutton"></button>
+        </section></div>
     <form  action="" method="post"  id="user">
         <fieldset><legend><b><em>or  mix your own...</em></b></legend></fieldset>
         <ul>
@@ -49,6 +54,7 @@
             <!--<input type="submit" name="submit" value="Submit">--></li></ul>
     </form>
         </div>
+    
 
     <div class="footer">
         <p><a href="http://www.hearst.com/">&copy;2015 Hearst Communications, Inc.</a> All Rights Reserved
@@ -57,10 +63,42 @@
     <script src="js/shims.js"></script>
     <script src="js/underscore.js"></script>
     <script src="js/classlist.js"></script>
+    <script src="js/basicIterator.js"></script>
     <script src="js/global.js"></script>
     <script>
+            	function modulo(n, i) {
+		return i % n;
+	}
+
+	function increment(i) {
+		return i + 1;
+	}
+        //https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+        function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+        
         var utils = speakEasy.Util,
+            ptL = _.partial,
+            comp = _.compose,
+            Looper = speakEasy.Iterator,
             event_actions = ['preventDefault', 'stopPropagation', 'stopImmediatePropagation'],
+            drinks = ['martini', 'manhattan', 'margarita', 'maitai', 'cosmo', 'sidecar', 'julep'],
             eventing = utils.eventer,
             anCr = utils.append(),
             invoke = function (f, arg) {
@@ -73,11 +111,24 @@
             $cheers = twice(invoke)('h3'),
             config = {src: 'img/cbook.jpg'},
             daddy = utils.drillDown(['parentNode']),
-            L = eventing('submit', event_actions.slice(0,1), function(e){
+            doGet = twice(utils.getter),
+            doInc = function (n) {
+			return comp(ptL(modulo, n), increment);
+            },
+            getLength = doGet('length'),
+            getValue = doGet('value'),
+            add = function(a, b){
+                return a + b;
+            },
+            doPath = comp(ptL(add, 'img/'), twice(add)('.jpg')),
+            set = ptL(utils.setter, utils.$('fc'), 'src');
+            eventing('submit', event_actions.slice(0,1), function(e){
                 utils.addClass('hide', e.target);
-                _.compose(_.partial(utils.setAttributes, config), $img, anCr, daddy, utils.setText('Bartender!'), $cheers, anCr, anCr(e.target.parentNode))('section');
+                comp(ptL(utils.setAttributes, config), $img, anCr, daddy, utils.setText('Bartender!'), $cheers, anCr, anCr(e.target.parentNode))('section');
                 
             }, document.forms[0]).render();
+            Looper.onpage = Looper.from(shuffle(_.map(drinks, doPath)), doInc(getLength(drinks)));
+eventing('click', event_actions.slice(0, 1), comp(set, getValue, _.bind(Looper.onpage.forward, Looper.onpage)), utils.$('fc')).render();
     
     </script>
 
