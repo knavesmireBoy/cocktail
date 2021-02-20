@@ -2,10 +2,10 @@
 /*global window: false */
 /*global poloAF: false */
 /*global _: false */
-if (!window.poloAF) {
-	window.poloAF = {};
+if (!window.speakEasy) {
+	window.speakEasy = {};
 }
-poloAF.ClassList = (function () {
+speakEasy.ClassList = (function () {
 	"use strict";
 
 	function existy(x) {
@@ -13,7 +13,7 @@ poloAF.ClassList = (function () {
 	}
     //https://stackoverflow.com/questions/29454340/detecting-classname-of-svganimatedstring/29454358
      function isSVG(node){
-        return typeof node.className.baseVal !== 'undefined'
+        return typeof node && node.className && node.className.baseVal !== 'undefined'
     }
 
 	function setter(o, k, v) {

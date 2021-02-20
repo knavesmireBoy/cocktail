@@ -1,88 +1,17 @@
+/*jslint nomen: true */
+/*global window: false */
+/*global speakEasy: false */
+/*global document: false */
+/*global _: false */
 (function(){
-
-  "use strict";
-
-
-	function makeDummy() {
-		return {
-			render: function () {},
-			unrender: function () {}
-		};
-	}
-
-	function invokeMethod(o) {
-		return function (m) {
-			return o[m] && o[m].apply(null, _.rest(arguments));
-		};
-	}
-
-	function doPartial(flag, f) {
-		var F = _.partial(flag, f);
-		if (flag && _.isBoolean(flag)) {
-			F = function (elem) {
-				return _.partial(f, elem);
-			};
-		}
-		return F;
-	}
-
-	function doubleGet(o, sub, v, p) {
-		return o[sub][p](v);
-	}
-
-	function greater(a, b) {
-		return a > b;
-	}
-
-  function setter(v, o, p){
+"use strict";
+function setter(v, o, p){
     o[p] = v;
   }
 
-	function greaterBridge(o, p1, p2) {
-		return greater(o[p1], o[p2]);
-	}
-
-	function getResult(arg) {
-		return _.isFunction(arg) ? arg() : arg;
-	}
-
-	function equals(a, b) {
-		return a === b;
-	}
-
-	function add(a, b) {
-		return a + b;
-	}
-
-	function modulo(n, i) {
-		return i % n;
-	}
-
-	function increment(i) {
-		return i + 1;
-	}
-
-	function equalNum(tgt, cur) {
-		return cur === tgt || parseFloat(cur) === parseFloat(tgt);
-	}
-
-	function invoke(f, arg) {
-		arg = _.isArray(arg) ? arg : [arg];
+function invoke(f, arg) {
+    arg = _.isArray(arg) ? arg : [arg];
 		return f.apply(null, arg);
-	}
-
-	function invokeCB(arg, cb) {
-		arg = _.isArray(arg) ? arg : [arg];
-		return cb.apply(null, arg);
-	}
-
-	function invokeBridge(arr) {
-		return invoke(arr[0], arr[1]);
-	}
-
-	function invokeArgs(f) {
-		var args = _.rest(arguments);
-		return f.apply(null, _.map(args, getResult));
 	}
 
 	function doMethod(o, v, p) {
@@ -92,26 +21,6 @@
 	function lazyVal(v, o, p) {
 		return doMethod(o, v, p);
 	}
-
-	function doCallbacks(cb, coll, p) {
-		return _[p](coll, cb);
-	}
-
-	function spread(f, j, group) {
-		if (!group || !group[j]) {
-			return [
-				[],
-				[]
-			];
-		}
-		//allow for partial
-		if (j) {
-			return f(group[0], group[j]);
-		}
-		//or curry
-		return f(group[1])(group[0]);
-	}
-
 
 var instr = {
 

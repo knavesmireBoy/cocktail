@@ -16,12 +16,8 @@
 <div id="header"><h1>Welcome to the Little <em>Cocktail</em> Site</h1>
 <h2><em>What's it going to be...</em></h2></div>
     <ul id="bar"><li><a href="c1"></a></li><li><a href="c5"></a></li><li><a href="c3"></a></li><li><a href="c6"></a></li><li><a href="c4"></a></li><li><a href="c2"></a></li></ul>
-
-
-    <div id="chaps"><img src="img/fc.jpg"/></div>
-
-
-    <form  action="base.php" method="post"  id="user">
+    <div id="chaps"><img src="img/fc.jpg"/>
+    <form  action="" method="post"  id="user">
         <fieldset><legend><b><em>or  mix your own...</em></b></legend></fieldset>
         <ul>
             <li id="reset"><input type="reset" name="reset" value="X" title="Reset the form"></li>
@@ -48,16 +44,44 @@
             </ul></fieldset>
         <ul>
             <li><label for="dash">Add Bitters:</label><input type="checkbox" name="dash" id="dash"></li></ul>
-      <ul><li><label for="prep">Preparation:</label><textarea id="prep" placeholder="To prepare: first off, plenty of ice!" cols="30" rows="5" name="prep"></textarea></li></ul><ul><li><label for="email">Email:</label><input type="email" name="email" id="email" required aria-required ="true" ></li></ul>
-
+      <ul><li><label for="prep">Preparation:</label><textarea id="prep" placeholder="To prepare: first off, plenty of ice!" cols="30" rows="5" name="prep"></textarea></li></ul><ul><li><label for="email">Email:</label><input type="email" name="email" id="email" ></li></ul>
+<!--required aria-required ="true" -->
         <ul><li><input type="hidden" name="action" value="go">
             <input id="lemon" type="image" src="img/button.png" alt="Submit" value="Submit"/>
             <!--<input type="submit" name="submit" value="Submit">--></li></ul>
     </form>
+        </div>
 
     <div class="footer">
         <p><a href="http://www.hearst.com/">&copy;2015 Hearst Communications, Inc.</a> All Rights Reserved
         </p></div>
+        <script src="js/viewportSize.js"></script>
+    <script src="js/shims.js"></script>
+    <script src="js/underscore.js"></script>
+    <script src="js/classlist.js"></script>
+    <script src="js/global.js"></script>
+    <script>
+        var utils = speakEasy.Util,
+            event_actions = ['preventDefault', 'stopPropagation', 'stopImmediatePropagation'],
+            eventing = utils.eventer,
+            anCr = utils.append(),
+            invoke = function (f, arg) {
+                arg = _.isArray(arg) ? arg : [arg];
+                return f.apply(null, arg);
+            },
+            twice = utils.curryFactory(2),
+            $img = twice(invoke)('img'),
+            $aside = twice(invoke)('aside'),
+            $cheers = twice(invoke)('h3'),
+            config = {src: 'img/cbook.jpg'},
+            daddy = utils.drillDown(['parentNode']),
+            L = eventing('submit', event_actions.slice(0,1), function(e){
+                utils.addClass('hide', e.target);
+                _.compose(_.partial(utils.setAttributes, config), $img, anCr, $aside, anCr, daddy, utils.setText('Bartender!'), $cheers, anCr, anCr(e.target.parentNode))('section');
+                
+            }, document.forms[0]).render();
+    
+    </script>
 
 
 </div>
