@@ -403,31 +403,34 @@ h1, h2, legend, #nav>li a, .sidebar a {
 }
 #chaps {
     clear: both;
-    display: flex;
+   display: flex;
 }
 
-#chaps > * {
-    flex: 4 1 auto;
-}
-
-#chaps img:hover {
+#chaps > *:hover {
     filter: none;
 }
 
-#chaps img {
-    display: block;
+#chaps > * {
+    
     filter: sepia();
     border-width: 0;
-    object-fit: fill;
     box-sizing: border-box;
-    flex: 3 1 100px;
-    align-self: flex-start;
+    width: 100%;
+    flex: 1 1 100px;
+}
+
+#chaps img {
+    width: 100%;
+    display: block;
 }
 
 #chaps form {
-    padding: 2% 0 0 2%;
 	border-top: 1px solid red;
 	box-sizing: border-box;
+}
+
+#chaps form.hide {
+    display: none;
 }
 
 #chaps h3 {
@@ -437,9 +440,7 @@ h1, h2, legend, #nav>li a, .sidebar a {
     padding: 0 0 0 1rem;
     font-size: 2rem;
     line-height: 2.3;
-    line-height: 1;
 }
-
 
 #result {
 	width: 40%;
