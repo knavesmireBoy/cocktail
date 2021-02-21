@@ -1,0 +1,395 @@
+body {
+	margin: 1em 0 0;
+    	background-color: black;
+	background-image: radial-gradient(white, rgba(255, 255, 255, .2) 2px, transparent 40px), radial-gradient(white, rgba(255, 255, 255, .15) 1px, transparent 30px), radial-gradient(white, rgba(255, 255, 255, .1) 2px, transparent 40px), radial-gradient(rgba(255, 255, 255, .4), rgba(255, 255, 255, .1) 2px, transparent 30px);
+	background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
+	background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+}
+
+a {
+	color: rgba(204, 0, 204, 1);
+	text-decoration: none;
+}
+
+a {
+	color: snow;
+}
+
+
+ul {
+	list-style: none;
+}
+
+#home h1 {
+	margin: 0;
+	padding: 0 0 0 1em;
+    text-shadow: 2px 2px 2px purple;
+    font-size: 3vw;
+    line-height: 1;
+    position: static;
+    border-width: 0;
+}
+  #home h1 span{
+        font-size: 2vw;
+    }
+
+h2 {
+	font-size: 2.5vw;
+	color: rgba(204, 0, 204, 1);
+    text-align: right;
+    line-height: 1.5;
+}
+
+em {
+	font-family: cochin, 'latin_modern_roman10BdIt', serif;
+}
+ol {
+	padding: 0 0 1em 1em;
+}
+
+header {
+    display: flex;
+    border-bottom: solid 1px white;
+}
+#home #header {
+    flex: 1 0 40%;
+}
+
+header ul {
+    flex: 0 0 auto;
+    margin: 0 1em;
+}
+#home #header {
+	background-image: none;
+    overflow: hidden;
+}
+
+ul#bar a:link {
+	height: 6.66em;
+    width: 5em;
+	border-right: 1px dotted white;
+	background: no-repeat 0 100%;
+	background-size: cover;
+    display: block;
+}
+ul#bar li:nth-child(1) a {
+	background-image: url("../img/gin_s.png")
+}
+ul#bar li:nth-child(2) a {
+	background-image: url("../img/vodka_s.png")
+}
+ul#bar li:nth-child(3) a {
+	background-image: url("../img/tequila_s.png")
+}
+ul#bar li:nth-child(4) a {
+	background-image: url("../img/rum_s.png")
+}
+ul#bar li:nth-child(5) a {
+	background-image: url("../img/bourbon_s.png")
+}
+ul#bar li:nth-child(6) a {
+	background-image: url("../img/cognac_s.png");
+    border-width: 0;
+}
+ul#bar a:hover {
+	background-position: 0 0
+}
+
+ul#bar li {
+	display: inline-block;
+    
+}
+input[type="number"] {
+	margin-left: -1.5em
+}
+#user fieldset:first-child legend {
+	font-size: 2em;
+}
+
+legend {
+	padding: .25em 1em;
+}
+fieldset {
+	border: 0
+}
+
+form li {
+	display: inline-block;
+	margin: .5em 0 0 1em;
+}
+
+textarea {
+	width: 28.15em;
+	height: 8em
+}
+label {
+	width: 5.5em;
+	display: inline-block;
+}
+
+div>img {
+	width: 100%;
+	height: auto;
+}
+
+
+h1 em {
+	color: magenta;
+}
+
+
+h1 em:hover {
+    color: cyan;
+}
+
+legend em {
+	color: gold;
+}
+
+.wrapper {
+	overflow: hidden;
+	/*background: url("../img/wallpaper.jpg"); */
+}
+
+.footer {
+	width: 100%;
+	border-top: 1px solid white;
+	clear: both;
+	padding-top: 1em;
+	z-index: 1;
+}
+
+i, cite, b, .footer, .footer a {
+	color: #c0c0c0;
+}
+
+a:hover {
+	color: white;
+}
+
+fieldset.ingredients {
+	width: 70%;
+	margin-top: .5em;
+}
+.ingredients legend em {
+	color: rgba(204, 0, 204, .8);
+	font-size: 1.5em
+}
+
+.footer a:hover {
+	color: white
+}
+
+ol li:nth-child(odd) {
+	color: white
+}
+
+li.unit label, li.unit input {
+	width: 1em;
+	margin-right: .5em
+}
+li.unit label:first-child, input[type="number"] {
+	width: 2.75em;
+}
+
+/* technically this shouldn't be required but below rule is applying to TWO urls, this override has greater specificity */
+form fieldset ul:last-child {
+	text-align: left;
+}
+form ul:last-child {
+	text-align: center;
+}
+
+#units {
+	display: none
+}
+
+#dash {
+	margin-right: 1em
+}
+
+#chaps {
+    display: flex;
+}
+
+#chaps > *:hover {
+    filter: none;
+}
+
+#chaps > * {
+    filter: sepia();
+    border-width: 0;
+    box-sizing: border-box;
+    flex: 1 1 0;
+}
+
+#chaps img {
+    display: block;
+}
+
+#chaps form {
+	box-sizing: border-box;
+}
+
+#chaps form.hide {
+    display: none;
+}
+
+#chaps h3 {
+    background: rgb(96, 85, 65);
+    color: rgba(0, 100, 130, .5);
+    color: rgba(0, 0, 0, .4);
+    padding: 0 0 0 1rem;
+    font-size: 2rem;
+    line-height: 2.3;
+}
+
+#result {
+	width: 40%;
+	border-top: 1px dotted palegoldenrod;
+	margin-left: -2px;
+	padding: 0 5%;
+}
+
+#reset {
+	text-align: right;
+	display: block;
+	margin-right: 2.25em
+}
+#lemon {
+	width: 100px;
+	height: 92px;
+}
+
+#cocktail, #email {
+	width: 33em;
+}
+#controls {
+	top: 0em;
+	position: relative;
+	text-align: center;
+	margin: 0 auto;
+	z-index: 2;
+	border-spacing: .5em;
+	-webkit-transition: all 1s;
+	-o-transition: all 1s;
+	transition: all 1s;
+	display: table;
+	opacity: 0;
+	filter: alpha(opacity=0);
+	zoom: 1;
+}
+
+#controls button {
+	width: 3em;
+	height: 3em;
+	padding: 0;
+	margin: 0 .3em;
+	display: table-cell;
+	border: solid 1px;
+	cursor: pointer;
+	background-color: #990;
+	border: 1px solid #cc6;
+	border-radius: .2em;
+	line-height: 1.6;
+	background-image: url(../img/buttons_sprite_lowend8.png);
+	background-repeat: no-repeat;
+	background-position: 50% 0%;
+	-webkit-box-shadow: 2px 2px 4px black;
+	box-shadow: 2px 2px 4px black;
+	text-shadow: 1px 1px 1px black;
+	opacity: 1;
+	filter: alpha(opacity=100);
+	zoom: 1;
+}
+#controls>button {
+	background-image: url(../img/buttons_sprite_lowend.png);
+	background-color: hsla(50, 50%, 40%, .3);
+}
+#controls.static {
+	margin-top: -3.3em;
+	opacity: 1;
+	filter: alpha(opacity=100);
+	zoom: 1;
+}
+.touchevents #controls {
+	opacity: 1;
+	filter: alpha(opacity=100);
+	zoom: 1;
+}
+
+#controls.static button {
+	border: 1px solid #FFF;
+	border: 1px solid rgba(255, 255, 255, .75);
+}
+#controls button:hover, #controls button:focus {
+	background-color: silver;
+	background-color: rgba(150, 150, 150, .5);
+	color: black;
+	text-shadow: 1px 1px 1px rgba(255, 255, 255, .75);
+}
+.touchevents .inplay #controls {
+	top: 0em;
+	opacity: 1;
+	filter: alpha(opacity=100);
+	zoom: 1;
+}
+button#backbutton {
+	background-position: 50% 14.9%;
+}
+button#playbutton {
+	background-position: 50% 29%;
+}
+#controls.playing #playbutton {
+	background-position: 50% 44%;
+	opacity: 0.9;
+	filter: alpha(opacity=90);
+	zoom: 1;
+}
+
+@media only screen {
+
+	#controls button {
+		background-image: url(../img/buttons_sprite.png);
+		background-color: hsla(75, 50%, 40%, .3);
+		-o-background-size: 128%;
+		-moz-background-size: 128%;
+		-ms-background-size: 128%;
+		-webkit-background-size: 128%;
+		background-size: 128%;
+	}
+	
+
+}
+
+@media only screen and (max-width: 1024px) {
+
+   
+}
+
+@media only screen and (max-width: 930px) {
+  
+#home h1 {
+    font-size: 5vw;
+}
+}
+@media only screen and (max-width: 888px) {
+    header {
+   flex-wrap: wrap;
+        justify-content: center;
+}
+    #home #header {
+    flex: 1 1 100%;
+}
+    #home h2 {
+        text-align: center;
+    }
+    #home h1 {
+        text-align: center;
+        font-size: 7vw;
+        padding: 0;
+    }
+
+}
+
+

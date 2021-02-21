@@ -6,20 +6,24 @@
   <meta content="width=device-width, initial-scale=1" name="viewport">
     <title>Welcome</title>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/fonts.css">
 </head>
 <body id="home">
-<div class="wrapper">
-<div id="header"><h1>Welcome to the Little <em>Cocktail</em> Site</h1>
-    <div id="circle"><div id="box"></div></div>
+        <header>
+<div id="header">
+<h1>Welcome <span>to the</span> Little <em>Cocktail</em> <span>Site</span></h1>
 <h2><em>What's it going to be...</em></h2></div>
-    <ul id="bar"><li><a href="c1"></a></li><li><a href="c5"></a></li><li><a href="c3"></a></li><li><a href="c6"></a></li><li><a href="c4"></a></li><li><a href="c2"></a></li></ul>
+    <ul id="bar"><li><a href="c1"></a></li><li><a href="c5"></a></li><li><a href="c3"></a></li><li><a href="c6"></a></li><li><a href="c4"></a></li><li><a href="c2"></a></li></ul></header>
+<div class="wrapper">
+
     <div id="chaps"><div><img src="img/fc.jpg" id="fc"/>
         <section id="controls" class="static">
             <button id="backbutton"></button>
             <button id="playbutton"></button>
             <button id="forwardbutton"></button>
-        </section></div>
+        </section>
+        </div>
     <form  action="" method="post"  id="user">
         <fieldset><legend><b><em>or  mix your own...</em></b></legend></fieldset>
         <ul>
@@ -126,9 +130,14 @@
                 utils.addClass('hide', e.target);
                 comp(ptL(utils.setAttributes, config), $img, anCr, daddy, utils.setText('Bartender!'), $cheers, anCr, anCr(e.target.parentNode))('section');
                 
-            }, document.forms[0]).render();
+            }, document.forms[0]).render(),
+                doLoop = function(){
+                Looper.onpage = Looper.from(shuffle(_.map(drinks, doPath)), doInc(getLength(drinks)));
+                set(doPath('fc'));
+            },
             Looper.onpage = Looper.from(shuffle(_.map(drinks, doPath)), doInc(getLength(drinks)));
-eventing('click', event_actions.slice(0, 1), comp(set, getValue, _.bind(Looper.onpage.forward, Looper.onpage)), utils.$('fc')).render();
+        eventing('click', event_actions.slice(0, 1), comp(set, getValue, _.bind(Looper.onpage.forward, Looper.onpage)), utils.$('forwardbutton')).render();
+        eventing('click', event_actions.slice(0, 1), doLoop, utils.$('backbutton')).render();
     
     </script>
 
