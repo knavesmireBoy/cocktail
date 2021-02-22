@@ -133,13 +133,7 @@ legend em {
 	overflow: hidden;
 	/*background: url("../img/wallpaper.jpg"); */
 }
-.footer {
-	width: 100%;
-	border-top: 1px solid white;
-	clear: both;
-	padding-top: 1em;
-	z-index: 1;
-}
+
 i, cite, b, .footer, .footer a {
 	color: #c0c0c0;
 }
@@ -203,6 +197,7 @@ form>ul:last-of-type li {
 #dash {
 	margin-right: 1em
 }
+
 .show #chaps>div {
 	margin: 0 9em 0 0;
 }
@@ -214,6 +209,7 @@ form>ul:last-of-type li {
 	position: relative;
 	overflow: hidden;
     width: 100%;
+    box-sizing: border-box;
 }
 #chaps>*:hover {
 	filter: none;
@@ -221,11 +217,12 @@ form>ul:last-of-type li {
 #chaps>* {
 	filter: sepia();
 	border-width: 0;
-	box-sizing: border-box;
+    flex: 1 1 0;
 }
 #chaps img {
 	display: block;
-    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 #chaps div, #chaps form {
 	position: relative;
@@ -268,7 +265,6 @@ form>ul:last-of-type li {
 	opacity: 0;
 	filter: alpha(opacity=0);
 	min-width: 300px;
-	border: dotted 1px white;
 }
 #controls button {
 	width: 3em;
