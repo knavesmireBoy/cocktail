@@ -169,6 +169,7 @@ legend {
 	flex: 1 1 220px;
 	min-width: 320px;
      box-sizing: border-box;
+    position: relative;
 }
 
 .sidebar div {
@@ -178,6 +179,11 @@ legend {
 .content {
 	flex: 5 1 0;
      box-sizing: border-box;
+    position: relative;
+}
+
+.sidebar, .content {
+    margin-bottom: -30em;
 }
 
 .showtime .sidebar {
@@ -242,8 +248,7 @@ body#c1, body#c2, body#c3, body#c4, body#c5, body#c6 {
 }
 
 .content {
-	padding: 3rem 4rem 32em 2rem;
-    margin: 0 0 0 1rem;
+	padding: 3em 4em 32em 2rem;
     border: dotted 1px white;
     border-width: 0 0 0 1px;
 }
@@ -322,10 +327,6 @@ h1, h2, legend, #nav>li a, .sidebar a {
 	font-weight: 700;
 }
 
-.content, .sidebar {
-	position: relative;
-	padding-bottom: 30em;
-}
 
 #menu-toggle {
 	position: absolute;
