@@ -15,7 +15,6 @@ a {
 	color: snow;
 }
 
-
 ul {
 	list-style: none;
 }
@@ -30,7 +29,7 @@ ul {
     border-width: 0;
 }
   #home h1 span{
-        font-size: 2vw;
+      font-size: 2vw;
     }
 
 h2 {
@@ -51,7 +50,7 @@ header {
     display: flex;
     border-bottom: solid 1px white;
 }
-#home #header {
+#home #header { 
     flex: 1 0 40%;
 }
 
@@ -113,8 +112,12 @@ fieldset {
 	border: 0
 }
 
+form ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 form li {
-	display: inline-block;
 	margin: .5em 0 0 1em;
 }
 
@@ -132,11 +135,15 @@ div>img {
 	height: auto;
 }
 
-
+.show #chaps > div {
+    margin: 0 9em 0 0;
+}
+.show #controls {
+    left: 4em;
+}
 h1 em {
 	color: magenta;
 }
-
 
 h1 em:hover {
     color: cyan;
@@ -168,8 +175,12 @@ a:hover {
 }
 
 fieldset.ingredients {
-	width: 70%;
+	width: 90%;
 	margin-top: .5em;
+}
+
+.show fieldset.ingredients {
+	width: 80%;
 }
 .ingredients legend em {
 	color: rgba(204, 0, 204, .8);
@@ -197,8 +208,42 @@ form fieldset ul:last-child {
 	text-align: left;
 }
 form ul:last-child {
-	text-align: center;
 }
+
+form > ul:last-of-type li{
+    position: relative;
+    margin-left: 50%;
+    right: 50px;
+}
+
+#result {
+	width: 40%;
+	border-top: 1px dotted palegoldenrod;
+	margin-left: -2px;
+	padding: 0 5%;
+}
+
+#reset {
+	text-align: right;
+	display: block;
+	margin-right: 2.25em;
+}
+/*
+form ul:first-of-type li:first-of-type {
+    order: 1;
+    background: red;
+}
+
+form ul:first-of-type li:last-of-type {
+    order: 2;
+    background: white;
+}
+*/
+#lemon {
+	width: 100px;
+	height: 92px;
+}
+
 
 #units {
 	display: none
@@ -244,22 +289,6 @@ form ul:last-child {
     line-height: 2.3;
 }
 
-#result {
-	width: 40%;
-	border-top: 1px dotted palegoldenrod;
-	margin-left: -2px;
-	padding: 0 5%;
-}
-
-#reset {
-	text-align: right;
-	display: block;
-	margin-right: 2.25em
-}
-#lemon {
-	width: 100px;
-	height: 92px;
-}
 
 #cocktail, #email {
 	width: 33em;

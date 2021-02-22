@@ -8,6 +8,7 @@ body {
 	font-size: 1em;
 	line-height: 1.2;
 	background-color: black;
+    box-sizing: border-box;
 }
 
 .hide {
@@ -32,8 +33,8 @@ blockquote em {
 	color: snow;
 }
 
-blockquote em span{
-color: rgb(255, 251, 116);
+blockquote em span {
+    color: rgb(255, 251, 116);
 }
 
 .menu {
@@ -109,10 +110,13 @@ h2, .sidebar a {
 }
 
 h2 + p::first-letter {
-  color: magenta;
-  font-size: 300%;
-  margin: -4px 6px 0 0;
-  float: left;
+    color: white;
+    font-size: 300%;
+    line-height: 1.1;
+    margin: -4px 10px 0 0;
+    padding: 0 6px;
+    float: left;
+    border: solid 1px magenta;
 }
 
 p strong {
@@ -122,14 +126,15 @@ p strong {
 }
 
 p {
-	margin-bottom: .5em;
+	margin-bottom: 1em;
+    text-align: justify;
 }
 
 p:nth-of-type(odd) strong {
 	color: white;
 }
 
-em {
+legend, em {
 	font-family: cochin, 'latin_modern_roman10BdIt', serif;
 }
 
@@ -147,30 +152,32 @@ h1 em:hover {
 		color: cyan;
 }
 
-legend em {
+legend {
 	color: gold;
+    font-weight: bold;
+    font-style: italic;
 }
 
 
 .innerwrap {
 	position: relative;
 	overflow: hidden;
-	float: none;
 	display: flex;
-	width: 100%;
+     box-sizing: border-box;
 }
 .sidebar {
 	flex: 1 1 220px;
 	min-width: 320px;
-	border-right: dotted 1px white;
+     box-sizing: border-box;
 }
 
 .sidebar div {
-	margin: -2.5rem 0 0;
+    margin-top: -2rem;
 }
 
 .content {
 	flex: 5 1 0;
+     box-sizing: border-box;
 }
 
 .showtime .sidebar {
@@ -235,7 +242,10 @@ body#c1, body#c2, body#c3, body#c4, body#c5, body#c6 {
 }
 
 .content {
-	padding: 1rem 1rem 30em;
+	padding: 3rem 4rem 32em 2rem;
+    margin: 0 0 0 1rem;
+    border: dotted 1px white;
+    border-width: 0 0 0 1px;
 }
 h1, h2, legend, #nav>li a, .sidebar a {
 	font-family: cochin, 'latin_modern_roman10_bold', serif;
@@ -264,8 +274,6 @@ h1, h2, legend, #nav>li a, .sidebar a {
 	color: snow;
 }
 
-
-
 #nav {
 	border-top: 1px solid white;
 	padding-left: 2%;
@@ -274,11 +282,6 @@ h1, h2, legend, #nav>li a, .sidebar a {
 	background-image: linear-gradient(transparent, black);
 	display: flex;
 	width: 100%;
-}
-
-#header div {
-	width: 30%;
-	float: left
 }
 
 #nav>li {
@@ -322,7 +325,6 @@ h1, h2, legend, #nav>li a, .sidebar a {
 .content, .sidebar {
 	position: relative;
 	padding-bottom: 30em;
-	margin-bottom: -30em;
 }
 
 #menu-toggle {
@@ -447,7 +449,7 @@ display: none;
 .content h2 {
 	background-color: transparent;
 	background-repeat: no-repeat;
-float: left;
+float: right;
  height: 111px;
  width: 111px;
  shape-outside: circle(50%);

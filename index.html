@@ -25,10 +25,10 @@
         </section>
         </div>
     <form  action="" method="post"  id="user">
-        <fieldset><legend><b><em>or  mix your own...</em></b></legend></fieldset>
+        <fieldset><legend>or  mix your own...</legend></fieldset>
         <ul>
-            <li id="reset"><input type="reset" name="reset" value="X" title="Reset the form"></li>
             <li><label for="cocktail">Name</label><input type="text" name="cocktail" id="cocktail" placeholder="Martini">
+            <li id="reset"><input type="reset" name="reset" value="X" title="Reset the form"></li>
             <li><label for="spirit">Base Spirit</label><select name="spirit" id="spirit">
                 <option value="">Your poison...</option>
                 <option value="Gin">Gin</option>
@@ -41,10 +41,11 @@
                 <option value="Scotch">Scotch</option>
                 <option value="Brandy">Brandy</option>
             </select></li>
-            <li><label for="m1">Measure</label><input type="number" step="any" name="m1" id="m1"></li><li class="unit"><label for="units">Units:</label><input type="text" id="units"><label for="oz"  title="Specify all measures in ounces">oz</label><input type="radio" name="unit" id="oz"><label for="ml" title="Specify all measures in milliliters">ml</label><input type="radio" name="unit" id="ml" checked></li>
+
+            <li><label for="m1">Measure</label><input type="number" step="any" name="m1" id="m1"></li>
+            <li class="unit"><label for="units">Units:</label><input type="text" id="units"><label for="oz"  title="Specify all measures in ounces">oz</label><input type="radio" name="unit" id="oz"><label for="ml" title="Specify all measures in milliliters">ml</label><input type="radio" name="unit" id="ml" checked></li>
         </ul>
         <fieldset class="ingredients"><legend><b><em>Further Ingredients</em></b></legend>
-
             <ul> <li><label for="i2">Second</label><input type="text" name="second" id="i2"></li><li><label for="m2">Measure</label><input type="number" step="any" name="m2" id="m2"></li>
                 <li><label for="i3">Third</label><input type="text" name="third"  id="i3"></li><li><label for="m3">Measure</label><input type="number" step="any" name="m3" id="m3"></li>
                 <li><label for="i4">Fourth</label><input type="text" name="fourth" id="i4"></li><li><label for="m4">Measure</label><input type="number" step="any" name="m4" id="m4"></li>
@@ -125,7 +126,9 @@
                 return a + b;
             },
             doPath = comp(ptL(add, 'img/'), twice(add)('.jpg')),
-            set = ptL(utils.setter, utils.$('fc'), 'src');
+            set = ptL(utils.setter, utils.$('fc'), 'src'),
+            showtime = ptL(utils.show, utils.getBody),
+            noshow = ptL(utils.hide, utils.getBody)
             eventing('submit', event_actions.slice(0,1), function(e){
                 utils.addClass('hide', e.target);
                 comp(ptL(utils.setAttributes, config), $img, anCr, daddy, utils.setText('Bartender!'), $cheers, anCr, anCr(e.target.parentNode))('section');
@@ -134,9 +137,10 @@
                 doLoop = function(){
                 Looper.onpage = Looper.from(shuffle(_.map(drinks, doPath)), doInc(getLength(drinks)));
                 set(doPath('fc'));
+                noshow();
             },
             Looper.onpage = Looper.from(shuffle(_.map(drinks, doPath)), doInc(getLength(drinks)));
-        eventing('click', event_actions.slice(0, 1), comp(set, getValue, _.bind(Looper.onpage.forward, Looper.onpage)), utils.$('forwardbutton')).render();
+        eventing('click', event_actions.slice(0, 1), comp(showtime, set, getValue, _.bind(Looper.onpage.forward, Looper.onpage)), utils.$('forwardbutton')).render();
         eventing('click', event_actions.slice(0, 1), doLoop, utils.$('backbutton')).render();
     
     </script>
