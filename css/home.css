@@ -226,8 +226,7 @@ form>ul:last-of-type li {
 }
 #chaps div, #chaps form {
 	position: relative;
-	padding-bottom: 30em;
-	margin-bottom: -30em;
+
 }
 #chaps div {
 	background: red;
