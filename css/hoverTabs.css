@@ -3,6 +3,12 @@
 	max-width: 600px;
 }
 
+.csstabs:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
 #tab1 {
 	margin: 0 0 2em;
 }
