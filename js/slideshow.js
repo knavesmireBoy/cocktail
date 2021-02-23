@@ -85,6 +85,7 @@
 		cssopacity = getNativeOpacity(!window.addEventListener),
 		event_actions = ['preventDefault', 'stopPropagation', 'stopImmediatePropagation'],
 		drinks = ['martini', 'manhattan', 'margarita', 'maitai', 'cosmo', 'sidecar', 'julep'],
+		drinks = ['manhattan', 'margarita', 'martini'],
 		eventing = utils.eventer,
 		once = utils.doOnce(),
 		defer_once = doCurry(1, true),
@@ -119,7 +120,9 @@
 		doInc = function (n) {
 			return comp(ptL(modulo, n), increment);
 		},
-        showtime = ptL(utils.show, utils.getBody),
+        show = ptL(klasAdd, 'showtime', utils.getBody),
+        showtime = thricedefer(doMethod)('findByClass')('showtime')(utils),
+        doShow = ptL(utils.getBest, _.negate(showtime), [show, function(){}]),
 		noshow = ptL(utils.hide, utils.getBody),
         makeDummy = function () {
             return {
@@ -143,8 +146,9 @@
 		undostatic = ptL(klasRem, 'static', $$('controls')),
         getPlaceHolder = ptL(utils.findByClass, 'placeholder'),
         getBaseSrc = comp(utils.drillDown(['src']), getBaseChild),
-		addElements = function () {
-			return comp(twice(invoke)('img'), anCr, twice(invoke)('a'), anCr, anCr(getPlaceHolder))('li');
+		addElements = function (el) {
+            return anCr(getPlaceHolder)(el);
+			//return comp(twice(invoke)('img'), anCr, twice(invoke)('a'), anCr, anCr(getPlaceHolder))('li');
 		},
 		//height and width of image are compared BUT a) must invoke the comparison AFTER image loaded
 		//b) must remove load listener or will intefere with slideshow
@@ -164,10 +168,14 @@
 		set = ptL(utils.setter, utils.$('base'), 'src'),
 		slide_player = {
 			render: function () {
-				Looper.onpage = Looper.from(randomSort(_.map(drinks, doPath)), doInc(getLength(drinks)));
+                if(!showtime()){
+                    show();
+                 Looper.onpage = Looper.from(randomSort(_.map(drinks, doPath)), doInc(getLength(drinks)));
+                }
+               
 			},
 			unrender: function () {
-				this.render();
+				this.render();//reset random array
 				comp(noshow, set, doPath)('fc');
 			}
 		},
@@ -212,6 +220,7 @@
 			};
 		},
 		locate = eventing('click', event_actions.slice(0), function (e) {
+            doShow()();
 			locator(twicedefer(loader)('base')(nextcaller), twicedefer(loader)('base')(prevcaller))(e)[1]();
 		}, getPlaceHolder()),
 		
@@ -336,27 +345,35 @@
 		notplaying = ptL(klasRem, 'playing', main),
 		exit_inplay = ptL(klasRem, 'inplay', main),
 		$controller = makeDummy(),
+        //slide and pause 
+		onLoad = function (img, path, promise) {
+			var ret;
+            con(arguments);
+			if (promise) {
+				//ret = promise.then(img);
+			}
+			img.src = path;
+			return ret;
+		},
 		doMakeSlide = function (source, target) {
-			var img = addElements();
-			doMap(img.parentNode, [
-				['href', doParse(getBaseSrc())]
-			]);
-			doMap(img.parentNode.parentNode, [
+			var img = addElements($(source));
+			doMap(img, [
 				['id', target]
 			]);
-			return onLoad(img, doParse(img.parentNode.href), new utils.FauxPromise(_.rest(arguments, 2)));
+           return onLoad(img, doParse(img.src), new utils.FauxPromise(_.rest(arguments, 2)));
 		},
 		doMakePause = function (path) {
-			var img = addElements();
-			doMap(img.parentNode.parentNode, [
+            return;
+			var img = addElements($('slide'));
+			doMap(img, [
 				['id', 'paused']
 			]);
-			doMap(img.parentNode.parentNode, [
+			doMap(img, [
 				[
 					[cssopacity.getKey(), cssopacity.getValue(0.5)]
 				]
 			]);
-			return onLoad(img, path);
+            return onLoad(img, 'img/pause.png');
 		},
 		factory = function () {
 			var remPause = comp(utils.removeNodeOnComplete, $$('paused')),
@@ -365,8 +382,10 @@
 				doSlide = defer([clear, doplay]),
 				doPlaying = defer([notplaying, playing]),
 				doDisplay = defer([function () {}, playtime]),
+				doShow = defer([function () {}, showtime]),
 				unlocate = thricedefer(doMethod)('unrender')(null)(locate),
 				invoke_player = deferEach([doSlide, doPlaying, doDisplay])(getResult),
+				invoke_player = function(){},
 				do_invoke_player = comp(ptL(eventing, 'click', event_actions.slice(0, 2), invoke_player), getPlaceHolder),
 				relocate = ptL(lazyVal, null, locate, 'render'),
 				doReLocate = ptL(utils.doWhen, $$('base'), relocate),
@@ -376,13 +395,13 @@
                 
                 farewell = [deferEach([remPause, remSlide])(getResult)],
                                 
-				next_driver = deferEach([get_play_iterator, defer_once(clear)(true), twicedefer(loader)('base')(nextcaller)].concat(farewell))(getResult),
+				next_driver = deferEach([get_play_iterator, showtime, defer_once(clear)(true), twicedefer(loader)('base')(nextcaller)].concat(farewell))(getResult),
 				prev_driver = deferEach([get_play_iterator, defer_once(clear)(true)].concat(farewell))(getResult),
 				controller = function () {
 					//make BOTH slide and pause but only make pause visible on NOT playing
 					if (!$('slide')) {
-						$controller = doMakeSlide('base', 'slide', go_render, do_invoke_player, unlocate);
-						doMakePause();
+						$controller = doMakeSlide('base', 'slide'/*, go_render, do_invoke_player, unlocate*/);
+						//doMakePause();
 					}
 				},
 				COR = function (predicate, action) {
@@ -431,6 +450,7 @@
 						chain.handle(str);
 					}
 				}, $('controls')).render();
+    
     locate.render();
     
     eventing('submit', event_actions.slice(0, 1), function (e) {
@@ -438,8 +458,4 @@
 		comp(ptL(utils.setAttributes, config), $img, anCr, daddy, utils.setText('Bartender!'), $cheers, anCr, anCr(e.target.parentNode))('section');
 	}, document.forms[0]).render();
     Looper.onpage = Looper.from(randomSort(_.map(drinks, doPath)), doInc(getLength(drinks)));
-    /*
-	eventing('click', event_actions.slice(0, 1), comp(myshowtime, set, getLoopValue, _.bind(Looper.onpage.forward, Looper.onpage)), utils.$('forwardbutton')).render();
-	eventing('click', event_actions.slice(0, 1), doLoop, utils.$('backbutton')).render();
-    */
 }());
