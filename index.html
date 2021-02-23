@@ -15,10 +15,10 @@
 <h1>Welcome <span>to the</span> Little <em>Cocktail</em> <span>Site</span></h1>
 <h2><em>What's it going to be...</em></h2></div>
     <ul id="bar"><li><a href="c1"></a></li><li><a href="c5"></a></li><li><a href="c3"></a></li><li><a href="c6"></a></li><li><a href="c4"></a></li><li><a href="c2"></a></li></ul></header>
-<div class="wrapper">
+<div class="wrap">
 
-    <div id="chaps"><div>
-        <img src="img/fc.jpg" id="fc"/>
+    <main id="chaps"><div>
+        <div class="placeholder"><img src="img/fc.jpg" id="base"/></div>
         <section id="controls" class="static">
             <button id="backbutton"></button>
             <button id="playbutton"></button>
@@ -58,100 +58,19 @@
         <ul><li><input type="hidden" name="action" value="go">
             <input id="lemon" type="image" src="img/button.png" alt="Submit" value="Submit"/>
             <!--<input type="submit" name="submit" value="Submit">--></li></ul>
-    </form>
-        </div>
-    
-
+        </form>
+        </main>
     <div class="footer">
         <p><a href="http://www.hearst.com/">&copy;2015 Hearst Communications, Inc.</a> All Rights Reserved
-        </p></div>
-        <script src="js/viewportSize.js"></script>
+        </p></div></div>
+    <script src="js/viewportSize.js"></script>
     <script src="js/shims.js"></script>
     <script src="js/underscore.js"></script>
     <script src="js/classlist.js"></script>
     <script src="js/basicIterator.js"></script>
     <script src="js/global.js"></script>
-    <script>
-            	function modulo(n, i) {
-		return i % n;
-	}
-
-	function increment(i) {
-		return i + 1;
-	}
-        //https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
-        function shuffle(array) {
-  var currentIndex = array.length, temporaryValue, randomIndex;
-
-  // While there remain elements to shuffle...
-  while (0 !== currentIndex) {
-
-    // Pick a remaining element...
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
-
-    // And swap it with the current element.
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
-  }
-
-  return array;
-}
-        
-        var utils = speakEasy.Util,
-            ptL = _.partial,
-            comp = _.compose,
-            Looper = speakEasy.Iterator,
-            event_actions = ['preventDefault', 'stopPropagation', 'stopImmediatePropagation'],
-            drinks = ['martini', 'manhattan', 'margarita', 'maitai', 'cosmo', 'sidecar', 'julep'],
-            eventing = utils.eventer,
-            anCr = utils.append(),
-            invoke = function (f, arg) {
-                arg = _.isArray(arg) ? arg : [arg];
-                return f.apply(null, arg);
-            },
-            twice = utils.curryFactory(2),
-            $img = twice(invoke)('img'),
-            $aside = twice(invoke)('aside'),
-            $cheers = twice(invoke)('h3'),
-            config = {src: 'img/cbook.jpg'},
-            daddy = utils.drillDown(['parentNode']),
-            doGet = twice(utils.getter),
-            doInc = function (n) {
-			return comp(ptL(modulo, n), increment);
-            },
-            getLength = doGet('length'),
-            getValue = doGet('value'),
-            add = function(a, b){
-                return a + b;
-            },
-            doPath = comp(ptL(add, 'img/'), twice(add)('.jpg')),
-            set = ptL(utils.setter, utils.$('fc'), 'src'),
-            showtime = ptL(utils.show, utils.getBody),
-            noshow = ptL(utils.hide, utils.getBody)
-            eventing('submit', event_actions.slice(0,1), function(e){
-                utils.addClass('hide', e.target);
-                comp(ptL(utils.setAttributes, config), $img, anCr, daddy, utils.setText('Bartender!'), $cheers, anCr, anCr(e.target.parentNode))('section');
-                
-            }, document.forms[0]).render(),
-                doLoop = function(){
-                Looper.onpage = Looper.from(shuffle(_.map(drinks, doPath)), doInc(getLength(drinks)));
-                set(doPath('fc'));
-                noshow();
-            },
-            Looper.onpage = Looper.from(shuffle(_.map(drinks, doPath)), doInc(getLength(drinks)));
-        eventing('click', event_actions.slice(0, 1), comp(showtime, set, getValue, _.bind(Looper.onpage.forward, Looper.onpage)), utils.$('forwardbutton')).render();
-        eventing('click', event_actions.slice(0, 1), doLoop, utils.$('backbutton')).render();
-    
-    </script>
-
-
-</div>
-
-
-
-</body>
+    <script src="js/slideshow.js"></script>
+    </body>
 </html>
 
 <!--

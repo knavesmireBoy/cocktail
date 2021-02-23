@@ -206,10 +206,10 @@ legend {
 }
 .footer {
 	border-top: 1px solid white;
-	clear: both;
 	padding: 1em 1em 0;
 	z-index: 1;
 	box-sizing: border-box;
+    width: 100%;
 }
 i, cite, b, .footer, .footer a {
 	color: #c0c0c0;

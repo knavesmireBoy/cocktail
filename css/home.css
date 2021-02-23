@@ -219,6 +219,9 @@ form>ul:last-of-type li {
 	border-width: 0;
     flex: 1 1 0;
 }
+#chaps .placeholder {
+    height: 100%;
+}
 #chaps img {
 	display: block;
     height: 100%;
