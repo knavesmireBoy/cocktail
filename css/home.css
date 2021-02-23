@@ -219,21 +219,29 @@ form>ul:last-of-type li {
 	border-width: 0;
     flex: 1 1 0;
 }
-#chaps .placeholder {
-    height: 100%;
+
+
+.placeholder:after {
+	content: "";
+	display: table;
+	clear: both;
 }
-#chaps img {
+.placeholder img {
 	display: block;
     height: 100%;
     object-fit: cover;
+    position: relative;
+    float: left;
 }
+
+.inplay .placeholder img:last-child {
+    margin-left: -100%;
+}
+
 #chaps div, #chaps form {
 	position: relative;
+}
 
-}
-#chaps div {
-	background: red;
-}
 #chaps form {
 	box-sizing: border-box;
 	border-left: dotted 1px white;
@@ -264,8 +272,10 @@ form>ul:last-of-type li {
 	-o-transition: all 1s;
 	transition: all 1s;
 	display: table;
+    /*
 	opacity: 0;
 	filter: alpha(opacity=0);
+    */
 	min-width: 300px;
 }
 #controls button {

@@ -100,7 +100,6 @@
 		klasAdd = utils.addClass,
 		klasRem = utils.removeClass,
 		klasTog = utils.toggleClass,
-		doAlt = comp(twice(invoke)(null), utils.getZero, thrice(doMethod)('reverse')(null)),
 		$ = thrice(lazyVal)('getElementById')(document),
 		$$ = thricedefer(lazyVal)('getElementById')(document),
 		main = document.getElementsByTagName('main')[0],
@@ -109,6 +108,7 @@
 			arg = _.isArray(arg) ? arg : [arg];
 			return f.apply(null, arg);
 		},
+        doAlt = comp(twice(invoke)(null), utils.getZero, thrice(doMethod)('reverse')(null)),
 		doMap = utils.doMap,
 		doVal = doGet('value'),
 		$img = twice(invoke)('img'),
@@ -220,7 +220,7 @@
 			};
 		},
 		locate = eventing('click', event_actions.slice(0), function (e) {
-            doShow()();
+           doShow()();
 			locator(twicedefer(loader)('base')(nextcaller), twicedefer(loader)('base')(prevcaller))(e)[1]();
 		}, getPlaceHolder()),
 		
@@ -232,12 +232,14 @@
 			}
 
 			function doSwap() {
+                /*
 				var coll = test(),
 					bool = coll[0] === coll[1],
 					body = utils.getClassList(utils.getBody()),
 					m = bool ? 'remove' : 'add';
 				body[m]('swap');
 				return !bool;
+                */
 			}
 
 			function doRecur() {
@@ -251,16 +253,19 @@
 				if (slide) {
 					val = flag ? 1 : recur.i / 100;
 					val = cssopacity.getValue(val);
+                    /*
 					doMap(slide, [
 						[
 							[cssopacity.getKey(), val]
 						]
 					]);
+                    */
+                    slide.style.opacity = val;
 				}
 			}
 
 			function doSlide() {
-				return loader(comp(utils.drillDown(['src']), utils.getChild, utils.getChild, $$('base')), 'slide');
+				return loader(comp(utils.drillDown(['src']), $$('base')), 'slide');
 			}
 			var playmaker = (function () {
 				var setPlayer = function (arg) {
@@ -344,13 +349,14 @@
 		playing = ptL(klasAdd, 'playing', main),
 		notplaying = ptL(klasRem, 'playing', main),
 		exit_inplay = ptL(klasRem, 'inplay', main),
-		$controller = makeDummy(),
+		
         //slide and pause 
 		onLoad = function (img, path, promise) {
 			var ret;
-            con(arguments);
 			if (promise) {
-				//ret = promise.then(img);
+				ret = promise.then(img);
+                            con(arguments);
+
 			}
 			img.src = path;
 			return ret;
@@ -375,6 +381,7 @@
 			]);
             return onLoad(img, 'img/pause.png');
 		},
+        $controller = makeDummy(),
 		factory = function () {
 			var remPause = comp(utils.removeNodeOnComplete, $$('paused')),
 				remSlide = comp(utils.removeNodeOnComplete, $$('slide')),
@@ -399,7 +406,7 @@
 				controller = function () {
 					//make BOTH slide and pause but only make pause visible on NOT playing
 					if (!$('slide')) {
-						$controller = doMakeSlide('base', 'slide', go_render, do_invoke_player, unlocate);
+						$controller = doMakeSlide('base', 'slide', go_render, do_invoke_player/*, unlocate*/);
 						//doMakePause();
 					}
 				},
@@ -450,7 +457,7 @@
 					}
 				}, $('controls')).render();
     
-    locate.render();
+   // locate.render();
     
     eventing('submit', event_actions.slice(0, 1), function (e) {
         utils.addClass('hide', e.target);
