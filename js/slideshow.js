@@ -84,8 +84,7 @@
 		doCurry = utils.curryFactory,
 		cssopacity = getNativeOpacity(!window.addEventListener),
 		event_actions = ['preventDefault', 'stopPropagation', 'stopImmediatePropagation'],
-		drinks = ['martini', 'manhattan', 'margarita', 'maitai', 'cosmo', 'sidecar', 'julep'],
-		drinks = ['manhattan', 'margarita', 'martini'],
+		drinks = ['martini', 'manhattan', 'margarita', 'maitai', 'mule', 'sidecar', 'julep'],
 		eventing = utils.eventer,
 		once = utils.doOnce(),
 		defer_once = doCurry(1, true),
@@ -121,8 +120,10 @@
 			return comp(ptL(modulo, n), increment);
 		},
         show = ptL(klasAdd, 'showtime', utils.getBody),
+        unshow = ptL(klasRem, 'showtime', utils.getBody),
         showtime = thricedefer(doMethod)('findByClass')('showtime')(utils),
-        doShow = ptL(utils.getBest, _.negate(showtime), [show, function(){}]),
+        in_play = thricedefer(doMethod)('findByClass')('inplay')(utils),
+        checkShowTime = ptL(utils.getBest, _.negate(showtime), [show, function(){}]),
 		noshow = ptL(utils.hide, utils.getBody),
         makeDummy = function () {
             return {
@@ -146,41 +147,23 @@
 		undostatic = ptL(klasRem, 'static', $$('controls')),
         getPlaceHolder = ptL(utils.findByClass, 'placeholder'),
         getBaseSrc = comp(utils.drillDown(['src']), getBaseChild),
-		addElements = function (el) {
-            return anCr(getPlaceHolder)(el);
-			//return comp(twice(invoke)('img'), anCr, twice(invoke)('a'), anCr, anCr(getPlaceHolder))('li');
-		},
-		//height and width of image are compared BUT a) must invoke the comparison AFTER image loaded
-		//b) must remove load listener or will intefere with slideshow
-		onBase = function (img, path, promise) {
-			img.src = path;
-			var ev = eventing('load', event_actions.slice(0, 1), function (e) {
-				promise.then(e.target);
-				ev.unrender();
-			}, img).render();
-		},
-		doMapLateVal = function (v, el, k) {
-			return doMap(el, [
-				[k, v]
-			]);
-		},
+		addElements = anCr(getPlaceHolder),
 		doPath = comp(ptL(add, 'img/'), twice(add)('.jpg')),
 		set = ptL(utils.setter, utils.$('base'), 'src'),
 		slide_player = {
 			render: function () {
                 if(!showtime()){
                     show();
-                 Looper.onpage = Looper.from(randomSort(_.map(drinks, doPath)), doInc(getLength(drinks)));
+                    Looper.onpage = Looper.from(randomSort(_.map(drinks, doPath)), doInc(getLength(drinks)));
                 }
                
 			},
 			unrender: function () {
-				this.render();//reset random array
+				Looper.onpage = Looper.from(randomSort(_.map(drinks, doPath)), doInc(getLength(drinks)));
 				comp(noshow, set, doPath)('fc');
 			}
 		},
-		in_play = thricedefer(doMethod)('findByClass')('inplay')(utils),
-		//could find a none dom dependent predicate
+		
         getLoopValue = comp(doVal, ptL(doubleGet, Looper, 'onpage')),
 		get_player = ptL(utils.getBest, _.negate(in_play), [slide_player, makeDummy()]),
         nextcaller = twicedefer(getLoopValue)('forward')(null),
@@ -192,7 +175,7 @@
 			slider[m]();
 		},
         loadImage = function (getnexturl, id, promise) {
-			var img = getDomTargetImg($(id));
+			var img = $(id);
 			if (img) {
 				img.onload = function (e) {
 					promise.then(e.target);
@@ -207,8 +190,12 @@
 		},
 		locator = function (forward, back) {
 			var getLoc = function (e) {
-				var box = e.target.getBoundingClientRect();
-				return e.clientX - box.left > box.width / 2;
+                if(e){
+                  var box = e.target.getBoundingClientRect();
+				return e.clientX - box.left > box.width / 2;  
+                }
+                return true;
+				
 			};
 			return function (e) {
 				return utils.getBest(function (agg) {
@@ -220,7 +207,7 @@
 			};
 		},
 		locate = eventing('click', event_actions.slice(0), function (e) {
-           doShow()();
+           checkShowTime()();
 			locator(twicedefer(loader)('base')(nextcaller), twicedefer(loader)('base')(prevcaller))(e)[1]();
 		}, getPlaceHolder()),
 		
@@ -253,14 +240,12 @@
 				if (slide) {
 					val = flag ? 1 : recur.i / 100;
 					val = cssopacity.getValue(val);
-                    /*
+                    
 					doMap(slide, [
 						[
 							[cssopacity.getKey(), val]
 						]
 					]);
-                    */
-                    slide.style.opacity = val;
 				}
 			}
 
@@ -307,7 +292,7 @@
 							recur.i -= 1;
 						},
 						reset: function () {
-							recur.i = 150;
+							recur.i = 200;
 							doSlide();
 							doOpacity();
 							doBase();
@@ -355,8 +340,6 @@
 			var ret;
 			if (promise) {
 				ret = promise.then(img);
-                            con(arguments);
-
 			}
 			img.src = path;
 			return ret;
@@ -369,7 +352,6 @@
            return onLoad(img, doParse(img.src), new utils.FauxPromise(_.rest(arguments, 2)));
 		},
 		doMakePause = function (path) {
-            return;
 			var img = addElements($('slide'));
 			doMap(img, [
 				['id', 'paused']
@@ -395,19 +377,20 @@
 				do_invoke_player = comp(ptL(eventing, 'click', event_actions.slice(0, 2), invoke_player), getPlaceHolder),
 				relocate = ptL(lazyVal, null, locate, 'render'),
 				doReLocate = ptL(utils.doWhen, $$('base'), relocate),
-				doExitShow = thrice(lazyVal)('unrender')(slide_player),
-                
+				doExitShow = ptL(utils.doWhen, in_play, thrice(lazyVal)('unrender')(slide_player)),
 				farewell = [notplaying, exit_inplay, comp(go_unrender, utils.always($controller)), doReLocate, doExitShow, deferEach([remPause, remSlide])(getResult)],
-                
-                farewell = [deferEach([remPause, remSlide])(getResult)],
-                                
+              //  farewell = [],
+                                                
 				next_driver = deferEach([get_play_iterator, showtime, defer_once(clear)(true), twicedefer(loader)('base')(nextcaller)].concat(farewell))(getResult),
 				prev_driver = deferEach([get_play_iterator, defer_once(clear)(true)].concat(farewell))(getResult),
 				controller = function () {
 					//make BOTH slide and pause but only make pause visible on NOT playing
 					if (!$('slide')) {
-						$controller = doMakeSlide('base', 'slide', go_render, do_invoke_player/*, unlocate*/);
-						//doMakePause();
+                        if(!showtime()){
+                            locate.invoke();
+                        }
+						$controller = doMakeSlide('base', 'slide', go_render, do_invoke_player, unlocate);
+						doMakePause();
 					}
 				},
 				COR = function (predicate, action) {
@@ -456,9 +439,7 @@
 						chain.handle(str);
 					}
 				}, $('controls')).render();
-    
-   // locate.render();
-    
+    locate.render();
     eventing('submit', event_actions.slice(0, 1), function (e) {
         utils.addClass('hide', e.target);
 		comp(ptL(utils.setAttributes, config), $img, anCr, daddy, utils.setText('Bartender!'), $cheers, anCr, anCr(e.target.parentNode))('section');

@@ -220,7 +220,6 @@ form>ul:last-of-type li {
     flex: 1 1 0;
 }
 
-
 .placeholder:after {
 	content: "";
 	display: table;
@@ -234,8 +233,13 @@ form>ul:last-of-type li {
     float: left;
 }
 
-.inplay .placeholder img:last-child {
+#paused, .inplay.playing #paused {
+    display: none;
+}
+
+.inplay #slide, .inplay #paused {
     margin-left: -100%;
+    display: block;
 }
 
 #chaps div, #chaps form {
@@ -337,7 +341,7 @@ button#backbutton {
 button#playbutton {
 	background-position: 50% 29%;
 }
-#controls.playing #playbutton {
+.playing #playbutton {
 	background-position: 50% 44%;
 	opacity: 0.9;
 	filter: alpha(opacity=90);

@@ -1101,10 +1101,14 @@ speakEasy.Util = (function() {
 		drillDown: drillDown,
 		//https://medium.com/@dtipson/creating-an-es6ish-compose-in-javascript-ac580b95104a
 		eventer: function(type, actions, fn, el) {
+            
 			function preventer(wrapped, e) {
+                //invoke method allows a function to be invoked directly NOT as an event listener
+                if(e){
 				_.each(actions, function(a) {
 					myEventListener.preventers[a](e);
 				});
+                }
 				return wrapped(e);
 			}
 			fn = _.wrap(fn, preventer);
@@ -1120,7 +1124,10 @@ speakEasy.Util = (function() {
 				},
 				getEl: function() {
 					return el;
-				}
+				},
+                invoke: function(){
+                    fn.apply(null, arguments);
+                }
 			};
 		},
 		fadeUp: function(element, red, green, blue) {
