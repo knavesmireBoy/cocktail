@@ -382,10 +382,9 @@
 				doSlide = defer([clear, doplay]),
 				doPlaying = defer([notplaying, playing]),
 				doDisplay = defer([function () {}, playtime]),
-				doShow = defer([function () {}, showtime]),
 				unlocate = thricedefer(doMethod)('unrender')(null)(locate),
 				invoke_player = deferEach([doSlide, doPlaying, doDisplay])(getResult),
-				invoke_player = function(){},
+				//invoke_player = function(){},
 				do_invoke_player = comp(ptL(eventing, 'click', event_actions.slice(0, 2), invoke_player), getPlaceHolder),
 				relocate = ptL(lazyVal, null, locate, 'render'),
 				doReLocate = ptL(utils.doWhen, $$('base'), relocate),
@@ -400,7 +399,7 @@
 				controller = function () {
 					//make BOTH slide and pause but only make pause visible on NOT playing
 					if (!$('slide')) {
-						$controller = doMakeSlide('base', 'slide'/*, go_render, do_invoke_player, unlocate*/);
+						$controller = doMakeSlide('base', 'slide', go_render, do_invoke_player, unlocate);
 						//doMakePause();
 					}
 				},
