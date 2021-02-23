@@ -289,10 +289,10 @@
 							return recur.i <= -1;
 						},
 						inc: function () {
-							recur.i -= 1;
+							recur.i -= 2;
 						},
 						reset: function () {
-							recur.i = 200;
+							recur.i = 300;
 							doSlide();
 							doOpacity();
 							doBase();
