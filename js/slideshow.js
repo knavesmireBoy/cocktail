@@ -142,7 +142,7 @@
 		getBaseChild = comp(utils.getChild, utils.getChild, $$('base')),
 		undostatic = ptL(klasRem, 'static', $$('controls')),
         getPlaceHolder = ptL(utils.findByClass, 'placeholder'),
-        getBaseSrc = doComp(utils.drillDown(['src']), getBaseChild),
+        getBaseSrc = comp(utils.drillDown(['src']), getBaseChild),
 		addElements = function () {
 			return comp(twice(invoke)('img'), anCr, twice(invoke)('a'), anCr, anCr(getPlaceHolder))('li');
 		},
@@ -175,8 +175,8 @@
 		//could find a none dom dependent predicate
         getLoopValue = comp(doVal, ptL(doubleGet, Looper, 'onpage')),
 		get_player = ptL(utils.getBest, _.negate(in_play), [slide_player, makeDummy()]),
-        nextcaller = twicedefer(getLoopValue)('forward')('value'),
-		prevcaller = twicedefer(getLoopValue)('back')('value'),
+        nextcaller = twicedefer(getLoopValue)('forward')(null),
+		prevcaller = twicedefer(getLoopValue)('back')(null),
 		get_play_iterator = function (flag) {
 			//if we are inplay (ie pause or playing) we neither want to call enter or exit so a dummy object is returned
 			var m = flag ? 'render' : 'unrender',
@@ -431,16 +431,14 @@
 						chain.handle(str);
 					}
 				}, $('controls')).render();
+    locate.render();
     
     eventing('submit', event_actions.slice(0, 1), function (e) {
         utils.addClass('hide', e.target);
 		comp(ptL(utils.setAttributes, config), $img, anCr, daddy, utils.setText('Bartender!'), $cheers, anCr, anCr(e.target.parentNode))('section');
 	}, document.forms[0]).render();
-    
-
-    
-	/*
-	Looper.onpage = Looper.from(randomSort(_.map(drinks, doPath)), doInc(getLength(drinks)));
+    Looper.onpage = Looper.from(randomSort(_.map(drinks, doPath)), doInc(getLength(drinks)));
+    /*
 	eventing('click', event_actions.slice(0, 1), comp(myshowtime, set, getLoopValue, _.bind(Looper.onpage.forward, Looper.onpage)), utils.$('forwardbutton')).render();
 	eventing('click', event_actions.slice(0, 1), doLoop, utils.$('backbutton')).render();
     */
