@@ -31,8 +31,6 @@
 		return f.apply(null, _.map(args, getResult));
 	}
 
-
-
 	function doMethod(o, v, p) {
 		return o[p] && o[p](v);
 	}
@@ -54,8 +52,9 @@
 	}
 	//https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 	function randomSort(array) {
-		var i = array.length,
-			tmp, randomIndex;
+        var i = array.length,
+            tmp,
+            randomIndex;
 		// While there remain elements to shuffle...
 		while (0 !== i) {
 			// Pick a remaining element...
@@ -79,26 +78,22 @@
 	var utils = speakEasy.Util,
 		ptL = _.partial,
 		comp = _.compose,
-        con = window.console.log.bind(window),
+		//con = window.console.log.bind(window),
 		Looper = speakEasy.Iterator,
 		doCurry = utils.curryFactory,
 		cssopacity = getNativeOpacity(!window.addEventListener),
 		event_actions = ['preventDefault', 'stopPropagation', 'stopImmediatePropagation'],
 		drinks = ['martini', 'manhattan', 'margarita', 'maitai', 'mule', 'sidecar', 'julep'],
 		eventing = utils.eventer,
-		once = utils.doOnce(),
 		defer_once = doCurry(1, true),
 		twice = doCurry(2),
 		twicedefer = doCurry(2, true),
 		thrice = doCurry(3),
 		thricedefer = doCurry(3, true),
 		deferEach = thricedefer(doCallbacks)('each'),
-		deferEvery = thrice(doCallbacks)('every'),
 		anCr = utils.append(),
-		anCrIn = utils.insert(),
 		klasAdd = utils.addClass,
 		klasRem = utils.removeClass,
-		klasTog = utils.toggleClass,
 		$ = thrice(lazyVal)('getElementById')(document),
 		$$ = thricedefer(lazyVal)('getElementById')(document),
 		main = document.getElementsByTagName('main')[0],
@@ -107,7 +102,7 @@
 			arg = _.isArray(arg) ? arg : [arg];
 			return f.apply(null, arg);
 		},
-        doAlt = comp(twice(invoke)(null), utils.getZero, thrice(doMethod)('reverse')(null)),
+		doAlt = comp(twice(invoke)(null), utils.getZero, thrice(doMethod)('reverse')(null)),
 		doMap = utils.doMap,
 		doVal = doGet('value'),
 		$img = twice(invoke)('img'),
@@ -119,54 +114,46 @@
 		doInc = function (n) {
 			return comp(ptL(modulo, n), increment);
 		},
-        show = ptL(klasAdd, 'showtime', utils.getBody),
-        unshow = ptL(klasRem, 'showtime', utils.getBody),
-        showtime = thricedefer(doMethod)('findByClass')('showtime')(utils),
-        in_play = thricedefer(doMethod)('findByClass')('inplay')(utils),
-        checkShowTime = ptL(utils.getBest, _.negate(showtime), [show, function(){}]),
+		show = ptL(klasAdd, 'showtime', utils.getBody),
+		unshow = ptL(klasRem, 'showtime', utils.getBody),
+		showtime = thricedefer(doMethod)('findByClass')('showtime')(utils),
+		in_play = thricedefer(doMethod)('findByClass')('inplay')(utils),
+		checkShowTime = ptL(utils.getBest, _.negate(showtime), [show, function () {}]),
 		noshow = ptL(utils.hide, utils.getBody),
-        makeDummy = function () {
-            return {
-			render: function () {
-            },
-			unrender: function () {
-            }
-		};
-        },
+		makeDummy = function () {
+			return {
+				render: function () {},
+				unrender: function () {}
+			};
+		},
 		getLength = doGet('length'),
-		getValue = doGet('value'),
-        parser = thrice(doMethod)('match')(/img\/[a-z]+\.jpe?g$/),
+		parser = thrice(doMethod)('match')(/img\/[a-z]+\.jpe?g$/),
 		doParse = comp(ptL(add, ''), doGet(0), parser),
-        mytarget = !window.addEventListener ? 'srcElement' : 'target',
+		mytarget = !window.addEventListener ? 'srcElement' : 'target',
 		getTarget = utils.drillDown([mytarget]),
-        text_from_target = comp(doGet('id'), getTarget),
+		text_from_target = comp(doGet('id'), getTarget),
 		node_from_target = comp(doGet('nodeName'), getTarget),
-		getDomTargetImg = utils.getDomChild(utils.getNodeByTag('img')),
-		getSlideChild = comp(utils.getChild, utils.getChild, $$('slide')),
-		getBaseChild = comp(utils.getChild, utils.getChild, $$('base')),
 		undostatic = ptL(klasRem, 'static', $$('controls')),
-        getPlaceHolder = ptL(utils.findByClass, 'placeholder'),
-        getBaseSrc = comp(utils.drillDown(['src']), getBaseChild),
+		getPlaceHolder = ptL(utils.findByClass, 'placeholder'),
 		addElements = anCr(getPlaceHolder),
 		doPath = comp(ptL(add, 'img/'), twice(add)('.jpg')),
 		set = ptL(utils.setter, utils.$('base'), 'src'),
 		slide_player = {
 			render: function () {
-                if(!showtime()){
-                    show();
-                    Looper.onpage = Looper.from(randomSort(_.map(drinks, doPath)), doInc(getLength(drinks)));
-                }
-               
+				if (!showtime()) {
+					show();
+					Looper.onpage = Looper.from(randomSort(_.map(drinks, doPath)), doInc(getLength(drinks)));
+				}
 			},
 			unrender: function () {
 				Looper.onpage = Looper.from(randomSort(_.map(drinks, doPath)), doInc(getLength(drinks)));
 				comp(noshow, set, doPath)('fc');
+                unshow();
 			}
 		},
-		
-        getLoopValue = comp(doVal, ptL(doubleGet, Looper, 'onpage')),
+		getLoopValue = comp(doVal, ptL(doubleGet, Looper, 'onpage')),
 		get_player = ptL(utils.getBest, _.negate(in_play), [slide_player, makeDummy()]),
-        nextcaller = twicedefer(getLoopValue)('forward')(null),
+		nextcaller = twicedefer(getLoopValue)('forward')(null),
 		prevcaller = twicedefer(getLoopValue)('back')(null),
 		get_play_iterator = function (flag) {
 			//if we are inplay (ie pause or playing) we neither want to call enter or exit so a dummy object is returned
@@ -174,7 +161,7 @@
 				slider = get_player();
 			slider[m]();
 		},
-        loadImage = function (getnexturl, id, promise) {
+		loadImage = function (getnexturl, id, promise) {
 			var img = $(id);
 			if (img) {
 				img.onload = function (e) {
@@ -190,12 +177,11 @@
 		},
 		locator = function (forward, back) {
 			var getLoc = function (e) {
-                if(e){
-                  var box = e.target.getBoundingClientRect();
-				return e.clientX - box.left > box.width / 2;  
-                }
-                return true;
-				
+				if (e) {
+					var box = e.target.getBoundingClientRect();
+					return e.clientX - box.left > box.width / 2;
+				}
+				return true;
 			};
 			return function (e) {
 				return utils.getBest(function (agg) {
@@ -207,28 +193,11 @@
 			};
 		},
 		locate = eventing('click', event_actions.slice(0), function (e) {
-           checkShowTime()();
+			checkShowTime()();
 			locator(twicedefer(loader)('base')(nextcaller), twicedefer(loader)('base')(prevcaller))(e)[1]();
 		}, getPlaceHolder()),
-		
 		recur = (function (player) {
-			function test() {
-				return _.map([getBaseChild(), getSlideChild()], function (img) {
-					return img && img.width > img.height;
-				});
-			}
-
-			function doSwap() {
-                /*
-				var coll = test(),
-					bool = coll[0] === coll[1],
-					body = utils.getClassList(utils.getBody()),
-					m = bool ? 'remove' : 'add';
-				body[m]('swap');
-				return !bool;
-                */
-			}
-
+            
 			function doRecur() {
 				player.inc();
 				recur.t = window.requestAnimationFrame(recur.execute);
@@ -240,7 +209,6 @@
 				if (slide) {
 					val = flag ? 1 : recur.i / 100;
 					val = cssopacity.getValue(val);
-                    
 					doMap(slide, [
 						[
 							[cssopacity.getKey(), val]
@@ -258,7 +226,7 @@
 						recur.execute();
 					},
 					doBase = function () {
-						return loader(_.bind(Looper.onpage.play, Looper.onpage), 'base', setPlayer, doSwap);
+						return loader(_.bind(Looper.onpage.play, Looper.onpage), 'base', setPlayer);
 					},
 					fadeOut = {
 						validate: function () {
@@ -334,8 +302,7 @@
 		playing = ptL(klasAdd, 'playing', main),
 		notplaying = ptL(klasRem, 'playing', main),
 		exit_inplay = ptL(klasRem, 'inplay', main),
-		
-        //slide and pause 
+		//slide and pause 
 		onLoad = function (img, path, promise) {
 			var ret;
 			if (promise) {
@@ -349,9 +316,9 @@
 			doMap(img, [
 				['id', target]
 			]);
-           return onLoad(img, doParse(img.src), new utils.FauxPromise(_.rest(arguments, 2)));
+			return onLoad(img, doParse(img.src), new utils.FauxPromise(_.rest(arguments, 2)));
 		},
-		doMakePause = function (path) {
+		doMakePause = function () {
 			var img = addElements($('slide'));
 			doMap(img, [
 				['id', 'paused']
@@ -361,9 +328,9 @@
 					[cssopacity.getKey(), cssopacity.getValue(0.5)]
 				]
 			]);
-            return onLoad(img, 'img/pause.png');
+			return onLoad(img, 'img/pause.png');
 		},
-        $controller = makeDummy(),
+		$controller = makeDummy(),
 		factory = function () {
 			var remPause = comp(utils.removeNodeOnComplete, $$('paused')),
 				remSlide = comp(utils.removeNodeOnComplete, $$('slide')),
@@ -373,22 +340,19 @@
 				doDisplay = defer([function () {}, playtime]),
 				unlocate = thricedefer(doMethod)('unrender')(null)(locate),
 				invoke_player = deferEach([doSlide, doPlaying, doDisplay])(getResult),
-				//invoke_player = function(){},
 				do_invoke_player = comp(ptL(eventing, 'click', event_actions.slice(0, 2), invoke_player), getPlaceHolder),
 				relocate = ptL(lazyVal, null, locate, 'render'),
 				doReLocate = ptL(utils.doWhen, $$('base'), relocate),
 				doExitShow = ptL(utils.doWhen, in_play, thrice(lazyVal)('unrender')(slide_player)),
 				farewell = [notplaying, exit_inplay, comp(go_unrender, utils.always($controller)), doReLocate, doExitShow, deferEach([remPause, remSlide])(getResult)],
-              //  farewell = [],
-                                                
 				next_driver = deferEach([get_play_iterator, showtime, defer_once(clear)(true), twicedefer(loader)('base')(nextcaller)].concat(farewell))(getResult),
 				prev_driver = deferEach([get_play_iterator, defer_once(clear)(true)].concat(farewell))(getResult),
 				controller = function () {
 					//make BOTH slide and pause but only make pause visible on NOT playing
 					if (!$('slide')) {
-                        if(!showtime()){
-                            locate.invoke();
-                        }
+						if (!showtime()) {
+							locate.invoke();
+						}
 						$controller = doMakeSlide('base', 'slide', go_render, do_invoke_player, unlocate);
 						doMakePause();
 					}
@@ -429,20 +393,20 @@
 			recur.i = 50; //slide is clone of base initially, so fade can start quickly
 			return mynext;
 		},
-        chain = factory();
-        eventing('click', event_actions.slice(0, 1), function (e) {
-					var str = text_from_target(e),
-						node = node_from_target(e);
-					if (node.match(/button/i)) {
-						//!!REPLACE the original chain reference, validate will return either the original or brand new instance
-						chain = chain.validate(str);
-						chain.handle(str);
-					}
-				}, $('controls')).render();
-    locate.render();
-    eventing('submit', event_actions.slice(0, 1), function (e) {
-        utils.addClass('hide', e.target);
+		chain = factory();
+	eventing('click', event_actions.slice(0, 1), function (e) {
+		var str = text_from_target(e),
+			node = node_from_target(e);
+		if (node.match(/button/i)) {
+			//!!REPLACE the original chain reference, validate will return either the original or brand new instance
+			chain = chain.validate(str);
+			chain.handle(str);
+		}
+	}, $('controls')).render();
+	locate.render();
+	eventing('submit', event_actions.slice(0, 1), function (e) {
+		utils.addClass('hide', e.target);
 		comp(ptL(utils.setAttributes, config), $img, anCr, daddy, utils.setText('Bartender!'), $cheers, anCr, anCr(e.target.parentNode))('section');
 	}, document.forms[0]).render();
-    Looper.onpage = Looper.from(randomSort(_.map(drinks, doPath)), doInc(getLength(drinks)));
+	Looper.onpage = Looper.from(randomSort(_.map(drinks, doPath)), doInc(getLength(drinks)));
 }());
