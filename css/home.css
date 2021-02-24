@@ -10,6 +10,18 @@ body {
 	background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
 	background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
 }
+
+body.showtime main {
+    background: gold;
+}
+
+body.showtime main.inplay {
+    background: orange;
+}
+body.showtime main.playing {
+    background: red;
+}
+
 a {
 	color: rgba(204, 0, 204, 1);
 	text-decoration: none;
@@ -281,6 +293,9 @@ form>ul:last-of-type li {
 	filter: alpha(opacity=0);
     */
 	min-width: 300px;
+    width: 100%;
+    background: rgba(204, 0, 204, .5);
+    border-top: solid 1px white;
 }
 #controls button {
 	width: 3em;
@@ -306,7 +321,7 @@ form>ul:last-of-type li {
 }
 #controls>button {
 	background-image: url(../img/buttons_sprite_lowend.png);
-	background-color: hsla(50, 50%, 40%, .3);
+	background-color: hsla(270, 50%, 40%, 1);
 }
 #controls.static {
 	margin-top: -3.3em;
@@ -321,7 +336,6 @@ form>ul:last-of-type li {
 }
 #controls.static button {
 	border: 1px solid #FFF;
-	border: 1px solid rgba(255, 255, 255, .75);
 }
 #controls button:hover, #controls button:focus {
 	background-color: silver;
@@ -351,6 +365,7 @@ button#playbutton {
 	#controls button {
 		background-image: url(../img/buttons_sprite.png);
 		background-color: hsla(75, 50%, 40%, .3);
+		background-color: hsla(275, 50%, 40%, .3);
 		-o-background-size: 128%;
 		-moz-background-size: 128%;
 		-ms-background-size: 128%;

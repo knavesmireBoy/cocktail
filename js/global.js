@@ -1057,6 +1057,20 @@ speakEasy.Util = (function() {
 			};
 		},
 		construct: construct,
+        COR: function (predicate, action) {
+            return {
+                setSuccessor: function (s) {
+                    this.successor = s;
+                },
+                handle: function () {
+                    if (predicate.apply(this, arguments)) {
+                        return action.apply(this, arguments);
+                    } else if (this.successor) {
+                        return this.successor.handle.apply(this.successor, arguments);
+                    }
+                }
+            };
+        },
 		createTextNode: function(text, ancor) {
 			getResult(ancor).appendChild(document.createTextNode(text));
 			return ancor;
@@ -1120,6 +1134,7 @@ speakEasy.Util = (function() {
 				},
 				unrender: function() {
 					myEventListener.remove(el, type, fn);
+                    console.log('unrender: ', el, fn)
 					return this;
 				},
 				getEl: function() {
