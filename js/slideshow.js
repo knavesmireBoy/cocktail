@@ -216,6 +216,11 @@
 					]);
 				}
 			}
+            
+            function doSwap(img) {
+				/* for a slideshow containing a mix of image sizes doSwap calculates current an next images and will add a class of swap to an element (body is good) this indicates when to switch "players" 
+				for this slideshow re need to ensure a falsy is returned it receives an event.target by default*/
+			}
 
 			function doSlide() {
 				return loader(comp(utils.drillDown(['src']), $$('base')), 'slide');
@@ -226,7 +231,7 @@
 						recur.execute();
 					},
 					doBase = function () {
-						return loader(_.bind(Looper.onpage.play, Looper.onpage), 'base', setPlayer);
+						return loader(_.bind(Looper.onpage.play, Looper.onpage), 'base', setPlayer, doSwap);
 					},
 					fadeOut = {
 						validate: function () {
