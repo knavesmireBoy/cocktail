@@ -120,18 +120,23 @@
 		doImagePath = comp(ptL(add, 'img/'), twice(add)('.jpg')),
 		show = ptL(klasAdd, 'showtime', utils.getBody),
 		noshow = ptL(klasRem, 'showtime', utils.getBody),
+        getBod = utils.getDomParent(utils.getNodeByTag('body')),
 		showtime = thricedefer(doMethod)('findByClass')('showtime')(utils),
 		checkShowTime = ptL(utils.getBest, _.negate(showtime), [show, function () {}]),
 		undostatic = ptL(klasRem, 'static', $$('controls')),
+        main = document.getElementsByTagName('main')[0],
+        remInPlay1 = comp(noshow, getBod, ptL(klasRem, ['inplay', 'playing'], main)),
 		slide_player = {
 			render: function () {
 				checkShowTime()();
 				Looper.onpage = Looper.from(randomSort(_.map(drinks, doImagePath)), doInc(getLength(drinks)));
 			},
-			unrender: function () {
+			unrender: function (e) {
+                con('unrender' + e)
 				Looper.onpage = Looper.from(randomSort(_.map(drinks, doImagePath)), doInc(getLength(drinks)));
-				comp(ptL(utils.hide, utils.getBody), ptL(utils.setter, utils.$('base'), 'src'), doImagePath)('fc');
-				noshow();
+				comp(ptL(utils.setter, utils.$('base'), 'src'), doImagePath)('fc');
+				//noshow();
+               remInPlay1();
 			}
 		},
 		getLoopValue = comp(doGet('value'), ptL(doubleGet, Looper, 'onpage')),
@@ -144,7 +149,7 @@
 			//if we are inplay (ie pause or playing) we neither want to call enter or exit so a dummy object is returned
 			var m = flag ? 'render' : 'unrender',
 				slider = get_player();
-			slider[m]();
+			slider[m]('foo');
 		},
 		loadImage = function (getnexturl, id, promise) {
 			var img = $(id);
@@ -285,11 +290,10 @@
 				}
 			};
 		}({})),
-		main = document.getElementsByTagName('main')[0],
 		clear = _.bind(recur.undo, recur),
 		doplay = _.bind(recur.execute, recur),
 		go_render = thrice(doMethod)('render')(null),
-		go_unrender = thrice(doMethod)('unrender')(null),
+		go_unrender = thrice(doMethod)('unrender')('bar'),
 		addInPlay = ptL(klasAdd, 'inplay', main),
 		addPlaying = ptL(klasAdd, 'playing', main),
 		remPlaying = ptL(klasRem, 'playing', main),
@@ -336,12 +340,12 @@
 				doPlaying = deferAlt([remPlaying, addPlaying]),
 				doDisplay = deferAlt([function () {}, addInPlay]),
 				invoke_player = defEach([doSlide, doPlaying, doDisplay])(getResult),
-				do_invoke_player = comp(ptL(eventing, 'click', event_actions.slice(0), invoke_player), getPlaceHolder),
+				do_invoke_player = comp(ptL(eventing, 'click', event_actions.slice(0), invoke_player), comp(drill(['parentNode']), getPlaceHolder)),
 				doReLocate = ptL(utils.doWhen, $$('base'), ptL(lazyVal, null, locate, 'render')),
 				
                 myprevcaller = utils.getBest(showtime, [prevcaller, utils.always('img/fc.jpg')]),
                 
-				farewell = [remPlaying, doExitShow, doReLocate, unrenderWhen, defEach([remPause, remSlide], remInPlay, ptL(con, 'exit'))(getResult)],
+				farewell = [doExitShow, doReLocate, unrenderWhen, defEach([remPause, remSlide])(getResult)],
                 
 				next_driver = defEach([get_play_iterator, show, defer_once(clear)(true), twicedefer(loader)('base')(nextcaller)].concat(farewell))(getResult),
                 
@@ -360,6 +364,7 @@
 					}
 				},
 				COR = function (predicate, action) {
+                    var test = _.negate(ptL(equals, 'playbutton'));
 					return {
 						setSuccessor: function (s) {
 							this.successor = s;
@@ -371,9 +376,10 @@
 								return this.successor.handle.apply(this.successor, arguments);
 							}
 						},
-						validate: function (str) {
-							if (utils.findByClass('inplay') && recur.t && this.handle(str)) {
-                                con('clear');
+						validate: function(str) {
+                            con(str);
+							if (in_play() && recur.t && test(str)) {
+								con('clear');
 								//return fresh instance on exiting slideshow IF in play mode
 								clear();
 								return factory();
