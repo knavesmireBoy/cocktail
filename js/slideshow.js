@@ -188,7 +188,7 @@
 		locate = eventing('click', event_actions.slice(0), function (e) {
 			checkShowTime()();
 			locator(twicedefer(loader)('base')(nextcaller), twicedefer(loader)('base')(prevcaller))(e)[1]();
-		}, getPlaceHolder().parentNode),
+		}, getPlaceHolder),
 		recur = (function (player) {
 			function doRecur() {
 				player.inc();
@@ -331,8 +331,9 @@
         $controller = makeDummy(),//must be OUTSIDE factory
 		factory = function () {
             con('fact')
-			var unrenderWhen = ptL(utils.doWhen, in_play, comp(go_unrender, utils.always($controller))),
-                doExitShow = ptL(utils.doWhen, in_play, thrice(lazyVal)('unrender')(slide_player)),
+			var doExitShow = ptL(utils.doWhen, in_play, thrice(lazyVal)('unrender')(slide_player)),
+                jusUnrender = comp(go_unrender, utils.always($controller)),
+                
 				doAlt = comp(twice(doInvoke)(null), utils.getZero, thrice(doMethod)('reverse')(null)),
 				deferAlt = defer_once(doAlt),
 				defEach = thricedefer(doCallbacks)('each'),
@@ -340,14 +341,14 @@
 				doPlaying = deferAlt([remPlaying, addPlaying]),
 				doDisplay = deferAlt([function () {}, addInPlay]),
 				invoke_player = defEach([doSlide, doPlaying, doDisplay])(getResult),
-				do_invoke_player = comp(ptL(eventing, 'click', event_actions.slice(0), invoke_player), comp(drill(['parentNode']), getPlaceHolder)),
+				do_invoke_player = comp(ptL(eventing, 'click', event_actions.slice(0), invoke_player), getPlaceHolder),
 				doReLocate = ptL(utils.doWhen, $$('base'), ptL(lazyVal, null, locate, 'render')),
 				
                 myprevcaller = utils.getBest(showtime, [prevcaller, utils.always('img/fc.jpg')]),
                 
-				farewell = [doExitShow, doReLocate, unrenderWhen, defEach([remPause, remSlide])(getResult)],
+				farewell = [jusUnrender, doExitShow, doReLocate, defEach([remPause, remSlide])(getResult)],
                 
-				next_driver = defEach([get_play_iterator, show, defer_once(clear)(true), twicedefer(loader)('base')(nextcaller)].concat(farewell))(getResult),
+				next_driver = defEach([get_play_iterator, defer_once(clear)(true), twicedefer(loader)('base')(nextcaller)].concat(farewell))(getResult),
                 
 				prev_driver = defEach([get_play_iterator, defer_once(clear)(true), twicedefer(loader)('base')(prevcaller)].concat(farewell))(getResult),
                 
