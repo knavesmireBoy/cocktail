@@ -109,7 +109,7 @@ h2, .sidebar a {
 	background-size: 170%;
 }
 #c5 h2 {
-	background-image: url('../img/mule.jpg');
+	background-image: url('../img/cosmo.jpg');
 	background-position: 90% 30%;
 	background-size: 170%;
 }
@@ -206,10 +206,10 @@ legend {
 }
 .footer {
 	border-top: 1px solid white;
+	clear: both;
 	padding: 1em 1em 0;
 	z-index: 1;
 	box-sizing: border-box;
-    width: 100%;
 }
 i, cite, b, .footer, .footer a {
 	color: #c0c0c0;
@@ -405,7 +405,7 @@ h1, h2, legend, #nav>li a, .sidebar a {
 		background-image: url("../img/julep.jpg");
 	}
 	#c5 #header {
-		background-image: url("../img/mule.jpg");
+		background-image: url("../img/cosmo.jpg");
 	}
 	#c6 #header {
 		background-image: url("../img/maitai.jpg");
