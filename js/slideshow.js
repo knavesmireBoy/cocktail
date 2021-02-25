@@ -105,6 +105,7 @@
 		anCr = utils.append(),
 		klasAdd = utils.addClass,
 		klasRem = utils.removeClass,
+        removeNode = utils.removeNodeOnComplete,
 		$ = thrice(lazyVal)('getElementById')(document),
 		$$ = thricedefer(lazyVal)('getElementById')(document),
 		doGet = twice(utils.getter),
@@ -115,39 +116,31 @@
 		parser = thrice(doMethod)('match')(/img\/[a-z]+\.jpe?g$/),
 		doParse = comp(ptL(add, ''), doGet(0), parser),
 		doImagePath = comp(ptL(add, 'img/'), twice(add)('.jpg')),
+        go_execute = thrice(doMethod)('execute')(null),
+        go_undo = thrice(doMethod)('undo')(null),
 		show = ptL(klasAdd, 'showtime', utils.getBody),
 		noshow = ptL(klasRem, 'showtime', utils.getBody),
         getBod = utils.getDomParent(utils.getNodeByTag('body')),
 		showtime = thricedefer(doMethod)('findByClass')('showtime')(utils),
 		checkShowTime = ptL(utils.getBest, _.negate(showtime), [show, function () {}]),
-		undostatic = ptL(klasRem, 'static', $$('controls')),
         main = document.getElementsByTagName('main')[0],
-        remInPlay1 = comp(noshow, getBod, ptL(klasRem, ['inplay', 'playing'], main)),
-		slide_player = {
+        getPlaceHolder = ptL(utils.findByClass, 'placeholder'),
+        remInPlay = comp(noshow, getBod, ptL(klasRem, ['inplay', 'playing'], main)),
+        	slide_player = {
 			execute: function () {
 				checkShowTime()();
-				Looper.onpage = Looper.from(randomSort(_.map(drinks, doImagePath)), doInc(getLength(drinks)));
 			},
 			undo: function (e) {
-                con('undo' + e)
 				Looper.onpage = Looper.from(randomSort(_.map(drinks, doImagePath)), doInc(getLength(drinks)));
 				comp(ptL(utils.setter, utils.$('base'), 'src'), doImagePath)('fc');
-				//noshow();
-               remInPlay1();
+                remInPlay();
 			}
 		},
+        init_slideshow = thricedefer(doMethod)('execute')(null)(slide_player),
 		getLoopValue = comp(doGet('value'), ptL(doubleGet, Looper, 'onpage')),
-		in_play = thricedefer(doMethod)('findByClass')('inplay')(utils),
-		get_player = ptL(utils.getBest, _.negate(in_play), [slide_player, utils.makeCommand()]),
 		nextcaller = twicedefer(getLoopValue)('forward')(null),
 		prevcaller = twicedefer(getLoopValue)('back')(null),
-		getPlaceHolder = ptL(utils.findByClass, 'placeholder'),
-		get_play_iterator = function (flag) {
-			//if we are inplay (ie pause or playing) we neither want to call enter or exit so a dummy command object is returned
-			var m = flag ? 'execute' : 'undo',
-				slider = get_player();
-			slider[m]('foo');
-		},
+		
 		loadImage = function (getnexturl, id, promise) {
 			var img = $(id);
 			if (img) {
@@ -166,7 +159,7 @@
 			var getLoc = function (e) {
 				var ret = true,
                     box = {};
-				//allow function to be invoked directly it meely returnd a predicate 
+				//allow function to be invoked directly it merely returnd a predicate 
 				if (e && e.target && e.clientX) {
 					box = e.target.getBoundingClientRect();
 					ret = e.clientX - box.left > box.width / 2;
@@ -184,9 +177,38 @@
 		},
 		locate = eventing('click', event_actions.slice(0), function (e) {
 			checkShowTime()();
-            con('hello')
 			locator(twicedefer(loader)('base')(nextcaller), twicedefer(loader)('base')(prevcaller))(e)[1]();
 		}, getPlaceHolder),
+        
+        go_invoke = ptL(utils.doWhen, _.negate(showtime), thricedefer(doMethod)('invoke')(null)(locate)),
+		onLoad = function (img, path, promise) {
+			var ret;
+			if (promise) {
+				ret = promise.then(img);
+			}
+			img.src = path;
+			return ret;
+		},
+		doMakeSlide = function (source, target) {
+			var img = anCr(getPlaceHolder)($(source));
+			doMap(img, [
+				['id', target]
+			]);
+			return onLoad(img, doParse(img.src), new utils.FauxPromise(_.rest(arguments, 2)));
+		},
+		doMakePause = function () {
+			var img = anCr(getPlaceHolder)($('slide'));
+			doMap(img, [
+				['id', 'paused']
+			]);
+			doMap(img, [
+				[
+					[cssopacity.getKey(), cssopacity.getValue(0.5)]
+				]
+			]);
+			return onLoad(img, 'img/pause.png');
+		},
+        
 		recur = (function (player) {
 			function doRecur() {
 				player.inc();
@@ -207,7 +229,7 @@
 				}
 			}
             function doSwap(img){
-                /* for a slideshow containing a mix of image sizes doSwap calculates current an next images and will add a class of swap to an element (body is good) this indicates when to switch "players" 
+                /* for a slideshow containing a mix of image sizes doSwap would compare the width of current and next images and will add a class of swap to an element (body is good) for styling (hiding base) and also a signal when to switch "players" 
                 for this slideshow re need to ensure a falsy is returned it receives an event.target by default*/
             }
 
@@ -260,7 +282,6 @@
 							doSlide();
 							doOpacity();
 							doBase();
-							undostatic();
 						}
 					},
 					actions = [fadeIn, fadeOut];
@@ -272,7 +293,7 @@
 			return {
 				execute: function () {
 					if (!recur.t) {
-						get_play_iterator(true);
+						init_slideshow();
 					}
 					if (player.validate()) {
 						player.reset();
@@ -290,77 +311,31 @@
 		}({})),
 		clear = _.bind(recur.undo, recur),
 		doplay = _.bind(recur.execute, recur),
-		go_execute = thrice(doMethod)('execute')(null),
-		go_undo = thrice(doMethod)('undo')('bar'),
-		addInPlay = ptL(klasAdd, 'inplay', main),
-		addPlaying = ptL(klasAdd, 'playing', main),
-		remPlaying = ptL(klasRem, 'playing', main),
-		remInPlay = ptL(klasRem, 'inplay', main),
-		remPause = comp(utils.removeNodeOnComplete, $$('paused')),
-		remSlide = comp(utils.removeNodeOnComplete, $$('slide')),
-		//slide and pause 
-		onLoad = function (img, path, promise) {
-			var ret;
-			if (promise) {
-				ret = promise.then(img);
-			}
-			img.src = path;
-			return ret;
-		},
-		doMakeSlide = function (source, target) {
-			var img = anCr(getPlaceHolder)($(source));
-			doMap(img, [
-				['id', target]
-			]);
-			return onLoad(img, doParse(img.src), new utils.FauxPromise(_.rest(arguments, 2)));
-		},
-		doMakePause = function () {
-			var img = anCr(getPlaceHolder)($('slide'));
-			doMap(img, [
-				['id', 'paused']
-			]);
-			doMap(img, [
-				[
-					[cssopacity.getKey(), cssopacity.getValue(0.5)]
-				]
-			]);
-			return onLoad(img, 'img/pause.png');
-		},
-        //$controller = utils.makeCommand(),//must be OUTSIDE factory
+        
 		factory = function (flag) {
             utils.makeCommand();
 			var doAlt = comp(twice(doInvoke)(null), utils.getZero, thrice(doMethod)('reverse')(null)),
                 deferAlt = defer_once(doAlt),
 				defEach = thricedefer(doCallbacks)('each'),
 				doSlide = deferAlt([clear, doplay]),
-				doPlaying = deferAlt([remPlaying, addPlaying]),
-                doDisplay = deferAlt([function () {}, addInPlay]),
+				doPlaying = deferAlt([ptL(klasRem, 'playing', main), ptL(klasAdd, 'playing', main)]),
+                doDisplay = deferAlt([function () {}, ptL(klasAdd, 'inplay', main)]),
                 doExitShow = ptL(utils.doWhen, $$('slide'), thrice(lazyVal)('undo')(slide_player)),
                 justUndo = ptL(utils.doWhen, $$('slide'), comp(go_undo, utils.always(utils.command))),				
 				invoke_player = defEach([doSlide, doPlaying, doDisplay])(getResult),
 				do_invoke_player = comp(ptL(eventing, 'click', event_actions.slice(0), invoke_player), comp(ptL(utils.climbDom, 1), getPlaceHolder)),
 				doReLocate = ptL(utils.doWhen, $$('slide'), ptL(lazyVal, null, locate, 'execute')),
-				//doReLocate = ptL(lazyVal, null, locate, 'execute'),
                 doShow = ptL(utils.doWhen, _.negate($$('slide')), show),
-                //myprevcaller = utils.getBest(showtime, [prevcaller, utils.always('img/fc.jpg')]),
-                
-				farewell = [doReLocate, doExitShow, justUndo, doShow, defEach([remPause, remSlide])(getResult)],
-                
-				next_driver = defEach([defer_once(clear)(true), twicedefer(loader)('base')(nextcaller)].concat(farewell))(getResult),
-                
-				prev_driver = defEach([defer_once(clear)(true), twicedefer(loader)('base')(prevcaller)].concat(farewell))(getResult),
-                
-				controller = function () {
+				cleanup = [doReLocate, doExitShow, justUndo, doShow, defEach([comp(removeNode, $$('paused')), comp(removeNode, $$('slide'))])(getResult)],
+				next_driver = defEach([defer_once(clear)(true), twicedefer(loader)('base')(nextcaller)].concat(cleanup))(getResult),
+				prev_driver = defEach([defer_once(clear)(true), twicedefer(loader)('base')(prevcaller)].concat(cleanup))(getResult),
+				prep_slideshow = function () {
 					var unlocate = thricedefer(doMethod)('undo')(null)(locate);
 					//make BOTH slide and pause but only make pause visible on NOT playing
-					if (!$('slide')) {
 						//swap out fc.jpg for first image IF not in "showtime"
-						if (!showtime()) {
-							locate.invoke();
-						}
-						utils.command = doMakeSlide('base', 'slide', go_execute, do_invoke_player, unlocate);
+						go_invoke();
+						doMakeSlide('base', 'slide', go_execute, do_invoke_player, unlocate);
 						doMakePause();
-					}
 				},
 				COR = function (predicate, action) {
                     var test = _.negate(ptL(equals, 'playbutton'));
@@ -376,11 +351,11 @@
 							}
 						},
 						validate: function(str) {
-							if (in_play() && recur.t && test(str)) {
+							if ($('slide') && recur.t && test(str)) {
 								con('clear');
 								//return fresh instance on exiting slideshow IF in play mode
 								clear();
-								return factory(true);
+								return factory();
 							}
 							return this;
 						}
@@ -389,7 +364,9 @@
 				mynext = COR(ptL(invokeArgs, equals, 'forwardbutton'), next_driver),
 				myprev = COR(ptL(invokeArgs, equals, 'backbutton'), prev_driver),
 				myplayer = COR(function () {
-					controller();
+                    if (!$('slide')) {
+                        prep_slideshow();
+                    }
 					return true;
 				}, invoke_player);
 			myplayer.validate = function () {
@@ -407,7 +384,6 @@
 			str = text_from_target(e),
 			node = node_from_target(e);
 		if (node.match(/button/i)) {
-            con('button')
 			//!!REPLACE the original chain reference, validate will return either the original or brand new instance
 			chain = chain.validate(str);
 			chain.handle(str);
