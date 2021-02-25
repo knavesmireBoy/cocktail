@@ -84,12 +84,10 @@
 	function lazyVal(v, o, p) {
 		return doMethod(o, v, p);
 	}
-
-	
 	var utils = speakEasy.Util,
 		ptL = _.partial,
 		comp = _.compose,
-        always = utils.always,
+		always = utils.always,
 		con = window.console.log.bind(window),
 		Looper = speakEasy.Iterator,
 		doCurry = utils.curryFactory,
@@ -105,42 +103,41 @@
 		anCr = utils.append(),
 		klasAdd = utils.addClass,
 		klasRem = utils.removeClass,
-        removeNode = utils.removeNodeOnComplete,
+		removeNode = utils.removeNodeOnComplete,
 		$ = thrice(lazyVal)('getElementById')(document),
 		$$ = thricedefer(lazyVal)('getElementById')(document),
 		doGet = twice(utils.getter),
 		doMap = utils.doMap,
 		drill = utils.drillDown,
 		getLength = doGet('length'),
-        makeCommand = thricedefer(doMethod)('makeCommand')(null)(utils),
+		makeCommand = thricedefer(doMethod)('makeCommand')(null)(utils),
 		parser = thrice(doMethod)('match')(/img\/[a-z]+\.jpe?g$/),
 		doParse = comp(ptL(add, ''), doGet(0), parser),
 		doImagePath = comp(ptL(add, 'img/'), twice(add)('.jpg')),
-        go_execute = thrice(doMethod)('execute')(null),
-        go_undo = thrice(doMethod)('undo')(null),
+		go_execute = thrice(doMethod)('execute')(null),
+		go_undo = thrice(doMethod)('undo')(null),
 		show = ptL(klasAdd, 'showtime', utils.getBody),
 		noshow = ptL(klasRem, 'showtime', utils.getBody),
-        getBod = utils.getDomParent(utils.getNodeByTag('body')),
+		getBod = utils.getDomParent(utils.getNodeByTag('body')),
 		showtime = thricedefer(doMethod)('findByClass')('showtime')(utils),
 		checkShowTime = ptL(utils.getBest, _.negate(showtime), [show, function () {}]),
-        main = document.getElementsByTagName('main')[0],
-        getPlaceHolder = ptL(utils.findByClass, 'placeholder'),
-        remInPlay = comp(noshow, getBod, ptL(klasRem, ['inplay', 'playing'], main)),
-        	slide_player = {
+		main = document.getElementsByTagName('main')[0],
+		getPlaceHolder = ptL(utils.findByClass, 'placeholder'),
+		remInPlay = comp(noshow, getBod, ptL(klasRem, ['inplay', 'playing'], main)),
+		slide_player = {
 			execute: function () {
 				checkShowTime()();
 			},
 			undo: function (e) {
 				Looper.onpage = Looper.from(randomSort(_.map(drinks, doImagePath)), doInc(getLength(drinks)));
 				comp(ptL(utils.setter, utils.$('base'), 'src'), doImagePath)('fc');
-                remInPlay();
+				remInPlay();
 			}
 		},
-        init_slideshow = thricedefer(doMethod)('execute')(null)(slide_player),
+		init_slideshow = thricedefer(doMethod)('execute')(null)(slide_player),
 		getLoopValue = comp(doGet('value'), ptL(doubleGet, Looper, 'onpage')),
 		nextcaller = twicedefer(getLoopValue)('forward')(null),
 		prevcaller = twicedefer(getLoopValue)('back')(null),
-		
 		loadImage = function (getnexturl, id, promise) {
 			var img = $(id);
 			if (img) {
@@ -158,7 +155,7 @@
 		locator = function (forward, back) {
 			var getLoc = function (e) {
 				var ret = true,
-                    box = {};
+					box = {};
 				//allow function to be invoked directly it merely returnd a predicate 
 				if (e && e.target && e.clientX) {
 					box = e.target.getBoundingClientRect();
@@ -179,8 +176,7 @@
 			checkShowTime()();
 			locator(twicedefer(loader)('base')(nextcaller), twicedefer(loader)('base')(prevcaller))(e)[1]();
 		}, getPlaceHolder),
-        
-        go_invoke = ptL(utils.doWhen, _.negate(showtime), thricedefer(doMethod)('invoke')(null)(locate)),
+		go_invoke = ptL(utils.doWhen, _.negate(showtime), thricedefer(doMethod)('invoke')(null)(locate)),
 		onLoad = function (img, path, promise) {
 			var ret;
 			if (promise) {
@@ -208,7 +204,6 @@
 			]);
 			return onLoad(img, 'img/pause.png');
 		},
-        
 		recur = (function (player) {
 			function doRecur() {
 				player.inc();
@@ -228,10 +223,11 @@
 					]);
 				}
 			}
-            function doSwap(img){
-                /* for a slideshow containing a mix of image sizes doSwap would compare the width of current and next images and will add a class of swap to an element (body is good) for styling (hiding base) and also a signal when to switch "players" 
-                for this slideshow re need to ensure a falsy is returned it receives an event.target by default*/
-            }
+
+			function doSwap(img) {
+				/* for a slideshow containing a mix of image sizes doSwap would compare the width of current and next images and will add a class of swap to an element (body is good) for styling (hiding base) and also a signal when to switch "players" 
+				for this slideshow re need to ensure a falsy is returned it receives an event.target by default*/
+			}
 
 			function doSlide() {
 				return loader(comp(drill(['src']), $$('base')), 'slide');
@@ -242,7 +238,7 @@
 						recur.execute();
 					},
 					doBase = function () {
-                        //doSwap
+						//doSwap
 						return loader(_.bind(Looper.onpage.play, Looper.onpage), 'base', setPlayer, doSwap);
 					},
 					fadeOut = {
@@ -263,7 +259,6 @@
 							return recur.i >= 134.5;
 						},
 						inc: function () {
-                            
 							recur.i += 1;
 						},
 						reset: function () {
@@ -311,34 +306,34 @@
 		}({})),
 		clear = _.bind(recur.undo, recur),
 		doplay = _.bind(recur.execute, recur),
-        
-		factory = function (flag) {
-            utils.makeCommand();
+		chainFactory = function (flag) {
+			utils.makeCommand(); //reset utils.command to dummy command object
 			var doAlt = comp(twice(doInvoke)(null), utils.getZero, thrice(doMethod)('reverse')(null)),
-                deferAlt = defer_once(doAlt),
+				deferAlt = defer_once(doAlt),
 				defEach = thricedefer(doCallbacks)('each'),
 				doSlide = deferAlt([clear, doplay]),
 				doPlaying = deferAlt([ptL(klasRem, 'playing', main), ptL(klasAdd, 'playing', main)]),
-                doDisplay = deferAlt([function () {}, ptL(klasAdd, 'inplay', main)]),
-                doExitShow = ptL(utils.doWhen, $$('slide'), thrice(lazyVal)('undo')(slide_player)),
-                justUndo = ptL(utils.doWhen, $$('slide'), comp(go_undo, utils.always(utils.command))),				
+				doDisplay = deferAlt([function () {}, ptL(klasAdd, 'inplay', main)]),
+				doExitShow = ptL(utils.doWhen, $$('slide'), thrice(lazyVal)('undo')(slide_player)),
+				justUndo = ptL(utils.doWhen, $$('slide'), comp(go_undo, utils.always(utils.command))),
 				invoke_player = defEach([doSlide, doPlaying, doDisplay])(getResult),
 				do_invoke_player = comp(ptL(eventing, 'click', event_actions.slice(0), invoke_player), comp(ptL(utils.climbDom, 1), getPlaceHolder)),
 				doReLocate = ptL(utils.doWhen, $$('slide'), ptL(lazyVal, null, locate, 'execute')),
-                doShow = ptL(utils.doWhen, _.negate($$('slide')), show),
+				doShow = ptL(utils.doWhen, _.negate($$('slide')), show),
 				cleanup = [doReLocate, doExitShow, justUndo, doShow, defEach([comp(removeNode, $$('paused')), comp(removeNode, $$('slide'))])(getResult)],
 				next_driver = defEach([defer_once(clear)(true), twicedefer(loader)('base')(nextcaller)].concat(cleanup))(getResult),
 				prev_driver = defEach([defer_once(clear)(true), twicedefer(loader)('base')(prevcaller)].concat(cleanup))(getResult),
 				prep_slideshow = function () {
 					var unlocate = thricedefer(doMethod)('undo')(null)(locate);
 					//make BOTH slide and pause but only make pause visible on NOT playing
-						//swap out fc.jpg for first image IF not in "showtime"
-						go_invoke();
-						doMakeSlide('base', 'slide', go_execute, do_invoke_player, unlocate);
-						doMakePause();
+					//swap out fc.jpg for first image IF not in "showtime"
+					go_invoke();
+					doMakeSlide('base', 'slide', go_execute, do_invoke_player, unlocate);
+					doMakePause();
 				},
+				doPrepSlideShow = comp(always(true), ptL(utils.doWhen, _.negate($$('slide')), prep_slideshow)),
 				COR = function (predicate, action) {
-                    var test = _.negate(ptL(equals, 'playbutton'));
+					var test = _.negate(ptL(equals, 'playbutton'));
 					return {
 						setSuccessor: function (s) {
 							this.successor = s;
@@ -350,12 +345,12 @@
 								return this.successor.handle.apply(this.successor, arguments);
 							}
 						},
-						validate: function(str) {
+						validate: function (str) {
 							if ($('slide') && recur.t && test(str)) {
 								con('clear');
 								//return fresh instance on exiting slideshow IF in play mode
 								clear();
-								return factory();
+								return chainFactory();
 							}
 							return this;
 						}
@@ -363,12 +358,7 @@
 				},
 				mynext = COR(ptL(invokeArgs, equals, 'forwardbutton'), next_driver),
 				myprev = COR(ptL(invokeArgs, equals, 'backbutton'), prev_driver),
-				myplayer = COR(function () {
-                    if (!$('slide')) {
-                        prep_slideshow();
-                    }
-					return true;
-				}, invoke_player);
+				myplayer = COR(doPrepSlideShow, invoke_player);
 			myplayer.validate = function () {
 				return this;
 			};
@@ -377,7 +367,7 @@
 			recur.i = 50; //slide is clone of base initially, so fade can start quickly
 			return mynext;
 		},
-		chain = factory();
+		chain = chainFactory();
 	eventing('click', event_actions.slice(0), function (e) {
 		var text_from_target = comp(doGet('id'), drill([mytarget])),
 			node_from_target = comp(doGet('nodeName'), drill([mytarget])),
@@ -394,7 +384,6 @@
 		utils.addClass('hide', e.target);
 		comp(ptL(utils.setAttributes, config), twice(doInvoke)('img'), anCr, drill(['parentNode']), utils.setText('Bartender!'), twice(doInvoke)('h3'), anCr, anCr(e.target.parentNode))('section');
 	}, document.forms[0]).execute();
-    
 	Looper.onpage = Looper.from(randomSort(_.map(drinks, doImagePath)), doInc(getLength(drinks)));
 }({
 	src: 'img/cbook.jpg'
