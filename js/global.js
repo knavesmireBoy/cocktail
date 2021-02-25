@@ -534,6 +534,71 @@ speakEasy.Util = (function() {
 	/*  imm: (f) => (arg) => f(arg),
 	    defer: (f) => (arg) => () => f(arg)
 	  },*/
+	function curry2(fun) {
+		return function(secondArg) {
+			return function(firstArg) {
+				return fun(firstArg, secondArg);
+			};
+		};
+	}
+
+	function curry22(fun) {
+		return function(secondArg) {
+			return function(firstArg) {
+				return function() {
+					return fun(firstArg, secondArg);
+				};
+			};
+		};
+	}
+
+	function curry3(fun) {
+		return function(last) {
+			return function(middle) {
+				return function(first) {
+					return fun(first, middle, last);
+				};
+			};
+		};
+	}
+
+	function curry33(fun) {
+		return function(last) {
+			return function(middle) {
+				return function(first) {
+					return function() {
+						return fun(first, middle, last);
+					};
+				};
+			};
+		};
+	}
+
+	function curry4(fun) {
+		return function(fourth) {
+			return function(third) {
+				return function(second) {
+					return function(first) {
+						return fun(first, second, third, fourth);
+					};
+				};
+			};
+		};
+	}
+
+	function curry44(fun) {
+		return function(fourth) {
+			return function(third) {
+				return function(second) {
+					return function(first) {
+						return function() {
+							return fun(first, second, third, fourth);
+						};
+					};
+				};
+			};
+		};
+	}
 
 	function invokeWhen(validate, action) {
 		var args = _.rest(arguments, 2),
