@@ -297,6 +297,14 @@ speakEasy.Util = (function() {
 		}
 		return node;
 	}
+    
+    function fillArray(value, len) {
+        var arr = [];
+        for (var i = 0; i < len; i++) {
+            arr.push(value);
+        }
+        return arr;
+    }
 
 	function drillDown(arr) {
 		var a = arr && arr.slice && arr.slice();
@@ -1044,6 +1052,14 @@ speakEasy.Util = (function() {
 			return curry3(setAnchor)(getNewElement)(null);
 		},
 		byIndex: byIndex,
+        climbDom: function(n, el){
+            n = n || 1;
+            return drillDown(fillArray('parentNode', n))(el);
+        },
+        command:  {
+			execute: function () {},
+			undo: function () {}
+		},
 		conditional: function() {
 			var validators = _.toArray(arguments);
 			return function(fun, arg) {
@@ -1128,13 +1144,14 @@ speakEasy.Util = (function() {
 			fn = _.wrap(fn, preventer);
 			el = getResult(el);
 			return {
-				render: function() {
+				execute: function() {
+                    console.log('exec: ', el, fn)
 					myEventListener.add(el, type, fn);
 					return this;
 				},
-				unrender: function() {
+				undo: function() {
 					myEventListener.remove(el, type, fn);
-                    console.log('unrender: ', el, fn)
+                    console.log('undo: ', el, fn)
 					return this;
 				},
 				getEl: function() {
@@ -1292,6 +1309,14 @@ speakEasy.Util = (function() {
 			return getResult(x) === getResult(y);
 		},
 		lsThan: lsThan,
+        makeCommand: function(){
+            var ret = {
+			execute: function () {},
+			undo: function () {}
+		};
+            speakEasy.Util.command = ret;
+            return ret;
+        },
 		machElement: machElement,
 		makeElement: makeElement,
 		map: function(coll, mapper) {

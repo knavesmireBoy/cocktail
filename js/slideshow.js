@@ -85,12 +85,7 @@
 		return doMethod(o, v, p);
 	}
 
-	function makeDummy() {
-		return {
-			render: function () {},
-			unrender: function () {}
-		};
-	}
+	
 	var utils = speakEasy.Util,
 		ptL = _.partial,
 		comp = _.compose,
@@ -115,6 +110,7 @@
 		doMap = utils.doMap,
 		drill = utils.drillDown,
 		getLength = doGet('length'),
+        makeCommand = thricedefer(doMethod)('makeCommand')(null)(utils),
 		parser = thrice(doMethod)('match')(/img\/[a-z]+\.jpe?g$/),
 		doParse = comp(ptL(add, ''), doGet(0), parser),
 		doImagePath = comp(ptL(add, 'img/'), twice(add)('.jpg')),
@@ -127,12 +123,12 @@
         main = document.getElementsByTagName('main')[0],
         remInPlay1 = comp(noshow, getBod, ptL(klasRem, ['inplay', 'playing'], main)),
 		slide_player = {
-			render: function () {
+			execute: function () {
 				checkShowTime()();
 				Looper.onpage = Looper.from(randomSort(_.map(drinks, doImagePath)), doInc(getLength(drinks)));
 			},
-			unrender: function (e) {
-                con('unrender' + e)
+			undo: function (e) {
+                con('undo' + e)
 				Looper.onpage = Looper.from(randomSort(_.map(drinks, doImagePath)), doInc(getLength(drinks)));
 				comp(ptL(utils.setter, utils.$('base'), 'src'), doImagePath)('fc');
 				//noshow();
@@ -141,13 +137,13 @@
 		},
 		getLoopValue = comp(doGet('value'), ptL(doubleGet, Looper, 'onpage')),
 		in_play = thricedefer(doMethod)('findByClass')('inplay')(utils),
-		get_player = ptL(utils.getBest, _.negate(in_play), [slide_player, makeDummy()]),
+		get_player = ptL(utils.getBest, _.negate(in_play), [slide_player, utils.makeCommand()]),
 		nextcaller = twicedefer(getLoopValue)('forward')(null),
 		prevcaller = twicedefer(getLoopValue)('back')(null),
 		getPlaceHolder = ptL(utils.findByClass, 'placeholder'),
 		get_play_iterator = function (flag) {
-			//if we are inplay (ie pause or playing) we neither want to call enter or exit so a dummy object is returned
-			var m = flag ? 'render' : 'unrender',
+			//if we are inplay (ie pause or playing) we neither want to call enter or exit so a dummy command object is returned
+			var m = flag ? 'execute' : 'undo',
 				slider = get_player();
 			slider[m]('foo');
 		},
@@ -292,8 +288,8 @@
 		}({})),
 		clear = _.bind(recur.undo, recur),
 		doplay = _.bind(recur.execute, recur),
-		go_render = thrice(doMethod)('render')(null),
-		go_unrender = thrice(doMethod)('unrender')('bar'),
+		go_execute = thrice(doMethod)('execute')(null),
+		go_undo = thrice(doMethod)('undo')('bar'),
 		addInPlay = ptL(klasAdd, 'inplay', main),
 		addPlaying = ptL(klasAdd, 'playing', main),
 		remPlaying = ptL(klasRem, 'playing', main),
@@ -328,39 +324,39 @@
 			]);
 			return onLoad(img, 'img/pause.png');
 		},
-        $controller = makeDummy(),//must be OUTSIDE factory
-		factory = function () {
-            con('fact')
-			var doExitShow = ptL(utils.doWhen, in_play, thrice(lazyVal)('unrender')(slide_player)),
-                jusUnrender = comp(go_unrender, utils.always($controller)),
-                
-				doAlt = comp(twice(doInvoke)(null), utils.getZero, thrice(doMethod)('reverse')(null)),
-				deferAlt = defer_once(doAlt),
+        //$controller = utils.makeCommand(),//must be OUTSIDE factory
+		factory = function (flag) {
+            con(flag)
+			var doAlt = comp(twice(doInvoke)(null), utils.getZero, thrice(doMethod)('reverse')(null)),
+                deferAlt = defer_once(doAlt),
 				defEach = thricedefer(doCallbacks)('each'),
 				doSlide = deferAlt([clear, doplay]),
 				doPlaying = deferAlt([remPlaying, addPlaying]),
-				doDisplay = deferAlt([function () {}, addInPlay]),
+                doDisplay = deferAlt([function () {}, addInPlay]),
+                doExitShow = ptL(utils.doWhen, flag, thrice(lazyVal)('undo')(slide_player)),
+                justUndo = comp(go_undo, utils.always(utils.command)),				
 				invoke_player = defEach([doSlide, doPlaying, doDisplay])(getResult),
-				do_invoke_player = comp(ptL(eventing, 'click', event_actions.slice(0), invoke_player), getPlaceHolder),
-				doReLocate = ptL(utils.doWhen, $$('base'), ptL(lazyVal, null, locate, 'render')),
-				
-                myprevcaller = utils.getBest(showtime, [prevcaller, utils.always('img/fc.jpg')]),
+				do_invoke_player = comp(ptL(eventing, 'click', event_actions.slice(0), invoke_player), comp(ptL(utils.climbDom, 1), getPlaceHolder)),
+				doReLocate = ptL(utils.doWhen, in_play, ptL(lazyVal, null, locate, 'execute')),
+				//doReLocate = ptL(lazyVal, null, locate, 'execute'),
+                doShow = ptL(utils.doWhen, _.negate(utils.always(flag)), show),
+                //myprevcaller = utils.getBest(showtime, [prevcaller, utils.always('img/fc.jpg')]),
                 
-				farewell = [jusUnrender, doExitShow, doReLocate, defEach([remPause, remSlide])(getResult)],
+				farewell = [doReLocate, doExitShow, justUndo, doShow, defEach([remPause, remSlide])(getResult)],
                 
 				next_driver = defEach([get_play_iterator, defer_once(clear)(true), twicedefer(loader)('base')(nextcaller)].concat(farewell))(getResult),
                 
 				prev_driver = defEach([get_play_iterator, defer_once(clear)(true), twicedefer(loader)('base')(prevcaller)].concat(farewell))(getResult),
                 
 				controller = function () {
-					var unlocate = thricedefer(doMethod)('unrender')(null)(locate);
+					var unlocate = thricedefer(doMethod)('undo')(null)(locate);
 					//make BOTH slide and pause but only make pause visible on NOT playing
 					if (!$('slide')) {
 						//swap out fc.jpg for first image IF not in "showtime"
 						if (!showtime()) {
 							locate.invoke();
 						}
-						$controller = doMakeSlide('base', 'slide', go_render, do_invoke_player, unlocate);
+						utils.command = doMakeSlide('base', 'slide', go_execute, do_invoke_player, unlocate);
 						doMakePause();
 					}
 				},
@@ -378,19 +374,18 @@
 							}
 						},
 						validate: function(str) {
-                            con(str);
 							if (in_play() && recur.t && test(str)) {
 								con('clear');
 								//return fresh instance on exiting slideshow IF in play mode
 								clear();
-								return factory();
+								return factory(true);
 							}
 							return this;
 						}
 					};
 				},
-				mynext = COR(ptL(invokeArgs, equals, 'forwardbutton'), next_driver),
-				myprev = COR(ptL(invokeArgs, equals, 'backbutton'), prev_driver),
+				mynext = COR(ptL(invokeArgs, equals, 'forwardbutton'), comp(makeCommand, next_driver)),
+				myprev = COR(ptL(invokeArgs, equals, 'backbutton'), comp(makeCommand, prev_driver)),
 				myplayer = COR(function () {
 					controller();
 					return true;
@@ -415,12 +410,13 @@
 			chain = chain.validate(str);
 			chain.handle(str);
 		}
-	}, $('controls')).render();
-	locate.render();
+	}, $('controls')).execute();
+	locate.execute();
 	eventing('submit', event_actions.slice(0, 1), function (e) {
 		utils.addClass('hide', e.target);
 		comp(ptL(utils.setAttributes, config), twice(doInvoke)('img'), anCr, drill(['parentNode']), utils.setText('Bartender!'), twice(doInvoke)('h3'), anCr, anCr(e.target.parentNode))('section');
-	}, document.forms[0]).render();
+	}, document.forms[0]).execute();
+    
 	Looper.onpage = Looper.from(randomSort(_.map(drinks, doImagePath)), doInc(getLength(drinks)));
 }({
 	src: 'img/cbook.jpg'
