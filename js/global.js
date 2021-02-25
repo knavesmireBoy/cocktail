@@ -1309,13 +1309,16 @@ speakEasy.Util = (function() {
 			return getResult(x) === getResult(y);
 		},
 		lsThan: lsThan,
-        makeCommand: function(){
-            var ret = {
+        makeCommand: function(flag){
+            var dummy = {
 			execute: function () {},
 			undo: function () {}
 		};
-            speakEasy.Util.command = ret;
-            return ret;
+            if(flag){
+              speakEasy.Util.command = dummy;
+            }
+            return dummy;
+            
         },
 		machElement: machElement,
 		makeElement: makeElement,

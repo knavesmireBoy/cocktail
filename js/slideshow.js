@@ -89,6 +89,7 @@
 	var utils = speakEasy.Util,
 		ptL = _.partial,
 		comp = _.compose,
+        always = utils.always,
 		con = window.console.log.bind(window),
 		Looper = speakEasy.Iterator,
 		doCurry = utils.curryFactory,
@@ -183,6 +184,7 @@
 		},
 		locate = eventing('click', event_actions.slice(0), function (e) {
 			checkShowTime()();
+            con('hello')
 			locator(twicedefer(loader)('base')(nextcaller), twicedefer(loader)('base')(prevcaller))(e)[1]();
 		}, getPlaceHolder),
 		recur = (function (player) {
@@ -326,27 +328,27 @@
 		},
         //$controller = utils.makeCommand(),//must be OUTSIDE factory
 		factory = function (flag) {
-            con(flag)
+            utils.makeCommand();
 			var doAlt = comp(twice(doInvoke)(null), utils.getZero, thrice(doMethod)('reverse')(null)),
                 deferAlt = defer_once(doAlt),
 				defEach = thricedefer(doCallbacks)('each'),
 				doSlide = deferAlt([clear, doplay]),
 				doPlaying = deferAlt([remPlaying, addPlaying]),
                 doDisplay = deferAlt([function () {}, addInPlay]),
-                doExitShow = ptL(utils.doWhen, flag, thrice(lazyVal)('undo')(slide_player)),
-                justUndo = comp(go_undo, utils.always(utils.command)),				
+                doExitShow = ptL(utils.doWhen, $$('slide'), thrice(lazyVal)('undo')(slide_player)),
+                justUndo = ptL(utils.doWhen, $$('slide'), comp(go_undo, utils.always(utils.command))),				
 				invoke_player = defEach([doSlide, doPlaying, doDisplay])(getResult),
 				do_invoke_player = comp(ptL(eventing, 'click', event_actions.slice(0), invoke_player), comp(ptL(utils.climbDom, 1), getPlaceHolder)),
-				doReLocate = ptL(utils.doWhen, in_play, ptL(lazyVal, null, locate, 'execute')),
+				doReLocate = ptL(utils.doWhen, $$('slide'), ptL(lazyVal, null, locate, 'execute')),
 				//doReLocate = ptL(lazyVal, null, locate, 'execute'),
-                doShow = ptL(utils.doWhen, _.negate(utils.always(flag)), show),
+                doShow = ptL(utils.doWhen, _.negate($$('slide')), show),
                 //myprevcaller = utils.getBest(showtime, [prevcaller, utils.always('img/fc.jpg')]),
                 
 				farewell = [doReLocate, doExitShow, justUndo, doShow, defEach([remPause, remSlide])(getResult)],
                 
-				next_driver = defEach([get_play_iterator, defer_once(clear)(true), twicedefer(loader)('base')(nextcaller)].concat(farewell))(getResult),
+				next_driver = defEach([defer_once(clear)(true), twicedefer(loader)('base')(nextcaller)].concat(farewell))(getResult),
                 
-				prev_driver = defEach([get_play_iterator, defer_once(clear)(true), twicedefer(loader)('base')(prevcaller)].concat(farewell))(getResult),
+				prev_driver = defEach([defer_once(clear)(true), twicedefer(loader)('base')(prevcaller)].concat(farewell))(getResult),
                 
 				controller = function () {
 					var unlocate = thricedefer(doMethod)('undo')(null)(locate);
@@ -384,8 +386,8 @@
 						}
 					};
 				},
-				mynext = COR(ptL(invokeArgs, equals, 'forwardbutton'), comp(makeCommand, next_driver)),
-				myprev = COR(ptL(invokeArgs, equals, 'backbutton'), comp(makeCommand, prev_driver)),
+				mynext = COR(ptL(invokeArgs, equals, 'forwardbutton'), next_driver),
+				myprev = COR(ptL(invokeArgs, equals, 'backbutton'), prev_driver),
 				myplayer = COR(function () {
 					controller();
 					return true;
