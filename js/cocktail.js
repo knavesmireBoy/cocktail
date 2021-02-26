@@ -57,7 +57,11 @@
 			c5: 'moscow_mule'
 		},
 		utils = speakEasy.Util,
-		//con = window.console.log.bind(window),
+		con = window.console.log.bind(window),
+        con2 = function(arg){
+            con(arg);
+            return arg;
+        },
 		ptL = _.partial,
 		doComp = _.compose,
 		curryFactory = utils.curryFactory,
@@ -115,7 +119,7 @@
 			_.each(instr[page][1], ptL(tagFactory, 'li', doComp(doText, $cb1)));
 			$showtime();
 		},
-		unDoIt = doComp($noShowtime, utils.removeNodeOnComplete, utils.getZero, ptL(utils.getByClass, 'csstabs', document));
+		unDoIt = doComp($noShowtime, ptL(utils.climbDom, 2), utils.removeNodeOnComplete, utils.getZero, ptL(utils.getByClass, 'csstabs', document));
 	eventing('click', event_actions.slice(0, 1), doAltRecipe([doIt, unDoIt]), doComp(ptL(utils.byIndex, 0), ptL(utils.getByTag, 'h2', document))).execute();
 	_.each(utils.getByTag('a', $('nav')), ptL(utils.invokeWhen, utils.getNext, doComp(utils.removeNodeOnComplete, utils.getNext)));
 }());

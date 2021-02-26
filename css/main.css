@@ -173,6 +173,7 @@ main aside a {
 	z-index: 1;
 	text-shadow: 3px 3px 2px rgb(100, 0, 0);
 	top: 1em;
+    font-weight: bold;
 }
 main article h2 {
 	background-color: transparent;
@@ -232,7 +233,7 @@ a:hover {
 	position: absolute;
 	left: -999em;
 }
-.showtime main aside {
+main.showtime aside {
 	overflow: hidden;
 }
 
@@ -243,12 +244,15 @@ p:nth-of-type(odd) strong {
 	color: white;
 }
 
-.showtime main aside div, .showtime main aside img {
+main.showtime aside div, main.showtime aside img {
 	height: 100%;
+    transition: height 7s;
 }
-.showtime main aside img {
+
+main aside img {
 	position: relative;
 	object-fit: cover;
+    height: 30%;
 }
 
 nav ul>li>a {
@@ -285,11 +289,11 @@ main article p:nth-of-type(odd) {
 }
 
 p em, main article p strong {
-    color: hsl(65, 100%, 70%);
+    color: white;
 }
 
 p:nth-of-type(odd) em, p:nth-of-type(odd) strong {
-    color: white;
+    color: hsl(65, 80%, 70%);
 }
 
 .show main article .csstabs {
