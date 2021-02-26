@@ -29,7 +29,7 @@
 			],
 			martini: [
 				["Fill a metal shaker with cracked ice.", "Pour in the dry vermouth (we prefer Noilly Prat), stir briefly, and strain out (this may be discarded).", "Add 4 ounces gin (we prefer Tanqueray, Bombay Sapphire, Beefeater) -- you want it around 94-proof.", "Stir briskly for about 10 seconds, strain into chilled cocktail glass, and garnish with an olive."],
-				["<a href='.'>Martini</a>", "4 oz gin", "1 Dry Vermouth", "<b>Cocktail Glass</b>"]
+				["<a href='.'>Martini</a>", "4 oz gin", "1 Dry Vermouth", "<b>Cocktail Glass</b>"], ['Por baby purr']
 			],
 			sidecar: [
 				["Shake well with cracked ice, then strain into a chilled cocktail glass that has had its outside rim rubbed with lemon juice and dipped in sugar"],
@@ -77,10 +77,11 @@
 		mytarget = !window.addEventListener ? 'srcElement' : 'target',
 		getTAB = utils.drillDown(['parentNode', 'parentNode']),
 		getTarget = utils.drillDown([mytarget]),
+        
 		id_from_target = doComp(doGet('id'), utils.drillDown(['parentNode'])),
-		isTab1 = ptL(utils.invokeWhen, doComp(ptL(utils.isEqual, 'tab1'), id_from_target), doComp(utils.hide, getTAB)),
-		isTab2 = ptL(utils.invokeWhen, doComp(ptL(utils.isEqual, 'tab2'), id_from_target), doComp(utils.show, getTAB)),
-		isRecipe = ptL(utils.getBest, [ptL(utils.findByClass, 'show')], [isTab1, isTab2]),
+		isTab1 = ptL(utils.invokeWhen, doComp(ptL(utils.isEqual, 'tab1'), id_from_target), doComp(ptL(klasRem, 'method'), getTAB)),
+		isTab2 = ptL(utils.invokeWhen, doComp(ptL(utils.isEqual, 'tab2'), id_from_target), doComp(ptL(klasAdd, 'method'), getTAB)),
+		isRecipe = ptL(utils.getBest, [ptL(utils.findByClass, 'method')], [isTab1, isTab2]),
 		$ = thrice(lazyVal)('getElementById')(document),
 		doMap = utils.doMap,
 		doMapBridge = function (el, v, k) {
@@ -99,6 +100,7 @@
 		$id = thrice(doMapBridge)('id'),
 		$tab1 = $id('tab1'),
 		$tab2 = $id('tab2'),
+		$tab3 = $id('tab3'),
 		$root = anCr(mycontent()),
 		$tabcontent = ptL(klasAdd, 'tabcontent'),
 		$tabbox = ptL(klasAdd, 'tabbox'),
@@ -106,17 +108,21 @@
 		$noShowtime = doComp(ptL(klasRem, 'showtime'), utils.drillDown(['parentNode']), mycontent),
 		doIt = function () {
 			var $node = anCr(doComp(doGetEl, doExec, toggler, ptL(klasAdd, 'csstabs'), $root)('div')),
+				$ancr33 = anCr(doComp($tab3, $tabbox, $node)('div')),
 				$ancr2 = anCr(doComp($tab2, $tabbox, $node)('div')),
 				$ancr1 = anCr(doComp($tab1, $tabbox, $node)('div')),
+                
 				/*$ancr3, and $recipe are not used but must run in this sequence*/
+                 $serve = anCr(doComp(twice(invoke)('Serving Suggestion'), doText, $ancr33)('h3')),
 				$ancr3 = anCr(doComp(twice(invoke)('Method'), doText, $ancr2)('h3')),
 				$recipe = anCr(doComp(twice(invoke)('Recipe'), doText, $ancr1)('h3')),
-				//$serve = anCr(doComp(twice(invoke)('Serving Suggestion'), doText, $ancr2)('h3')),
+               $cb3 = anCr(doComp($tabcontent, $ancr33)('section')),
 				$cb1 = anCr(doComp($tabcontent, $ancr1)('div')),
 				$cb2 = anCr(doComp($tabcontent, $ancr2)('ul')),
 				page = lookup[utils.getBody().id];
 			_.each(instr[page][0], ptL(tagFactory, 'p', doComp(doText, $cb2)));
 			_.each(instr[page][1], ptL(tagFactory, 'li', doComp(doText, $cb1)));
+			_.each(instr[page][2], ptL(tagFactory, 'p', doComp(doText, $cb3)));
 			$showtime();
 		},
 		unDoIt = doComp($noShowtime, ptL(utils.climbDom, 2), utils.removeNodeOnComplete, utils.getZero, ptL(utils.getByClass, 'csstabs', document));

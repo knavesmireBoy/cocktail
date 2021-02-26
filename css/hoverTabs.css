@@ -1,8 +1,7 @@
 .csstabs {
 	margin: 2em 0 0;
-	max-width: 600px;
+	max-width: 700px;
 }
-
 
 .csstabs>* {
 	float: left;
@@ -35,7 +34,7 @@
 	z-index: 1;
 	display: inline-block;
 	box-sizing: border-box;
-	width: 49%;
+	width: 32%;
 }
 
 .csstabs li {
@@ -56,15 +55,18 @@
 	margin: 0 0 2em;
 }
 
-#tab1 {
+#tab1, #tab2 {
 	margin-left: -100%;
 }
 
 #tab2 h3 {
-	left: 51%;
+	left: 34%;
+}
+#tab3 h3 {
+	left: 68%;
 }
 
-#tab2 ul {
+#tab2 ul, #tab3 section {
 	opacity: 0;
 }
 
@@ -72,26 +74,26 @@
 	transition: opacity 1s ease-in;
 }
 
-.csstabs.show #tab1 .tabcontent{
+.csstabs.method #tab1 .tabcontent{
 	opacity: 0;
 }
 
-.show #tab2 ul{
+.method #tab2 ul{
 	transition: opacity 1s ease-in;
 }
 
-#tab1 h3, .show #tab2 h3, .no-js #tab2 h3:hover{
+#tab1 h3, .method #tab2 h3, .no-js #tab2 h3:hover{
 	border-bottom-color: black;
 }
 
-.show #tab2 h3, .no-js #tab2 h3:hover {
+.method #tab2 h3, .no-js #tab2 h3:hover {
 	z-index: 3;
 }
 
-.show #tab2 h3+ul, .no-js #tab2 h3:hover+ul{
+.method #tab2 h3+ul, .no-js #tab2 h3:hover+ul{
 	opacity: 1;
 	z-index: 2;
 }
-#tab2.show+#tab1 ul {
+#tab2.method+#tab1 ul {
     opacity: .5;
 }
