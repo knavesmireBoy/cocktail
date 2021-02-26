@@ -62,22 +62,21 @@ footer {
 	z-index: 1;
 	box-sizing: border-box;
 }
+i, cite, b, footer, footer a {
+	color: #c0c0c0;
+}
 blockquote em {
 	font-size: .85rem;
 	font-style: normal;
 	color: snow;
 }
-blockquote em span {
-	color: rgb(255, 251, 116);
-}
+
 p strong {
 	text-transform: uppercase;
 	font-size: .75rem;
 	font-weight: normal;
 }
-i, cite, b, footer, footer a {
-	color: #c0c0c0;
-}
+
 div>img {
 	width: 100%;
 	height: auto;
@@ -92,12 +91,7 @@ header aside {
 	background-repeat: no-repeat;
 	background-size: contain;
 }
-header aside h2 {
-	text-align: right;
-}
-header aside a {
-	color: snow;
-}
+
 blockquote:before {
 	content: '_';
 	display: block;
@@ -119,6 +113,7 @@ blockquote:after {
 	position: relative;
 	top: 19px;
 }
+
 nav ul {
 	border-top: 1px solid white;
 	padding-left: 2%;
@@ -127,6 +122,67 @@ nav ul {
 	background-image: linear-gradient(transparent, black);
 	display: flex;
 	width: 100%;
+}
+
+main aside {
+	flex: 1 1 220px;
+	min-width: 320px;
+	box-sizing: border-box;
+	position: relative;
+}
+main article {
+	flex: 5 1 0;
+	box-sizing: border-box;
+	position: relative;
+}
+main article {
+	padding: 3em 4em 32em 2rem;
+	border: dotted 1px white;
+	border-width: 0 0 0 1px;
+}
+main aside, main article {
+	margin-bottom: -30em;
+}
+
+header aside h2 {
+	text-align: right;
+}
+header aside a {
+	color: snow;
+}
+blockquote em span {
+	color: rgb(255, 251, 116);
+}
+
+main aside div {
+	margin-top: -2rem;
+}
+main aside img {
+	display: block;
+}
+main aside a {
+	color: rgba(255, 255, 255, .9);
+	font-size: 2em;
+	text-align: center;
+	display: block;
+	position: relative;
+	z-index: 1;
+	text-shadow: 3px 3px 2px rgb(100, 0, 0);
+	top: 1em;
+}
+main article h2 {
+	background-color: transparent;
+	background-repeat: no-repeat;
+	float: right;
+	height: 111px;
+	width: 111px;
+	shape-outside: circle(50%);
+	border-radius: 50%;
+	border: solid 10px black;
+	filter: grayscale(80%);
+}
+main article p {
+	font-size: 1em
 }
 nav ul>li {
 	position: relative;
@@ -149,6 +205,7 @@ nav ul>li a {
 	color: rgba(255, 255, 255, .8);
 	white-space: nowrap;
 }
+
 .hide {
 	display: none;
 }
@@ -162,73 +219,36 @@ nav ul>li a {
 body.show {
 	margin: 3em;
 }
-.sidebar {
-	flex: 1 1 220px;
-	min-width: 320px;
-	box-sizing: border-box;
-	position: relative;
-}
-.content {
-	flex: 5 1 0;
-	box-sizing: border-box;
-	position: relative;
-}
-.content {
-	padding: 3em 4em 32em 2rem;
-	border: dotted 1px white;
-	border-width: 0 0 0 1px;
-}
-.sidebar, .content {
-	margin-bottom: -30em;
-}
-.sidebar div {
-	margin-top: -2rem;
-}
-.sidebar img {
-	display: block;
-}
-.sidebar a {
-	color: rgba(255, 255, 255, .9);
-	font-size: 2em;
-	text-align: center;
-	display: block;
-	position: relative;
-	z-index: 1;
-	text-shadow: 3px 3px 2px rgb(100, 0, 0);
-	top: 1em;
-}
-.content h2 {
-	background-color: transparent;
-	background-repeat: no-repeat;
-	float: right;
-	height: 111px;
-	width: 111px;
-	shape-outside: circle(50%);
-	border-radius: 50%;
-	border: solid 10px black;
-	filter: grayscale(80%);
-}
 h2:hover {
 	filter: none;
 }
-/*
-h1, h2, legend, li a, .sidebar a {
-	font-family: cochin, 'latin_modern_roman10_bold', serif;
-}
-*/
 
-.content p {
-	font-size: 1em
-}
 a:hover {
 	color: white;
 }
+.show main article>* {
+	position: absolute;
+	left: -999em;
+}
+.showtime main aside {
+	overflow: hidden;
+}
+
 h1 em:hover {
 	color: cyan;
 }
 p:nth-of-type(odd) strong {
 	color: white;
 }
+
+.showtime main aside div, .showtime main aside img {
+	height: 100%;
+}
+.showtime main aside img {
+	position: relative;
+	object-fit: cover;
+}
+
 nav ul>li>a:hover {
 	text-decoration: none;
 	opacity: .5
@@ -236,24 +256,8 @@ nav ul>li>a:hover {
 nav ul li:hover ul {
 	left: auto;
 }
-.show .content>* {
-	position: absolute;
-	left: -999em;
-}
-.showtime .sidebar {
-	overflow: hidden;
-}
-.showtime .sidebar div, .showtime .sidebar img {
-	height: 100%;
-}
-.showtime .sidebar img {
-	position: relative;
-	object-fit: cover;
-}
-.content p:nth-of-type(odd) {
-	color: white;
-}
-.content>p:first-child::first-letter {
+
+main article>p:first-child::first-letter {
 	color: white;
 	font-size: 300%;
 	line-height: 1.1;
@@ -262,7 +266,13 @@ nav ul li:hover ul {
 	float: left;
 	border: solid 1px magenta;
 }
-.show .content .csstabs {
+
+
+main article p:nth-of-type(odd) {
+	color: white;
+}
+
+.show main article .csstabs {
 	position: relative;
 	left: 0;
 }
@@ -312,10 +322,10 @@ body#c1, body#c2, body#c3, body#c4, body#c5, body#c6 {
 	font-weight: 700;
 }
 @media only screen and (max-width: 1024px) {
-	.sidebar div, .sidebar img {
+	main aside div, main aside img {
 		height: 100%;
 	}
-	.sidebar img {
+	main aside img {
 		position: relative;
 		object-fit: cover;
 	}
@@ -341,6 +351,17 @@ body#c1, body#c2, body#c3, body#c4, body#c5, body#c6 {
 		background-size: 60%;
 		background-position: 0 0;
 	}
+    main aside {
+		position: static;
+		border-width: 0;
+	}
+	main aside, main article {
+		margin-bottom: 0px;
+	}
+	main article {
+		padding: 4em 2em 1em;
+		border-width: 0;
+	}
 	nav ul {
 		position: absolute;
 		top: 4rem;
@@ -358,23 +379,21 @@ body#c1, body#c2, body#c3, body#c4, body#c5, body#c6 {
 		font-size: 0;
 		transition: height .9s ease-out;
 	}
-	nav ul li a {
+	
+	main aside img {
+		display: none;
+	}
+	main aside>a {
+		position: absolute;
+		left: 22%;
+		top: 1rem;
+	}
+    nav ul li a {
 		padding: 0;
 		background-color: transparent;
 		color: rgba(239, 251, 116, 0.88);
 	}
-	.sidebar {
-		position: static;
-		border-width: 0;
-	}
-	.sidebar, .content {
-		margin-bottom: 0px;
-	}
-	.content {
-		padding: 4em 2em 1em;
-		border-width: 0;
-	}
-	.menu {
+    .menu {
 		background: 50% 0% url("../img/polo_ball_sprite.png") no-repeat;
 		-o-background-size: 105%;
 		-moz-background-size: 100%;
@@ -385,14 +404,6 @@ body#c1, body#c2, body#c3, body#c4, body#c5, body#c6 {
 		-webkit-transition: transform 1s;
 		-o-transition: transform 1s;
 		transition: transform 1s;
-	}
-	.sidebar img {
-		display: none;
-	}
-	.sidebar>a {
-		position: absolute;
-		left: 22%;
-		top: 1rem;
 	}
 	.menu:hover {
 		background-position: 50% 100%;

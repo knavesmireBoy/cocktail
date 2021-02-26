@@ -3,29 +3,24 @@
 	max-width: 600px;
 }
 
-.csstabs:after {
-	content: "";
-	display: table;
-	clear: both;
+
+.csstabs>* {
+	float: left;
+	width: 100%;
 }
 
-#tab1 {
-	margin: 0 0 2em;
-}
 .tabcontent {
 	border: 1px solid white;
 	padding: 1em;
 	font-size: 1em;
 	position: relative;
 }
-.csstabs.show #tab1 .tabcontent{
-	opacity: 0;
+.csstabs:after {
+	content: "";
+	display: table;
+	clear: both;
 }
 
-.csstabs>* {
-	float: left;
-	width: 100%;
-}
 .csstabs h3 {
 	font-size: 1em;
 	padding: .75em 0;
@@ -56,8 +51,9 @@
 	font-weight: bold;
 }
 
-.no-js .csstabs:hover ul, .show #tab2 ul{
-	transition: opacity 1s ease-in;
+
+#tab1 {
+	margin: 0 0 2em;
 }
 
 #tab1 {
@@ -71,19 +67,31 @@
 #tab2 ul {
 	opacity: 0;
 }
-#tab2.show+#tab1 ul {
-    opacity: .5;
+
+.no-js .csstabs:hover ul{
+	transition: opacity 1s ease-in;
 }
 
-#tab1 h3, .no-js #tab2 h3:hover,  .show #tab2 h3 {
+.csstabs.show #tab1 .tabcontent{
+	opacity: 0;
+}
+
+.show #tab2 ul{
+	transition: opacity 1s ease-in;
+}
+
+#tab1 h3, .show #tab2 h3, .no-js #tab2 h3:hover{
 	border-bottom-color: black;
 }
 
-.no-js #tab2 h3:hover,  .show #tab2 h3 {
+.show #tab2 h3, .no-js #tab2 h3:hover {
 	z-index: 3;
 }
 
-.no-js #tab2 h3:hover+ul,  .show #tab2 h3+ul{
+.show #tab2 h3+ul, .no-js #tab2 h3:hover+ul{
 	opacity: 1;
 	z-index: 2;
+}
+#tab2.show+#tab1 ul {
+    opacity: .5;
 }
