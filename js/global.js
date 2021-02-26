@@ -180,7 +180,7 @@ speakEasy.Util = (function() {
 	}
 
 	function mittleInvoke(m, arg, o) {
-		//console.log(arguments);
+		o = o || document;
 		return getResult(o)[m](arg);
 	}
 

@@ -76,26 +76,15 @@
 			c5: 'cosmo'
 		},
 		utils = speakEasy.Util,
-		con = window.console.log.bind(window),
-		con2 = function(arg) {
-			con(arg);
-			return arg;
-		},
+		//con = window.console.log.bind(window),
 		ptL = _.partial,
 		doComp = _.compose,
-		Looper = speakEasy.LoopIterator,
 		curryFactory = utils.curryFactory,
 		event_actions = ['preventDefault', 'stopPropagation', 'stopImmediatePropagation'],
 		eventing = utils.eventer,
-		once = utils.doOnce(),
-		defer_once = curryFactory(1, true),
 		twice = curryFactory(2),
-		twicedefer = curryFactory(2, true),
 		thrice = curryFactory(3),
-		thricedefer = curryFactory(3, true),
 		anCr = utils.append(),
-		anCrWait = utils.append(true),
-		anCrIn = utils.insert(),
 		klasAdd = utils.addClass,
 		klasRem = utils.removeClass,
 		doAltRecipe = utils.doAlternate(),
@@ -108,12 +97,7 @@
 		isTab2 = ptL(utils.invokeWhen, doComp(ptL(utils.isEqual, 'tab2'), id_from_target), doComp(utils.show, getTAB)),
 		isRecipe = ptL(utils.getBest, [ptL(utils.findByClass, 'show')], [isTab1, isTab2]),
 		$ = thrice(lazyVal)('getElementById')(document),
-		$$ = thricedefer(lazyVal)('getElementById')(document),
 		doMap = utils.doMap,
-		getRecipe = thrice(doMethod)('match')(/.+recipe\.html$/),
-		doInc = function(n) {
-			return doComp(ptL(modulo, n), increment);
-		},
 		doMapBridge = function(el, v, k) {
 			return doMap(el, [
 				[k, v]
@@ -125,10 +109,9 @@
 		tagFactory = function(tag, ptl, txt) {
 			ptl(tag)(txt);
 		},
-		mycontent = doComp(utils.getZero, ptL(utils.getByClass, 'content')),
+		mycontent = doComp(utils.getZero, ptL(utils.getByTag, 'article')),
 		toggler = ptL(eventing, 'click', event_actions.slice(0, 1), doComp(invoke, isRecipe, getTarget)),
 		$id = thrice(doMapBridge)('id'),
-		$csstabs = $id('csstabs'),
 		$tab1 = $id('tab1'),
 		$tab2 = $id('tab2'),
 		$root = anCr(mycontent()),
@@ -140,6 +123,7 @@
 			var $node = anCr(doComp(doGetEl, doExec, toggler, ptL(klasAdd, 'csstabs'), $root)('div')),
 				$ancr2 = anCr(doComp($tab2, $tabbox, $node)('div')),
 				$ancr1 = anCr(doComp($tab1, $tabbox, $node)('div')),
+                /*$ancr3, and $recipe are not used but must run in this sequence*/
 				$ancr3 = anCr(doComp(twice(invoke)('Method'), doText, $ancr2)('h3')),
 				$recipe = anCr(doComp(twice(invoke)('Recipe'), doText, $ancr1)('h3')),
 				$cb1 = anCr(doComp($tabcontent, $ancr1)('div')),
