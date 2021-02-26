@@ -261,12 +261,14 @@ nav ul>li>a:hover {
 }
 
 nav>ul>li>a:hover {
+	color: white;
+}
+
+nav>ul>li>a:hover {
 	text-decoration: none;
 	opacity: .5;
 }
-nav ul li:hover ul {
-	left: auto;
-}
+
 
 main article>p:first-child::first-letter {
 	color: white;
@@ -304,6 +306,8 @@ body#c1, body#c2, body#c3, body#c4, body#c5, body#c6 {
 	background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
 	background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
 }
+
+
 #c1 h2 {
 	background-image: url('../img/martini.jpg');
 	background-position: 50% 30%;
@@ -337,6 +341,11 @@ body#c1, body#c2, body#c3, body#c4, body#c5, body#c6 {
 #c1 nav>ul>li:nth-child(1)>a, #c2 nav>ul>li:nth-child(6)>a, #c3 nav > ul>li:nth-child(3)>a, #c4 nav > ul>li:nth-child(5)>a, #c5 nav> ul>li:nth-child(2)>a, #c6 nav>ul>li:nth-child(4)>a {
 	color: white;
 }
+/*restrict drop down to current page OR alter html*/
+#c1 nav>ul>li:nth-child(1):hover a+ul, #c2 nav>ul>li:nth-child(6):hover a+ul, #c3 nav > ul>li:nth-child(3):hover a+ul, #c4 nav > ul>li:nth-child(5):hover a+ul, #c5 nav> ul>li:nth-child(2):hover a+ul, #c6 nav>ul>li:nth-child(4):hover a+ul {
+	left: auto;
+}
+
 
 nav ul>li>a:hover + ul {
     color: red !important;
