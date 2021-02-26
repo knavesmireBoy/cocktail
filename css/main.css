@@ -10,9 +10,8 @@
 	text-shadow: none;
 }
 body {
-	color: rgb(255, 251, 116);
+	color: hsl(65, 80%, 70%);
 	font-family: cochin, 'latin_modern_roman10_regular', serif;
-	font-size: 1em;
 	line-height: 1.2;
 	background-color: black;
 	box-sizing: border-box;
@@ -55,6 +54,12 @@ p {
 em {
 	font-family: cochin, 'latin_modern_roman10BdIt', serif;
 }
+nav {
+    font-size: 1.2rem;
+}
+nav ul ul {
+    font-size: 1rem;
+}
 footer {
 	border-top: 1px solid white;
 	clear: both;
@@ -73,7 +78,6 @@ blockquote em {
 
 p strong {
 	text-transform: uppercase;
-	font-size: .75rem;
 	font-weight: normal;
 }
 
@@ -114,7 +118,7 @@ blockquote:after {
 	top: 19px;
 }
 
-nav ul {
+nav > ul {
 	border-top: 1px solid white;
 	padding-left: 2%;
 	position: relative;
@@ -182,12 +186,10 @@ main article h2 {
 	filter: grayscale(80%);
 }
 main article p {
-	font-size: 1em
 }
 nav ul>li {
 	position: relative;
 	white-space: nowrap;
-	font-size: 1.2em;
 	text-align: center;
 	z-index: 2;
 	flex: 1 0 0;
@@ -199,7 +201,7 @@ nav ul li ul {
 	width: 100%;
 	background: rgba(204, 0, 204, 0.5) linear-gradient(black, transparent);
 }
-nav ul>li a {
+nav>ul>li a {
 	display: block;
 	padding: .5em 1em;
 	color: rgba(255, 255, 255, .8);
@@ -249,9 +251,18 @@ p:nth-of-type(odd) strong {
 	object-fit: cover;
 }
 
+nav ul>li>a {
+text-shadow: 3px 3px 2px #000;
+font-weight: bold;
+}
+
 nav ul>li>a:hover {
+	color: hsl(65, 80%, 70%);
+}
+
+nav>ul>li>a:hover {
 	text-decoration: none;
-	opacity: .5
+	opacity: .5;
 }
 nav ul li:hover ul {
 	left: auto;
@@ -267,9 +278,16 @@ main article>p:first-child::first-letter {
 	border: solid 1px magenta;
 }
 
-
 main article p:nth-of-type(odd) {
-	color: white;
+	color: whitesmoke;
+}
+
+p em, main article p strong {
+    color: hsl(65, 100%, 70%);
+}
+
+p:nth-of-type(odd) em, p:nth-of-type(odd) strong {
+    color: white;
 }
 
 .show main article .csstabs {
@@ -316,10 +334,12 @@ body#c1, body#c2, body#c3, body#c4, body#c5, body#c6 {
 	background-position: 90% 55%;
 	background-size: 170%;
 }
-#c1 nav ul>li:nth-child(1)>a, #c2 nav ul>li:nth-child(6)>a, #c3 nav ul>li:nth-child(3)>a, #c4 nav ul>li:nth-child(5)>a, #c5 nav ul>li:nth-child(2)>a, #c6 nav ul>li:nth-child(4)>a {
+#c1 nav>ul>li:nth-child(1)>a, #c2 nav>ul>li:nth-child(6)>a, #c3 nav > ul>li:nth-child(3)>a, #c4 nav > ul>li:nth-child(5)>a, #c5 nav> ul>li:nth-child(2)>a, #c6 nav>ul>li:nth-child(4)>a {
 	color: white;
-	text-shadow: 3px 3px 2px #000;
-	font-weight: 700;
+}
+
+nav ul>li>a:hover + ul {
+    color: red !important;
 }
 @media only screen and (max-width: 1024px) {
 	main aside div, main aside img {
