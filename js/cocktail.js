@@ -3,19 +3,8 @@
 /*global speakEasy: false */
 /*global document: false */
 /*global _: false */
-(function() {
+(function () {
 	"use strict";
-
-	function getNativeOpacity(bool) {
-		return {
-			getKey: function() {
-				return bool ? 'filter' : Modernizr.prefixedCSS('opacity');
-			},
-			getValue: function(val) {
-				return bool ? 'alpha(opacity=' + val * 100 + ')' : val;
-			}
-		};
-	}
 
 	function setter(v, o, p) {
 		o[p] = v;
@@ -33,14 +22,6 @@
 	function lazyVal(v, o, p) {
 		return doMethod(o, v, p);
 	}
-
-	function modulo(n, i) {
-		return i % n;
-	}
-
-	function increment(i) {
-		return i + 1;
-	}
 	var instr = {
 			margarita: [
 				["Shake well with cracked ice, then strain into a chilled cocktail glass that has had its rim rubbed with lime juice and dipped in coarse salt.", "A note on the <a href='http://www.esquire.com/features/tequila-drinks'>tequila</a>: It should be 100 percent agave, the plant from which the stuff is traditionally made. Save the great golden <em>añejos</em> for sipping.", "A note on the Cointreau: It yields results clearly superior to triple sec, most brands of which are marred by an unpleasant chemical aftertaste."],
@@ -54,7 +35,7 @@
 				["Shake well with cracked ice, then strain into a chilled cocktail glass that has had its outside rim rubbed with lemon juice and dipped in sugar"],
 				["<a href='.'>Sidecar</a>", "1 1/2 ounces cognac", "3/4 ounce Cointreau", "3/4 ounce lemon juice", "<b>Cocktail Glass</b>"]
 			],
-			maitai: [
+			mai_tai: [
 				['Stir the rum, lime juice, curaçao, orgeat syrup (an almond syrup sometimes inflicted on coffee; for all we know, you can pick some up at your local Starbucks), and "rock candy syrup" (no more than sugar syrup -- look that up in your <i>Joy of Cooking</i> -- made with a couple drops of vanilla extract) with cracked ice in a chilled cocktail shaker.', 'Shake well and pour unstrained into a large Collins glass (or, of course, tiki mug). If making two or more, you might want to strain the mixture into the glasses, <i>then</i> pour in the ice (to ensure even distribution). Garnish with half a lime shell and sprig of mint.'],
 				['<a href="../c6/">Mai Tai</a>', '2 oz rum -- dark rum<', '1 ounce lime juice,.', '1/2 oz orange curacao', '1.2 oz orgeat syrup', '1/8 oz simple syrup', '<b>Large collins glass</b>']
 			],
@@ -62,7 +43,7 @@
 				["Representing the High Kentucky School of Julepistics)", "Place 5 or 6 leaves of mint in the bottom of a prechilled, dry 12-ounce glass or silver beaker. Add sugar and crush slightly with a muddler. Pack glass with finely cracked ice. Pour a generous 3 ounces of Kentucky bourbon over the ice. Stir briskly until the glass frosts. Add more ice and stir again before serving.  Stick a few sprigs of mint into the ice so that the partaker will get the aroma.", "Still not enough mint flavor? Try this: For each julep, lightly cover about 10 sprigs of mint with superfine sugar, add an ounce of spring water, macerate, let stand for 10-15 minutes, and strain through a fine sieve into the ice-filled glass. Then add whiskey and proceed as above. If you'll stoop to maceration, you might also want to float 1/2 ounce of dark Jamaica rum on top."],
 				['<a href="../c4/">Mint Julep</a>', 'Mint', '1 teaspoon sugar', '3 oz whiskey -- bourbon<', '<b>Silver Beaker</b']
 			],
-			cosmo: [
+			moscow_mule: [
 				["Shake ingredients well with cracked ice, then strain into a chilled cocktail glass., ", "Some frost the rim of the glass with sugar, à la the <b>Sidecar</b> This looks great -- looks being the Moscow Mule's strong point -- so why not?", "Some even suggest a dash of orange bitters, if you can get them. Couldn't hurt."],
 				['<a href="../c5/">Moscow Mule', '2 oz vodka', '1 oz Cointreau', '1 oz cranberry juice', 'lime juice', '<b>Cocktail Glass</b>']
 			]
@@ -71,9 +52,9 @@
 			c1: 'martini',
 			c2: 'sidecar',
 			c3: 'margarita',
-			c6: 'maitai',
+			c6: 'mai_tai',
 			c4: 'mintjulep',
-			c5: 'cosmo'
+			c5: 'moscow_mule'
 		},
 		utils = speakEasy.Util,
 		//con = window.console.log.bind(window),
@@ -98,7 +79,7 @@
 		isRecipe = ptL(utils.getBest, [ptL(utils.findByClass, 'show')], [isTab1, isTab2]),
 		$ = thrice(lazyVal)('getElementById')(document),
 		doMap = utils.doMap,
-		doMapBridge = function(el, v, k) {
+		doMapBridge = function (el, v, k) {
 			return doMap(el, [
 				[k, v]
 			]);
@@ -106,7 +87,7 @@
 		doExec = thrice(doMethod)('execute')(null),
 		doGetEl = thrice(doMethod)('getEl')(null),
 		doText = thrice(setter)('innerHTML'),
-		tagFactory = function(tag, ptl, txt) {
+		tagFactory = function (tag, ptl, txt) {
 			ptl(tag)(txt);
 		},
 		mycontent = doComp(utils.getZero, ptL(utils.getByTag, 'article')),
@@ -119,13 +100,14 @@
 		$tabbox = ptL(klasAdd, 'tabbox'),
 		$showtime = doComp(ptL(klasAdd, 'showtime'), utils.drillDown(['parentNode']), mycontent),
 		$noShowtime = doComp(ptL(klasRem, 'showtime'), utils.drillDown(['parentNode']), mycontent),
-		doIt = function() {
+		doIt = function () {
 			var $node = anCr(doComp(doGetEl, doExec, toggler, ptL(klasAdd, 'csstabs'), $root)('div')),
 				$ancr2 = anCr(doComp($tab2, $tabbox, $node)('div')),
 				$ancr1 = anCr(doComp($tab1, $tabbox, $node)('div')),
-                /*$ancr3, and $recipe are not used but must run in this sequence*/
+				/*$ancr3, and $recipe are not used but must run in this sequence*/
 				$ancr3 = anCr(doComp(twice(invoke)('Method'), doText, $ancr2)('h3')),
 				$recipe = anCr(doComp(twice(invoke)('Recipe'), doText, $ancr1)('h3')),
+				//$serve = anCr(doComp(twice(invoke)('Serving Suggestion'), doText, $ancr2)('h3')),
 				$cb1 = anCr(doComp($tabcontent, $ancr1)('div')),
 				$cb2 = anCr(doComp($tabcontent, $ancr2)('ul')),
 				page = lookup[utils.getBody().id];
