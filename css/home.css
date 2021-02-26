@@ -2,37 +2,43 @@
 	padding: 0;
 	margin: 0
 }
-
+ul {
+	list-style: none;
+}
 body {
 	margin: 1em 0 0;
 	background-color: black;
 	background-image: radial-gradient(white, rgba(255, 255, 255, .2) 2px, transparent 40px), radial-gradient(white, rgba(255, 255, 255, .15) 1px, transparent 30px), radial-gradient(white, rgba(255, 255, 255, .1) 2px, transparent 40px), radial-gradient(rgba(255, 255, 255, .4), rgba(255, 255, 255, .1) 2px, transparent 30px);
 	background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
 	background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+	color: rgb(255, 251, 116);
+	font-family: cochin, 'latin_modern_roman10_regular', serif;
+	font-size: 1em;
+	line-height: 1.2;
+	box-sizing: border-box;
 }
-
-body.showtime main {
-    background: gold;
-}
-
-body.showtime main.inplay {
-    background: orange;
-}
-body.showtime main.playing {
-    background: red;
-}
-
 a {
 	color: rgba(204, 0, 204, 1);
 	text-decoration: none;
 }
-a {
-	color: snow;
+header {
+	display: flex;
+	border-bottom: solid 1px white;
 }
-ul {
-	list-style: none;
+main {
+	display: flex;
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	box-sizing: border-box;
 }
-#home h1 {
+main>* {
+	filter: sepia();
+	border-width: 0;
+	flex: 1 1 0;
+	position: relative;
+}
+h1 {
 	margin: 0;
 	padding: 0 0 0 1em;
 	text-shadow: 2px 2px 2px purple;
@@ -41,87 +47,26 @@ ul {
 	position: static;
 	border-width: 0;
 }
-#home h1 span {
-	font-size: 2vw;
-}
 h2 {
 	font-size: 2.5vw;
 	color: rgba(204, 0, 204, 1);
 	text-align: right;
 	line-height: 1.5;
 }
-em {
-	font-family: cochin, 'latin_modern_roman10BdIt', serif;
-}
-ol {
-	padding: 0 0 1em 1em;
-}
-header {
-	display: flex;
-	border-bottom: solid 1px white;
-}
-#home #header {
+section {
 	flex: 1 0 40%;
-}
-header ul {
-	flex: 0 0 auto;
-	margin: 0 1em;
-}
-#home #header {
 	background-image: none;
 	overflow: hidden;
-}
-ul#bar a:link {
-	height: 6.66em;
-	width: 5em;
-	border-right: 1px dotted white;
-	background: no-repeat 0 100%;
-	background-size: cover;
-	display: block;
-}
-ul#bar li:nth-child(1) a {
-	background-image: url("../img/gin_s.png")
-}
-ul#bar li:nth-child(2) a {
-	background-image: url("../img/vodka_s.png")
-}
-ul#bar li:nth-child(3) a {
-	background-image: url("../img/tequila_s.png")
-}
-ul#bar li:nth-child(4) a {
-	background-image: url("../img/rum_s.png")
-}
-ul#bar li:nth-child(5) a {
-	background-image: url("../img/bourbon_s.png")
-}
-ul#bar li:nth-child(6) a {
-	background-image: url("../img/cognac_s.png");
-	border-width: 0;
-}
-ul#bar a:hover {
-	background-position: 0 0
-}
-ul#bar li {
-	display: inline-block;
-}
-input[type="number"] {
-	margin-left: -1.5em
-}
-#user fieldset:first-child legend {
-	font-size: 2em;
-}
-legend {
-	padding: .25em 1em;
 }
 fieldset {
 	border: 0
 }
-form ul {
-	display: flex;
-	flex-wrap: wrap;
-}
-form li {
-	margin: .5em 0 0 1em;
+legend {
+	color: gold;
+	font-weight: bold;
+	font-style: italic;
+	font-family: cochin, 'latin_modern_roman10BdIt', serif;
+	padding: .25em 1em;
 }
 textarea {
 	width: 28.15em;
@@ -131,62 +76,156 @@ label {
 	width: 5.5em;
 	display: inline-block;
 }
-
+h1 span {
+	font-size: 2vw;
+}
+i, cite, b, footer, footer a {
+	color: #c0c0c0;
+}
+header ul {
+	flex: 0 0 auto;
+	margin: 0 1em;
+}
 h1 em {
 	color: magenta;
-}
-h1 em:hover {
-	color: cyan;
 }
 legend em {
 	color: gold;
 }
+form ul {
+	display: flex;
+	flex-wrap: wrap;
+}
+form li {
+	margin: .5em 0 0 1em;
+}
+
+main form {
+	box-sizing: border-box;
+	border-left: dotted 1px white;
+	min-width: 550px;
+}
+main h3 {
+	background: rgb(96, 85, 65);
+	color: rgba(0, 100, 130, .5);
+	color: rgba(0, 0, 0, .4);
+	padding: 0 0 0 1rem;
+	font-size: 2rem;
+	line-height: 2.3;
+}
+
+header ul li {
+	display: inline-block;
+}
+
 .wrapper {
 	overflow: hidden;
 	/*background: url("../img/wallpaper.jpg"); */
 }
 
-i, cite, b, .footer, .footer a {
-	color: #c0c0c0;
-}
-a:hover {
-	color: white;
+.placeholder img {
+	display: block;
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	position: relative;
+	float: left;
 }
 fieldset.ingredients {
 	width: 90%;
 	margin-top: .5em;
 }
-.show fieldset.ingredients {
-	width: 80%;
+
+a:hover {
+	color: white;
+}
+main>*:hover {
+	filter: none;
+}
+
+input[type="number"] {
+	margin-left: -1.5em
+}
+.placeholder:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+h1 em:hover {
+	color: cyan;
+}
+
+fieldset:first-child legend {
+	font-size: 2em;
+}
+main form.hide {
+	display: none;
+}
+.show main>div {
+	margin: 0 9em 0 0;
 }
 .ingredients legend em {
 	color: rgba(204, 0, 204, .8);
 	font-size: 1.5em
 }
-.footer a:hover {
-	color: white
-}
-ol li:nth-child(odd) {
+footer a:hover {
 	color: white
 }
 li.unit label, li.unit input {
 	width: 1em;
 	margin-right: .5em
 }
-li.unit label:first-child, input[type="number"] {
-	width: 2.75em;
+
+header ul a:link {
+	height: 6.66em;
+	width: 5em;
+	border-right: 1px dotted white;
+	background: no-repeat 0 100%;
+	background-size: cover;
+	display: block;
 }
-/* technically this shouldn't be required but below rule is applying to TWO urls, this override has greater specificity */
+header ul a:hover {
+	background-position: 0 0
+}
 
 form fieldset ul:last-child {
 	text-align: left;
 }
-form ul:last-child {}
+
 form>ul:last-of-type li {
 	position: relative;
 	margin-left: 50%;
 	right: 50px;
 }
+
+header ul li:nth-child(1) a {
+	background-image: url("../img/gin_s.png")
+}
+header ul li:nth-child(2) a {
+	background-image: url("../img/vodka_s.png")
+}
+header ul li:nth-child(3) a {
+	background-image: url("../img/tequila_s.png")
+}
+header ul li:nth-child(4) a {
+	background-image: url("../img/rum_s.png")
+}
+header ul li:nth-child(5) a {
+	background-image: url("../img/bourbon_s.png")
+}
+header ul li:nth-child(6) a {
+	background-image: url("../img/cognac_s.png");
+	border-width: 0;
+}
+
+.show fieldset.ingredients {
+	width: 80%;
+}
+
+li.unit label:first-child, input[type="number"] {
+	width: 2.75em;
+}
+
 #result {
 	width: 40%;
 	border-top: 1px dotted palegoldenrod;
@@ -198,7 +237,6 @@ form>ul:last-of-type li {
 	display: block;
 	margin-right: 2.25em;
 }
-
 #lemon {
 	width: 100px;
 	height: 92px;
@@ -208,71 +246,6 @@ form>ul:last-of-type li {
 }
 #dash {
 	margin-right: 1em
-}
-
-.show #chaps>div {
-	margin: 0 9em 0 0;
-}
-.show #controls {
-	left: 4em;
-}
-#chaps {
-	display: flex;
-	position: relative;
-	overflow: hidden;
-    width: 100%;
-    box-sizing: border-box;
-}
-#chaps>*:hover {
-	filter: none;
-}
-#chaps>* {
-	filter: sepia();
-	border-width: 0;
-    flex: 1 1 0;
-}
-
-.placeholder:after {
-	content: "";
-	display: table;
-	clear: both;
-}
-.placeholder img {
-	display: block;
-    height: 100%;
-    object-fit: cover;
-    position: relative;
-    float: left;
-}
-
-#paused, .inplay.playing #paused {
-    display: none;
-}
-
-.inplay #slide, .inplay #paused {
-    margin-left: -100%;
-    display: block;
-}
-
-#chaps div, #chaps form {
-	position: relative;
-}
-
-#chaps form {
-	box-sizing: border-box;
-	border-left: dotted 1px white;
-	min-width: 550px;
-}
-#chaps form.hide {
-	display: none;
-}
-#chaps h3 {
-	background: rgb(96, 85, 65);
-	color: rgba(0, 100, 130, .5);
-	color: rgba(0, 0, 0, .4);
-	padding: 0 0 0 1rem;
-	font-size: 2rem;
-	line-height: 2.3;
 }
 #cocktail, #email {
 	width: 33em;
@@ -288,14 +261,20 @@ form>ul:last-of-type li {
 	-o-transition: all 1s;
 	transition: all 1s;
 	display: table;
-    /*
+	/*
 	opacity: 0;
 	filter: alpha(opacity=0);
     */
 	min-width: 300px;
-    width: 100%;
-    background: rgba(204, 0, 204, .5);
-    border-top: solid 1px white;
+	width: 100%;
+	background: rgba(204, 0, 204, .5);
+	border-top: solid 1px white;
+}
+#backbutton {
+	background-position: 50% 14.9%;
+}
+#playbutton {
+	background-position: 50% 29%;
 }
 #controls button {
 	width: 3em;
@@ -323,15 +302,27 @@ form>ul:last-of-type li {
 	background-image: url(../img/buttons_sprite_lowend.png);
 	background-color: hsla(270, 50%, 40%, 1);
 }
+
+
 #controls.static {
 	margin-top: -3.3em;
 	opacity: 1;
 	filter: alpha(opacity=100);
 	zoom: 1;
 }
+.show #controls {
+	left: 4em;
+}
 .touchevents #controls {
 	opacity: 1;
 	filter: alpha(opacity=100);
+	zoom: 1;
+}
+
+.playing #playbutton {
+	background-position: 50% 44%;
+	opacity: 0.9;
+	filter: alpha(opacity=90);
 	zoom: 1;
 }
 #controls.static button {
@@ -343,22 +334,18 @@ form>ul:last-of-type li {
 	color: black;
 	text-shadow: 1px 1px 1px rgba(255, 255, 255, .75);
 }
+
+.inplay #slide, .inplay #paused {
+	margin-left: -100%;
+	display: block;
+}
+#paused, .inplay.playing #paused {
+	display: none;
+}
 .touchevents .inplay #controls {
 	top: 0em;
 	opacity: 1;
 	filter: alpha(opacity=100);
-	zoom: 1;
-}
-button#backbutton {
-	background-position: 50% 14.9%;
-}
-button#playbutton {
-	background-position: 50% 29%;
-}
-.playing #playbutton {
-	background-position: 50% 44%;
-	opacity: 0.9;
-	filter: alpha(opacity=90);
 	zoom: 1;
 }
 @media only screen {
@@ -373,9 +360,8 @@ button#playbutton {
 		background-size: 128%;
 	}
 }
-@media only screen and (max-width: 1024px) {}
 @media only screen and (max-width: 930px) {
-	#home h1 {
+	h1 {
 		font-size: 5vw;
 	}
 }
@@ -384,7 +370,16 @@ button#playbutton {
 		flex-wrap: wrap;
 		justify-content: center;
 	}
-	#home #header {
+	main form {
+		margin: 0 auto;
+		border-width: 0;
+		max-width: 600px;
+	}
+	main div, #controls {
+		display: none;
+	}
+	
+    #home section {
 		flex: 1 1 100%;
 	}
 	#home h2 {
@@ -394,13 +389,5 @@ button#playbutton {
 		text-align: center;
 		font-size: 7vw;
 		padding: 0;
-	}
-	#chaps div, #controls {
-		display: none;
-	}
-	#chaps form {
-		margin: 0 auto;
-		border-width: 0;
-		max-width: 600px;
 	}
 }

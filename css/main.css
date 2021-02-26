@@ -2,6 +2,13 @@
 	padding: 0;
 	margin: 0
 }
+/*Don't show shadows when selecting text */
+
+::-moz-selection, ::selection {
+	background: #5af;
+	color: #fff;
+	text-shadow: none;
+}
 body {
 	color: rgb(255, 251, 116);
 	font-family: cochin, 'latin_modern_roman10_regular', serif;
@@ -10,8 +17,11 @@ body {
 	background-color: black;
 	box-sizing: border-box;
 }
-.hide {
-	display: none;
+main {
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	box-sizing: border-box;
 }
 blockquote {
 	color: silver;
@@ -23,6 +33,70 @@ blockquote {
 	font-size: 1.25rem;
 	font-style: italic;
 	text-align: center;
+}
+a {
+	color: rgba(204, 0, 204, 1);
+	text-decoration: none
+}
+ul {
+	list-style: none;
+}
+h1 {
+	font-size: 4.5vmax;
+	margin: 10rem 0 1rem 0;
+	padding: 0 0 0 7em;
+	text-shadow: 2px 2px 2px purple;
+	position: relative;
+}
+p {
+	margin-bottom: 1em;
+	text-align: justify;
+}
+em {
+	font-family: cochin, 'latin_modern_roman10BdIt', serif;
+}
+footer {
+	border-top: 1px solid white;
+	clear: both;
+	padding: 1em 1em 0;
+	z-index: 1;
+	box-sizing: border-box;
+}
+blockquote em {
+	font-size: .85rem;
+	font-style: normal;
+	color: snow;
+}
+blockquote em span {
+	color: rgb(255, 251, 116);
+}
+p strong {
+	text-transform: uppercase;
+	font-size: .75rem;
+	font-weight: normal;
+}
+i, cite, b, footer, footer a {
+	color: #c0c0c0;
+}
+div>img {
+	width: 100%;
+	height: auto;
+}
+h1 em {
+	color: rgb(255, 111, 0);
+	color: #999;
+}
+header aside {
+	overflow: hidden;
+	background-image: url("../img/fc.jpg");
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+header aside h2 {
+	text-align: right;
+}
+header aside a {
+	color: snow;
 }
 blockquote:before {
 	content: '_';
@@ -45,13 +119,38 @@ blockquote:after {
 	position: relative;
 	top: 19px;
 }
-blockquote em {
-	font-size: .85rem;
-	font-style: normal;
-	color: snow;
+nav ul {
+	border-top: 1px solid white;
+	padding-left: 2%;
+	position: relative;
+	background-color: rgba(204, 0, 204, 1);
+	background-image: linear-gradient(transparent, black);
+	display: flex;
+	width: 100%;
 }
-blockquote em span {
-	color: rgb(255, 251, 116);
+nav ul>li {
+	position: relative;
+	white-space: nowrap;
+	font-size: 1.2em;
+	text-align: center;
+	z-index: 2;
+	flex: 1 0 0;
+}
+nav ul li ul {
+	position: absolute;
+	z-index: 22;
+	left: -999em;
+	width: 100%;
+	background: rgba(204, 0, 204, 0.5) linear-gradient(black, transparent);
+}
+nav ul>li a {
+	display: block;
+	padding: .5em 1em;
+	color: rgba(255, 255, 255, .8);
+	white-space: nowrap;
+}
+.hide {
+	display: none;
 }
 .menu {
 	position: absolute;
@@ -63,30 +162,119 @@ blockquote em span {
 body.show {
 	margin: 3em;
 }
-/*Don't show shadows when selecting text */
-
-::-moz-selection, ::selection {
-	background: #5af;
-	color: #fff;
-	text-shadow: none;
-}
-a {
-	color: rgba(204, 0, 204, 1);
-	text-decoration: none
-}
-ul {
-	list-style: none;
-}
-h1 {
-	font-size: 4.5vmax;
-	margin: 10rem 0 1rem 0;
-	padding: 0 0 0 7em;
-	text-shadow: 2px 2px 2px purple;
+.sidebar {
+	flex: 1 1 220px;
+	min-width: 320px;
+	box-sizing: border-box;
 	position: relative;
 }
-h2, .sidebar a {
+.content {
+	flex: 5 1 0;
+	box-sizing: border-box;
+	position: relative;
+}
+.content {
+	padding: 3em 4em 32em 2rem;
+	border: dotted 1px white;
+	border-width: 0 0 0 1px;
+}
+.sidebar, .content {
+	margin-bottom: -30em;
+}
+.sidebar div {
+	margin-top: -2rem;
+}
+.sidebar img {
+	display: block;
+}
+.sidebar a {
+	color: rgba(255, 255, 255, .9);
 	font-size: 2em;
-	color: rgba(204, 0, 204, 1);
+	text-align: center;
+	display: block;
+	position: relative;
+	z-index: 1;
+	text-shadow: 3px 3px 2px rgb(100, 0, 0);
+	top: 1em;
+}
+.content h2 {
+	background-color: transparent;
+	background-repeat: no-repeat;
+	float: right;
+	height: 111px;
+	width: 111px;
+	shape-outside: circle(50%);
+	border-radius: 50%;
+	border: solid 10px black;
+	filter: grayscale(80%);
+}
+h2:hover {
+	filter: none;
+}
+/*
+h1, h2, legend, li a, .sidebar a {
+	font-family: cochin, 'latin_modern_roman10_bold', serif;
+}
+*/
+
+.content p {
+	font-size: 1em
+}
+a:hover {
+	color: white;
+}
+h1 em:hover {
+	color: cyan;
+}
+p:nth-of-type(odd) strong {
+	color: white;
+}
+nav ul>li>a:hover {
+	text-decoration: none;
+	opacity: .5
+}
+nav ul li:hover ul {
+	left: auto;
+}
+.show .content>* {
+	position: absolute;
+	left: -999em;
+}
+.showtime .sidebar {
+	overflow: hidden;
+}
+.showtime .sidebar div, .showtime .sidebar img {
+	height: 100%;
+}
+.showtime .sidebar img {
+	position: relative;
+	object-fit: cover;
+}
+.content p:nth-of-type(odd) {
+	color: white;
+}
+.content>p:first-child::first-letter {
+	color: white;
+	font-size: 300%;
+	line-height: 1.1;
+	margin: -4px 10px 0 0;
+	padding: 0 6px;
+	float: left;
+	border: solid 1px magenta;
+}
+.show .content .csstabs {
+	position: relative;
+	left: 0;
+}
+#menu-toggle {
+	position: absolute;
+	left: -9990px;
+}
+body#c1, body#c2, body#c3, body#c4, body#c5, body#c6 {
+	background-color: black;
+	background-image: radial-gradient(white, rgba(255, 255, 255, .2) 2px, transparent 40px), radial-gradient(white, rgba(255, 255, 255, .15) 1px, transparent 30px), radial-gradient(white, rgba(255, 255, 255, .1) 2px, transparent 40px), radial-gradient(rgba(255, 255, 255, .4), rgba(255, 255, 255, .1) 2px, transparent 30px);
+	background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
+	background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
 }
 #c1 h2 {
 	background-image: url('../img/martini.jpg');
@@ -118,190 +306,10 @@ h2, .sidebar a {
 	background-position: 90% 55%;
 	background-size: 170%;
 }
-.content>p:first-child::first-letter {
-	color: white;
-	font-size: 300%;
-	line-height: 1.1;
-	margin: -4px 10px 0 0;
-	padding: 0 6px;
-	float: left;
-	border: solid 1px magenta;
-}
-p strong {
-	text-transform: uppercase;
-	font-size: .75rem;
-	font-weight: normal;
-}
-p {
-	margin-bottom: 1em;
-	text-align: justify;
-}
-p:nth-of-type(odd) strong {
-	color: white;
-}
-legend, em {
-	font-family: cochin, 'latin_modern_roman10BdIt', serif;
-}
-div>img {
-	width: 100%;
-	height: auto;
-}
-h1 em {
-	color: rgb(255, 111, 0);
-	color: #999;
-}
-h1 em:hover {
-	color: cyan;
-}
-legend {
-	color: gold;
-	font-weight: bold;
-	font-style: italic;
-}
-.innerwrap {
-	position: relative;
-	overflow: hidden;
-	display: flex;
-	box-sizing: border-box;
-}
-.sidebar {
-	flex: 1 1 220px;
-	min-width: 320px;
-	box-sizing: border-box;
-	position: relative;
-}
-.sidebar div {
-	margin-top: -2rem;
-}
-.content {
-	flex: 5 1 0;
-	box-sizing: border-box;
-	position: relative;
-}
-.sidebar, .content {
-	margin-bottom: -30em;
-}
-.showtime .sidebar {
-	overflow: hidden;
-}
-.showtime .sidebar div, .showtime .sidebar img {
-	height: 100%;
-}
-.showtime .sidebar img {
-	position: relative;
-	object-fit: cover;
-}
-.sidebar img {
-	display: block;
-}
-.sidebar a {
-	color: rgba(255, 255, 255, .9);
-	font-size: 2em;
-	text-align: center;
-	display: block;
-	position: relative;
-	z-index: 1;
-	text-shadow: 3px 3px 2px rgb(100, 0, 0);
-	top: 1em;
-}
-.footer {
-	border-top: 1px solid white;
-	clear: both;
-	padding: 1em 1em 0;
-	z-index: 1;
-	box-sizing: border-box;
-}
-i, cite, b, .footer, .footer a {
-	color: #c0c0c0;
-}
-a:hover {
-	color: white;
-}
-.show .content>* {
-	position: absolute;
-	left: -999em;
-}
-.show .content .csstabs {
-	position: relative;
-	left: 0;
-}
-body#c1, body#c2, body#c3, body#c4, body#c5, body#c6 {
-	background-color: black;
-	background-image: radial-gradient(white, rgba(255, 255, 255, .2) 2px, transparent 40px), radial-gradient(white, rgba(255, 255, 255, .15) 1px, transparent 30px), radial-gradient(white, rgba(255, 255, 255, .1) 2px, transparent 40px), radial-gradient(rgba(255, 255, 255, .4), rgba(255, 255, 255, .1) 2px, transparent 30px);
-	background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
-	background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
-}
-.content {
-	padding: 3em 4em 32em 2rem;
-	border: dotted 1px white;
-	border-width: 0 0 0 1px;
-}
-h1, h2, legend, #nav>li a, .sidebar a {
-	font-family: cochin, 'latin_modern_roman10_bold', serif;
-}
-.content p {
-	font-size: 1em
-}
-.content p:nth-of-type(odd) {
-	color: white;
-}
-#header {
-	overflow: hidden;
-	background-image: url("../img/fc.jpg");
-	background-repeat: no-repeat;
-	background-size: contain;
-}
-#header h2 {
-	text-align: right;
-}
-#header a {
-	color: snow;
-}
-#nav {
-	border-top: 1px solid white;
-	padding-left: 2%;
-	position: relative;
-	background-color: rgba(204, 0, 204, 1);
-	background-image: linear-gradient(transparent, black);
-	display: flex;
-	width: 100%;
-}
-#nav>li {
-	position: relative;
-	white-space: nowrap;
-	font-size: 1.2em;
-	text-align: center;
-	z-index: 2;
-	flex: 1 0 0;
-}
-#nav li ul {
-	position: absolute;
-	z-index: 22;
-	left: -999em;
-	width: 100%;
-	background: rgba(204, 0, 204, 0.5) linear-gradient(black, transparent);
-}
-#nav>li a {
-	display: block;
-	padding: .5em 1em;
-	color: rgba(255, 255, 255, .8);
-	white-space: nowrap;
-}
-#nav>li>a:hover {
-	text-decoration: none;
-	opacity: .5
-}
-#nav li:hover ul {
-	left: auto;
-}
-#c1 #nav>li:nth-child(1)>a, #c2 #nav>li:nth-child(6)>a, #c3 #nav>li:nth-child(3)>a, #c4 #nav>li:nth-child(5)>a, #c5 #nav>li:nth-child(2)>a, #c6 #nav>li:nth-child(4)>a {
+#c1 nav ul>li:nth-child(1)>a, #c2 nav ul>li:nth-child(6)>a, #c3 nav ul>li:nth-child(3)>a, #c4 nav ul>li:nth-child(5)>a, #c5 nav ul>li:nth-child(2)>a, #c6 nav ul>li:nth-child(4)>a {
 	color: white;
 	text-shadow: 3px 3px 2px #000;
 	font-weight: 700;
-}
-#menu-toggle {
-	position: absolute;
-	left: -9990px;
 }
 @media only screen and (max-width: 1024px) {
 	.sidebar div, .sidebar img {
@@ -313,30 +321,27 @@ h1, h2, legend, #nav>li a, .sidebar a {
 	}
 }
 @media only screen and (max-width: 768px) {
-	.sidebar {
-		position: static;
-		border-width: 0;
-	}
-	.sidebar img {
-		display: none;
-	}
-	.innerwrap {
+	main {
 		position: static;
 		display: block;
 	}
-	.sidebar>a {
-		position: absolute;
-		left: 22%;
-		top: 1rem;
+	h1 {
+		background: rgba(0, 0, 0, .75);
+		margin: 40% 0 4em;
+		padding: 0 1rem;
+		border: dotted 1px white;
+		border-width: 1px 0;
+		top: 4em;
+		text-shadow: 1px 1px 2px black;
 	}
-	.sidebar, .content {
-		margin-bottom: 0px;
+	blockquote {
+		display: none;
 	}
-	.content {
-		padding: 4em 2em 1em;
-		border-width: 0;
+	header aside {
+		background-size: 60%;
+		background-position: 0 0;
 	}
-	#nav {
+	nav ul {
 		position: absolute;
 		top: 4rem;
 		right: 1rem;
@@ -348,19 +353,26 @@ h1, h2, legend, #nav>li a, .sidebar a {
 		border-width: 0;
 		line-height: 1.6;
 	}
-	#nav li a {
-		padding: 0;
-		background-color: transparent;
-		color: rgba(239, 251, 116, 0.88);
-	}
-	#nav li {
+	nav ul li {
 		height: 0;
 		font-size: 0;
 		transition: height .9s ease-out;
 	}
-	#menu-toggle:checked+#nav li {
-		height: 2em;
-		font-size: 1.2em;
+	nav ul li a {
+		padding: 0;
+		background-color: transparent;
+		color: rgba(239, 251, 116, 0.88);
+	}
+	.sidebar {
+		position: static;
+		border-width: 0;
+	}
+	.sidebar, .content {
+		margin-bottom: 0px;
+	}
+	.content {
+		padding: 4em 2em 1em;
+		border-width: 0;
 	}
 	.menu {
 		background: 50% 0% url("../img/polo_ball_sprite.png") no-repeat;
@@ -374,57 +386,39 @@ h1, h2, legend, #nav>li a, .sidebar a {
 		-o-transition: transform 1s;
 		transition: transform 1s;
 	}
+	.sidebar img {
+		display: none;
+	}
+	.sidebar>a {
+		position: absolute;
+		left: 22%;
+		top: 1rem;
+	}
 	.menu:hover {
 		background-position: 50% 100%;
 		-webkit-transform: rotate(360deg);
 		transform: rotate(360deg);
 	}
-	h1 {
-		background: rgba(0, 0, 0, .75);
-		margin: 40% 0 4em;
-		padding: 0 1rem;
-		border: dotted 1px white;
-		border-width: 1px 0;
-		top: 4em;
-		text-shadow: 1px 1px 2px black;
-	}
-	#header {
-		background-size: 60%;
-		background-position: 0 0;
-	}
-	#c1 #header {
+	#c1 header aside {
 		background-image: url("../img/martini.jpg");
 	}
-	#c2 #header {
+	#c2 header aside {
 		background-image: url("../img/sidecar.jpg");
 	}
-	#c3 #header {
+	#c3 header aside {
 		background-image: url("../img/margarita.jpg");
 	}
-	#c4 #header {
+	#c4 header aside {
 		background-image: url("../img/julep.jpg");
 	}
-	#c5 #header {
+	#c5 header aside {
 		background-image: url("../img/cosmo.jpg");
 	}
-	#c6 #header {
+	#c6 header aside {
 		background-image: url("../img/maitai.jpg");
 	}
-	blockquote {
-		display: none;
+	#menu-toggle:checked+nav ul li {
+		height: 2em;
+		font-size: 1.2em;
 	}
-}
-.content h2 {
-	background-color: transparent;
-	background-repeat: no-repeat;
-	float: right;
-	height: 111px;
-	width: 111px;
-	shape-outside: circle(50%);
-	border-radius: 50%;
-	border: solid 10px black;
-	filter: grayscale(80%);
-}
-h2:hover {
-	filter: none;
 }
