@@ -137,7 +137,7 @@ speakEasy.Util = (function() {
 			return val;
 		};
 	}
-
+    
 	function regExp(str, flag) {
 		return new RegExp(str, flag);
 	}
@@ -147,12 +147,17 @@ speakEasy.Util = (function() {
 	}
 
 	function setter(o, k, v) {
+        //console.log(arguments)
 		getResult(o)[k] = v;
 	}
-
-	function getter(o, k) {
-		//console.log(arguments)
-		return o && o[k];
+    
+    function lazySet(v, o, k) {
+        setter(o, k, v);
+	}
+    
+    function getter(o, p) {
+        //!!p could be zero
+		return o /*&& p*/ && o[p];
 	}
 
 	function setret(o, k, v) {
@@ -173,6 +178,17 @@ speakEasy.Util = (function() {
 		//console.log(arguments)
 		return o[m](arg);
 	}
+    
+      function doMethod(o, v, p) {
+          o = getResult(o);
+          return o && o[p] && o[p](v);
+	}
+    
+    
+    function lazyVal(v, o, p) {
+		return doMethod(o, v, p);
+	}
+
 
 	function doInvoke(o, m) {
 		//console.log(_.rest(arguments, 2));
@@ -1056,6 +1072,10 @@ speakEasy.Util = (function() {
             n = n || 1;
             return drillDown(fillArray('parentNode', n))(el);
         },
+        climbDomPlus: function(dir, n, el){
+            n = n || 1;
+            return drillDown(fillArray(dir, n))(el);
+        },
         command:  {
 			execute: function () {},
 			undo: function () {}
@@ -1126,7 +1146,8 @@ speakEasy.Util = (function() {
         var f = ptL(thunk, once(1));
         return best(f, actions)();
 				}; */
-		doOnce: doOnce,
+		doMethod: doMethod,
+        doOnce: doOnce,
 		doWhen: doWhen,
 		drillDown: drillDown,
 		//https://medium.com/@dtipson/creating-an-es6ish-compose-in-javascript-ac580b95104a
@@ -1308,6 +1329,8 @@ speakEasy.Util = (function() {
 		isEqual: function(x, y) {
 			return getResult(x) === getResult(y);
 		},
+        lazySet: lazySet,
+        lazyVal: lazyVal,
 		lsThan: lsThan,
         makeCommand: function(flag){
             var dummy = {
@@ -1394,6 +1417,15 @@ speakEasy.Util = (function() {
 		},
 		setText: curry3(setAdapter)('innerHTML'),
 		setter: setter,
+        shout: function(m) {
+            var slice = Array.prototype.slice;
+			var applier = function(f, args) {
+				return function() {
+					f.apply(null, slice.call(args).concat(slice.call(arguments)));
+				};
+			};
+			return applier(_.bind(window[m], window), _.rest(arguments));
+		},
 		show: _.partial(setFromArray, always(true), 'add', ['show']),
 		shuffleArray: function shuffle(coll) {
 			return function(start, deleteCount) {
@@ -1430,14 +1462,7 @@ speakEasy.Util = (function() {
 		},
 		simpleAdapter: simpleAdapter,
 		SimpleXhrFactory: SimpleXhrFactory,
-		shout: function(m) {
-			var applier = function(f, args) {
-				return function() {
-					f.apply(null, args);
-				};
-			};
-			return applier(_.bind(window[m], window), _.rest(arguments));
-		},
+		
 		supportTest: function(el, prop, reg) {
 			var getBg = curry3(simpleInvoke)(reg)('match');
 			return getBg(speakEasy.Util.getComputedStyle(el, prop));

@@ -6,13 +6,14 @@
 (function () {
 	"use strict";
 
-	function setter(v, o, p) {
-		o[p] = v;
-	}
 
 	function invoke(f, arg) {
 		arg = _.isArray(arg) ? arg : [arg];
 		return f.apply(null, arg);
+	}
+    
+    function just_invoke(f) {
+		return f();
 	}
     
     function invokeRest(f) {
@@ -28,9 +29,22 @@
 	}
     
     
-    function doCallbacks(cb, coll, p) {
-		return _[p](coll, cb);
+    function doCallbacks(coll, p) {
+		return _[p](coll, just_invoke);
 	}
+    
+    function reducer (acc, cur){
+        return acc[cur] ? acc[cur] : acc;
+    }
+    
+    function searcher(obj, ary) {
+    /*noticed an issue with parentNode where on supply of an element, the initial value for reduce is the parent
+    but THAT parent would get set on the second iteration to ITS parent so. When array has just one item reduce not really required*/
+    if (ary && ary[1]) {
+      return ary.reduce(reducer, obj[ary[0]]);
+    }
+    return ary[0] ? obj[ary[0]] : obj;
+  }
     
 	var instr = {
 			margarita: [
@@ -104,7 +118,7 @@
 		},
 		doExec = thrice(doMethod)('execute')(null),
 		doGetEl = thrice(doMethod)('getEl')(null),
-		doText = thrice(setter)('innerHTML'),
+		doText = thrice(utils.lazySet)('innerHTML'),
 		tagFactory = function (tag, ptl, txt) {
 			ptl(tag)(txt);
 		},
@@ -115,22 +129,25 @@
 		node_from_target = doComp(validate, drill([mytarget, 'nodeName'])),
 		matchReg = thrice(utils.doMethod)('match'),
 		toLower = thrice(utils.doMethod)('toLowerCase')(null),
-		csstabs = utils.findByClass('csstabs'),
+		csstabs = ptL(utils.findByClass, 'csstabs'),
 		cor = {
 			handle: function() {}
 		},
-		clear = ptL(setter, 'csstabs', csstabs, 'className'),
-		csstablist = _.negate(thrice(utils.lazyVal)('contains')(utils.getClassList(csstabs))),
+		clear = ptL(utils.lazySet, 'csstabs', csstabs, 'className'),
+        csstablist = _.negate(doComp(thrice(utils.lazyVal)('contains')(doComp(utils.getClassList, csstabs)))),
 		addKlasWhen = doComp(deferEach, thrice(utils.lazyVal)('concat')([clear]), twicedefer(klasAdd)(csstabs)),
-		onMissing = ptL(doComp, ptL(utils.invokeWhen, csstablist, _.identity), toLower, doGet('input')),
+		onMissing = doComp(ptL(utils.invokeWhen, csstablist, _.identity), doGet('input')),
 		recipe = utils.COR(doComp(onMissing, matchReg(/^R/i)), addKlasWhen),
 		method = utils.COR(doComp(onMissing, matchReg(/^M/i)), addKlasWhen),
 		serve = utils.COR(doComp(onMissing, matchReg(/^S/i)), addKlasWhen),
-        isHead = ptL(utils.getBest, node_from_target, [doComp(con2, toLower, con2, drill([mytarget, 'innerHTML'])), cor.handle]),
+        isHead1 = ptL(utils.getBest, node_from_target, [doComp(toLower, drill([mytarget, 'innerHTML'])), cor.handle]),
+        // Suggestion
+         isHead = ptL(utils.getBest, node_from_target, [doComp(recipe.handle.bind(recipe), toLower, drill([mytarget, 'innerHTML'])), cor.handle]),
+        
+         isHead2 = ptL(utils.getBest, node_from_target, [doComp(con2, doComp(onMissing, matchReg(/^S/i)), toLower, drill([mytarget, 'innerHTML'])), cor.handle]),
         
         		//toggler = ptL(eventing, 'click', [], doComp(invoke, isRecipe, getTarget)),
-        //toggler = ptL(eventing, 'click', event_actions.slice(0, 1), doComp(invokeRest, con2, isHead)),
-        toggler = ptL(eventing, 'click', event_actions.slice(0, 1), doComp(con2,toLower, drill([mytarget, 'innerHTML']))),
+        toggler = ptL(eventing, 'click', event_actions.slice(0, 1), doComp(invoke, isHead)),
 
         
 		$id = thrice(doMapBridge)('id'),
@@ -148,13 +165,13 @@
 		doIt = function () {
             //$node = anCr(doComp(doGetEl, doExec, toggler, ptL(klasAdd, 'csstabs'), $root)('div')),
 
-			var $node = anCr(doComp(doGetEl, doExec, toggler, ptL(klasAdd, 'csstabs'), $root)('div')),
+			var $node = anCr(doComp(doGetEl, doExec, toggler, ptL(klasAdd, ['csstabs', 'method']), $root)('div')),
 				$ancr33 = anCr(doComp($tab3, $tabbox, $node)('div')),
 				$ancr2 = anCr(doComp($tab2, $tabbox, $node)('div')),
 				$ancr1 = anCr(doComp($tab1, $tabbox, $node)('div')),
                 
 				/*$ancr3, and $recipe are not used but must run in this sequence*/
-                 $serve = anCr(doComp(twice(invoke)('Serving Suggestion'), doText, $ancr33)('h3')),
+                 $serve = anCr(doComp(twice(invoke)('Serving'), doText, $ancr33)('h3')),
 				$ancr3 = anCr(doComp(twice(invoke)('Method'), doText, $ancr2)('h3')),
 				$recipe = anCr(doComp(twice(invoke)('Recipe'), doText, $ancr1)('h3')),
                $cb3 = anCr(doComp($tabcontent, $ancr33)('section')),
@@ -173,7 +190,6 @@
     recipe.setSuccessor(method);
 	method.setSuccessor(serve);
     
-	//utils.eventer('click', [], doComp(invokeRest, isHead), utils.findByClass('csstabs')).execute();
     _.each(utils.getByTag('a', $('nav')), ptL(utils.invokeWhen, utils.getNext, doComp(utils.removeNodeOnComplete, utils.getNext)));
 
     
