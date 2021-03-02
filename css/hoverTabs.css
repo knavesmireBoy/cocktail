@@ -67,11 +67,7 @@
 	left: 68%;
 }
 
-#tab2 ul, #tab3 div {
-	opacity: 0;
-}
-
-.csstabs.method #tab1 .tabcontent, .csstabs.serving #tab1 .tabcontent{
+.csstabs.method #tab1 .tabcontent, .csstabs.serving #tab1 .tabcontent, #tab2 ul, #tab3 section{
 	opacity: 0;
 }
 
