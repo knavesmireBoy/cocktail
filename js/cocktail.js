@@ -14,6 +14,10 @@
 		arg = _.isArray(arg) ? arg : [arg];
 		return f.apply(null, arg);
 	}
+    
+    function invokeRest(f) {
+		return f.apply(null,_.rest(arguments));
+	}
 
 	function doMethod(o, v, p) {
 		return o[p] && o[p](v);
@@ -22,6 +26,12 @@
 	function lazyVal(v, o, p) {
 		return doMethod(o, v, p);
 	}
+    
+    
+    function doCallbacks(cb, coll, p) {
+		return _[p](coll, cb);
+	}
+    
 	var instr = {
 			margarita: [
 				["Shake well with cracked ice, then strain into a chilled cocktail glass that has had its rim rubbed with lime juice and dipped in coarse salt.", "A note on the <a href='http://www.esquire.com/features/tequila-drinks'>tequila</a>: It should be 100 percent agave, the plant from which the stuff is traditionally made. Save the great golden <em>añejos</em> for sipping.", "A note on the Cointreau: It yields results clearly superior to triple sec, most brands of which are marred by an unpleasant chemical aftertaste."],
@@ -65,23 +75,26 @@
 		ptL = _.partial,
 		doComp = _.compose,
 		curryFactory = utils.curryFactory,
+        drill = utils.drillDown,
 		event_actions = ['preventDefault', 'stopPropagation', 'stopImmediatePropagation'],
 		eventing = utils.eventer,
 		twice = curryFactory(2),
+        twicedefer = curryFactory(2, true),
 		thrice = curryFactory(3),
 		anCr = utils.append(),
 		klasAdd = utils.addClass,
 		klasRem = utils.removeClass,
 		doAltRecipe = utils.doAlternate(),
+        deferEach = twice(doCallbacks)('each'),
 		doGet = twice(utils.getter),
 		mytarget = !window.addEventListener ? 'srcElement' : 'target',
-		getTAB = utils.drillDown(['parentNode', 'parentNode']),
-		getTarget = utils.drillDown([mytarget]),
+		//getTAB = utils.drillDown(['parentNode', 'parentNode']),
+		//getTarget = utils.drillDown([mytarget]),
         
-		id_from_target = doComp(doGet('id'), utils.drillDown(['parentNode'])),
-		isTab1 = ptL(utils.invokeWhen, doComp(ptL(utils.isEqual, 'tab1'), id_from_target), doComp(ptL(klasRem, 'method'), getTAB)),
-		isTab2 = ptL(utils.invokeWhen, doComp(ptL(utils.isEqual, 'tab2'), id_from_target), doComp(ptL(klasAdd, 'method'), getTAB)),
-		isRecipe = ptL(utils.getBest, [ptL(utils.findByClass, 'method')], [isTab1, isTab2]),
+		//id_from_target = doComp(doGet('id'), utils.drillDown(['parentNode'])),
+		//isTab1 = ptL(utils.invokeWhen, doComp(ptL(utils.isEqual, 'tab1'), id_from_target), doComp(ptL(klasRem, 'method'), getTAB)),
+		//isTab2 = ptL(utils.invokeWhen, doComp(ptL(utils.isEqual, 'tab2'), id_from_target), doComp(ptL(klasAdd, 'method'), getTAB)),
+		//isRecipe = ptL(utils.getBest, [ptL(utils.findByClass, 'method')], [isTab1, isTab2]),
 		$ = thrice(lazyVal)('getElementById')(document),
 		doMap = utils.doMap,
 		doMapBridge = function (el, v, k) {
@@ -96,7 +109,30 @@
 			ptl(tag)(txt);
 		},
 		mycontent = doComp(utils.getZero, ptL(utils.getByTag, 'article')),
-		toggler = ptL(eventing, 'click', event_actions.slice(0, 1), doComp(invoke, isRecipe, getTarget)),
+        
+        
+        validate = thrice(utils.doMethod)('match')(/h3/i),
+		node_from_target = doComp(validate, drill([mytarget, 'nodeName'])),
+		matchReg = thrice(utils.doMethod)('match'),
+		toLower = thrice(utils.doMethod)('toLowerCase')(null),
+		csstabs = utils.findByClass('csstabs'),
+		cor = {
+			handle: function() {}
+		},
+		clear = ptL(setter, 'csstabs', csstabs, 'className'),
+		csstablist = _.negate(thrice(utils.lazyVal)('contains')(utils.getClassList(csstabs))),
+		addKlasWhen = doComp(deferEach, thrice(utils.lazyVal)('concat')([clear]), twicedefer(klasAdd)(csstabs)),
+		onMissing = ptL(doComp, ptL(utils.invokeWhen, csstablist, _.identity), toLower, doGet('input')),
+		recipe = utils.COR(doComp(onMissing, matchReg(/^R/i)), addKlasWhen),
+		method = utils.COR(doComp(onMissing, matchReg(/^M/i)), addKlasWhen),
+		serve = utils.COR(doComp(onMissing, matchReg(/^S/i)), addKlasWhen),
+        isHead = ptL(utils.getBest, node_from_target, [doComp(con2, toLower, con2, drill([mytarget, 'innerHTML'])), cor.handle]),
+        
+        		//toggler = ptL(eventing, 'click', [], doComp(invoke, isRecipe, getTarget)),
+        //toggler = ptL(eventing, 'click', event_actions.slice(0, 1), doComp(invokeRest, con2, isHead)),
+        toggler = ptL(eventing, 'click', event_actions.slice(0, 1), doComp(con2,toLower, drill([mytarget, 'innerHTML']))),
+
+        
 		$id = thrice(doMapBridge)('id'),
 		$tab1 = $id('tab1'),
 		$tab2 = $id('tab2'),
@@ -106,7 +142,12 @@
 		$tabbox = ptL(klasAdd, 'tabbox'),
 		$showtime = doComp(ptL(klasAdd, 'showtime'), utils.drillDown(['parentNode']), mycontent),
 		$noShowtime = doComp(ptL(klasRem, 'showtime'), utils.drillDown(['parentNode']), mycontent),
+        
+        
+        
 		doIt = function () {
+            //$node = anCr(doComp(doGetEl, doExec, toggler, ptL(klasAdd, 'csstabs'), $root)('div')),
+
 			var $node = anCr(doComp(doGetEl, doExec, toggler, ptL(klasAdd, 'csstabs'), $root)('div')),
 				$ancr33 = anCr(doComp($tab3, $tabbox, $node)('div')),
 				$ancr2 = anCr(doComp($tab2, $tabbox, $node)('div')),
@@ -126,6 +167,14 @@
 			$showtime();
 		},
 		unDoIt = doComp($noShowtime, ptL(utils.climbDom, 2), utils.removeNodeOnComplete, utils.getZero, ptL(utils.getByClass, 'csstabs', document));
+    
 	eventing('click', event_actions.slice(0, 1), doAltRecipe([doIt, unDoIt]), doComp(ptL(utils.byIndex, 0), ptL(utils.getByTag, 'h2', document))).execute();
-	_.each(utils.getByTag('a', $('nav')), ptL(utils.invokeWhen, utils.getNext, doComp(utils.removeNodeOnComplete, utils.getNext)));
+    
+    recipe.setSuccessor(method);
+	method.setSuccessor(serve);
+    
+	//utils.eventer('click', [], doComp(invokeRest, isHead), utils.findByClass('csstabs')).execute();
+    _.each(utils.getByTag('a', $('nav')), ptL(utils.invokeWhen, utils.getNext, doComp(utils.removeNodeOnComplete, utils.getNext)));
+
+    
 }());
