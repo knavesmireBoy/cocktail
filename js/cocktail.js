@@ -102,13 +102,6 @@
         deferEach = twice(doCallbacks)('each'),
 		doGet = twice(utils.getter),
 		mytarget = !window.addEventListener ? 'srcElement' : 'target',
-		//getTAB = utils.drillDown(['parentNode', 'parentNode']),
-		//getTarget = utils.drillDown([mytarget]),
-        
-		//id_from_target = doComp(doGet('id'), utils.drillDown(['parentNode'])),
-		//isTab1 = ptL(utils.invokeWhen, doComp(ptL(utils.isEqual, 'tab1'), id_from_target), doComp(ptL(klasRem, 'method'), getTAB)),
-		//isTab2 = ptL(utils.invokeWhen, doComp(ptL(utils.isEqual, 'tab2'), id_from_target), doComp(ptL(klasAdd, 'method'), getTAB)),
-		//isRecipe = ptL(utils.getBest, [ptL(utils.findByClass, 'method')], [isTab1, isTab2]),
 		$ = thrice(lazyVal)('getElementById')(document),
 		doMap = utils.doMap,
 		doMapBridge = function (el, v, k) {
@@ -123,8 +116,6 @@
 			ptl(tag)(txt);
 		},
 		mycontent = doComp(utils.getZero, ptL(utils.getByTag, 'article')),
-        
-        
         validate = thrice(utils.doMethod)('match')(/h3/i),
 		node_from_target = doComp(validate, drill([mytarget, 'nodeName'])),
 		matchReg = thrice(utils.doMethod)('match'),
@@ -133,6 +124,19 @@
 		cor = {
 			handle: function() {}
 		},
+        recipeTrim = {
+            trim: function(){
+                return this.handle('');
+            }
+        },
+        methodTrim = {
+            trim: _.identity
+        },
+        serveTrim = {
+            trim: function(str){
+                return this.handle(str.split(' ')[0])
+            }
+        },
 		clear = ptL(utils.lazySet, 'csstabs', csstabs, 'className'),
         csstablist = _.negate(doComp(thrice(utils.lazyVal)('contains')(doComp(utils.getClassList, csstabs)))),
 		addKlasWhen = doComp(deferEach, thrice(utils.lazyVal)('concat')([clear]), twicedefer(klasAdd)(csstabs)),
@@ -140,16 +144,8 @@
 		recipe = utils.COR(doComp(onMissing, matchReg(/^R/i)), addKlasWhen),
 		method = utils.COR(doComp(onMissing, matchReg(/^M/i)), addKlasWhen),
 		serve = utils.COR(doComp(onMissing, matchReg(/^S/i)), addKlasWhen),
-        isHead1 = ptL(utils.getBest, node_from_target, [doComp(toLower, drill([mytarget, 'innerHTML'])), cor.handle]),
-        // Suggestion
          isHead = ptL(utils.getBest, node_from_target, [doComp(recipe.handle.bind(recipe), toLower, drill([mytarget, 'innerHTML'])), cor.handle]),
-        
-         isHead2 = ptL(utils.getBest, node_from_target, [doComp(con2, doComp(onMissing, matchReg(/^S/i)), toLower, drill([mytarget, 'innerHTML'])), cor.handle]),
-        
-        		//toggler = ptL(eventing, 'click', [], doComp(invoke, isRecipe, getTarget)),
-        toggler = ptL(eventing, 'click', event_actions.slice(0, 1), doComp(invoke, isHead)),
-
-        
+        toggler = ptL(eventing, 'click', event_actions.slice(0, 1), doComp(invoke, isHead)),        
 		$id = thrice(doMapBridge)('id'),
 		$tab1 = $id('tab1'),
 		$tab2 = $id('tab2'),
@@ -169,9 +165,8 @@
 				$ancr33 = anCr(doComp($tab3, $tabbox, $node)('div')),
 				$ancr2 = anCr(doComp($tab2, $tabbox, $node)('div')),
 				$ancr1 = anCr(doComp($tab1, $tabbox, $node)('div')),
-                
 				/*$ancr3, and $recipe are not used but must run in this sequence*/
-                 $serve = anCr(doComp(twice(invoke)('Serving'), doText, $ancr33)('h3')),
+                 $serve = anCr(doComp(twice(invoke)('Serving Suggestion'), doText, $ancr33)('h3')),
 				$ancr3 = anCr(doComp(twice(invoke)('Method'), doText, $ancr2)('h3')),
 				$recipe = anCr(doComp(twice(invoke)('Recipe'), doText, $ancr1)('h3')),
                $cb3 = anCr(doComp($tabcontent, $ancr33)('section')),

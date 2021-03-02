@@ -724,6 +724,9 @@ speakEasy.Util = (function() {
 	function setFromArray(validate, method, classArray, target) {
         //speakEasy.Util.report(target.classList);
 		//target may be a function returning a target element
+        //safeguard if classArray is space delimited string "foo bar"
+        classArray = classArray.split ? classArray.split(' ') : classArray; 
+      
 		var fn,
 			tgt,
 			args,
