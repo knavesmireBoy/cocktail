@@ -97,6 +97,7 @@
 		thrice = curryFactory(3),
 		anCr = utils.append(),
 		klasAdd = utils.addClass,
+		klasAddVal = ptL(utils.addClassVal, _.negate(ptL(utils.isEqual, 'recipe')), 'add'),
 		klasRem = utils.removeClass,
 		doAltRecipe = utils.doAlternate(),
         deferEach = twice(doCallbacks)('each'),
@@ -124,27 +125,32 @@
 		cor = {
 			handle: function() {}
 		},
-        recipeTrim = {
-            trim: function(){
-                return this.handle('');
+        
+        identity = (function(){
+            var dir = {
+                /*recipe is default view,
+                element.classList.add complains if attempting to add an empty string
+                so simply set class to original class, which means element.classList.add won't actually run as it already exists*/
+                recipe: 'csstabs',
+                method: 'method',
+                "serving suggestion": 'serving'
             }
-        },
-        methodTrim = {
-            trim: _.identity
-        },
-        serveTrim = {
-            trim: function(str){
-                return this.handle(str.split(' ')[0])
-            }
-        },
+            return function(str){
+                con(str && dir[str])
+                return str && dir[str];
+            };
+        }()),
+        
+        deferTabs = twicedefer(klasAdd)(csstabs),
 		clear = ptL(utils.lazySet, 'csstabs', csstabs, 'className'),
         csstablist = _.negate(doComp(thrice(utils.lazyVal)('contains')(doComp(utils.getClassList, csstabs)))),
-		addKlasWhen = doComp(deferEach, thrice(utils.lazyVal)('concat')([clear]), twicedefer(klasAdd)(csstabs)),
-		onMissing = doComp(ptL(utils.invokeWhen, csstablist, _.identity), doGet('input')),
+		addKlasWhen = doComp(deferEach, thrice(utils.lazyVal)('concat')([clear]), doComp(deferTabs, identity)),
+		onMissing = doComp(ptL(utils.invokeThen, csstablist, _.identity), doGet('input')),
 		recipe = utils.COR(doComp(onMissing, matchReg(/^R/i)), addKlasWhen),
 		method = utils.COR(doComp(onMissing, matchReg(/^M/i)), addKlasWhen),
-		serve = utils.COR(doComp(onMissing, matchReg(/^S/i)), addKlasWhen),
-         isHead = ptL(utils.getBest, node_from_target, [doComp(recipe.handle.bind(recipe), toLower, drill([mytarget, 'innerHTML'])), cor.handle]),
+		serve = utils.COR(doComp(onMissing, matchReg(/^S/i)), addKlasWhen),  
+        
+        isHead = ptL(utils.getBest, node_from_target, [doComp(recipe.handle.bind(recipe), toLower, drill([mytarget, 'innerHTML'])), cor.handle]),
         toggler = ptL(eventing, 'click', event_actions.slice(0, 1), doComp(invoke, isHead)),        
 		$id = thrice(doMapBridge)('id'),
 		$tab1 = $id('tab1'),
@@ -184,8 +190,8 @@
     
     recipe.setSuccessor(method);
 	method.setSuccessor(serve);
+   
     
     _.each(utils.getByTag('a', $('nav')), ptL(utils.invokeWhen, utils.getNext, doComp(utils.removeNodeOnComplete, utils.getNext)));
 
-    
 }());

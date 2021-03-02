@@ -625,7 +625,7 @@ speakEasy.Util = (function() {
     function invokeThen(validate, action) {
 		var args = _.rest(arguments, 2),
 			res = validate.apply(null, args);
-		return res && action(res);
+        return res && action(res);
 	}
 
 	function doWhen(cond, action) {
@@ -1052,6 +1052,7 @@ speakEasy.Util = (function() {
 			return document.getElementById(str);
 		},
 		addClass: _.partial(setFromArray, always(true), 'add'),
+        addClassVal: _.partial(setFromArray),
 		/*handlers MAY need wrapping in a function that calls prevent default, stop propagation etc..
 		which needs to be cross browser see EventCache.prevent */
 		addEvent: function(handler, func, extent) {

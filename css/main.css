@@ -245,8 +245,8 @@ p:nth-of-type(odd) strong {
 }
 
 main.showtime aside div, main.showtime aside img {
-	height: 100%;
-    transition: height 7s;
+	/*height: 100%;
+    transition: height 7s;*/
 }
 
 main aside img {
