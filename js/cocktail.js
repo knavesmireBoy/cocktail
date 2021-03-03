@@ -4,8 +4,12 @@
 /*global speakEasy: false */
 /*global document: false */
 /*global _: false */
-(function (mq, query, callbacks) {
+(function (mq, query, callbacks, tmp) {
 	"use strict";
+    
+    	function getResult(arg) {
+		return _.isFunction(arg) ? arg() : arg;
+	}
 
 
 	function invoke(f, arg) {
@@ -14,13 +18,18 @@
 	}
     
     function just_invoke(f) {
-		return f();
+		return getResult(f);
 	}
     
 
 	function doMethod(o, v, p) {
 		return o[p] && o[p](v);
 	}
+    
+    function invokeMethod(o, p, v) {
+		return o[p] && o[p].apply(o, _.rest(arguments, 2));
+	}
+
 
 	function lazyVal(v, o, p) {
 		return doMethod(o, v, p);
@@ -115,20 +124,22 @@
         deferTabs = twicedefer(klasTog)(csstabs),
         contains = doComp(thrice(utils.lazyVal)('contains')(doComp(utils.getClassList, csstabs))),
         kontrol = {
-            query: [_.negate(contains), ptL(con2, always(true))],
+            query: [_.negate(contains), always(true)],
             getQuery: function(){
-                con(this);
                 return this.query[0];
             }
         },
-		clear = ptL(utils.lazySet, 'csstabs', csstabs, 'className'),
-        //csstablist = _.negate(contains),
-        //csstablist = always(true),
+        clear = [ptL(utils.lazySet, 'csstabs', csstabs, 'className')],
+        splice = ptL(invokeMethod, callbacks, 'splice', 0),
+        unshift = ptL(splice, 1, clear[0]),
+        dither = [unshift, splice],
+        pass = 0,
         negator = function() {
-			callbacks.unshift(clear);
 			/*NOTE netrenderer reports window.width AS ZERO*/
 			if (!getEnvironment()) {
-                csstabs = callbacks.splice(0, 1);
+                pass = Number(!pass);
+                dither[pass]();
+                con(clear, callbacks)
 				kontrol.query.reverse();
 				getEnvironment = _.negate(getEnvironment);
 			}
@@ -162,7 +173,8 @@
             };
         }()),        
 		addKlasWhen = doComp(deferEach, thrice(utils.lazyVal)('concat')(callbacks), doComp(deferTabs, identity)),
-        onMissing = doComp(ptL(utils.invokeThen, _.negate(contains), _.identity), doGet('input')),
+        //onMissing = doComp(ptL(utils.invokeThen, _.negate(contains), _.identity), doGet('input')),
+        onMissing = doComp(ptL(utils.invokeThen, _.bind(kontrol.getQuery, kontrol), _.identity), doGet('input')),
         
 		recipe = utils.COR(doComp(onMissing, matchReg(/^R/i)), addKlasWhen),
 		method = utils.COR(doComp(onMissing, matchReg(/^M/i)), addKlasWhen),
@@ -200,12 +212,9 @@
     recipe.setSuccessor(method);
 	method.setSuccessor(serve);
     _.each(utils.getByTag('a', $('nav')), ptL(utils.invokeWhen, utils.getNext, doComp(utils.removeNodeOnComplete, utils.getNext)));
-    /*
-    float_handler = ptL(negater, floating_elements(images, getArticle, getHeading, utils.insertBefore, utils.insertAfter));
-	float_handler();
-	utils.addHandler('resize', window, _.throttle(float_handler, 99));
-    */
-    
+    callbacks.unshift(clear[0]);
     negator();
+    eventing('resize', event_actions.slice(0, 1), _.throttle(negator, 99), window).execute();    
+
     
-}(Modernizr.mq('only all'), '(min-width: 667px)', []));
+}(Modernizr.mq('only all'), '(min-width: 667px)', [], []));
