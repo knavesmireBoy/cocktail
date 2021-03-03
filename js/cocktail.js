@@ -129,7 +129,8 @@
                 /*recipe is default view,
                 element.classList.add complains if attempting to add an empty string
                 so simply set class to original class, which means element.classList.add won't actually run as it already exists*/
-                recipe: 'csstabs',
+                //recipe: 'csstabs',
+                recipe: 'recipe',//adding class recipe after all purely for css transition
                 method: 'method',
                 "serving suggestion": 'serving'
             }
@@ -168,11 +169,12 @@
                 anCr(doComp(twice(invoke)('Serving Suggestion'), doText, $ancr3)('h3')),
 				anCr(doComp(twice(invoke)('Method'), doText, $ancr2)('h3')),
 				anCr(doComp(twice(invoke)('Recipe'), doText, $ancr1)('h3')),
-                $cb3 = anCr(doComp($tabcontent, $ancr3)('section')),
-				$cb1 = anCr(doComp($tabcontent, $ancr1)('div')),
-				$cb2 = anCr(doComp($tabcontent, $ancr2)('ul'));
-			_.each(instr[page][0], ptL(tagFactory, 'p', doComp(doText, $cb2)));
+                $cb3 = anCr(doComp($tabcontent, $ancr3)('section'));
+				
+				$cb2 = anCr(doComp($tabcontent, $ancr2)('div'));
+            $cb1 = anCr(doComp($tabcontent, $ancr1)('ul'));
 			_.each(instr[page][1], ptL(tagFactory, 'li', doComp(doText, $cb1)));
+			_.each(instr[page][0], ptL(tagFactory, 'p', doComp(doText, $cb2)));
 			_.each(instr[page][2], ptL(tagFactory, 'p', doComp(doText, $cb3)));
 			$showtime();
 		},

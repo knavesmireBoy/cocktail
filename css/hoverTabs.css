@@ -67,7 +67,7 @@
 	left: 68%;
 }
 
-.csstabs.method #tab1 .tabcontent, .csstabs.serving #tab1 .tabcontent, #tab2 ul, #tab3 section{
+.method #tab1 ul, .serving #tab1 ul, #tab2 div, #tab3 section{
 	opacity: 0;
 }
 
@@ -79,11 +79,7 @@
 	transition: opacity 1s ease-in;
 }
 
-.csstabs.serving #tab3 .tabcontent{
-	opacity: 1;
-}
-
-.method #tab2 ul, .method #tab3 div{
+.recipe #tab1 ul, .method #tab2 div, .serving #tab3 section{
 	transition: opacity 1s ease-in;
 }
 
@@ -95,7 +91,7 @@
 	z-index: 3;
 }
 
-.method #tab2 h3+ul, .no-js #tab1 h3:hover+.tabcontent , .no-js #tab2 h3:hover+.tabcontent , .no-js #tab3 h3:hover+.tabcontent {
+.method #tab2 h3+div, .serving #tab3 h3+section, .no-js #tab1 h3:hover+.tabcontent , .no-js #tab2 h3:hover+.tabcontent , .no-js #tab3 h3:hover+.tabcontent {
 	opacity: 1;
 	z-index: 2;
     background-color: black;
