@@ -88,6 +88,7 @@
 		ptL = _.partial,
 		doComp = _.compose,
 		curryFactory = utils.curryFactory,
+        always = utils.always,
         drill = utils.drillDown,
 		event_actions = ['preventDefault', 'stopPropagation', 'stopImmediatePropagation'],
 		eventing = utils.eventer,
@@ -114,7 +115,7 @@
 		tagFactory = function (tag, ptl, txt) {
 			ptl(tag)(txt);
 		},
-		mycontent = doComp(utils.getZero, ptL(utils.getByTag, 'article')),
+        mycontent = ptL(utils.findByClass, 'content'),
         validate = thrice(utils.doMethod)('match')(/h3/i),
 		node_from_target = doComp(validate, drill([mytarget, 'nodeName'])),
 		matchReg = thrice(utils.doMethod)('match'),
@@ -155,27 +156,29 @@
 		$tabbox = ptL(klasAdd, 'tabbox'),
 		$showtime = doComp(ptL(klasAdd, 'showtime'), utils.drillDown(['parentNode']), mycontent),
 		$noShowtime = doComp(ptL(klasRem, 'showtime'), utils.drillDown(['parentNode']), mycontent),        
-		doIt = function () {
-			var $node = anCr(doComp(doGetEl, doExec, toggler, ptL(klasAdd, ['csstabs']), $root)('div')),
-				$ancr33 = anCr(doComp($tab3, $tabbox, $node)('div')),
-				$ancr2 = anCr(doComp($tab2, $tabbox, $node)('div')),
-				$ancr1 = anCr(doComp($tab1, $tabbox, $node)('div')),
-				/*$ancr3, and $recipe are not used but must run in this sequence*/
-                $serve = anCr(doComp(twice(invoke)('Serving Suggestion'), doText, $ancr33)('h3')),
-				$ancr3 = anCr(doComp(twice(invoke)('Method'), doText, $ancr2)('h3')),
-				$recipe = anCr(doComp(twice(invoke)('Recipe'), doText, $ancr1)('h3')),
-                $cb3 = anCr(doComp($tabcontent, $ancr33)('section')),
+		execute = function (page) {
+			var $cb3,
+                $cb2,
+                $cb1,
+                $node = anCr(doComp(doGetEl, doExec, toggler, ptL(klasAdd, ['csstabs']), $root)('div')),
+                $run = doComp($tabbox, $node),
+				$ancr3 = anCr(doComp($tab3, $run)('div')),
+				$ancr2 = anCr(doComp($tab2, $run)('div')),
+				$ancr1 = anCr(doComp($tab1, $run)('div'));
+                anCr(doComp(twice(invoke)('Serving Suggestion'), doText, $ancr3)('h3')),
+				anCr(doComp(twice(invoke)('Method'), doText, $ancr2)('h3')),
+				anCr(doComp(twice(invoke)('Recipe'), doText, $ancr1)('h3')),
+                $cb3 = anCr(doComp($tabcontent, $ancr3)('section')),
 				$cb1 = anCr(doComp($tabcontent, $ancr1)('div')),
-				$cb2 = anCr(doComp($tabcontent, $ancr2)('ul')),
-				page = lookup[utils.getBody().id];
+				$cb2 = anCr(doComp($tabcontent, $ancr2)('ul'));
 			_.each(instr[page][0], ptL(tagFactory, 'p', doComp(doText, $cb2)));
 			_.each(instr[page][1], ptL(tagFactory, 'li', doComp(doText, $cb1)));
 			_.each(instr[page][2], ptL(tagFactory, 'p', doComp(doText, $cb3)));
 			$showtime();
 		},
-		unDoIt = doComp($noShowtime, ptL(utils.climbDom, 2), utils.removeNodeOnComplete, utils.getZero, ptL(utils.getByClass, 'csstabs', document));
+		undo = doComp($noShowtime, ptL(utils.climbDom, 2), utils.removeNodeOnComplete, utils.getZero, ptL(utils.getByClass, 'csstabs', document));
     
-	eventing('click', event_actions.slice(0, 1), doAltRecipe([doIt, unDoIt]), doComp(ptL(utils.byIndex, 0), ptL(utils.getByTag, 'h2', document))).execute();
+	eventing('click', event_actions.slice(0, 1), doAltRecipe([ptL(execute, lookup[utils.getBody().id]), undo]), doComp(ptL(utils.byIndex, 0), ptL(utils.getByTag, 'h2', document))).execute();
     
     recipe.setSuccessor(method);
 	method.setSuccessor(serve);
