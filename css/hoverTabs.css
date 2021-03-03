@@ -106,3 +106,36 @@
 #tab2.method+#tab1 ul {
     opacity: .5;
 }
+
+@media only screen and (max-width: 667px) {
+   #tab1, #tab2 {
+	margin-left: 0;
+}
+
+#tab2 h3 {
+	left: 0;
+}
+#tab3 h3 {
+	left: 0;
+}
+    .csstabs h3 {
+        width: 100%;
+        border-width: 0px;
+        border-radius: 0px;
+        background-image: linear-gradient(rgb(204, 0, 204), black);
+        color: white;
+        text-shadow: 1px 1px 2px black;
+    }
+    .tabcontent {
+        position: absolute;
+        width: 100%;
+        box-sizing: border-box;
+        opacity: 0;
+        border-width: 0px;
+        border-radius: none;
+    }
+    .csstabs h3:hover {
+        color: magenta;
+    }
+}
+

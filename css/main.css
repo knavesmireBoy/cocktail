@@ -425,8 +425,9 @@ nav ul>li>a:hover + ul {
 		transition: height .9s ease-out;
 	}
 	
-	main aside img {
-		display: none;
+	main aside {
+		position: absolute;
+        left: -9999px;
 	}
 	main aside>a {
 		position: absolute;
