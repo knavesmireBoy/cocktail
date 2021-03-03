@@ -46,8 +46,9 @@
 		onMissing = ptL(comp, ptL(utils.invokeWhen, csstablist, _.identity), toLower, doGet('input')),
 		recipe = utils.COR(comp(onMissing, matchReg(/^R/i)), addKlasWhen),
 		method = utils.COR(comp(onMissing, matchReg(/^M/i)), addKlasWhen),
-		serve = utils.COR(comp(onMissing, matchReg(/^S/i)), addKlasWhen);
+		serve = utils.COR(comp(onMissing, matchReg(/^S/i)), addKlasWhen),
+        getBest = ptL(utils.getBest, node_from_target, [comp(recipe.handle.bind(recipe), toLower, drill([mytarget, 'innerHTML'])), cor.handle]);
 	recipe.setSuccessor(method);
 	method.setSuccessor(serve);
-	utils.eventer('click', event_actions.slice(0), comp(invokey, ptL(utils.getBest, node_from_target, [comp(recipe.handle.bind(recipe), toLower, drill([mytarget, 'innerHTML'])), cor.handle])), utils.findByClass('csstabs')).execute();
+	utils.eventer('click', event_actions.slice(0), comp(invokey, getBest), utils.findByClass('csstabs')).execute();
 }());

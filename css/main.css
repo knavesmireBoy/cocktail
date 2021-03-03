@@ -19,10 +19,12 @@ body {
 main {
 	position: relative;
 	overflow: hidden;
-	display: flex;
 	box-sizing: border-box;
+    display: flex;
 }
-blockquote {
+
+
+header blockquote {
 	color: silver;
 	border: 1px dotted;
 	width: 15em;
@@ -70,7 +72,7 @@ footer {
 i, cite, b, footer, footer a {
 	color: #c0c0c0;
 }
-blockquote em {
+header blockquote em {
 	font-size: .85rem;
 	font-style: normal;
 	color: snow;
@@ -96,7 +98,7 @@ header aside {
 	background-size: contain;
 }
 
-blockquote:before {
+header blockquote:before {
 	content: '_';
 	display: block;
 	width: 100%;
@@ -106,7 +108,7 @@ blockquote:before {
 	margin: -20px auto 10px;
 	text-align: center;
 }
-blockquote:after {
+header blockquote:after {
 	content: '_';
 	font-size: 0px;
 	display: block;
@@ -134,18 +136,19 @@ main aside {
 	box-sizing: border-box;
 	position: relative;
 }
-main article {
+main>article {
 	flex: 5 1 0;
 	box-sizing: border-box;
 	position: relative;
 }
-main article {
+main>article {
 	padding: 3em 4em 32em 2rem;
 	border: dotted 1px white;
 	border-width: 0 0 0 1px;
 }
-main aside, main article {
+main aside, main>article {
 	margin-bottom: -30em;
+    padding-bottom: 30em;
 }
 
 header aside h2 {
@@ -175,7 +178,7 @@ main aside a {
 	top: 1em;
     font-weight: bold;
 }
-main article h2 {
+main>article h2 {
 	background-color: transparent;
 	background-repeat: no-repeat;
 	float: right;
@@ -186,7 +189,7 @@ main article h2 {
 	border: solid 10px black;
 	filter: grayscale(80%);
 }
-main article p {
+main>article p {
 }
 nav ul>li {
 	position: relative;
@@ -219,6 +222,15 @@ nav>ul>li a {
 	height: 3rem;
 	width: 3rem;
 }
+
+.variant {
+    border: solid 5px white;
+    border-radius: 50%;
+    width: 10em;
+    height: 10em;
+    text-align: center;
+    margin: 2em auto 0;
+}
 body.show {
 	margin: 3em;
 }
@@ -229,7 +241,7 @@ h2:hover {
 a:hover {
 	color: white;
 }
-.show main article>* {
+.show main>article>* {
 	position: absolute;
 	left: -999em;
 }
@@ -274,7 +286,7 @@ nav>ul>li>a:hover {
 }
 
 
-main article>p:first-child::first-letter {
+main>article>p:first-child::first-letter {
 	color: white;
 	font-size: 300%;
 	line-height: 1.1;
@@ -284,11 +296,11 @@ main article>p:first-child::first-letter {
 	border: solid 1px magenta;
 }
 
-main article p:nth-of-type(odd) {
+main>article p:nth-of-type(odd) {
 	color: whitesmoke;
 }
 
-p em, main article p strong {
+p em, main>article p strong {
     color: white;
 }
 
@@ -296,7 +308,7 @@ p:nth-of-type(odd) em, p:nth-of-type(odd) strong {
     color: hsl(65, 80%, 70%);
 }
 
-.show main article .csstabs {
+.show main>article .csstabs {
 	position: relative;
 	left: 0;
 }
@@ -388,10 +400,10 @@ nav ul>li>a:hover + ul {
 		position: static;
 		border-width: 0;
 	}
-	main aside, main article {
+	main aside, main>article {
 		margin-bottom: 0px;
 	}
-	main article {
+	main>article {
 		padding: 4em 2em 1em;
 		border-width: 0;
 	}

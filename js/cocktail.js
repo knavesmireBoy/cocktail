@@ -83,7 +83,6 @@
 		utils = speakEasy.Util,
 		con = window.console.log.bind(window),
         con2 = function(arg){
-            con(arg);
             return arg;
         },
 		ptL = _.partial,
@@ -97,7 +96,6 @@
 		thrice = curryFactory(3),
 		anCr = utils.append(),
 		klasAdd = utils.addClass,
-		klasAddVal = ptL(utils.addClassVal, _.negate(ptL(utils.isEqual, 'recipe')), 'add'),
 		klasRem = utils.removeClass,
 		doAltRecipe = utils.doAlternate(),
         deferEach = twice(doCallbacks)('each'),
@@ -125,7 +123,6 @@
 		cor = {
 			handle: function() {}
 		},
-        
         identity = (function(){
             var dir = {
                 /*recipe is default view,
@@ -136,11 +133,9 @@
                 "serving suggestion": 'serving'
             }
             return function(str){
-                con(str && dir[str])
                 return str && dir[str];
             };
         }()),
-        
         deferTabs = twicedefer(klasAdd)(csstabs),
 		clear = ptL(utils.lazySet, 'csstabs', csstabs, 'className'),
         csstablist = _.negate(doComp(thrice(utils.lazyVal)('contains')(doComp(utils.getClassList, csstabs)))),
@@ -149,7 +144,6 @@
 		recipe = utils.COR(doComp(onMissing, matchReg(/^R/i)), addKlasWhen),
 		method = utils.COR(doComp(onMissing, matchReg(/^M/i)), addKlasWhen),
 		serve = utils.COR(doComp(onMissing, matchReg(/^S/i)), addKlasWhen),  
-        
         isHead = ptL(utils.getBest, node_from_target, [doComp(recipe.handle.bind(recipe), toLower, drill([mytarget, 'innerHTML'])), cor.handle]),
         toggler = ptL(eventing, 'click', event_actions.slice(0, 1), doComp(invoke, isHead)),        
 		$id = thrice(doMapBridge)('id'),
@@ -160,22 +154,17 @@
 		$tabcontent = ptL(klasAdd, 'tabcontent'),
 		$tabbox = ptL(klasAdd, 'tabbox'),
 		$showtime = doComp(ptL(klasAdd, 'showtime'), utils.drillDown(['parentNode']), mycontent),
-		$noShowtime = doComp(ptL(klasRem, 'showtime'), utils.drillDown(['parentNode']), mycontent),
-        
-        
-        
+		$noShowtime = doComp(ptL(klasRem, 'showtime'), utils.drillDown(['parentNode']), mycontent),        
 		doIt = function () {
-            //$node = anCr(doComp(doGetEl, doExec, toggler, ptL(klasAdd, 'csstabs'), $root)('div')),
-
-			var $node = anCr(doComp(doGetEl, doExec, toggler, ptL(klasAdd, ['csstabs', 'method']), $root)('div')),
+			var $node = anCr(doComp(doGetEl, doExec, toggler, ptL(klasAdd, ['csstabs']), $root)('div')),
 				$ancr33 = anCr(doComp($tab3, $tabbox, $node)('div')),
 				$ancr2 = anCr(doComp($tab2, $tabbox, $node)('div')),
 				$ancr1 = anCr(doComp($tab1, $tabbox, $node)('div')),
 				/*$ancr3, and $recipe are not used but must run in this sequence*/
-                 $serve = anCr(doComp(twice(invoke)('Serving Suggestion'), doText, $ancr33)('h3')),
+                $serve = anCr(doComp(twice(invoke)('Serving Suggestion'), doText, $ancr33)('h3')),
 				$ancr3 = anCr(doComp(twice(invoke)('Method'), doText, $ancr2)('h3')),
 				$recipe = anCr(doComp(twice(invoke)('Recipe'), doText, $ancr1)('h3')),
-               $cb3 = anCr(doComp($tabcontent, $ancr33)('section')),
+                $cb3 = anCr(doComp($tabcontent, $ancr33)('section')),
 				$cb1 = anCr(doComp($tabcontent, $ancr1)('div')),
 				$cb2 = anCr(doComp($tabcontent, $ancr2)('ul')),
 				page = lookup[utils.getBody().id];
@@ -190,8 +179,6 @@
     
     recipe.setSuccessor(method);
 	method.setSuccessor(serve);
-   
-    
     _.each(utils.getByTag('a', $('nav')), ptL(utils.invokeWhen, utils.getNext, doComp(utils.removeNodeOnComplete, utils.getNext)));
 
 }());
