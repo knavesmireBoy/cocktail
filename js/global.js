@@ -251,13 +251,13 @@ speakEasy.Util = (function() {
 
 	function render(anc, refnode, el) {
 		//console.log(arguments)
-		return getResult(anc).insertBefore(getResult(el), getResult(refnode));
+		return anc.insertBefore(getResult(el), getResult(refnode));
 	}
 	//get ye this. setAnchor effectively returns strategy(getNewElement in reality), which expects one argument
 	//(string, element, null/undef) and returns new element, clone or fragment
 	//getNewElement invokes render with the new element
 	function setAnchor(anchor, refnode, strategy) {
-		return _.compose(_.partial(render, anchor, refnode), strategy);
+		return _.compose(_.partial(render, getResult(anchor), refnode), strategy);
 	}
 
 	function getNextElement(node) {

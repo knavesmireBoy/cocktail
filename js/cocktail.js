@@ -159,10 +159,10 @@
 		$noShowtime = doComp(ptL(klasRem, 'showtime'), utils.drillDown(['parentNode']), mycontent),        
 		execute = function (page) {
 			var $node = anCr(doComp(doGetEl, doExec, toggler, ptL(klasAdd, ['csstabs']), $root)('div')),
-                $run = doComp($tabbox, $node),
-				$ancr3 = anCr(doComp($tab3, $run)('div')),
-				$ancr2 = anCr(doComp($tab2, $run)('div')),
-				$ancr1 = anCr(doComp($tab1, $run)('div'));
+                $doTab = doComp($tabbox, $node, always('div')),
+				$ancr3 = anCr(doComp($tab3, $doTab)),
+				$ancr2 = anCr(doComp($tab2, $doTab)),
+				$ancr1 = anCr(doComp($tab1, $doTab));
             anCr(doComp(twice(invoke)('Serving Suggestion'), doText, $ancr3)('h3'));
             anCr(doComp(twice(invoke)('Method'), doText, $ancr2)('h3'));
             anCr(doComp(twice(invoke)('Recipe'), doText, $ancr1)('h3'));
