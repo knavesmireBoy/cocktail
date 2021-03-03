@@ -1,9 +1,10 @@
 /*jslint nomen: true */
 /*global window: false */
+/*global Modernizr: false */
 /*global speakEasy: false */
 /*global document: false */
 /*global _: false */
-(function () {
+(function (mq, query, callbacks) {
 	"use strict";
 
 
@@ -16,9 +17,6 @@
 		return f();
 	}
     
-    function invokeRest(f) {
-		return f.apply(null,_.rest(arguments));
-	}
 
 	function doMethod(o, v, p) {
 		return o[p] && o[p](v);
@@ -97,6 +95,7 @@
 		thrice = curryFactory(3),
 		anCr = utils.append(),
 		klasAdd = utils.addClass,
+		klasTog = utils.toggleClass,
 		klasRem = utils.removeClass,
 		doAltRecipe = utils.doAlternate(),
         deferEach = twice(doCallbacks)('each'),
@@ -109,6 +108,31 @@
 				[k, v]
 			]);
 		},
+        number_reg = new RegExp('[^\\d]+(\\d+)[^\\d]+'),
+		threshold = Number(query.match(number_reg)[1]),
+        getEnvironment = ptL(utils.isDesktop, threshold),
+        csstabs = ptL(utils.findByClass, 'csstabs'),
+        deferTabs = twicedefer(klasTog)(csstabs),
+        contains = doComp(thrice(utils.lazyVal)('contains')(doComp(utils.getClassList, csstabs))),
+        kontrol = {
+            query: [_.negate(contains), ptL(con2, always(true))],
+            getQuery: function(){
+                con(this);
+                return this.query[0];
+            }
+        },
+		clear = ptL(utils.lazySet, 'csstabs', csstabs, 'className'),
+        //csstablist = _.negate(contains),
+        //csstablist = always(true),
+        negator = function() {
+			callbacks.unshift(clear);
+			/*NOTE netrenderer reports window.width AS ZERO*/
+			if (!getEnvironment()) {
+                csstabs = callbacks.splice(0, 1);
+				kontrol.query.reverse();
+				getEnvironment = _.negate(getEnvironment);
+			}
+		},
 		doExec = thrice(doMethod)('execute')(null),
 		doGetEl = thrice(doMethod)('getEl')(null),
 		doText = thrice(utils.lazySet)('innerHTML'),
@@ -119,9 +143,8 @@
         validate = thrice(utils.doMethod)('match')(/h3/i),
 		node_from_target = doComp(validate, drill([mytarget, 'nodeName'])),
 		matchReg = thrice(utils.doMethod)('match'),
-		toLower = thrice(utils.doMethod)('toLowerCase')(null),
-		csstabs = ptL(utils.findByClass, 'csstabs'),
-		cor = {
+		toLower = thrice(utils.doMethod)('toLowerCase')(null),        
+        cor = {
 			handle: function() {}
 		},
         identity = (function(){
@@ -137,17 +160,16 @@
             return function(str){
                 return str && dir[str];
             };
-        }()),
-        deferTabs = twicedefer(klasAdd)(csstabs),
-		clear = ptL(utils.lazySet, 'csstabs', csstabs, 'className'),
-        csstablist = _.negate(doComp(thrice(utils.lazyVal)('contains')(doComp(utils.getClassList, csstabs)))),
-		addKlasWhen = doComp(deferEach, thrice(utils.lazyVal)('concat')([clear]), doComp(deferTabs, identity)),
-		onMissing = doComp(ptL(utils.invokeThen, csstablist, _.identity), doGet('input')),
+        }()),        
+		addKlasWhen = doComp(deferEach, thrice(utils.lazyVal)('concat')(callbacks), doComp(deferTabs, identity)),
+        onMissing = doComp(ptL(utils.invokeThen, _.negate(contains), _.identity), doGet('input')),
+        
 		recipe = utils.COR(doComp(onMissing, matchReg(/^R/i)), addKlasWhen),
 		method = utils.COR(doComp(onMissing, matchReg(/^M/i)), addKlasWhen),
-		serve = utils.COR(doComp(onMissing, matchReg(/^S/i)), addKlasWhen),  
+		serve = utils.COR(doComp(onMissing, matchReg(/^S/i)), addKlasWhen),
+        
         isHead = ptL(utils.getBest, node_from_target, [doComp(recipe.handle.bind(recipe), toLower, drill([mytarget, 'innerHTML'])), cor.handle]),
-        toggler = ptL(eventing, 'click', event_actions.slice(0, 1), doComp(invoke, isHead)),        
+        eToggler = ptL(eventing, 'click', event_actions.slice(0, 1), doComp(invoke, isHead)),        
 		$id = thrice(doMapBridge)('id'),
 		$root = anCr(mycontent()),
 		$tabcontent = ptL(klasAdd, 'tabcontent'),
@@ -155,7 +177,7 @@
 		$showtime = doComp(ptL(klasAdd, 'showtime'), utils.drillDown(['parentNode']), mycontent),
 		$noShowtime = doComp(ptL(klasRem, 'showtime'), utils.drillDown(['parentNode']), mycontent),        
 		execute = function (page) {
-			var $node = anCr(doComp(doGetEl, doExec, toggler, ptL(klasAdd, ['csstabs']), $root)('div')),
+			var $node = anCr(doComp(doGetEl, doExec, eToggler, ptL(klasAdd, ['csstabs']), $root)('div')),
                 $doTab = doComp($tabbox, $node, always('div')),
 				$ancr3 = anCr(doComp($id('tab3'), $doTab)),
 				$ancr2 = anCr(doComp($id('tab2'), $doTab)),
@@ -178,5 +200,12 @@
     recipe.setSuccessor(method);
 	method.setSuccessor(serve);
     _.each(utils.getByTag('a', $('nav')), ptL(utils.invokeWhen, utils.getNext, doComp(utils.removeNodeOnComplete, utils.getNext)));
-
-}());
+    /*
+    float_handler = ptL(negater, floating_elements(images, getArticle, getHeading, utils.insertBefore, utils.insertAfter));
+	float_handler();
+	utils.addHandler('resize', window, _.throttle(float_handler, 99));
+    */
+    
+    negator();
+    
+}(Modernizr.mq('only all'), '(min-width: 667px)', []));

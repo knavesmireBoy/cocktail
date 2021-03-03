@@ -124,14 +124,23 @@
     }
     .tabcontent {
         position: absolute;
+        left: -9999px;
         width: 100%;
         box-sizing: border-box;
-        opacity: 0;
         border-width: 0px;
         border-radius: none;
+    }
+    .recipe #tab1 h3+ul, .method #tab2 h3+div , .serving #tab3 h3+section {
+        position: relative;
+        left:0;
     }
     .csstabs h3:hover {
         color: magenta;
     }
+    
+    .csstabs>* {
+	float: none;
+}
+
 }
 
