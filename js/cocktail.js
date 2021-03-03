@@ -4,7 +4,7 @@
 /*global speakEasy: false */
 /*global document: false */
 /*global _: false */
-(function (mq, query, callbacks, tmp) {
+(function (mq, query, callbacks, pass) {
 	"use strict";
     
     	function getResult(arg) {
@@ -26,7 +26,7 @@
 		return o[p] && o[p](v);
 	}
     
-    function invokeMethod(o, p, v) {
+    function invokeMethod(o, p) {
 		return o[p] && o[p].apply(o, _.rest(arguments, 2));
 	}
 
@@ -123,24 +123,19 @@
         csstabs = ptL(utils.findByClass, 'csstabs'),
         deferTabs = twicedefer(klasTog)(csstabs),
         contains = doComp(thrice(utils.lazyVal)('contains')(doComp(utils.getClassList, csstabs))),
-        kontrol = {
-            query: [_.negate(contains), always(true)],
-            getQuery: function(){
-                return this.query[0];
-            }
-        },
-        clear = [ptL(utils.lazySet, 'csstabs', csstabs, 'className')],
-        splice = ptL(invokeMethod, callbacks, 'splice', 0),
-        unshift = ptL(splice, 1, clear[0]),
-        dither = [unshift, splice],
-        pass = 0,
+        clear = ptL(utils.lazySet, 'csstabs', csstabs, 'className'),
+        splice = ptL(invokeMethod, callbacks, 'splice', 0, 1),
+        unshift = ptL(splice, clear),
+        dilly = [unshift, splice],
+        dally = [_.negate(contains), always(true)],
         negator = function() {
-			/*NOTE netrenderer reports window.width AS ZERO*/
+            /* for mobile toggle regardless, for desktop conditional on current status
+            only add/toggle when csstabs !contain class
+            mobile env empties callbacks
+            */
 			if (!getEnvironment()) {
                 pass = Number(!pass);
-                dither[pass]();
-                con(clear, callbacks)
-				kontrol.query.reverse();
+                dilly[pass]();
 				getEnvironment = _.negate(getEnvironment);
 			}
 		},
@@ -173,8 +168,7 @@
             };
         }()),        
 		addKlasWhen = doComp(deferEach, thrice(utils.lazyVal)('concat')(callbacks), doComp(deferTabs, identity)),
-        //onMissing = doComp(ptL(utils.invokeThen, _.negate(contains), _.identity), doGet('input')),
-        onMissing = doComp(ptL(utils.invokeThen, _.bind(kontrol.getQuery, kontrol), _.identity), doGet('input')),
+        onMissing = doComp(ptL(utils.invokeThen, dally[0], _.identity), doGet('input')),
         
 		recipe = utils.COR(doComp(onMissing, matchReg(/^R/i)), addKlasWhen),
 		method = utils.COR(doComp(onMissing, matchReg(/^M/i)), addKlasWhen),
@@ -212,9 +206,9 @@
     recipe.setSuccessor(method);
 	method.setSuccessor(serve);
     _.each(utils.getByTag('a', $('nav')), ptL(utils.invokeWhen, utils.getNext, doComp(utils.removeNodeOnComplete, utils.getNext)));
-    callbacks.unshift(clear[0]);
+    callbacks.unshift(clear);
     negator();
     eventing('resize', event_actions.slice(0, 1), _.throttle(negator, 99), window).execute();    
 
     
-}(Modernizr.mq('only all'), '(min-width: 667px)', [], []));
+}(Modernizr.mq('only all'), '(min-width: 667px)', [], 0));
