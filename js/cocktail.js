@@ -158,24 +158,20 @@
 		$showtime = doComp(ptL(klasAdd, 'showtime'), utils.drillDown(['parentNode']), mycontent),
 		$noShowtime = doComp(ptL(klasRem, 'showtime'), utils.drillDown(['parentNode']), mycontent),        
 		execute = function (page) {
-			var $cb3,
-                $cb2,
-                $cb1,
-                $node = anCr(doComp(doGetEl, doExec, toggler, ptL(klasAdd, ['csstabs']), $root)('div')),
+			var $node = anCr(doComp(doGetEl, doExec, toggler, ptL(klasAdd, ['csstabs']), $root)('div')),
                 $run = doComp($tabbox, $node),
 				$ancr3 = anCr(doComp($tab3, $run)('div')),
 				$ancr2 = anCr(doComp($tab2, $run)('div')),
 				$ancr1 = anCr(doComp($tab1, $run)('div'));
-                anCr(doComp(twice(invoke)('Serving Suggestion'), doText, $ancr3)('h3')),
-				anCr(doComp(twice(invoke)('Method'), doText, $ancr2)('h3')),
-				anCr(doComp(twice(invoke)('Recipe'), doText, $ancr1)('h3')),
-                $cb3 = anCr(doComp($tabcontent, $ancr3)('section'));
-				
-				$cb2 = anCr(doComp($tabcontent, $ancr2)('div'));
-            $cb1 = anCr(doComp($tabcontent, $ancr1)('ul'));
-			_.each(instr[page][1], ptL(tagFactory, 'li', doComp(doText, $cb1)));
-			_.each(instr[page][0], ptL(tagFactory, 'p', doComp(doText, $cb2)));
-			_.each(instr[page][2], ptL(tagFactory, 'p', doComp(doText, $cb3)));
+            anCr(doComp(twice(invoke)('Serving Suggestion'), doText, $ancr3)('h3'));
+            anCr(doComp(twice(invoke)('Method'), doText, $ancr2)('h3'));
+            anCr(doComp(twice(invoke)('Recipe'), doText, $ancr1)('h3'));
+            $ancr3 = anCr(doComp($tabcontent, $ancr3)('section'));
+            $ancr2 = anCr(doComp($tabcontent, $ancr2)('div'));
+            $ancr1 = anCr(doComp($tabcontent, $ancr1)('ul'));
+			_.each(instr[page][1], ptL(tagFactory, 'li', doComp(doText, $ancr1)));
+			_.each(instr[page][0], ptL(tagFactory, 'p', doComp(doText, $ancr2)));
+			_.each(instr[page][2], ptL(tagFactory, 'p', doComp(doText, $ancr3)));
 			$showtime();
 		},
 		undo = doComp($noShowtime, ptL(utils.climbDom, 2), utils.removeNodeOnComplete, utils.getZero, ptL(utils.getByClass, 'csstabs', document));
