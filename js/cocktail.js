@@ -149,9 +149,6 @@
         isHead = ptL(utils.getBest, node_from_target, [doComp(recipe.handle.bind(recipe), toLower, drill([mytarget, 'innerHTML'])), cor.handle]),
         toggler = ptL(eventing, 'click', event_actions.slice(0, 1), doComp(invoke, isHead)),        
 		$id = thrice(doMapBridge)('id'),
-		$tab1 = $id('tab1'),
-		$tab2 = $id('tab2'),
-		$tab3 = $id('tab3'),
 		$root = anCr(mycontent()),
 		$tabcontent = ptL(klasAdd, 'tabcontent'),
 		$tabbox = ptL(klasAdd, 'tabbox'),
@@ -160,9 +157,9 @@
 		execute = function (page) {
 			var $node = anCr(doComp(doGetEl, doExec, toggler, ptL(klasAdd, ['csstabs']), $root)('div')),
                 $doTab = doComp($tabbox, $node, always('div')),
-				$ancr3 = anCr(doComp($tab3, $doTab)),
-				$ancr2 = anCr(doComp($tab2, $doTab)),
-				$ancr1 = anCr(doComp($tab1, $doTab));
+				$ancr3 = anCr(doComp($id('tab3'), $doTab)),
+				$ancr2 = anCr(doComp($id('tab2'), $doTab)),
+				$ancr1 = anCr(doComp($id('tab1'), $doTab));
             anCr(doComp(twice(invoke)('Serving Suggestion'), doText, $ancr3)('h3'));
             anCr(doComp(twice(invoke)('Method'), doText, $ancr2)('h3'));
             anCr(doComp(twice(invoke)('Recipe'), doText, $ancr1)('h3'));
