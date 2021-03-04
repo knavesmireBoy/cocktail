@@ -149,12 +149,6 @@ speakEasy.Util = (function() {
 	function nested(f1, f2, item) {
 		return f2(f1(item));
 	}
-
-	function setter(o, k, v) {
-        //console.log(arguments)
-		getResult(o)[k] = v;
-	}
-    
     
 	function setter(o, k, v) {
         o = getResult(o);
@@ -169,12 +163,14 @@ speakEasy.Util = (function() {
     
 
     function getter(o, p) {
-        //!!p could be zero
-		return o /*&& p*/ && o[p];
+        o = getResult(o);
+        if(o && !undef(o[p])) { 
+            return o[p];
+        }
 	}
 
 	function setret(o, k, v) {
-		o[k] = v;
+		setter(o, k, v);
 		return o;
 	}
 
