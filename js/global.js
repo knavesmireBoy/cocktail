@@ -636,6 +636,7 @@ speakEasy.Util = (function() {
 	}
 
     function invokeThen(validate, action) {
+        console.log(arguments)
 		var args = _.rest(arguments, 2),
 			res = validate.apply(null, args);
         return res && action(res);

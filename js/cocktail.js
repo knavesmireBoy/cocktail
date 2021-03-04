@@ -90,6 +90,7 @@
 		utils = speakEasy.Util,
 		con = window.console.log.bind(window),
         con2 = function(arg){
+            con(arg)
             return arg;
         },
 		ptL = _.partial,
@@ -108,7 +109,6 @@
 		klasRem = utils.removeClass,
 		doAltRecipe = utils.doAlternate(),
         deferEach = twice(doCallbacks)('each'),
-		doGet = twice(utils.getter),
 		mytarget = !window.addEventListener ? 'srcElement' : 'target',
 		$ = thrice(lazyVal)('getElementById')(document),
 		doMap = utils.doMap,
@@ -122,12 +122,10 @@
         getEnvironment = ptL(utils.isDesktop, threshold),
         csstabs = ptL(utils.findByClass, 'csstabs'),
         deferTabs = twicedefer(klasTog)(csstabs),
-        contains = doComp(thrice(utils.lazyVal)('contains')(doComp(utils.getClassList, csstabs))),
         clear = ptL(utils.lazySet, 'csstabs', csstabs, 'className'),
         splice = ptL(invokeMethod, callbacks, 'splice', 0, 1),
         unshift = ptL(splice, clear),
         manageCallbacks = [unshift, splice],
-        queryCssTabs = [_.negate(contains), always(true)],
         negator = function() {
             /* for mobile toggle regardless, for desktop conditional on current status
             only add/toggle when csstabs !contain class
@@ -169,11 +167,10 @@
             };
         }()),        
 		addKlasWhen = doComp(deferEach, thrice(utils.lazyVal)('concat')(callbacks), doComp(deferTabs, identity)),
-        onMissing = doComp(ptL(utils.invokeThen, queryCssTabs[0], _.identity), doGet('input')),
         
-		recipe = utils.COR(doComp(onMissing, matchReg(/^R/i)), addKlasWhen),
-		method = utils.COR(doComp(onMissing, matchReg(/^M/i)), addKlasWhen),
-		serve = utils.COR(doComp(onMissing, matchReg(/^S/i)), addKlasWhen),
+		recipe = utils.COR(matchReg(/^R/i), addKlasWhen),
+		method = utils.COR(matchReg(/^M/i), addKlasWhen),
+		serve = utils.COR(matchReg(/^S/i), addKlasWhen),
         
         isHead = ptL(utils.getBest, node_from_target, [doComp(recipe.handle.bind(recipe), toLower, drill([mytarget, 'innerHTML'])), cor.handle]),
         eToggler = ptL(eventing, 'click', event_actions.slice(0, 1), doComp(invoke, isHead)),        
