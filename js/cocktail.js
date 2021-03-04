@@ -134,6 +134,7 @@
             mobile env empties callbacks
             */
 			if (!getEnvironment()) {
+                clear();
                 pass = Number(!pass);
                 manageCallbacks[pass]();
 				getEnvironment = _.negate(getEnvironment);

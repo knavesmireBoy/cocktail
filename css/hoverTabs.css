@@ -1,15 +1,13 @@
 .csstabs {
 	margin: 2em 0 0;
 	max-width: 700px;
-    position: relative;
+	position: relative;
 }
-
 .csstabs>* {
 	float: left;
-    position: relative;
+	position: relative;
 	width: 100%;
 }
-
 .tabcontent {
 	border: 1px solid white;
 	padding: 1em;
@@ -21,7 +19,6 @@
 	display: table;
 	clear: both;
 }
-
 .csstabs h3 {
 	font-size: 1em;
 	padding: .75em 0;
@@ -38,7 +35,6 @@
 	box-sizing: border-box;
 	width: 32%;
 }
-
 .csstabs li {
 	padding: .2em;
 }
@@ -47,100 +43,95 @@
 	background: black;
 }
 */
+
 .tabcontent li a {
 	font-size: 1.5em;
 	font-weight: bold;
 }
-
 #tab1 {
 	margin: 0 0 2em;
 }
-
 #tab1, #tab2 {
 	margin-left: -100%;
 }
-
 #tab2 h3 {
 	left: 34%;
 }
 #tab3 h3 {
 	left: 68%;
 }
-
-.method #tab1 ul, .serving #tab1 ul, #tab2 div, #tab3 section{
+.method #tab1 ul, .serving #tab1 ul, #tab2 div, #tab3 section {
 	opacity: 0;
 }
-
 .no-js .csstabs:hover .tabcontent {
-    opacity: 1;
+	opacity: 1;
 }
-
 .no-js .csstabs:hover ul {
 	transition: opacity 1s ease-in;
 }
-
-.recipe #tab1 ul, .method #tab2 div, .serving #tab3 section{
+.recipe #tab1 ul, .method #tab2 div, .serving #tab3 section {
 	transition: opacity 1s ease-in;
 }
-
-#tab1 h3, .method #tab2 h3, .no-js #tab2 h3:hover, .no-js #tab3 h3:hover {
+#tab1 h3, .method #tab2 h3, .serving #tab3 h3, .no-js #tab2 h3:hover, .no-js #tab3 h3:hover {
 	border-bottom-color: black;
 }
-
-.method #tab2 h3, .no-js #tab1 h3:hover, .no-js #tab2 h3:hover, .no-js #tab3 h3:hover{
+.serving #tab3 h3, .no-js #tab1 h3:hover, .no-js #tab2 h3:hover, .no-js #tab3 h3:hover {
 	z-index: 3;
 }
-
-.method #tab2 h3+div, .serving #tab3 h3+section, .no-js #tab1 h3:hover+.tabcontent , .no-js #tab2 h3:hover+.tabcontent , .no-js #tab3 h3:hover+.tabcontent {
+.method #tab2 h3 {
+    z-index: 4;
+}
+.recipe #tab1 h3 {
+    z-index: 5;
+}
+.serving #tab3 h3+section, .method #tab2 h3+div, .recipe #tab1 h3+ul, .no-js #tab1 h3:hover+.tabcontent, .no-js #tab2 h3:hover+.tabcontent, .no-js #tab3 h3:hover+.tabcontent {
 	opacity: 1;
 	z-index: 2;
-    background-color: black;
-    background-image: radial-gradient(white, rgba(255, 255, 255, .2) 2px, transparent 40px), radial-gradient(white, rgba(255, 255, 255, .15) 1px, transparent 30px), radial-gradient(white, rgba(255, 255, 255, .1) 2px, transparent 40px), radial-gradient(rgba(255, 255, 255, .4), rgba(255, 255, 255, .1) 2px, transparent 30px);
+	background-color: black;
+	background-image: radial-gradient(white, rgba(255, 255, 255, .2) 2px, transparent 40px), radial-gradient(white, rgba(255, 255, 255, .15) 1px, transparent 30px), radial-gradient(white, rgba(255, 255, 255, .1) 2px, transparent 40px), radial-gradient(rgba(255, 255, 255, .4), rgba(255, 255, 255, .1) 2px, transparent 30px);
 	background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
 	background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
 }
 #tab2.method+#tab1 ul {
-    opacity: .5;
+	opacity: .5;
 }
-
 @media only screen and (max-width: 667px) {
-   #tab1, #tab2 {
-	margin-left: 0;
+	.csstabs>* {
+		float: none;
+	}
+	.tabcontent {
+		position: absolute;
+		left: -9999px;
+		width: 100%;
+		box-sizing: border-box;
+		border-width: 0px;
+		border-radius: none;
+	}
+	.csstabs h3 {
+		width: 100%;
+		border-width: 0px;
+		border-radius: 0px;
+		background-image: linear-gradient(rgb(204, 0, 204), black);
+		color: white;
+		text-shadow: 1px 1px 2px black;
+	}
+	.csstabs h3:hover {
+		color: magenta;
+	}
+	#tab1, #tab2 {
+		margin-left: 0;
+	}
+	#tab2 h3 {
+		left: 0;
+	}
+	#tab3 h3 {
+		left: 0;
+	}/* all tabs can be visible in mobile land*/
+	.recipe #tab1 ul {
+		opacity: 1;
+	}
+	.recipe #tab1 h3+ul, .method #tab2 h3+div, .serving #tab3 h3+section {
+		position: relative;
+		left: 0;
+	}
 }
-
-#tab2 h3 {
-	left: 0;
-}
-#tab3 h3 {
-	left: 0;
-}
-    .csstabs h3 {
-        width: 100%;
-        border-width: 0px;
-        border-radius: 0px;
-        background-image: linear-gradient(rgb(204, 0, 204), black);
-        color: white;
-        text-shadow: 1px 1px 2px black;
-    }
-    .tabcontent {
-        position: absolute;
-        left: -9999px;
-        width: 100%;
-        box-sizing: border-box;
-        border-width: 0px;
-        border-radius: none;
-    }
-    .recipe #tab1 h3+ul, .method #tab2 h3+div , .serving #tab3 h3+section {
-        position: relative;
-        left:0;
-    }
-    .csstabs h3:hover {
-        color: magenta;
-    }
-    
-    .csstabs>* {
-	float: none;
-}
-
-}
-

@@ -46,6 +46,10 @@ speakEasy.Util = (function() {
 			};
 		};
 	}
+    
+    function undef(prop){
+        return typeof prop === 'undefined';
+    }
 
 	function Message(k, v) {
 		this.key = k;
@@ -151,10 +155,19 @@ speakEasy.Util = (function() {
 		getResult(o)[k] = v;
 	}
     
+    
+	function setter(o, k, v) {
+        o = getResult(o);
+        if(o && !undef(o[k])) { 
+            o[k] = v;
+        }
+    }
+    
     function lazySet(v, o, k) {
-        setter(o, k, v);
+        return setter(o, k, v);
 	}
     
+
     function getter(o, p) {
         //!!p could be zero
 		return o /*&& p*/ && o[p];
