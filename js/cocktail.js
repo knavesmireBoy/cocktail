@@ -126,8 +126,8 @@
         clear = ptL(utils.lazySet, 'csstabs', csstabs, 'className'),
         splice = ptL(invokeMethod, callbacks, 'splice', 0, 1),
         unshift = ptL(splice, clear),
-        dilly = [unshift, splice],
-        dally = [_.negate(contains), always(true)],
+        manageCallbacks = [unshift, splice],
+        queryCssTabs = [_.negate(contains), always(true)],
         negator = function() {
             /* for mobile toggle regardless, for desktop conditional on current status
             only add/toggle when csstabs !contain class
@@ -135,7 +135,7 @@
             */
 			if (!getEnvironment()) {
                 pass = Number(!pass);
-                dilly[pass]();
+                manageCallbacks[pass]();
 				getEnvironment = _.negate(getEnvironment);
 			}
 		},
@@ -168,7 +168,7 @@
             };
         }()),        
 		addKlasWhen = doComp(deferEach, thrice(utils.lazyVal)('concat')(callbacks), doComp(deferTabs, identity)),
-        onMissing = doComp(ptL(utils.invokeThen, dally[0], _.identity), doGet('input')),
+        onMissing = doComp(ptL(utils.invokeThen, queryCssTabs[0], _.identity), doGet('input')),
         
 		recipe = utils.COR(doComp(onMissing, matchReg(/^R/i)), addKlasWhen),
 		method = utils.COR(doComp(onMissing, matchReg(/^M/i)), addKlasWhen),
