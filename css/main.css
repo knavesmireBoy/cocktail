@@ -229,6 +229,7 @@ nav>ul>li a {
   width: 220px;
     text-align: center;
      margin: 2em auto;
+    font: italic .875em/1.75 'Lora', Georgia, serif;
 }
 
 .variant {
@@ -253,7 +254,7 @@ nav>ul>li a {
     font-style: italic;
     font-size: 1em;
     height: 100%;
-    line-height: 1.4;
+    line-height: 1.5;
 }
 
 .variant p::before {
@@ -299,6 +300,49 @@ nav>ul>li a {
   );
   shape-margin: 4%;
     box-sizing: border-box;
+}
+
+.arrow-down {
+    width: 2px;
+    height: 44px;
+    display: block;
+    background: white;
+    position: relative;
+}
+
+.arrow-down:before {
+  content:"";
+    display: block;
+    width: 0; 
+  height: 0; 
+  border-left: 16px solid transparent;
+  border-right: 16px solid transparent;
+  border-top: 16px solid #000;
+    position: relative;
+    right: 15px;
+}
+
+footer:before {
+  content:"";
+    display: block;
+    width: 0; 
+  height: 0; 
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid #fff;
+    position: relative;
+    right: 19px;
+    top: 18px;
+}
+.arrow-down:after{
+    width: 26px;
+    height: 2px;
+     content:"";
+    display: block;
+    background: white;
+    position: relative;
+    right: 13px;
+    top: 26px;
 }
 
 

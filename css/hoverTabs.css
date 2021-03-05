@@ -96,8 +96,14 @@
 	opacity: .5;
 }
 @media only screen and (max-width: 667px) {
-	.csstabs>* {
+    
+    .csstabs {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+	.csstabs>*, .csstabs p{
 		float: none;
+        text-align: center;
 	}
 	.tabcontent {
 		position: absolute;
@@ -110,16 +116,18 @@
 	.csstabs h3 {
 		width: 100%;
 		border-width: 0px;
-		border-radius: 0px;
+		border-radius: 9px;
 		background-image: linear-gradient(rgb(204, 0, 204), black);
+		background-image: none;
 		color: white;
+        padding: .7em 0;
 		text-shadow: 1px 1px 2px black;
 	}
 	.csstabs h3:hover {
 		color: magenta;
 	}
 	#tab1, #tab2 {
-		margin-left: 0;
+		margin: 0;
 	}
 	#tab2 h3 {
 		left: 0;
@@ -134,4 +142,11 @@
 		position: relative;
 		left: 0;
 	}
+    
+    .tabcontent {
+        border: dotted 1px white;
+    }
+  
+    
+   
 }
