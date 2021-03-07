@@ -1,5 +1,5 @@
 .csstabs {
-	margin: 2em 0 0;
+	margin: 2em 0 1em;
 	max-width: 700px;
 	position: relative;
 }
@@ -100,6 +100,7 @@
     .csstabs {
         display: flex;
         flex-direction: column-reverse;
+        margin: 2em 0 0;
     }
 	.csstabs>*, .csstabs p{
 		float: none;

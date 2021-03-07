@@ -21,11 +21,13 @@ main {
 	overflow: hidden;
 	box-sizing: border-box;
     display: flex;
+    	border-bottom: 1px solid white;
+
 }
 
 
 header blockquote {
-	color: silver;
+	color: rgba(204, 0, 204, 1);
 	border: 1px dotted;
 	width: 15em;
 	padding: 1rem;
@@ -63,14 +65,27 @@ nav ul ul {
     font-size: 1rem;
 }
 footer {
-	border-top: 1px solid white;
 	clear: both;
-	padding: 1em 1em 0;
+	padding: 1em 1em 0 2em;
 	z-index: 1;
 	box-sizing: border-box;
 }
+footer div {
+    float: left;
+}
+
+footer p {
+    float: right;
+    margin: -.5em 0 0;
+    
+}
+
 i, cite, b, footer, footer a {
-	color: #c0c0c0;
+	color: rgba(204, 0, 204, 1);
+}
+
+i, cite, b {
+	color: silver;
 }
 header blockquote em {
 	font-size: .85rem;
@@ -87,9 +102,10 @@ div>img {
 	width: 100%;
 	height: auto;
 }
+
 h1 em {
-	color: rgb(255, 111, 0);
-	color: #999;
+	color: rgba(0, 255, 255, .5);
+    text-shadow: 2px 2px 2px rgba(255, 0, 255, .8);
 }
 header aside {
 	overflow: hidden;
@@ -161,6 +177,23 @@ blockquote em span {
 	color: rgb(255, 251, 116);
 }
 
+main aside {
+    display: flex;
+    flex-direction: column;
+}
+
+main aside div:last-child {
+    transition: all 1.5s;
+
+}
+main.showtime aside div:last-child {
+    transform: translateY(10%) rotate(360deg);
+}
+
+main aside > div {
+    flex: 0 0 auto;
+}
+
 main aside div {
 	margin-top: -2rem;
 }
@@ -175,7 +208,7 @@ main aside a {
 	position: relative;
 	z-index: 1;
 	text-shadow: 3px 3px 2px rgb(100, 0, 0);
-	top: 1em;
+	top: 2em;
     font-weight: bold;
 }
 main>article h2 {
@@ -218,20 +251,23 @@ nav>ul>li a {
 .menu {
 	position: absolute;
 	top: 1rem;
-	right: 3.5rem;
+	right: 4.4rem;
 	height: 3rem;
 	width: 3rem;
 }
 
 .quote-wrapper {
-  height: 220px;
+  height: 180px;
   position: relative;
-  width: 220px;
+  width: 180px;
     text-align: center;
      margin: 2em auto;
-    font: italic .875em/1.75 'Lora', Georgia, serif;
+    font: italic 1em/1.6 'Lora', Georgia, serif;
 }
 
+#c6 .quote-wrapper {
+    line-height: 1.3;
+}
 .variant {
     background: radial-gradient(
     ellipse at center,
@@ -252,10 +288,31 @@ nav>ul>li a {
 .variant p {
     text-align: center;
     font-style: italic;
-    font-size: 1em;
     height: 100%;
-    line-height: 1.5;
+    position: relative;
 }
+
+
+.variant b {
+    color: chartreuse;
+}
+
+#c2 .variant::before, #c2 .variant p::before {
+    shape-margin: 9%;
+}
+
+#c3 .variant::before, #c3 .variant p::before {
+shape-margin: 3%;
+}
+
+#c5 .variant::before, #c5 .variant p::before {
+shape-margin: 4%;
+}
+
+#c6 .variant::before, #c6 .variant p::before {
+shape-margin: 8%;
+}
+
 
 .variant p::before {
   content: "";
@@ -275,8 +332,7 @@ nav>ul>li a {
     76.6% 17.3%,
     50% 6%
     );
-    
-  shape-margin: 4%;
+  shape-margin: 15%;
     box-sizing: border-box;
 }
 
@@ -298,7 +354,7 @@ nav>ul>li a {
     98% 100%,
     0 100%
   );
-  shape-margin: 4%;
+  shape-margin: 15%;
     box-sizing: border-box;
 }
 
@@ -306,8 +362,9 @@ nav>ul>li a {
     width: 2px;
     height: 44px;
     display: block;
-    background: white;
+    background: rgba(204, 0, 204, 1);
     position: relative;
+    bottom: 18px;
 }
 
 .arrow-down:before {
@@ -322,6 +379,8 @@ nav>ul>li a {
     right: 15px;
 }
 
+
+
 footer:before {
   content:"";
     display: block;
@@ -329,19 +388,18 @@ footer:before {
   height: 0; 
   border-left: 20px solid transparent;
   border-right: 20px solid transparent;
-  border-top: 20px solid #fff;
+  border-top: 20px solid rgba(204, 0, 204, 1);
     position: relative;
     right: 19px;
-    top: 18px;
 }
 .arrow-down:after{
     width: 26px;
     height: 2px;
      content:"";
     display: block;
-    background: white;
+    background: rgba(204, 0, 204, 1);
     position: relative;
-    right: 13px;
+    right: 12px;
     top: 26px;
 }
 
@@ -364,9 +422,11 @@ main.showtime aside {
 	overflow: hidden;
 }
 
-h1 em:hover {
-	color: cyan;
+	h1 em:hover {
+	color: rgba(222, 0, 222, .8);
+    text-shadow: 2px 2px 2px rgba(255, 255, 255, .9);
 }
+
 p:nth-of-type(odd) strong {
 	color: white;
 }

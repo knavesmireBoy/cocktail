@@ -35,8 +35,14 @@ main {
 main>* {
 	filter: sepia();
 	border-width: 0;
-	flex: 1 1 0;
+	flex: 1 1 100px;
 	position: relative;
+}
+
+
+section img {
+    width: 100%;
+    height: 100%;
 }
 h1 {
 	margin: 0;
@@ -53,11 +59,7 @@ h2 {
 	text-align: right;
 	line-height: 1.5;
 }
-section {
-	flex: 1 0 40%;
-	background-image: none;
-	overflow: hidden;
-}
+
 fieldset {
 	border: 0
 }
@@ -105,6 +107,10 @@ main form {
 	border-left: dotted 1px white;
 	min-width: 550px;
 }
+
+main > section {
+    
+}
 main h3 {
 	background: rgb(96, 85, 65);
 	color: rgba(0, 100, 130, .5);
@@ -123,13 +129,17 @@ header ul li {
 	/*background: url("../img/wallpaper.jpg"); */
 }
 
+.placeholder {
+
+    height: 100%;
+}
+
 .placeholder img {
 	display: block;
 	height: 100%;
 	width: 100%;
 	object-fit: cover;
 	position: relative;
-	float: left;
 }
 fieldset.ingredients {
 	width: 90%;
@@ -269,12 +279,17 @@ li.unit label:first-child, input[type="number"] {
 	width: 100%;
 	background: rgba(204, 0, 204, .5);
 	border-top: solid 1px white;
+     box-sizing: border-box;
 }
 #backbutton {
 	background-position: 50% 14.9%;
 }
 #playbutton {
 	background-position: 50% 29%;
+}
+
+#forwardbutton {
+    background-position: 50% 0%;
 }
 #controls button {
 	width: 3em;
@@ -290,7 +305,6 @@ li.unit label:first-child, input[type="number"] {
 	line-height: 1.6;
 	background-image: url(../img/buttons_sprite_lowend8.png);
 	background-repeat: no-repeat;
-	background-position: 50% 0%;
 	-webkit-box-shadow: 2px 2px 4px black;
 	box-shadow: 2px 2px 4px black;
 	text-shadow: 1px 1px 1px black;
