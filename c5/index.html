@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 
 <head>
     <title>Moscow Mule</title>
@@ -27,7 +27,7 @@ document.cookie='resolution='+Math.max(screen.width,screen.height)+'; path=/';
 </aside>
 <label class="menu" for="menu-toggle"></label>
 <input id="menu-toggle" type="checkbox">
-<nav><ul id="nav"><li><a href="../c1/">Martini</a><ul><li><a href="../c1/recipe.html">Recipe</a></li>
+<nav><ul id="nav"><li><a href="../c1/">Dry Martini</a><ul><li><a href="../c1/recipe.html">Recipe</a></li>
 </ul>
 </li><li><a href="../c5/">Moscow Mule</a><ul><li><a href="../c5/recipe.html">Recipe</a></li>
 </ul></li><li><a href="../c3/">Margarita</a><ul><li><a href="../c3/recipe.html">Recipe</a></li>
@@ -37,7 +37,14 @@ document.cookie='resolution='+Math.max(screen.width,screen.height)+'; path=/';
     </ul></li></ul></nav></header>
 <main><aside class="sidebar">
   
-<div><a href="https://www.esquire.com/food-drink/drinks/recipes/a3817/moscow-mule-drink-recipe/">Moscow Mule</a><img src="../img/mule.jpg"></div>
+<div><a href="https://www.esquire.com/food-drink/drinks/recipes/a3817/moscow-mule-drink-recipe/">Moscow Mule</a><img src="../img/moscow_mule.jpg"></div>
+           <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 200 200">
+  <circle fill="none" cx="100.577" cy="95.966" r="71.601"/>
+  <text transform="rotate(-46.621 83.238 -22.08)">
+    <tspan x="0" y="0">R</tspan><tspan x="17.742" y="-.205" rotate="14.563">U</tspan><tspan x="36.145" y="4.702" rotate="28.216">L</tspan><tspan x="49.583" y="11.725" rotate="40.869">E</tspan><tspan x="61.96" y="22.874" rotate="50.34"> </tspan><tspan x="66.955" y="28.336" rotate="59.353">#</tspan><tspan x="74.697" y="41.216" rotate="71.477">1</tspan><tspan x="79.597" y="55.567" rotate="83.565">2</tspan><tspan x="81.384" y="70.645" rotate="95.594">3</tspan>
+  </text>
+  <circle id="circ" cx="100.577" cy="95.965" r="65.847"/>
+</svg>
     
      <div class="quote-wrapper"><blockquote class="variant">
         <p>Never have more than three cocktails. After three cocktails, switch to highballs.</p>
@@ -66,5 +73,14 @@ A year after World War II, Americans were intrigued by one of their more notorio
     <script src="../js/classlist.js"></script>
     <script src="../js/global.js"></script>
     <script src="../js/cocktail.js"></script>
+         <script>
+     var repl = [5,6,4];
+        _.map(_.filter(speakEasy.Util.getByTag('tspan', document), function(str, i){
+         return i > 5;
+     }), function(el, i){
+             el.innerHTML = repl[i];
+         });
+    
+    </script>
 </body>
 </html>

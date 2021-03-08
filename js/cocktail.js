@@ -74,7 +74,7 @@
 			],
 			martini: [
 				["Fill a metal shaker with cracked ice.", "Pour in the dry vermouth (we prefer Noilly Prat), stir briefly, and strain out (this may be discarded).", "Add 4 ounces gin (we prefer Tanqueray, Bombay Sapphire, Beefeater) -- you want it around 94-proof.", "Stir briskly for about 10 seconds, strain into chilled cocktail glass, and garnish with an olive."],
-				["<a href='.'>Martini</a>", "4 oz gin", "1 Dry Vermouth", "<b>Cocktail Glass</b>"],
+				["<a href='.'></a>", "4 oz gin", "1 Dry Vermouth", "<b>Cocktail Glass</b>"],
 				['Por baby purr']
 			],
 			sidecar: [
@@ -95,7 +95,7 @@
 			]
 		},
 		lookup = {
-			c1: 'martini',
+			c1: '',
 			c2: 'sidecar',
 			c3: 'margarita',
 			c6: 'mai_tai',

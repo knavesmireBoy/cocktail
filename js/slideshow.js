@@ -93,7 +93,7 @@
 		doCurry = utils.curryFactory,
 		cssopacity = getNativeOpacity(!window.addEventListener),
 		event_actions = ['preventDefault', 'stopPropagation', 'stopImmediatePropagation'],
-		drinks = ['martini', 'manhattan', 'margarita', 'maitai', 'mule', 'sidecar', 'julep'],
+		drinks = ['dry_martini', 'manhattan', 'margarita', 'mai_tai', 'moscow_mule', 'sidecar', 'julep'],
 		eventing = utils.eventer,
 		defer_once = doCurry(1, true),
 		twice = doCurry(2),
@@ -306,7 +306,7 @@
 		}({})),
 		clear = _.bind(recur.undo, recur),
 		doplay = _.bind(recur.execute, recur),
-		chainFactory = function (flag) {
+		chainFactory = function () {
 			utils.makeCommand(); //reset utils.command to dummy command object
 			var doAlt = comp(twice(doInvoke)(null), utils.getZero, thrice(doMethod)('reverse')(null)),
 				deferAlt = defer_once(doAlt),
