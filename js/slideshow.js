@@ -364,7 +364,7 @@
 			};
 			mynext.setSuccessor(myprev);
 			myprev.setSuccessor(myplayer);
-			recur.i = 50; //slide is clone of base initially, so fade can start quickly
+			recur.i = 0; //slide is clone of base initially, so fade can start quickly
 			return mynext;
 		},
 		chain = chainFactory();
