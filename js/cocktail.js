@@ -69,8 +69,8 @@
 	}
 	var instr = {
 			margarita: [
-				["Shake well with cracked ice, then strain into a chilled cocktail glass that has had its rim rubbed with lime juice and dipped in coarse salt.", "A note on the <a href='http://www.esquire.com/features/tequila-drinks'>tequila</a>: It should be 100 percent agave, the plant from which the stuff is traditionally made. Save the great golden <em>añejos</em> for sipping.", "A note on the Cointreau: It yields results clearly superior to triple sec, most brands of which are marred by an unpleasant chemical aftertaste."],
-				["<a href='.'>Margarita</a>", "2 oz tequila -- silver tequila", "1 oz Cointreau", "1 oz lime juice", "<b>Cocktail Glass</b>"]
+				["Shake with cracked ice;  strain into a chilled wine goblet or cocktail glass with kosher salt on the rim; Garnish with a lime wheel"],
+				["<a href='.'>Margarita</a>", "2 oz tequila -- silver tequila", "1 oz Cointreau", "1 oz lime juice", "<b>Cocktail Glass</b>"], ["A properly concocted Margarita lets the imbiber taste the tequila. Of course, depending on a guest's experience with tequila, the amount of spirit needed in a drink will vary.", "When mixing a Margarita to be served on the rocks, double the amount of fruit juice. If you've inadvertently purchased mescal (which comes with a senselessly murdered worm) and not tequila, do not puree the poor creature - it adds only protein to the drink.", "When salting the rim of a glass, moisten the rim with a lime garnish, then dip the vessel in fine kosher salt, and garnish with a lime wheel. If you start your party before noon, add fruit to your Margaritas. Although we're partial to strawberries and bananas, just about any fruit would be appropriate.", "Similar drinks include the Daiquiri."]
 			],
 			martini: [
 				["Fill a metal shaker with cracked ice.", "Pour in the dry vermouth (we prefer Noilly Prat), stir briefly, and strain out (this may be discarded).", "Add 4 ounces gin (we prefer Tanqueray, Bombay Sapphire, Beefeater) -- you want it around 94-proof.", "Stir briskly for about 10 seconds, strain into chilled cocktail glass, and garnish with an olive."],
