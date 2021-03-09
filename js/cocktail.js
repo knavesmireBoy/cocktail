@@ -72,14 +72,14 @@
 				["Shake with cracked ice;  strain into a chilled wine goblet or cocktail glass with kosher salt on the rim; Garnish with a lime wheel"],
 				["<a href='.'>Margarita</a>", "2 oz tequila -- silver tequila", "1 oz Cointreau", "1 oz lime juice", "<b>Cocktail Glass</b>"], ["A properly concocted Margarita lets the imbiber taste the tequila. Of course, depending on a guest's experience with tequila, the amount of spirit needed in a drink will vary.", "When mixing a Margarita to be served on the rocks, double the amount of fruit juice. If you've inadvertently purchased mescal (which comes with a senselessly murdered worm) and not tequila, do not puree the poor creature - it adds only protein to the drink.", "When salting the rim of a glass, moisten the rim with a lime garnish, then dip the vessel in fine kosher salt, and garnish with a lime wheel. If you start your party before noon, add fruit to your Margaritas. Although we're partial to strawberries and bananas, just about any fruit would be appropriate.", "Similar drinks include the Daiquiri."]
 			],
-			martini: [
+			dry_martini: [
 				["Fill a metal shaker with cracked ice.", "Pour in the dry vermouth (we prefer Noilly Prat), stir briefly, and strain out (this may be discarded).", "Add 4 ounces gin (we prefer Tanqueray, Bombay Sapphire, Beefeater) -- you want it around 94-proof.", "Stir briskly for about 10 seconds, strain into chilled cocktail glass, and garnish with an olive."],
-				["<a href='.'></a>", "4 oz gin", "1 Dry Vermouth", "<b>Cocktail Glass</b>"],
-				['Por baby purr']
+				["<a href='.'>Dry Martini</a>", "4 oz gin", "1 Dry Vermouth", "<b>Cocktail Glass</b>"],
+				["Preparing a palatable Martini requires a unique style and masterful technique. First, completely fill the mixing vessel with the freshest, coldest ice available. The container can be glass, silver or stainless steel, but it must hold 16 ounces. Pour 1/2 ounce of dry vermouth into the vessel in a circular motion, so as much vermouth as possible touches the ice. Next, strain the vermouth from the container. Whatever liquid stays on the surface of the ice will be enough for one or two Martinis.", "Add 3 ounces of your favorite gin. With a <strong>barspoon</strong>, stir in a clockwise motion, agitating the ice against the gin. If the ice and gin are moving at the same speed, you are not succeeding. Lastly, strain the liquid into a chilled cocktail glass. Garnish with a lemon twist or a stuffed olive.", "Similar drinks include the Martinez."]
 			],
 			sidecar: [
 				["Shake well with cracked ice, then strain into a chilled cocktail glass that has had its outside rim rubbed with lemon juice and dipped in sugar"],
-				["<a href='.'>Sidecar</a>", "1 1/2 ounces cognac", "3/4 ounce Cointreau", "3/4 ounce lemon juice", "<b>Cocktail Glass</b>"]
+				["<a href='.'>Sidecar</a>", "1 1/2 ounces cognac", "3/4 ounce Cointreau", "3/4 ounce lemon juice", "<b>Cocktail Glass</b>"], ["Given it's due diligence the Sidecar can be made well by even the most inexperienced of mixers. The drink's recipe also lends itself to any other primary spirit. When apple brandy is substituted, the drink becomes the Apple Cart.", "Catching up with the growing wine trade, California has recently begun to produce some very fine brandies, although not aged as long as the very best <strong>COGNACS</strong>, show many distinct qualities that make them perfect for delicious for cocktails like the Sidecar. Such distillers as Carneros Alambic Distillery, Germain Robin and Clear Creek Distillers (Oregon) are producing spectacular spirits that you should sample the next time you're thinking of this classic.", "Similar drinks include the Newton's Special and the Jack Rose."]
 			],
 			mai_tai: [
 				['Stir the rum, lime juice, curaçao, orgeat syrup (an almond syrup sometimes inflicted on coffee; for all we know, you can pick some up at your local Starbucks), and "rock candy syrup" (no more than sugar syrup -- look that up in your <i>Joy of Cooking</i> -- made with a couple drops of vanilla extract) with cracked ice in a chilled cocktail shaker.', 'Shake well and pour unstrained into a large Collins glass (or, of course, tiki mug). If making two or more, you might want to strain the mixture into the glasses, <i>then</i> pour in the ice (to ensure even distribution). Garnish with half a lime shell and sprig of mint.'],
@@ -95,7 +95,7 @@
 			]
 		},
 		lookup = {
-			c1: '',
+			c1: 'dry_martini',
 			c2: 'sidecar',
 			c3: 'margarita',
 			c6: 'mai_tai',
