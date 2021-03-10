@@ -56,7 +56,7 @@ p {
 	text-align: justify;
 }
 em {
-	font-family: cochin, 'latin_modern_roman10BdIt', serif;
+	font: 1.2em, cochin, 'latin_modern_roman10BdIt', serif;
 }
 nav {
 	font-size: 1.2rem;
@@ -196,6 +196,7 @@ header blockquote:after {
 }
 main aside>div {
 	flex: 0 0 auto;
+    transition: all 2s ease-in-out;
 }
 main aside div {
 	margin-top: -2.4em;
@@ -204,6 +205,8 @@ main aside img {
 	display: block;
 	position: relative;
 	right: 1.5em;
+    
+    
 }
 main aside a {
 	color: rgba(255, 255, 255, .9);
@@ -513,7 +516,6 @@ nav ul>li>a:hover+ul {
 @media only screen and (max-width: 960px) {
   .showtime .sidebar > div {
         height: 100%;
-        background: red;
     }
     .showtime .sidebar > div img {
         height: 100%;
@@ -541,7 +543,6 @@ nav ul>li>a:hover+ul {
     
     .sidebar > div {
         height: 100%;
-        background: red;
     }
     .sidebar > div img {
         height: 100%;
@@ -560,13 +561,15 @@ nav ul>li>a:hover+ul {
 	}
 	h1 {
 		background: rgba(0, 0, 0, .75);
-		margin: 40% 0 4em;
+		margin: 40% 0 7em;
 		padding: 0 1rem;
 		border: dotted 1px white;
 		border-width: 1px 0;
-		top: 4em;
+		top: 7em;
 		text-shadow: 1px 1px 2px black;
 	}
+   
+
 	blockquote {
 		display: none;
 	}
@@ -582,7 +585,7 @@ nav ul>li>a:hover+ul {
 		margin-bottom: 0px;
 	}
 	main>article {
-		padding: 4em 2em 1em;
+		padding: 2em 2em 1em;
 		border-width: 0;
 	}
 	nav ul {
@@ -655,6 +658,98 @@ nav ul>li>a:hover+ul {
 		height: 2em;
 		font-size: 1.2em;
 	}
+}
+
+@media only screen and (max-width: 768px) and (min-width: 667px) {
+     h1:after {
+        
+    }
+    .c1 h1:after {
+        content: " ~ Dry Martini";
+        color: silver;
+    }
+    .c2 h1:after {
+        content: " ~ Sidecar";
+        color: gold;
+    }
+     .c3 h1:after {
+        content: " ~ Margarita";
+         color: rgb(222, 233, 160);
+    }
+    .c4 h1:after {
+        content: " ~ Mint Julep";
+        color: rgb(160, 100, 30);
+    }
+     .c5 h1:after {
+        content: " ~ Moscow Mule";
+         color: rgb(168, 126, 84);
+    }
+    .c6 h1:after {
+        content: " ~ Mai Tai";
+        color: orange;
+    }
+}
+  
+
+@media only screen and (max-width: 480px) {
+    footer:before {
+        content: none;
+        border-width: 0;
+    }
+    .arrow-down {
+        position: absolute;
+        left: -999px;
+        top:0;
+    }
+    footer p {
+        clear: left;
+        float: none;
+        margin: 0;
+    }
+ 
+}
+
+@media only screen and (max-width: 414px) {
+    
+	h1 {
+		background: rgba(0, 0, 0, .75);
+		margin: 30% 0 7em;
+		padding: 0 1rem;
+		top: 7em;
+	}
+    
+       footer {
+	padding: .5em;
+           font-size: .9em;
+           
+}
+    footer p {
+        text-align: center;
+    }
+    
+    main>article {
+		padding: 1em;
+		border-width: 0;
+        font-size: 1.2em;
+	}
+    
+   
+    nav ul {
+        right: 0;
+        font-size: 1em;
+        line-height: 1.44;
+    }
+    
+    header aside {
+        background-size: 70%;
+		background-position: -30% 0;
+	}
+    
+     .menu {
+        right:3em;
+    }
+    
+
 }
 @media only screen and (min-width: 1038px) {
 	.c6 .quote-wrapper {
