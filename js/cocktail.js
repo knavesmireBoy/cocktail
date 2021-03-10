@@ -85,9 +85,9 @@
 				['Stir the rum, lime juice, curaçao, orgeat syrup (an almond syrup sometimes inflicted on coffee; for all we know, you can pick some up at your local Starbucks), and "rock candy syrup" (no more than sugar syrup -- look that up in your <i>Joy of Cooking</i> -- made with a couple drops of vanilla extract) with cracked ice in a chilled cocktail shaker.', 'Shake well and pour unstrained into a large Collins glass (or, of course, tiki mug). If making two or more, you might want to strain the mixture into the glasses, <i>then</i> pour in the ice (to ensure even distribution). Garnish with half a lime shell and sprig of mint.'],
 				['<a href="../c6/">Mai Tai</a>', '2 oz rum -- dark rum<', '1 ounce lime juice,.', '1/2 oz orange curacao', '1.2 oz orgeat syrup', '1/8 oz simple syrup', '<b>Large collins glass</b>']
 			],
-			mintjulep: [
+			mint_julep: [
 				["Representing the High Kentucky School of Julepistics)", "Place 5 or 6 leaves of mint in the bottom of a prechilled, dry 12-ounce glass or silver beaker. Add sugar and crush slightly with a muddler. Pack glass with finely cracked ice. Pour a generous 3 ounces of Kentucky bourbon over the ice. Stir briskly until the glass frosts. Add more ice and stir again before serving.  Stick a few sprigs of mint into the ice so that the partaker will get the aroma.", "Still not enough mint flavor? Try this: For each julep, lightly cover about 10 sprigs of mint with superfine sugar, add an ounce of spring water, macerate, let stand for 10-15 minutes, and strain through a fine sieve into the ice-filled glass. Then add whiskey and proceed as above. If you'll stoop to maceration, you might also want to float 1/2 ounce of dark Jamaica rum on top."],
-				['<a href="../c4/">Mint Julep</a>', 'Mint', '1 teaspoon sugar', '3 oz whiskey -- bourbon<', '<b>Silver Beaker</b']
+				['<a href="../c4/">Mint Julep</a>', '3 oz bourbon', '6 sprigs mint', '2 to 4 tbsp simple syrup','<b>Silver Beaker</b']
 			],
 			moscow_mule: [
 				["Shake ingredients well with cracked ice, then strain into a chilled cocktail glass., ", "Some frost the rim of the glass with sugar, à la the <b>Sidecar</b> This looks great -- looks being the Moscow Mule's strong point -- so why not?", "Some even suggest a dash of orange bitters, if you can get them. Couldn't hurt."],
@@ -99,7 +99,7 @@
 			c2: 'sidecar',
 			c3: 'margarita',
 			c6: 'mai_tai',
-			c4: 'mintjulep',
+			c4: 'mint_julep',
 			c5: 'moscow_mule'
 		},
 		utils = speakEasy.Util,
@@ -125,6 +125,7 @@
 		doAltRecipe = utils.doAlternate(),
 		deferEach = twice(doCallbacks)('each'),
 		mytarget = !window.addEventListener ? 'srcElement' : 'target',
+        page_id = doComp(twice(getter)('className'), utils.getBody)(),
 		$ = thrice(lazyVal)('getElementById')(document),
 		doMap = utils.doMap,
 		doMapBridge = function(el, v, k) {
@@ -216,7 +217,7 @@
 			$showtime();
 		},
 		undo = doComp($noShowtime, ptL(utils.climbDom, 2), utils.removeNodeOnComplete, utils.getZero, ptL(utils.getByClass, 'csstabs', document));
-	eventing('click', event_actions.slice(0, 1), doAltRecipe([ptL(execute, lookup[utils.getBody().id]), undo]), doComp(ptL(utils.byIndex, 0), ptL(utils.getByTag, 'h2', document))).execute();
+	eventing('click', event_actions.slice(0, 1), doAltRecipe([ptL(execute, lookup[page_id]), undo]), doComp(ptL(utils.byIndex, 0), ptL(utils.getByTag, 'h2', document))).execute();
 	recipe.setSuccessor(method);
 	method.setSuccessor(serve);
 	_.each(utils.getByTag('a', $('nav')), ptL(utils.invokeWhen, utils.getNext, doComp(utils.removeNodeOnComplete, utils.getNext)));

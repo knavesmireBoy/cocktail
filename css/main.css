@@ -1,4 +1,4 @@
-@keyframes popup {
+@keyframes myrotate {
 	0% {
 		transform: rotate(-10deg);
 	}
@@ -100,8 +100,8 @@ div>img {
 	height: auto;
 }
 h1 em {
-	color: rgba(0, 255, 255, .5);
-	text-shadow: 2px 2px 2px rgba(255, 0, 255, .8);
+		color: rgba(222, 0, 222, .8);
+	text-shadow: 2px 2px 2px rgba(255, 255, 255, .9);
 }
 header aside {
 	overflow: hidden;
@@ -198,7 +198,7 @@ main aside>div {
 	flex: 0 0 auto;
 }
 main aside div {
-	margin-top: -2rem;
+	margin-top: -2.4em;
 }
 main aside img {
 	display: block;
@@ -279,7 +279,6 @@ nav>ul>li a {
 	bottom: 18px;
 }
 .variant {
-	background: radial-gradient( ellipse at center, rgba(255, 0, 255, .7) 0%, rgba(255, 0, 255, .3) 66%, rgba(255, 255, 255, 1) 70%, rgba(255, 255, 255, 0) 70.3%);
 	width: 100%;
 	height: 100%;
 	text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.3);
@@ -384,7 +383,7 @@ body.c1, body.c2, body.c3, body.c4, body.c5, body.c6 {
 	padding: 5% 10%;
 	margin: 0 auto;
 	filter: drop-shadow(0px 0px 20px magenta);
-	animation: popup 4s 1s ease-in;
+	animation: myrotate 2s 2s ease-in;
 	transform-origin: 50% 48.5%;
 	box-sizing: border-box;
 }
@@ -409,8 +408,8 @@ a:hover {
 	overflow: hidden;
 }
 h1 em:hover {
-	color: rgba(222, 0, 222, .8);
-	text-shadow: 2px 2px 2px rgba(255, 255, 255, .9);
+    color: rgba(0, 255, 255, .5);
+	text-shadow: 2px 2px 2px rgba(255, 0, 255, .8);
 }
 p:nth-of-type(odd) strong {
 	color: white;
@@ -482,6 +481,7 @@ nav ul>li>a:hover+ul {
 }
 .inlinesvg .variant {
 	background: radial-gradient( ellipse at center, rgba(0, 0, 0, .8) 0%, rgba(0, 0, 0, .66) 66%, rgba(255, 255, 0, 1) 70%, rgba(255, 255, 255, 0) 70.3%);
+    background: none;
 }
 .showtime aside div:first-child {
 	overflow: hidden;
@@ -508,6 +508,22 @@ nav ul>li>a:hover+ul {
 	.c1 .quote-wrapper, .c4 .quote-wrapper {
 		line-height: calc(100vw / 38);
 	}
+    
+}
+@media only screen and (max-width: 960px) {
+  .showtime .sidebar > div {
+        height: 100%;
+        background: red;
+    }
+    .showtime .sidebar > div img {
+        height: 100%;
+        object-fit: cover;
+        right: 0;
+        
+    }
+    .showtime .inlinesvg svg, .showtime .quote-wrapper {
+        display: none;
+    }
 }
 @media only screen and (max-width: 860px) {
 	.quote-wrapper {
@@ -522,6 +538,20 @@ nav ul>li>a:hover+ul {
 	.c4 .quote-wrapper {
 		line-height: calc(100vw / 30);
 	}
+    
+    .sidebar > div {
+        height: 100%;
+        background: red;
+    }
+    .sidebar > div img {
+        height: 100%;
+        object-fit: cover;
+        right: 0;
+        
+    }
+    .inlinesvg svg, .quote-wrapper {
+        display: none;
+    }
 }
 @media only screen and (max-width: 768px) {
 	main {
@@ -604,7 +634,7 @@ nav ul>li>a:hover+ul {
 		transform: rotate(360deg);
 	}
 	.c1 header aside {
-		background-image: url("../img/.jpg");
+		background-image: url("../img/dry_martini.jpg");
 	}
 	.c2 header aside {
 		background-image: url("../img/sidecar.jpg");
@@ -616,7 +646,7 @@ nav ul>li>a:hover+ul {
 		background-image: url("../img/julep.jpg");
 	}
 	.c5 header aside {
-		background-image: url("../img/cosmo.jpg");
+		background-image: url("../img/moscow_mule.jpg");
 	}
 	.c6 header aside {
 		background-image: url("../img/maitai.jpg");
