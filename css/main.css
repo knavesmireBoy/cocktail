@@ -396,7 +396,7 @@ main aside img {
 	position: relative;
 	right: 1.5em;
 }
-#c3 aside img, #c5 aside img {
+.c3 aside img, .c5 aside img {
 	right: 2.22em;
 }
 nav ul>li>a {
@@ -440,99 +440,99 @@ p:nth-of-type(odd) em, p:nth-of-type(odd) strong {
 	left: -9990px;
 }
 
-#c2 main aside a {
+.c2 main aside a {
 	top: 5em;
 }
-#c4 main aside a {
+.c4 main aside a {
 	top: 3.5em;
 }
-#c6 main aside a {
+.c6 main aside a {
 	top: 3em;
 	right: .9em;
 }
 
-#c1 .quote-wrapper, #c4 .quote-wrapper {
+.c1 .quote-wrapper, .c4 .quote-wrapper {
 	font-size: 1.2em;
     line-height: calc(100vw / 40);
 }
 
-#c1 .variant::before, #c1 .variant p::before, #c4 .variant::before, #c4 .variant p::before {
+.c1 .variant::before, .c1 .variant p::before, .c4 .variant::before, .c4 .variant p::before {
 	shape-margin: 2.6vw;
 }
 
 /*
 
-#c5 .variant::before, #c5 .variant p::before {
+.c5 .variant::before, .c5 .variant p::before {
 	shape-margin: 1.7vw;
 }
-#c1 .quote-wrapper {
+.c1 .quote-wrapper {
     line-height: calc(100vw / 45);
 }
 
 
 
-#c2 .variant::before, #c2 .variant p::before {
+.c2 .variant::before, .c2 .variant p::before {
 	shape-margin: 9%;
 	shape-margin: 1vw;
 }
-#c3 .variant::before, #c3 .variant p::before {
+.c3 .variant::before, .c3 .variant p::before {
 	shape-margin: 7%;
     shape-margin: 1vw;
 }
 
-.no-js #c3 .variant::before, .no-js #c3 .variant p::before {
+.no-js .c3 .variant::before, .no-js .c3 .variant p::before {
 	shape-margin: 3%;
 }
-#c5 .variant::before, #c5 .variant p::before {
+.c5 .variant::before, .c5 .variant p::before {
 	shape-margin: 4%;
 }
-#c6 .variant::before, #c6 .variant p::before {
+.c6 .variant::before, .c6 .variant p::before {
 	shape-margin: 11%;
     shape-margin: 1vw;
 }
 */
-body#c1, body#c2, body#c3, body#c4, body#c5, body#c6 {
+body#c1, body#c2, body#c3, body#c4, body#c5, body.c6 {
 	background-color: black;
 	background-image: radial-gradient(white, rgba(255, 255, 255, .2) 2px, transparent 40px), radial-gradient(white, rgba(255, 255, 255, .15) 1px, transparent 30px), radial-gradient(white, rgba(255, 255, 255, .1) 2px, transparent 40px), radial-gradient(rgba(255, 255, 255, .4), rgba(255, 255, 255, .1) 2px, transparent 30px);
 	background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
 	background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
 }
-#c1 h2 {
+.c1 h2 {
 	background-image: url('../img/dry_martini.jpg');
 	background-position: 50% 30%;
 	background-size: 250%;
 }
-#c2 h2 {
+.c2 h2 {
 	background-image: url('../img/sidecar.jpg');
 	background-position: 90% 10%;
 	background-size: 200%;
 }
-#c3 h2 {
+.c3 h2 {
 	background-image: url('../img/margarita.jpg');
 	background-position: 30% 60%;
 	background-size: 225%;
 }
-#c4 h2 {
+.c4 h2 {
 	background-image: url('../img/julep.jpg');
 	background-position: 90% 55%;
 	background-size: 170%;
 }
-#c5 h2 {
+.c5 h2 {
 	background-image: url('../img/moscow_mule.jpg');
 	background-position: 90% 30%;
 	background-size: 170%;
 }
-#c6 h2 {
+.c6 h2 {
 	background-image: url('../img/mai_tai.jpg');
 	background-position: 90% 55%;
 	background-size: 170%;
 }
-#c1 nav>ul>li:nth-child(1)>a, #c2 nav>ul>li:nth-child(6)>a, #c3 nav>ul>li:nth-child(3)>a, #c4 nav>ul>li:nth-child(5)>a, #c5 nav>ul>li:nth-child(2)>a, #c6 nav>ul>li:nth-child(4)>a {
+.c1 nav>ul>li:nth-child(1)>a, .c2 nav>ul>li:nth-child(6)>a, .c3 nav>ul>li:nth-child(3)>a, .c4 nav>ul>li:nth-child(5)>a, .c5 nav>ul>li:nth-child(2)>a, .c6 nav>ul>li:nth-child(4)>a {
 	color: white;
 }
 /*restrict drop down to current page OR alter html*/
 
-#c1 nav>ul>li:nth-child(1):hover a+ul, #c2 nav>ul>li:nth-child(6):hover a+ul, #c3 nav>ul>li:nth-child(3):hover a+ul, #c4 nav>ul>li:nth-child(5):hover a+ul, #c5 nav>ul>li:nth-child(2):hover a+ul, #c6 nav>ul>li:nth-child(4):hover a+ul {
+.c1 nav>ul>li:nth-child(1):hover a+ul, .c2 nav>ul>li:nth-child(6):hover a+ul, .c3 nav>ul>li:nth-child(3):hover a+ul, .c4 nav>ul>li:nth-child(5):hover a+ul, .c5 nav>ul>li:nth-child(2):hover a+ul, .c6 nav>ul>li:nth-child(4):hover a+ul {
 	left: auto;
 }
 nav ul>li>a:hover+ul {
@@ -636,22 +636,22 @@ nav ul>li>a:hover+ul {
 		-webkit-transform: rotate(360deg);
 		transform: rotate(360deg);
 	}
-	#c1 header aside {
+	.c1 header aside {
 		background-image: url("../img/.jpg");
 	}
-	#c2 header aside {
+	.c2 header aside {
 		background-image: url("../img/sidecar.jpg");
 	}
-	#c3 header aside {
+	.c3 header aside {
 		background-image: url("../img/margarita.jpg");
 	}
-	#c4 header aside {
+	.c4 header aside {
 		background-image: url("../img/julep.jpg");
 	}
-	#c5 header aside {
+	.c5 header aside {
 		background-image: url("../img/cosmo.jpg");
 	}
-	#c6 header aside {
+	.c6 header aside {
 		background-image: url("../img/maitai.jpg");
 	}
 	#menu-toggle:checked+nav ul li {
