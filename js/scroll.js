@@ -16,13 +16,12 @@
 	}
     
      function getGreater(a, b){
-         con(getResult(a), b)
         return getResult(a) > getResult(b);
     }
     
     
-    function invoke(f, arg){
-        return f(arg);
+    function invoke(f){
+        return f && f.apply(null, _.rest(arguments));
     }
     
     function invokeBridge(arr){
@@ -123,7 +122,7 @@
 		klasRem = utils.removeClass,
         toggleElements = ptL(utils.getByTag, 'h3', document),
         //toggleElements = function(){},
-        handleEl = doComp(ptL(getGreater, ptL(getPageOffset, false)), twice(getScrollThreshold)(1.03)),
+        handleEl = doComp(ptL(getGreater, ptL(getPageOffset, false)), twice(getScrollThreshold)(1.05)),
         getInner = twice(utils.getter)('innerHTML'),
         reset = thrice(utils.setter)('csstabs')('className'),
         getCssTabs = ptL(utils.findByClass, 'csstabs'),
@@ -135,16 +134,18 @@
         best = ptL(utils.getBest, handleEl, [add, rem]),
         //best = ptL(utils.getBest, handleEl, [utils.shout('confirm', 'con'), utils.shout('prompt', 'prompt')]),
         zip = twice(_.map)(best),
-        deferEach = twice(_.each)(getResult),
+        git = twice(_.zip)(['serving', 'method', 'recipe']),
+        deferEach = twice(_.each)(invokeBridge),
         
-        ff = function(funs){
-          // if(funs) funs();
+        ff = function(a, b){
+            return _.zip(a, b);
         
         },
         
     
         //F = doComp(addEach, deferLower, deferMap, con2, twice(_.filter)(handleEl), toggleElements /*,reset, ptL(utils.findByClass, 'csstabs')*/),
-        F = doComp(twice(invoke)('serving'), best, utils.getZero, toggleElements);
+        //F = doComp(twice(invoke)('serving'), best, utils.getZero, toggleElements);
+        F = doComp(deferEach, git, twice(_.map)(best), toggleElements);
     
     window.addEventListener('scroll', _.throttle(F, 100));
     
