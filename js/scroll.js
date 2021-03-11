@@ -70,21 +70,16 @@
 		}
     
      function getScrollThreshold(el, percent) {
-         if(el){
-            try {
-			var elementOffsetTop = getElementOffset(el).top,
-				elementHeight = el.offsetHeight || el.getBoundingClientRect().height,
-				wh = window.innerHeight,
-				extra = percent ? (elementHeight * percent) : 0,
-                calc = (elementOffsetTop + extra) - wh;
-			//return (elementOffsetTop - wh) + extra;
-			return calc;
-		} catch (e) {
-			return 0;
-		} 		
-	}
-         return 0;
+         try {
+             var top = getElementOffset(el).top;
+         }
+         catch(e){
+             return 0;
+         }
+         return (top * (percent || 1)) - window.innerHeight;	
      }
+    
+    
     
     function setScrollHandlers(collection, getThreshold, klas) {
 			// ensure we don't fire this handler too often
@@ -128,7 +123,7 @@
 		klasRem = utils.removeClass,
         toggleElements = ptL(utils.getByTag, 'h3', document),
         //toggleElements = function(){},
-        handleEl = doComp(ptL(getGreater, ptL(getPageOffset, false)), twice(getScrollThreshold)(1.7)),
+        handleEl = doComp(ptL(getGreater, ptL(getPageOffset, false)), twice(getScrollThreshold)(1.03)),
         getInner = twice(utils.getter)('innerHTML'),
         reset = thrice(utils.setter)('csstabs')('className'),
         getCssTabs = ptL(utils.findByClass, 'csstabs'),
