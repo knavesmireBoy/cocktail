@@ -155,6 +155,7 @@ speakEasy.Util = (function() {
         if(o && !undef(o[k])) { 
             o[k] = v;
         }
+        return o;
     }
     
     function lazySet(v, o, k) {
