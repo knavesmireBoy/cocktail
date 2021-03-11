@@ -70,7 +70,7 @@
 	transition: opacity 1s ease-in;
 }
 .recipe #tab1 ul, .method #tab2 div, .serving #tab3 section {
-	transition: opacity 1s ease-in;
+	transition: opacity 3s ease-in;
 }
 #tab1 h3, .method #tab2 h3, .serving #tab3 h3, .no-js #tab2 h3:hover, .no-js #tab3 h3:hover {
 	border-bottom-color: black;

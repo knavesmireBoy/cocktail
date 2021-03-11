@@ -16,9 +16,18 @@
 	}
     
      function getGreater(a, b){
+         con(getResult(a), b)
         return getResult(a) > getResult(b);
     }
     
+    
+    function invoke(f, arg){
+        return f(arg);
+    }
+    
+    function invokeBridge(arr){
+        return invoke(arr[0], arr[1]);
+    }
       function doMethod(o, v, p) {
           o = getResult(o);
           return o && o[p] && o[p](v);
@@ -51,9 +60,6 @@
 		};
 	}
     
-    	function handleElement(el, getThreshold) {
-		return el && getPageOffset() > getThreshold(el);
-    }
 
 	function handleScroll($el, cb, klas) {
 		if (getPageOffset() > cb($el)) {
@@ -64,16 +70,21 @@
 		}
     
      function getScrollThreshold(el, percent) {
+         if(el){
             try {
 			var elementOffsetTop = getElementOffset(el).top,
 				elementHeight = el.offsetHeight || el.getBoundingClientRect().height,
 				wh = window.innerHeight,
-				extra = percent ? (elementHeight * percent) : 0;
-			return (elementOffsetTop - wh) + extra;
+				extra = percent ? (elementHeight * percent) : 0,
+                calc = (elementOffsetTop + extra) - wh;
+			//return (elementOffsetTop - wh) + extra;
+			return calc;
 		} catch (e) {
 			return 0;
 		} 		
 	}
+         return 0;
+     }
     
     function setScrollHandlers(collection, getThreshold, klas) {
 			// ensure we don't fire this handler too often
@@ -89,8 +100,14 @@
     var utils = speakEasy.Util,
         $ = utils.$,
         con = window.console.log.bind(window),
+        foo = window.console.log.bind(window, 'foo'),
+        bar = window.console.log.bind(window, 'bar'),
 		con2 = function(arg) {
 			con(arg)
+			return arg;
+		},
+        con3 = function(arg) {
+			con(3, arg)
 			return arg;
 		},
 		ptL = _.partial,
@@ -103,6 +120,7 @@
 		eventing = utils.eventer,
 		twice = curryFactory(2),
 		twicedefer = curryFactory(2, true),
+		thricedefer = curryFactory(3, true),
 		thrice = curryFactory(3),
 		anCr = utils.append(),
 		klasAdd = utils.addClass,
@@ -110,18 +128,28 @@
 		klasRem = utils.removeClass,
         toggleElements = ptL(utils.getByTag, 'h3', document),
         //toggleElements = function(){},
-        handleEl = doComp(ptL(getGreater, ptL(getPageOffset, false)), twicedefer(getScrollThreshold)(0)),
+        handleEl = doComp(ptL(getGreater, ptL(getPageOffset, false)), twice(getScrollThreshold)(1.7)),
         getInner = twice(utils.getter)('innerHTML'),
         reset = thrice(utils.setter)('csstabs')('className'),
-        deferMap = twice(_.map)(getInner),
+        getCssTabs = ptL(utils.findByClass, 'csstabs'),
+        deferText = twice(_.map)(getInner),
         deferLower = twice(_.map)(thrice(doMethod)('toLowerCase')(null)),
-        addEach = twice(_.each)(twice(klasAdd)(ptL(utils.findByClass, 'csstabs'))),
-        remEach = twice(_.each)(twice(klasRem)(ptL(utils.findByClass, 'csstabs'))),
-        best = ptL(utils.getBest),
+        getLower = doComp(deferLower, deferText, toggleElements),
+        add = twice(klasAdd)(getCssTabs),
+        rem = twice(klasRem)(getCssTabs),
+        best = ptL(utils.getBest, handleEl, [add, rem]),
+        //best = ptL(utils.getBest, handleEl, [utils.shout('confirm', 'con'), utils.shout('prompt', 'prompt')]),
+        zip = twice(_.map)(best),
+        deferEach = twice(_.each)(getResult),
+        
+        ff = function(funs){
+          // if(funs) funs();
+        
+        },
         
     
-    
-        F = doComp(addEach, deferLower, deferMap, con2, twice(_.filter)(handleEl), toggleElements /*,reset, ptL(utils.findByClass, 'csstabs')*/);
+        //F = doComp(addEach, deferLower, deferMap, con2, twice(_.filter)(handleEl), toggleElements /*,reset, ptL(utils.findByClass, 'csstabs')*/),
+        F = doComp(twice(invoke)('serving'), best, utils.getZero, toggleElements);
     
     window.addEventListener('scroll', _.throttle(F, 100));
     
