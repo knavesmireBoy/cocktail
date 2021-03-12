@@ -277,16 +277,18 @@
             var el = getCssTabs(),
                 hi = getHeight(el);
 			f(e);
+            
             if(hi < getHeight(el)){
                 shown = _.filter(shown, _.negate(ptL(utils.isEqual, e.target)));
                 shown.unshift(e.target);
                 hidden = _.reject(hidden, ptL(utils.isEqual, e.target));
             }
-            else {
+            else if(hi > getHeight(el)){
                 hidden = _.filter(hidden, _.negate(ptL(utils.isEqual, e.target)));
                 hidden.unshift(e.target);
                 shown = _.reject(shown, ptL(utils.isEqual, e.target));
             }
+            //else not in mobile environment
             respect_user_toggle();            
 		}),
 		eToggler = ptL(eventing, 'click', event_actions.slice(0, 1), cb),
