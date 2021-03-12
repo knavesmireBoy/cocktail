@@ -770,7 +770,7 @@ speakEasy.Util = (function() {
 			fn = tgt && _.partial(doInvoke, tgt, method, classArray, bool);
 		}
 		if (validate) {
-			fn = _.partial(invokeWhen, _.partial(validate, target), fn);
+			fn = _.partial(invokeWhen, _.partial(validate, getResult(target)), fn);
 		}
 		_.each(_.flatten([classArray]), fn);
 		return target;

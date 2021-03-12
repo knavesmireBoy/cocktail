@@ -186,7 +186,8 @@
         //findIndex = ptL(invoke, _.findIndex, shown, ptL(utils.isEqual)),
         inShown = doComp(twice(getGreater)(-.01), ptL(_.findIndex, shown)),
         inHidden = doComp(twice(getGreater)(-.01), ptL(_.findIndex, hidden)),
-        klasAddVal = ptL(utils.addClassVal),
+        klasAddVal = ptL(utils.addClassVal, _.negate(inHidden), 'add'),
+        klasRemVal = ptL(utils.addClassVal, _.negate(inShown), 'remove'),
 		number_reg = new RegExp('[^\\d]+(\\d+)[^\\d]+'),
 		threshold = Number(query.match(number_reg)[1]),
 		getEnvironment = ptL(utils.isDesktop, threshold),
@@ -225,10 +226,29 @@
 		toggleElements = ptL(utils.getByTag, 'h3', document),
 		handleEl = doComp(ptL(getGreater, ptL(getPageOffset, false)), twice(utils.getScrollThreshold)(1.05)),
 		deferLower = twice(_.map)(thrice(doMethod)('toLowerCase')(null)),
+        getDisplayClass = doComp(thrice(doMethod)('toLowerCase')(null), twice(utils.getter)('innerHTML')),
 		getLower = doComp(deferLower, twice(_.map)(twice(utils.getter)('innerHTML')), toggleElements),
-		best = ptL(utils.getBestPred, handleEl, [twice(klasAdd)(getCssTabs), twice(klasRem)(getCssTabs)]),
+        showTab = twice(klasAdd)(getCssTabs),
+        hideTab = twice(klasRem)(getCssTabs),
+		best = ptL(utils.getBestPred, handleEl, [showTab, hideTab]),
 		concat = doComp(thrice(doMethod)('reverse')(null), ptL(cat, [getLower])),
-		eScroller = doComp(twice(_.each)(invokeBridge), ptL(invokeArray, _.zip), twice(_.map)(getResult), concat, twicedefer(_.map)(best), toggleElements),
+        /* obtain tab collection, concatenate with corresponding innerHTML set to lowercase, both collections available on invoking
+        zip the two collections [[func, arg], [func, arg]...] invoke func with arg only run below 668px*/
+		scroller = doComp(twice(_.each)(invokeBridge), ptL(invokeArray, _.zip), twice(_.map)(getResult), concat, twicedefer(_.map)(best), toggleElements),
+        respect_user_toggle = function(){
+            _.each(hidden, function(el){
+                hideTab(getDisplayClass(el));
+            });
+             _.each(shown, function(el){
+                showTab(getDisplayClass(el));
+            });
+        },
+        respect_user_toggle_wrap = function(f, e){
+            f(e);
+            respect_user_toggle();
+        },
+        scroller_wrap = _.wrap(scroller, respect_user_toggle_wrap),
+        eScroller = ptL(utils.invokeWhen, _.negate(ptL(utils.isDesktop, threshold)), scroller_wrap),
 		cor = {
 			handle: function() {}
 		},
@@ -254,22 +274,20 @@
 		serve = utils.COR(matchReg(/^S/i), ptL(utils.invokeWhen, deferContains, addKlasWhen)),
 		isHead = ptL(utils.getBest, node_from_target, [doComp(recipe.handle.bind(recipe), toLower, drill([mytarget, 'innerHTML'])), cor.handle]),
 		cb = _.wrap(doComp(invoke, isHead), function(f, e) {
-            
             var el = getCssTabs(),
                 hi = getHeight(el);
 			f(e);
             if(hi < getHeight(el)){
-                shown = _.filter(shown, function(el){
-                    return el !== e.target;
-                });
+                shown = _.filter(shown, _.negate(ptL(utils.isEqual, e.target)));
                 shown.unshift(e.target);
+                hidden = _.reject(hidden, ptL(utils.isEqual, e.target));
             }
             else {
-                hidden = _.filter(shown, function(el){
-                    return el !== e.target;
-                });
+                hidden = _.filter(hidden, _.negate(ptL(utils.isEqual, e.target)));
                 hidden.unshift(e.target);
+                shown = _.reject(shown, ptL(utils.isEqual, e.target));
             }
+            respect_user_toggle();            
 		}),
 		eToggler = ptL(eventing, 'click', event_actions.slice(0, 1), cb),
 		$id = thrice(doMapBridge)('id'),
@@ -304,5 +322,4 @@
 	negator();
 	eventing('resize', event_actions.slice(0, 1), _.throttle(negator, 99), window).execute();
 	eventing('scroll', event_actions.slice(0), _.throttle(eScroller, 100), window).execute();
-    con(inShown('john'))
-}(Modernizr.mq('only all'), '(min-width: 667px)', [], 0, ['john'], []));
+}(Modernizr.mq('only all'), '(min-width: 667px)', [], 0, [], []));
