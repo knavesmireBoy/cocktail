@@ -872,7 +872,7 @@ speakEasy.Util = (function() {
 		return f;
 	}
 	//note a function that ignores any state of champ or contender will return the first element if true and last if false
-	function best1(fun, coll, flag) {
+	function best(fun, coll, flag) {
                 console.log()
 		if(_.isArray(fun)){
 			fun = fun[0];
@@ -899,7 +899,7 @@ speakEasy.Util = (function() {
 		});
 	}
     
-    function best(fun, coll, arg) {
+    function best2(fun, coll, arg) {
 		if(_.isArray(fun)){
 			fun = fun[0];
 		}
