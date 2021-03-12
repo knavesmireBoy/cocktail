@@ -157,7 +157,7 @@
 		getLower = doComp(deferLower, deferText, toggleElements),
 		add = twice(klasAdd)(getCssTabs),
 		rem = twice(klasRem)(getCssTabs),
-		best = ptL(utils.getBest, handleEl, [add, rem]),
+		best = ptL(utils.getBestPred, handleEl, [add, rem]),
 		//hardcode = ['serving', 'method', 'recipe'],
 		concat = doComp(thrice(doMethod)('reverse')(null), ptL(cat, [getLower])),
 		F = doComp(twice(_.each)(invokeBridge), ptL(invokeArray, _.zip), twice(_.map)(getResult), concat, twicedefer(_.map)(best), toggleElements);

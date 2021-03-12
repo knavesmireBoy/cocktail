@@ -155,7 +155,6 @@ speakEasy.Util = (function() {
         if(o && !undef(o[k])) { 
             o[k] = v;
         }
-        return o;
     }
     
     function lazySet(v, o, k) {
@@ -737,7 +736,7 @@ speakEasy.Util = (function() {
 		//target may be a function returning a target element
         //safeguard if classArray is space delimited string "foo bar"
         classArray = classArray.split ? classArray.split(' ') : classArray; 
-      //console.log(arguments)
+      
 		var fn,
 			tgt,
 			args,
@@ -872,52 +871,50 @@ speakEasy.Util = (function() {
 		return f;
 	}
 	//note a function that ignores any state of champ or contender will return the first element if true and last if false
-	function best(fun, coll, flag) {
-                console.log()
+	function best(fun, coll, arg) {
 		if(_.isArray(fun)){
 			fun = fun[0];
 		}
-        
-        if(_.isBoolean(flag)){
-            //if true apply arg to predicate AND action
-		if(flag){
+        coll = _.toArray(coll);
+		if(arg){
 			coll = _.map(coll, function(ptl){
-				return _.partial(ptl, flag)
+				return _.partial(ptl, arg)
 			});
 		}
-		else {
-			coll = _.toArray(coll);
-		}
-            //if false apply to predicate only
-            fun = _.partial(fun, flag);
-        }
-        
-        //we MAY need it the other way around???
+		fun = arg ? _.partial(fun, arg) : fun;
 
 		return _.reduce(coll, function(champ, contender) {
 			return fun(champ, contender) ? champ : contender;
 		});
 	}
     
-    function best2(fun, coll, arg) {
+    function bestPred(fun, coll, arg) {
 		if(_.isArray(fun)){
 			fun = fun[0];
 		}
         coll = _.toArray(coll);
-        /*
+		fun = arg ? _.partial(fun, arg) : fun;
+		return _.reduce(coll, function(champ, contender) {
+			return fun(champ, contender) ? champ : contender;
+		});
+	}
+    
+    function bestColl(fun, coll, arg) {
+		if(_.isArray(fun)){
+			fun = fun[0];
+		}
+        coll = _.toArray(coll);
 		if(arg){
 			coll = _.map(coll, function(ptl){
 				return _.partial(ptl, arg)
 			});
 		}
-        */
-            fun = arg ? _.partial(fun, arg) : fun;
-        
 		return _.reduce(coll, function(champ, contender) {
 			return fun(champ, contender) ? champ : contender;
 		});
 	}
-
+    
+    
 
 	function simpleAdapter(allpairs, adapter, subject) {
 		/*expects eg: [['shout', 'cry'],['bark', 'whine']]
@@ -1254,6 +1251,8 @@ speakEasy.Util = (function() {
 			return _.findIndex(collection, predicate || always(true));
 		},
 		getBest: best,
+		getBestPred: bestPred,
+		getBestColl: bestColl,
 		getBody: function(flag) {
 			var body = document.body || document.getElementsByTagName('body')[0];
 			if (flag) {
