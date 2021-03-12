@@ -192,7 +192,10 @@
 		method = utils.COR(matchReg(/^M/i), ptL(utils.invokeWhen, deferContains, addKlasWhen)),
 		serve = utils.COR(matchReg(/^S/i), ptL(utils.invokeWhen, deferContains, addKlasWhen)),
 		isHead = ptL(utils.getBest, node_from_target, [doComp(recipe.handle.bind(recipe), toLower, drill([mytarget, 'innerHTML'])), cor.handle]),
-		eToggler = ptL(eventing, 'click', event_actions.slice(0, 1), doComp(invoke, isHead)),
+        cb = _.wrap(doComp(invoke, isHead), function(f){
+            return f.apply(null, _.rest(arguments));
+        }),
+		eToggler = ptL(eventing, 'click', event_actions.slice(0, 1), cb),
 		$id = thrice(doMapBridge)('id'),
 		$root = anCr(mycontent()),
 		$tabcontent = ptL(klasAdd, 'tabcontent'),

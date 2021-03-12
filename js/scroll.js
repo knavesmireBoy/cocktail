@@ -142,9 +142,7 @@
 		twicedefer = curryFactory(2, true),
 		thricedefer = curryFactory(3, true),
 		thrice = curryFactory(3),
-		anCr = utils.append(),
 		klasAdd = utils.addClass,
-		klasTog = utils.toggleClass,
 		klasRem = utils.removeClass,
 		toggleElements = ptL(utils.getByTag, 'h3', document),
 		//toggleElements = function(){},
@@ -160,6 +158,9 @@
 		best = ptL(utils.getBestPred, handleEl, [add, rem]),
 		//hardcode = ['serving', 'method', 'recipe'],
 		concat = doComp(thrice(doMethod)('reverse')(null), ptL(cat, [getLower])),
-		F = doComp(twice(_.each)(invokeBridge), ptL(invokeArray, _.zip), twice(_.map)(getResult), concat, twicedefer(_.map)(best), toggleElements);
-	window.addEventListener('scroll', _.throttle(F, 100));
+		F = doComp(twice(_.each)(invokeBridge), ptL(invokeArray, _.zip), twice(_.map)(getResult), concat, twicedefer(_.map)(best), toggleElements),
+        Fwrap = _.wrap(F, function(){
+            
+        });
+    eventing('scroll', [], _.throttle(F, 100), window).execute();
 }());
