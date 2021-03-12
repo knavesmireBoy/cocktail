@@ -186,8 +186,6 @@
         //findIndex = ptL(invoke, _.findIndex, shown, ptL(utils.isEqual)),
         inShown = doComp(twice(getGreater)(-.01), ptL(_.findIndex, shown)),
         inHidden = doComp(twice(getGreater)(-.01), ptL(_.findIndex, hidden)),
-        klasAddVal = ptL(utils.addClassVal, _.negate(inHidden), 'add'),
-        klasRemVal = ptL(utils.addClassVal, _.negate(inShown), 'remove'),
 		number_reg = new RegExp('[^\\d]+(\\d+)[^\\d]+'),
 		threshold = Number(query.match(number_reg)[1]),
 		getEnvironment = ptL(utils.isDesktop, threshold),
@@ -235,7 +233,7 @@
         /* obtain tab collection, concatenate with corresponding innerHTML set to lowercase, both collections available on invoking
         zip the two collections [[func, arg], [func, arg]...] invoke func with arg only run below 668px*/
 		scroller = doComp(twice(_.each)(invokeBridge), ptL(invokeArray, _.zip), twice(_.map)(getResult), concat, twicedefer(_.map)(best), toggleElements),
-        respect_user_toggle = function(){
+        restore_user_toggle = function(){
             _.each(hidden, function(el){
                 hideTab(getDisplayClass(el));
             });
@@ -243,11 +241,11 @@
                 showTab(getDisplayClass(el));
             });
         },
-        respect_user_toggle_wrap = function(f, e){
+        restore_user_toggle_wrap = function(f, e){
             f(e);
-            respect_user_toggle();
+            restore_user_toggle();
         },
-        scroller_wrap = _.wrap(scroller, respect_user_toggle_wrap),
+        scroller_wrap = _.wrap(scroller, restore_user_toggle_wrap),
         eScroller = ptL(utils.invokeWhen, _.negate(ptL(utils.isDesktop, threshold)), scroller_wrap),
 		cor = {
 			handle: function() {}
@@ -275,21 +273,30 @@
 		isHead = ptL(utils.getBest, node_from_target, [doComp(recipe.handle.bind(recipe), toLower, drill([mytarget, 'innerHTML'])), cor.handle]),
 		cb = _.wrap(doComp(invoke, isHead), function(f, e) {
             var el = getCssTabs(),
-                hi = getHeight(el);
+                hi = getHeight(el),
+                pass = false;
 			f(e);
             
             if(hi < getHeight(el)){
                 shown = _.filter(shown, _.negate(ptL(utils.isEqual, e.target)));
                 shown.unshift(e.target);
                 hidden = _.reject(hidden, ptL(utils.isEqual, e.target));
+                pass = true;
             }
             else if(hi > getHeight(el)){
                 hidden = _.filter(hidden, _.negate(ptL(utils.isEqual, e.target)));
                 hidden.unshift(e.target);
                 shown = _.reject(shown, ptL(utils.isEqual, e.target));
+                pass = true;
             }
-            //else not in mobile environment
-            respect_user_toggle();            
+            else {
+                //not in mobile environment
+                hidden = [];
+                shown = [];
+            }
+            if(pass){
+                restore_user_toggle();  
+            }
 		}),
 		eToggler = ptL(eventing, 'click', event_actions.slice(0, 1), cb),
 		$id = thrice(doMapBridge)('id'),
