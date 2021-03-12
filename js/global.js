@@ -425,8 +425,8 @@ speakEasy.Util = (function() {
 		};
 	}
 
-	function getScrollThreshold(el, percent) {
-		/*park this
+    function getScrollThreshold(el, percent) {
+        /*park this
 		var documentHeight = Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);
 		var po = getPageOffset(),
 		elementOffsetTop = utils.getElementOffset(el).top,
@@ -435,15 +435,25 @@ speakEasy.Util = (function() {
 		scrolled = po + window.viewportSize.getHeight();
 		(po+window.innerHeight) - (elementOffsetTop + elementHeight) ===  po-threshold;
 		*/
+		var xtra,
+			elementHeight,
+			top;
 		try {
-			var elementOffsetTop = getElementOffset(el).top,
-				elementHeight = el.offsetHeight || el.getBoundingClientRect().height,
-				wh = window.innerHeight,
-				extra = percent ? (elementHeight * percent) : 0;
-			return (elementOffsetTop - wh) + extra;
+			elementHeight = el.offsetHeight || el.getBoundingClientRect().height;
+			top = getElementOffset(el).top;
+            if(isNaN(percent)){
+              xtra =  top + elementHeight;  
+            }
+            if(percent < 1){
+                //allow 0.5, as well as 1.5 for example
+                percent = 1 + percent;
+            }
+               
 		} catch (e) {
 			return 0;
 		}
+		xtra = xtra || (top * percent);
+		return xtra - window.innerHeight;
 	}
 
     function getClassList(el) {
@@ -760,7 +770,7 @@ speakEasy.Util = (function() {
 			fn = tgt && _.partial(doInvoke, tgt, method, classArray, bool);
 		}
 		if (validate) {
-			fn = _.partial(invokeWhen, validate, fn);
+			fn = _.partial(invokeWhen, _.partial(validate, target), fn);
 		}
 		_.each(_.flatten([classArray]), fn);
 		return target;
