@@ -19,17 +19,49 @@
         return getResult(a) > getResult(b);
     }
     
+    	function existy(x) {
+		return x != null;
+	}
+
+	function cat() {
+		var head = _.first(arguments);
+		if (existy(head)) {
+			return head.concat.apply(head, _.rest(arguments));
+		} else {
+			return [];
+		}
+	}
+
+	function construct(head, tail) {
+		return head && cat([head], _.toArray(tail));
+	}
+
+	function mapcat(fun, coll) {
+		var res = _.map(coll, fun);
+		return cat.apply(null, res);
+	}
+    
     
     function invoke(f){
         return f && f.apply(null, _.rest(arguments));
     }
     
+     function invokeArray(f, args){
+        return f && f.apply(null, args);
+    }
+    
     function invokeBridge(arr){
-        return invoke(arr[0], arr[1]);
+        if(_.isFunction(arr[0])){
+          return invoke(arr[0], arr[1]);  
+        }
     }
       function doMethod(o, v, p) {
           o = getResult(o);
           return o && o[p] && o[p](v);
+	}
+    
+    function lazyVal(v, o, p) {
+		return doMethod(o, v, p);
 	}
     
    function getPageOffset(bool) {
@@ -69,13 +101,18 @@
 		}
     
      function getScrollThreshold(el, percent) {
+         var xtra,
+                 elementHeight,
+                 top;
          try {
-             var top = getElementOffset(el).top;
+             elementHeight = el.offsetHeight || el.getBoundingClientRect().height;
+             top = getElementOffset(el).top;
          }
          catch(e){
              return 0;
          }
-         return (top * (percent || 1)) - window.innerHeight;	
+         xtra = isNaN(percent) ? top + elementHeight : (top * percent);
+         return xtra - window.innerHeight;	
      }
     
     
@@ -128,24 +165,20 @@
         getCssTabs = ptL(utils.findByClass, 'csstabs'),
         deferText = twice(_.map)(getInner),
         deferLower = twice(_.map)(thrice(doMethod)('toLowerCase')(null)),
+        deferRev = thrice(doMethod)('reverse')(null),
         getLower = doComp(deferLower, deferText, toggleElements),
         add = twice(klasAdd)(getCssTabs),
         rem = twice(klasRem)(getCssTabs),
         best = ptL(utils.getBest, handleEl, [add, rem]),
         //best = ptL(utils.getBest, handleEl, [utils.shout('confirm', 'con'), utils.shout('prompt', 'prompt')]),
         zip = twice(_.map)(best),
-        git = twice(_.zip)(['serving', 'method', 'recipe']),
+        git = ptL(invoke, _.zip),
+        hardcode = ['serving', 'method', 'recipe'],
+        concat = thrice(lazyVal)('concat')([getLower]),
+        concat = ptL(cat,  [getLower]),
+        git2 = ptL(invoke, _.zip),
         deferEach = twice(_.each)(invokeBridge),
-        
-        ff = function(a, b){
-            return _.zip(a, b);
-        
-        },
-        
-    
-        //F = doComp(addEach, deferLower, deferMap, con2, twice(_.filter)(handleEl), toggleElements /*,reset, ptL(utils.findByClass, 'csstabs')*/),
-        //F = doComp(twice(invoke)('serving'), best, utils.getZero, toggleElements);
-        F = doComp(deferEach, git, twice(_.map)(best), toggleElements);
+        F = doComp(twice(_.each)(invokeBridge), ptL(invokeArray, _.zip), twice(_.map)(getResult), deferRev, concat, twicedefer(_.map)(best), toggleElements);
     
     window.addEventListener('scroll', _.throttle(F, 100));
     
