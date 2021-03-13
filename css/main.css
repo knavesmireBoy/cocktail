@@ -636,10 +636,7 @@ nav ul>li>a:hover+ul {
 		transform: rotate(360deg);
 	}
     
-    header aside {
-        background-size: auto;
-        background-position: -13em 20%;
-    }
+   
 	.c1 header aside {
 		background-image: url("../img/dry_martini.jpg");
 	}
@@ -648,14 +645,12 @@ nav ul>li>a:hover+ul {
 	}
 	.c3 header aside {
 		background-image: url("../img/margarita.jpg");
-        background-position: -19em 30%;
 	}
 	.c4 header aside {
 		background-image: url("../img/julep.jpg");
 	}
 	.c5 header aside {
 		background-image: url("../img/moscow_mule.jpg");
-        background-position:-15em 70%;
 	}
 	.c6 header aside {
 		background-image: url("../img/mai_tai.jpg");
@@ -672,6 +667,12 @@ nav ul>li>a:hover+ul {
     h1 em {
 	text-shadow: 1px 1px 1px rgba(255, 255, 255, .9);
 }
+    
+    header aside {
+        background-size: 140%;
+		background-position: 100% 0%;
+	}
+    
     h1 em:hover {
 	text-shadow:  1px 1px 1px rgba(255, 0, 255, .8);
 }
@@ -703,11 +704,34 @@ nav ul>li>a:hover+ul {
         content: " ~ Moscow Mule";
          color: rgb(168, 126, 84);
          text-shadow: 1px 1px maroon;
+         
     }
     .c6 h1:after {
         content: " ~ Mai Tai";
         color: orange;
         text-shadow: 1px 1px brown;
+    }
+    
+     .c2 header aside {
+        background-size: 96%;
+        background-position: -400% 20%;
+    }
+     .c3 header aside {
+        background-size: 80%;
+        background-position: -20% 50%;
+    }
+    
+     .c4 header aside {
+        background-size: 95%;
+        background-position: -400% 50%;
+    }
+    .c5 header aside {
+        background-size: 95%;
+        background-position: -400% 50%;
+    }
+    .c6 header aside {
+        background-size: 95%;
+        background-position: -400% 20%;
     }
 }
   
