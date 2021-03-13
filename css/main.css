@@ -215,7 +215,7 @@ main aside a {
 	display: block;
 	position: relative;
 	z-index: 1;
-	text-shadow: 3px 3px 2px rgb(100, 0, 0);
+	text-shadow: 2px 2px 2px rgb(50, 0, 0);
 	top: 2em;
 	font-weight: bold;
 }
@@ -568,7 +568,6 @@ nav ul>li>a:hover+ul {
 		top: 7em;
 		text-shadow: 1px 1px 2px black;
 	}
-   
 
 	blockquote {
 		display: none;
@@ -636,6 +635,11 @@ nav ul>li>a:hover+ul {
 		-webkit-transform: rotate(360deg);
 		transform: rotate(360deg);
 	}
+    
+    header aside {
+        background-size: auto;
+        background-position: -13em 20%;
+    }
 	.c1 header aside {
 		background-image: url("../img/dry_martini.jpg");
 	}
@@ -644,15 +648,18 @@ nav ul>li>a:hover+ul {
 	}
 	.c3 header aside {
 		background-image: url("../img/margarita.jpg");
+        background-position: -19em 30%;
 	}
 	.c4 header aside {
 		background-image: url("../img/julep.jpg");
 	}
 	.c5 header aside {
 		background-image: url("../img/moscow_mule.jpg");
+        background-position:-15em 70%;
 	}
 	.c6 header aside {
-		background-image: url("../img/maitai.jpg");
+		background-image: url("../img/mai_tai.jpg");
+        
 	}
 	#menu-toggle:checked+nav ul li {
 		height: 2em;
@@ -661,32 +668,46 @@ nav ul>li>a:hover+ul {
 }
 
 @media only screen and (max-width: 768px) and (min-width: 667px) {
+    
+    h1 em {
+	text-shadow: 1px 1px 1px rgba(255, 255, 255, .9);
+}
+    h1 em:hover {
+	text-shadow:  1px 1px 1px rgba(255, 0, 255, .8);
+}
      h1:after {
-        
+         text-transform: uppercase;
+         font-size: .8em;
     }
     .c1 h1:after {
         content: " ~ Dry Martini";
-        color: silver;
+        color: rgb(222,222, 200);
+        text-shadow: 1px 1px purple;
     }
     .c2 h1:after {
         content: " ~ Sidecar";
         color: gold;
+        text-shadow: 1px 1px red;
     }
      .c3 h1:after {
         content: " ~ Margarita";
          color: rgb(222, 233, 160);
+         text-shadow: 1px 1px gray;
     }
     .c4 h1:after {
         content: " ~ Mint Julep";
         color: rgb(160, 100, 30);
+        text-shadow: 1px 1px seagreen;
     }
      .c5 h1:after {
         content: " ~ Moscow Mule";
          color: rgb(168, 126, 84);
+         text-shadow: 1px 1px maroon;
     }
     .c6 h1:after {
         content: " ~ Mai Tai";
         color: orange;
+        text-shadow: 1px 1px brown;
     }
 }
   

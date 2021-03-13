@@ -103,6 +103,11 @@
             return el.getBoundingClientRect().height;
         }
     }
+    
+    function resetLists(){
+        hidden = [];
+        shown = [];
+    }
 
 	function searcher(obj, ary) {
 		/*noticed an issue with parentNode where on supply of an element, the initial value for reduce is the parent
@@ -183,7 +188,6 @@
 				[k, v]
 			]);
 		},
-        //findIndex = ptL(invoke, _.findIndex, shown, ptL(utils.isEqual)),
         inShown = doComp(twice(getGreater)(-.01), ptL(_.findIndex, shown)),
         inHidden = doComp(twice(getGreater)(-.01), ptL(_.findIndex, hidden)),
 		number_reg = new RegExp('[^\\d]+(\\d+)[^\\d]+'),
@@ -197,6 +201,8 @@
 		unshift = ptL(splice, clear),
 		manageCallbacks = [unshift, splice],
 		manageQuery = [_.negate(contains), always(true)],
+        doReset = ptL(utils.doWhen, ptL(utils.isDesktop, threshold), resetLists),
+        forceReset = ptL(utils.doWhen, true, resetLists),
 		negator = function() {
 			/* for mobile toggle regardless, for desktop conditional on current status
 			only add/toggle when csstabs !contain class
@@ -208,10 +214,7 @@
 				manageCallbacks[pass]();
 				manageQuery.reverse();
 				getEnvironment = _.negate(getEnvironment);
-                if(utils.isDesktop(threshold)){
-                    hidden = [];
-                    shown = [];
-                }
+                doReset();
 			}
 		},
 		doExec = thrice(doMethod)('execute')(null),
@@ -280,7 +283,7 @@
                 hi = getHeight(el),
                 pass = false;
 			f(e);
-            
+            //check if element height is increased/decreased, could also check length of csstabs.classlist
             if(hi < getHeight(el)){
                 shown = _.filter(shown, _.negate(ptL(utils.isEqual, e.target)));
                 shown.unshift(e.target);
@@ -295,8 +298,7 @@
             }
             else {
                 //not in mobile environment
-                hidden = [];
-                shown = [];
+                forceReset();
             }
             if(pass){
                 restore_user_toggle();  
