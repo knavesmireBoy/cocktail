@@ -208,6 +208,10 @@
 				manageCallbacks[pass]();
 				manageQuery.reverse();
 				getEnvironment = _.negate(getEnvironment);
+                if(utils.isDesktop(threshold)){
+                    hidden = [];
+                    shown = [];
+                }
 			}
 		},
 		doExec = thrice(doMethod)('execute')(null),
