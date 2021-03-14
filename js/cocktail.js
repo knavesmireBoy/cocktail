@@ -90,10 +90,6 @@
 	function doCallbacks(coll, p) {
 		return _[p](coll, just_invoke);
 	}
-
-	function reducer(acc, cur) {
-		return acc[cur] ? acc[cur] : acc;
-	}
     
     function getHeight(el){
         try {
@@ -108,15 +104,7 @@
         hidden = [];
         shown = [];
     }
-
-	function searcher(obj, ary) {
-		/*noticed an issue with parentNode where on supply of an element, the initial value for reduce is the parent
-		but THAT parent would get set on the second iteration to ITS parent so. When array has just one item reduce not really required*/
-		if (ary && ary[1]) {
-			return ary.reduce(reducer, obj[ary[0]]);
-		}
-		return ary[0] ? obj[ary[0]] : obj;
-	}
+    
 	var instr = {
 			margarita: [
 				["Shake with cracked ice;  strain into a chilled wine goblet or cocktail glass with kosher salt on the rim; Garnish with a lime wheel"],
@@ -229,10 +217,12 @@
 		matchReg = thrice(utils.doMethod)('match'),
 		toLower = thrice(utils.doMethod)('toLowerCase')(null),
 		toggleElements = ptL(utils.getByTag, 'h3', document),
-		handleEl = doComp(ptL(getGreater, ptL(getPageOffset, false)), twice(utils.getScrollThreshold)(1.05)),
-		deferLower = twice(_.map)(thrice(doMethod)('toLowerCase')(null)),
-        getDisplayClass = doComp(thrice(doMethod)('toLowerCase')(null), twice(utils.getter)('innerHTML')),
-		getLower = doComp(deferLower, twice(_.map)(twice(utils.getter)('innerHTML')), toggleElements),
+		handleEl = doComp(ptL(getGreater, ptL(getPageOffset, false)), twice(utils.getScrollThreshold)()),
+        deferLower = thrice(doMethod)('toLowerCase')(null),
+        getInnerHTML = twice(utils.getter)('innerHTML'),
+		doDeferLower = twice(_.map)(deferLower),
+        getDisplayClass = doComp(deferLower, getInnerHTML),
+		getLower = doComp(doDeferLower, twice(_.map)(getInnerHTML), toggleElements),
         showTab = twice(klasAdd)(getCssTabs),
         hideTab = twice(klasRem)(getCssTabs),
 		best = ptL(utils.getBestPred, handleEl, [showTab, hideTab]),
