@@ -113,14 +113,14 @@ nav>ul {
 	border-top: 1px solid white;
 	padding-left: 2%;
 	position: relative;
-	background-color: rgba(204, 0, 204, 1);
-	background-image: linear-gradient(transparent, black);
+    background-color: rgb(204, 0, 204);
+	background-image: linear-gradient(rgb(204, 0, 204), black);
 	display: flex;
 	width: 100%;
 }
 main aside {
-	flex: 1 1 220px;
-	min-width: 320px;
+	flex: 2 1 220px;
+	min-width: 200px;
 	box-sizing: border-box;
 	position: relative;
 }
@@ -128,12 +128,11 @@ main>article {
 	flex: 5 1 0;
 	box-sizing: border-box;
 	position: relative;
-}
-main>article {
-	padding: 3em 4em 32em 2rem;
+    padding: 3em 4em 32em 2rem;
 	border: dotted 1px white;
 	border-width: 0 0 0 1px;
 }
+
 main aside, main>article {
 	margin-bottom: -30em;
 	padding-bottom: 30em;
@@ -242,7 +241,7 @@ nav ul li ul {
 	z-index: 22;
 	left: -999em;
 	width: 100%;
-	background: rgba(204, 0, 204, 0.5) linear-gradient(black, transparent);
+	background-image: linear-gradient(black, rgba(204, 0, 204, 0.5));
 }
 nav ul>li>a {
 	text-shadow: 3px 3px 2px #000;
@@ -506,6 +505,15 @@ nav ul>li>a:hover+ul {
 	position: absolute;
 	left: -9990px;
 }
+
+@media only screen and (max-width: 1280px) {
+main aside {
+	flex: 1 1 220px;
+}
+main>article {
+	flex: 5 1 0;
+}
+}
 @media only screen and (max-width: 1024px) {
 	.quote-wrapper {
 		line-height: calc(100vw / 46);
@@ -558,6 +566,9 @@ nav ul>li>a:hover+ul {
     .inlinesvg svg, .quote-wrapper {
         display: none;
     }
+    main>article {
+        flex: 7 1 0;
+    }
 }
 @media only screen and (max-width: 768px) {
 	main {
@@ -599,10 +610,11 @@ nav ul>li>a:hover+ul {
 		padding: 0 .5em;
 		flex-direction: column;
 		width: auto;
-		background-image: none;
-		background-color: transparent;
+        background-color: transparent;
+        background-image: linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.9));
 		border-width: 0;
 		line-height: 1.6;
+        border-radius: 0px 0px  8px 8px;
 	}
 	nav ul li {
 		height: 0;
@@ -612,6 +624,10 @@ nav ul>li>a:hover+ul {
 	main aside {
 		position: absolute;
 		left: -9999px;
+	}
+    header aside {
+        background-size: 140%;
+		background-position: 100% 33%;
 	}
 	main aside>a {
 		position: absolute;
@@ -634,6 +650,7 @@ nav ul>li>a:hover+ul {
 		-webkit-transition: transform 1s;
 		-o-transition: transform 1s;
 		transition: transform 1s;
+        opacity: .6;
 	}
 	.menu:hover {
 		background-position: 50% 100%;
@@ -641,44 +658,47 @@ nav ul>li>a:hover+ul {
 		transform: rotate(360deg);
 	}
     
-   
 	.c1 header aside {
 		background-image: url("../img/dry_martini.jpg");
+        
 	}
 	.c2 header aside {
 		background-image: url("../img/sidecar.jpg");
+        background-position: 85% 10%;
 	}
 	.c3 header aside {
 		background-image: url("../img/margarita.jpg");
+         background-position: 120% 80%;
 	}
 	.c4 header aside {
 		background-image: url("../img/julep.jpg");
+        background-position: 100% 50%;
 	}
 	.c5 header aside {
 		background-image: url("../img/moscow_mule.jpg");
+        background-position: 96% 65%;
 	}
 	.c6 header aside {
 		background-image: url("../img/mai_tai.jpg");
+        background-position: 76% 50%;
 	}
     .c7 header aside {
 		background-image: url("../img/manhattan.jpg");
+         background-size: 160%;
+        background-position: 80% 40%;
 	}
+    
 	#menu-toggle:checked+nav ul li {
 		height: 2em;
 		font-size: 1.2em;
 	}
 }
 
-@media only screen and (max-width: 768px) and (min-width: 415px) {
+@media only screen and (max-width: 768px) and (min-width: 415px){
     
     h1 em {
 	text-shadow: 1px 1px 1px rgba(255, 255, 255, .9);
 }
-    
-    header aside {
-        background-size: 140%;
-		background-position: 100% 0%;
-	}
     
     h1 em:hover {
 	text-shadow:  1px 1px 1px rgba(255, 0, 255, .8);
@@ -724,31 +744,7 @@ nav ul>li>a:hover+ul {
         text-shadow: 1px 1px red;
     }
     
-     .c2 header aside {
-        background-size: 96%;
-        background-position: -400% 20%;
-    }
-     .c3 header aside {
-        background-size: 80%;
-        background-position: -20% 50%;
-    }
-    
-     .c4 header aside {
-        background-size: 95%;
-        background-position: -400% 50%;
-    }
-    .c5 header aside {
-        background-size: 95%;
-        background-position: -400% 50%;
-    }
-    .c6 header aside {
-        background-size: 95%;
-        background-position: -400% 20%;
-    }
-    .c7 header aside {
-        background-size: 95%;
-        background-position: -400% 70%;
-    }
+  
 }
   
 
@@ -800,11 +796,6 @@ nav ul>li>a:hover+ul {
         font-size: 1em;
         line-height: 1.44;
     }
-    
-    header aside {
-        background-size: 70%;
-		background-position: -30% 0;
-	}
     
      .menu {
         right:3em;
