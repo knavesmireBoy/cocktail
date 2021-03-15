@@ -135,6 +135,11 @@
 				["Stir vodka and juice together well in a chilled Collins glass. Add fresh cracked ice and a swizzle stick; top with chilled ginger beer.", "Garnish with a lime squeeze"],
 				['<a href="../c5/">Moscow Mule', '2 oz vodka', '1 oz lime juice', '4 oz ginger beer', '<b>Copper Mug or Collins Glass</b>'],
 				['"There is only one vodka left,", Peter the Great, former czar of Russia, supposedly wrote to his wife from Paris. "I don\'t know what to do." We should have suggested mixing the vodka on Moscow Mules to make it last longer.', "As easily made for one as for twelve, the Moscow Mule garners interest whether served at a cocktail soiree or an after-game bash. It is also safe in the hands of the novice mixer. Store the drink's vodka in the freezer and it will chill its soda to make certain that the drink will be cold.", "Ginger ale may be substituted, though be warned: it'll be palatable, but far from memorable. If you must use this soda, add a few dahses of <strong>Angostura bitters</strong> or an extra squeeze of lime to give it an edge.", "Similar drinks include the Pimm's Cup."]
+			],
+        manhattan: [
+				["Stir with cracked ice; strain into a chilled coctail glass.", "Garnish with a maraschino cherry."],
+				['<a href=".">Manhattan', '2 oz rye or bourbon', '½ oz sweet vermouth', '1 to 2 dashes Angostura bitters', '<b>Cocktail Glass</b>'],
+				["The Manhattan's sound recie base has provided a starting point for a hundred other drinks.","Typically the Manhattan is served sweet and garnished with a maraschino cherry. When made correctly, the vermouth and bitters ony accent the whiskey' flavor. A dry Manhattan calls for French vermouth instead of Italian; garnish it with a twist. A perfect Manhattan, however, calls for ¼ ounce each of sweet and dry vermouth. It's garnished with a twist.","A dash of a cordial like <strong>Cointreau</strong>, <strong>Byrrh</strong> or <strong>Kümmel</strong> will make a Manhattan more complex in taste.", "An Uptown Manhattan is a perfect Manhattan with a splash of lemon juice. The Sidney is a dry Manhattan with a dash of <strong>orange bitters</strong> and a splash of <strong>Chartreuse</strong>.", "Similar drinks include the Rob Roy."]
 			]
 		},
 		lookup = {
@@ -143,7 +148,8 @@
 			c3: 'margarita',
 			c6: 'mai_tai',
 			c4: 'mint_julep',
-			c5: 'moscow_mule'
+			c5: 'moscow_mule',
+            c7: 'manhattan'
 		},
 		utils = speakEasy.Util,
 		con = window.console.log.bind(window),
