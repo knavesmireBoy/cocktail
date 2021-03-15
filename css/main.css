@@ -561,8 +561,17 @@ main>article {
         height: 100%;
         object-fit: cover;
         right: 0;
-        
     }
+    .c2 main aside a {
+	top: 2em;
+}
+.c4 main aside a {
+	top: 2em;
+}
+.c6 main aside a {
+	top: 2em;
+	right: 0em;
+}
     .inlinesvg svg, .quote-wrapper {
         display: none;
     }
@@ -668,11 +677,11 @@ main>article {
 	}
 	.c3 header aside {
 		background-image: url("../img/margarita.jpg");
-         background-position: 120% 80%;
+         background-position: 120% 77%;
 	}
 	.c4 header aside {
 		background-image: url("../img/julep.jpg");
-        background-position: 100% 50%;
+        background-position: 110% 55%;
 	}
 	.c5 header aside {
 		background-image: url("../img/moscow_mule.jpg");

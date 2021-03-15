@@ -1,6 +1,7 @@
 .csstabs {
 	margin: 2em 0 1em;
 	max-width: 700px;
+	min-width: 450px;
 	position: relative;
 }
 .csstabs>* {
