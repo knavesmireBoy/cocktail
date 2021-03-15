@@ -107,7 +107,7 @@
     
 	var instr = {
 			margarita: [
-				["Shake with cracked ice."."Strain into a chilled wine goblet or cocktail glass with kosher salt on the rim","Garnish with a lime wheel"],
+				["Shake with cracked ice.","Strain into a chilled wine goblet or cocktail glass with kosher salt on the rim","Garnish with a lime wheel"],
 				["<a href='.'>Margarita</a>", "1½ oz tequila", "¾ oz Cointreau", "½ oz lemon juice", "½ oz lime juice", "<b>Cocktail Glass</b>"],
 				["A properly concocted Margarita lets the imbiber taste the tequila. Of course, depending on a guest's experience with tequila, the amount of spirit needed in a drink will vary.", "When mixing a Margarita to be served on the rocks, double the amount of fruit juice. If you've inadvertently purchased mescal (which comes with a senselessly murdered worm) and not tequila, do not puree the poor creature - it adds only protein to the drink.", "When salting the rim of a glass, moisten the rim with a lime garnish, then dip the vessel in fine kosher salt, and garnish with a lime wheel. If you start your party before noon, add fruit to your Margaritas. Although we're partial to strawberries and bananas, just about any fruit would be appropriate.", "Similar drinks include the Daiquiri."]
 			],
@@ -124,7 +124,7 @@
 			],
 			mai_tai: [
 				["Shake with cracked ice; strain into a chilled wine goblet or Collins glass filled with ice. Top with ½ oz dark rum. Garnish with a paper umbrella or a cherry and a flower blossom."],
-				['<a href="../c6/">Mai Tai</a>', '2½ rum -- dark rum', '¾oz lime juice,.', '½ oz orange curacao', 'splash of orgeat syrup', '1 splash grenadine or simple syrup', '<b>Large collins glass</b>'],
+				['<a href="../c6/">Mai Tai</a>', '2½ rum -- dark rum', '¾oz lime juice,.', '½ oz orange curacao', 'splash of orgeat syrup', 'splash grenadine or simple syrup', '<b>Large collins glass</b>'],
 				["Sip the Mai Tai to toast the Everyman of cocktails, the late Trader Vic. Although it's impossible to ruin the taste of thei drink, you could go wrong with the garnish. An attractive paper umbrella is really all the Mai Tai needs, so resist the temptaion to overdo it with a fruit bowl topping that looks like some over-the-top prop from a cruise ship.", "Because Jamaican rum is heavy-bodied and you are already using either simple syrup or grenadine, there is no need to splurge for Cointreau. Any curacao will work nicely in this drink. If you suspect your guests will expect a layered look, shake the rum, lime juice and curacao first; the strain the drink into its glass before adding a splash of grenadine.", "Similar drinks include the <a>Planter's Punch</a>."]
 			],
 			mint_julep: [
@@ -141,7 +141,9 @@
 				["Stir with cracked ice; strain into a chilled coctail glass.", "Garnish with a maraschino cherry."],
 				['<a href=".">Manhattan', '2 oz rye or bourbon', '½ oz sweet vermouth', '1 to 2 dashes Angostura bitters', '<b>Cocktail Glass</b>'],
 				["The Manhattan's sound recie base has provided a starting point for a hundred other drinks.","Typically the Manhattan is served sweet and garnished with a maraschino cherry. When made correctly, the vermouth and bitters ony accent the whiskey' flavor. A dry Manhattan calls for French vermouth instead of Italian; garnish it with a twist. A perfect Manhattan, however, calls for ¼ ounce each of sweet and dry vermouth. It's garnished with a twist.","A dash of a cordial like <strong>Cointreau</strong>, <strong>Byrrh</strong> or <strong>Kümmel</strong> will make a Manhattan more complex in taste.", "An Uptown Manhattan is a perfect Manhattan with a splash of lemon juice. The Sidney is a dry Manhattan with a dash of <strong>orange bitters</strong> and a splash of <strong>Chartreuse</strong>.", "Similar drinks include the Rob Roy."]
-			]
+			],
+        daiquiri: [["Shake with cracked ice.","Strain into a chilled cocktail glass.", "Garnish with a lime wheel"],
+				["<a href='.'>Daiquiri</a>", "1½ oz light rum", "¾ oz lime juice", "¼ ounce of simple syrup", "<b>Cocktail Glass</b>"],["No doubt the frozen kiwi-banana Daiquiri and the watermelon-strawberry Daiquiri are superlative choices when training for a drunken balcony-to-balcony climb at a Daytona Beach hotel midway through spring break. But the odss are you're already past that - or somehow resisted such antics in the first place - and can now appreciate an unalduterated Daiquiri.", "Only mildly difficult to prepare, this drink is best served ice-cold. When a dash of <strong>grenadine</strong> is added it's known as a Bacardi Cocktail. If the lime is too tart, add a dash of maraschino, orgeat, or crème d'ananas. Never opt of Rose's lime juice; you'll end up with a mutated Gimlet. Always shake or flash blend the ingredients thoroughly with cracked ice.", "Similar drinks include the Floridita."]]
 		},
 		lookup = {
 			c1: 'dry_martini',
@@ -150,7 +152,8 @@
 			c6: 'mai_tai',
 			c4: 'mint_julep',
 			c5: 'moscow_mule',
-            c7: 'manhattan'
+            c7: 'manhattan',
+            c8: 'daiquiri'
 		},
 		utils = speakEasy.Util,
 		con = window.console.log.bind(window),
