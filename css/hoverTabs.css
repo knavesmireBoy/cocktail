@@ -61,14 +61,28 @@
 #tab3 h3 {
 	left: 68%;
 }
-.method #tab1 ul, .serving #tab1 ul, #tab2 div, #tab3 section {
+.method #tab1 ul, .serving #tab1 ul, #tab2 div, #tab3 section,  #tab3 div,  #tab2 ul {
 	opacity: 0;
 }
-.no-js .csstabs:hover .tabcontent {
+.no-js #override .csstabs:hover .tabcontent {
+	opacity: 0;
+}
+
+.no-js #override .csstabs:hover .tabcontent:hover {
 	opacity: 1;
 }
+.no-js #override .csstabs:hover h3 {
+	border-bottom-color: white
+}
+.no-js #override .csstabs:hover #tab1 h3 {
+	border-bottom-color: black;
+}
+
 .no-js .csstabs:hover ul {
 	transition: opacity 1s ease-in;
+}
+.no-js #override .content h3:hover + .tabcontent {
+    opacity: 1;
 }
 .recipe #tab1 ul, .method #tab2 div, .serving #tab3 section {
 	transition: opacity 1.5s ease-in;
