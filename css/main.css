@@ -479,16 +479,24 @@ nav ul>li>a:hover+ul {
 .c1 .variant::before, .c1 .variant p::before, .c4 .variant::before, .c4 .variant p::before {
 	shape-margin: 2vw;
 }
-.inlinesvg .quote-wrapper {
+.inlinesvg .quote-wrapper{
 	width: 53%;
 	height: 0;
 	padding-top: 53%;
 	margin: -73% auto 2em;
 	overflow: hidden;
 }
+.no-js .quote-wrapper {
+    width: 70%;
+    
+}
 .inlinesvg .variant {
-	background: radial-gradient( ellipse at center, rgba(0, 0, 0, .8) 0%, rgba(0, 0, 0, .66) 66%, rgba(255, 255, 0, 1) 70%, rgba(255, 255, 255, 0) 70.3%);
     background: none;
+}
+.no-js .variant {
+    background-image: radial-gradient( ellipse at center, rgba(0, 0, 0, 1) 0%, purple 66%, rgba(255, 255, 0, 1) 70%, rgba(255, 255, 255, 0) 70.3%); 
+    background-color: plum;
+    border-radius: 50%;
 }
 .showtime aside div:first-child {
 	overflow: hidden;

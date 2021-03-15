@@ -74,7 +74,7 @@
 .no-js #override .csstabs:hover h3 {
 	border-bottom-color: white
 }
-.no-js #override .csstabs:hover #tab1 h3 {
+.no-js #override .csstabs h3:hover  {
 	border-bottom-color: black;
 }
 
