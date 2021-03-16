@@ -32,11 +32,6 @@ td, th {
    padding: .2em .5em; 
 }
 
-tr:nth-child(odd){
-    color: red;
-}
-
-
 header > * {
 	flex: 2 1 0;
 	margin: 0 1em;
@@ -153,7 +148,7 @@ main form {
     height: 0px;
 }
 main h3 {
-	background: rgb(96, 85, 65);
+	background: rgba(96, 85, 65, .7);
 	color: rgba(0, 100, 130, .5);
 	color: rgba(0, 0, 0, .4);
 	padding: 0 0 0 1rem;
@@ -441,4 +436,31 @@ li.unit label:first-child, input[type="number"] {
 		font-size: 7vw;
 		padding: 0;
 	}
+}
+
+#response {
+    background-image: url('../img/cbook.jpg');
+    background-size: cover;
+}
+
+#response p {
+    float: right;
+    background-color: rgba(0,0,0,.7);
+}
+
+table {
+    border: dotted 1px white;
+    padding: 1em;
+    background-color: rgba(0,0,0,.7);
+    margin: 1em;
+}
+
+td {
+     border: dotted 1px white;
+    border-width: 1px 0;
+}
+
+.method, .method+tr {
+    background-color: white;
+    color: #333;
 }

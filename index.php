@@ -30,38 +30,33 @@
         </section>
         </div>
         <?php
-if (isset($_POST['action']) and $_POST['action'] == 'go') {
-    ?>
-        <div>
-            <h3>Bartender!</h3>
-            <table>
-    <?php
-    
-     function inc($arg)
-    {
-        $list = array('Submit', 'on', 'go', 'X', 'Y');
-       // return $arg AND ($arg !== 'Submit' AND $arg !== 'on' AND $arg !== 'go');
-        return !empty($arg) && !in_array($arg, $list);
-    }
-    
+        $unit;
+          
     function open($str){
         return "<tr><td>$str</td>";
     }
+        
+        function concat($b){
+            return function($a) use($b){
+                return $a . $b;
+            };
+        }
     
     function close($n){
         return "<td>$n</td></tr>";
     }
     
-    function colspanHead($v){
-        print "<tr><th colspan='2'>$v</th></tr>";
+     function colspanHead($v){
+        print "<h3>Bartender!, get me a $v</h3><table>";
     }
+    
+
      function colspan($v, $k){
-         
          if($k === 'Cocktail'){
              colspanHead($v);
          }
          else {
-             print "<tr><td colspan='2'>$v</td></tr>";
+             print "<tr><td colspan='2' class='method'>Method: </td></tr><tr><td colspan='2'>$v</td></tr>";
          }
     }
     
@@ -70,13 +65,33 @@ if (isset($_POST['action']) and $_POST['action'] == 'go') {
           print open($o) . close($c); 
         };
     }
+        
+        
+     function inc($arg) {
+        $list = array('Submit', 'on', 'ml', 'oz', 'go', 'X', 'Y');
+        return !empty($arg) && !in_array($arg, $list);
+    }
+  
+        
+        
+if (isset($_POST['action']) and $_POST['action'] == 'go') {
+    ?>
+        <div id="response">
+            
+    <?php
     
     $res = $_POST;
     $fn = NULL;
-
+    $add = NULL;
+       
     foreach ($res as $k => $v) {
         $k = ucfirst($k);
         $v = str_replace('_', ' ', $v);
+        
+        if(is_array($v)){
+            $add = concat($v[0]);
+            continue;
+        }
         
         if (inc($v) && inc($k)) {
             if($k === 'Cocktail' || $k === 'Prep'){
@@ -87,6 +102,7 @@ if (isset($_POST['action']) and $_POST['action'] == 'go') {
                 $fn = NULL;
             }
             elseif(isset($fn)){
+             
                 $fn($v);
                 $fn = NULL;
             }
@@ -95,8 +111,15 @@ if (isset($_POST['action']) and $_POST['action'] == 'go') {
                 }
             }//!empty
         }//foreach
+    echo '</table>';
                 ?>
-            </table></div>
+            <!--https://www.amazon.co.uk/Cocktail-Paul-Harrington/dp/0670880221/ref=sr_1_2?dchild=1&keywords=paul+harrington&qid=1615892712&s=books&sr=1-2-->
+            <aside><img src="img/harrington_book_.jpg"></aside>
+        <p>In about 1997 a friend recently returned from Cuba was raving about the "La Floradita" bar he'd frequented.
+            A internet search fetched upon the now sadly defunct site (www.hotwired.com/cocktail/archive/) and the Floridita cocktail.
+            A year or so later an accompanying book was published. I got copies for myself and friends. Still available, deep pockets required. The book reads better sat back with a favoured glass then hunched over a bar. I decided to come up with a bar-friendly version, taking inspiration from the wonderful illustrations I got busy on photoshop and sneaked in a short print run to prouduce a comb-bound booklet of, mostly, classic cocktail recipes. I decided re-purpose the booklet when I attended a web design refresher course. By this time the original site had disappeared, but it was kind of archived at <a href="https://www.chanticleersociety.org/index.php?title=Main_Page">The Chanticleer Society</a>. In turn that too has disappeared. However quoted searches will still fetch up the articles Paul Harrington wrote. (The actual text on this site is a replica of the published book, slightly tighter than the original hotwired articles.)
+            </p></div>
+            
         <?php }//isset
         else { ?>
     <form  action="." method="post">
@@ -118,7 +141,7 @@ if (isset($_POST['action']) and $_POST['action'] == 'go') {
             </select></li>
 
             <li><label for="m1">Measure</label><input type="number" step="any" name="m1" id="m1"></li>
-            <li class="unit"><label for="units">Units:</label><input type="text" id="units"><label for="oz"  title="Specify all measures in ounces">oz</label><input type="radio" name="unit" id="oz"><label for="ml" title="Specify all measures in milliliters">ml</label><input type="radio" name="unit" id="ml" checked></li>
+            <li class="unit"><label>Units:</label><label for="oz" title="Specify all measures in ounces">oz</label><input type="radio" name="unit[]" id="oz" value="oz"><label for="ml" title="Specify all measures in milliliters">ml</label><input type="radio" name="unit[]" id="ml" value="ml" checked></li>
         </ul>
         <fieldset class="ingredients"><legend><b><em>Further Ingredients</em></b></legend>
             <ul> <li><label for="i2">Second</label><input type="text" name="second" id="i2"></li><li><label for="m2">Measure</label><input type="number" step="any" name="m2" id="m2"></li>
