@@ -380,10 +380,14 @@
 		}
 	}, $('controls')).execute();
 	locate.execute();
+    /*
 	eventing('submit', event_actions.slice(0, 1), function (e) {
 		utils.addClass('hide', e.target);
+        
 		comp(ptL(utils.setAttributes, config), twice(doInvoke)('img'), anCr, drill(['parentNode']), utils.setText('Bartender!'), twice(doInvoke)('h3'), anCr, anCr(e.target.parentNode))('section');
+        
 	}, document.forms[0]).execute();
+    */
 	Looper.onpage = Looper.from(randomSort(_.map(drinks, doImagePath)), doInc(getLength(drinks)));
 }({
 	src: 'img/cbook.jpg'

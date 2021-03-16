@@ -24,7 +24,7 @@ if (isset($_POST['action']) and $_POST['action'] == 'go') {
     $res = $_POST;
     function inc($arg)
     {
-        return $arg AND ($arg != 'Submit' AND $arg != 'on' AND $arg != 'go');
+        return $arg AND ($arg !== 'Submit' AND $arg !== 'on' AND $arg !== 'go');
     }
 
     function rep($arg)

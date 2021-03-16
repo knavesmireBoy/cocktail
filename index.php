@@ -29,7 +29,77 @@
             <button id="forwardbutton"></button>
         </section>
         </div>
-    <form  action="" method="post">
+        <?php
+if (isset($_POST['action']) and $_POST['action'] == 'go') {
+    ?>
+        <div>
+            <h3>Bartender!</h3>
+            <table>
+    <?php
+    
+     function inc($arg)
+    {
+        $list = array('Submit', 'on', 'go', 'X', 'Y');
+       // return $arg AND ($arg !== 'Submit' AND $arg !== 'on' AND $arg !== 'go');
+        return !empty($arg) && !in_array($arg, $list);
+    }
+    
+    function open($str){
+        return "<tr><td>$str</td>";
+    }
+    
+    function close($n){
+        return "<td>$n</td></tr>";
+    }
+    
+    function colspanHead($v){
+        print "<tr><th colspan='2'>$v</th></tr>";
+    }
+     function colspan($v, $k){
+         
+         if($k === 'Cocktail'){
+             colspanHead($v);
+         }
+         else {
+             print "<tr><td colspan='2'>$v</td></tr>";
+         }
+    }
+    
+    function output($o){
+        return function($c) use($o) {
+          print open($o) . close($c); 
+        };
+    }
+    
+    $res = $_POST;
+    $fn = NULL;
+
+    foreach ($res as $k => $v) {
+        $k = ucfirst($k);
+        $v = str_replace('_', ' ', $v);
+        
+        if (inc($v) && inc($k)) {
+            if($k === 'Cocktail' || $k === 'Prep'){
+                colspan($v, $k);
+            }
+             elseif($k === 'Email'){
+                output($k)($v);
+                $fn = NULL;
+            }
+            elseif(isset($fn)){
+                $fn($v);
+                $fn = NULL;
+            }
+            else {
+                $fn = output($v);
+                }
+            }//!empty
+        }//foreach
+                ?>
+            </table></div>
+        <?php }//isset
+        else { ?>
+    <form  action="." method="post">
         <fieldset><legend>or  mix your own...</legend></fieldset>
         <ul>
             <li><label for="cocktail">Name</label><input type="text" name="cocktail" id="cocktail" placeholder="">
@@ -63,10 +133,12 @@
             <input id="lemon" type="image" src="img/button.png" alt="Submit" value="Submit"/>
             <!--<input type="submit" name="submit" value="Submit">--></li></ul>
         </form>
+        <?php } ?>
         </main>
     <footer>
-        <p><a href="http://www.hearst.com/">&copy;2015 Hearst Communications, Inc.</a> All Rights Reserved
-        </p></footer></div>
+  <div class="arrow-down"></div>
+  <p><a href="http://www.hearst.com/">&copy;2015 Hearst Communications, Inc.</a> All Rights Reserved
+  </p></footer></div>
     <script src="js/viewportSize.js"></script>
     <script src="js/shims.js"></script>
     <script src="js/underscore.js"></script>

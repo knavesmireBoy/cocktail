@@ -28,10 +28,20 @@ header {
     justify-content: space-between;
 }
 
+td, th {
+   padding: .2em .5em; 
+}
+
+tr:nth-child(odd){
+    color: red;
+}
+
+
 header > * {
 	flex: 2 1 0;
 	margin: 0 1em;
 }
+
 
 header section {
     flex: 3 1 0;
@@ -197,6 +207,7 @@ fieldset:first-child legend {
 }
 main form.hide {
 	height: 0px;
+    display: none;
 }
 .show main>div {
 	margin: 0 9em 0 0;
