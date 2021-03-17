@@ -41,13 +41,19 @@
                 return $a . $b;
             };
         }
+        
+          function concat_curry($b){
+            return function($a) use($b){
+                return $b . $a;
+            };
+        }
     
     function close($n){
         return "<td>$n</td></tr>";
     }
     
      function colspanHead($v){
-        print "<h3>Bartender!, get me a $v</h3><table>";
+        print "<h3>Bartender!, get me a $v</h3><section><table><tr><th colspan='2'>RECIPE</th></tr>";
     }
     
 
@@ -77,19 +83,30 @@
 if (isset($_POST['action']) and $_POST['action'] == 'go') {
     ?>
         <div id="response">
+            <aside><img src="img/harrington_book_.jpg"></aside>
+            <p>Sometime in 1997 a friend recently returned from Cuba dropped by, told of his travels and raved about the cocktails imbibed at the famous "La Floradita" bar. The search term 'Floridita' led us to a great little site hosted at www.hotwired.com/cocktail. Classic cocktails were beginning to enjoy something of a <a href="https://www.berkeleyside.com/2017/09/15/west-coast-cocktail-revival-started-emeryville-thanks-man">renaissance</a>, not least due to the efforts of<a href="http://frodelius.com/goodspiritsnews/paulharrington.html"> Paul Harrington</a>, who had penned the hotwired articles and was practising what he preached at the Townhouse Bar &#38; Grill in Emeryville, CA. There was enough material to justify publishing a companion book <a href="https://www.amazon.co.uk/Cocktail-Paul-Harrington/dp/0670880221/ref=sr_1_2?dchild=1&keywords=paul+harrington&qid=1615892712&s=books&sr=1-2" title="by Paul Harrington and Laura Moorhead. Illustrations by Douglas Bowman.">“Cocktail”</a>in the following year. The hardcover book is a treasure trove and, as I soon discovered, deserved better than being pawed over in the kitchen at party time. A bar-friendly digest was in order. Taking inspiration from the wonderful illustrations in “Cocktail”, I got to down to some serious photoshopping, sneaked in a cheeky print run and produced a comb-bound booklet, or three, of classic cocktail recipes.</p><p>When I enrolled in a web design refresher course many years later I had a brainwave. Why not re-purpose the booklet as my chosen personal project. By this time the original hotwired site was long gone, but an archive of sorts was maintained by enthusiasts at <a href="https://www.chanticleersociety.org/index.php?title=Main_Page">The Chanticleer Society</a>. I was able to grab some copy and complete my project.</p><p>On embarking upon this responsive version of that old project I discovered the Chanticleer archive had also disappeared. Shame. However, all is not lost. Quoted searches from passages of the book will still fetch up Harrington's original copy in various sites, often uncredited. I also discovered discrepancies between the hotwired articles and the final published copy. Due no doubt to the constraints of print some articles had gone through a few rounds of judicious editing. The text on this site is a facsimile of the published book, one of two in my possession. You can still pick up a <a href= "https://www.amazon.co.uk/Cocktail-Paul-Harrington/dp/0670880221/ref=sr_1_2?dchild=1&keywords=paul+harrington&qid=1615892712&s=books&sr=1-2--">copy</a> on Amazon, albeit for the price of a very good single malt. I do hope to get the thing into a database at some point, but that may drive me to drink. Speaking of which...
+            </p>
             
     <?php
     
+    /*We present the result in a table so first have to hang-on to the VALUE of the ingredient, store in a closure and on the next pass invoke the table row with the VALUE of the measure. This in itself is a composite of number and unit, two more closures.
+    The design of the form has the unit choice (oz/ml) coming AFTER the base spirit but BEFORE the other ingredients
+    so we hang on to the ingredient name in $pre and then add the value of the unit on the next pass. The value of this (oz/ml) is set for the remaining ingredients.
+    */
+    
     $res = $_POST;
     $fn = NULL;
-    $add = NULL;
+    $post = NULL;
+    $pre = NULL;
        
     foreach ($res as $k => $v) {
         $k = ucfirst($k);
         $v = str_replace('_', ' ', $v);
         
         if(is_array($v)){
-            $add = concat($v[0]);
+            $post = concat($v[0]);
+            $fn($pre($v[0]));
+            $fn = NULL;
             continue;
         }
         
@@ -102,7 +119,11 @@ if (isset($_POST['action']) and $_POST['action'] == 'go') {
                 $fn = NULL;
             }
             elseif(isset($fn)){
-             
+                if(!isset($pre)){
+                    $pre = concat_curry($v);
+                    continue;
+                }
+                $v = isset($post) ? $post($v) : $v;
                 $fn($v);
                 $fn = NULL;
             }
@@ -111,14 +132,10 @@ if (isset($_POST['action']) and $_POST['action'] == 'go') {
                 }
             }//!empty
         }//foreach
-    echo '</table>';
+    echo '</table></section><a><img src="img/cbook.jpg"></a>';
                 ?>
-            <!--https://www.amazon.co.uk/Cocktail-Paul-Harrington/dp/0670880221/ref=sr_1_2?dchild=1&keywords=paul+harrington&qid=1615892712&s=books&sr=1-2-->
-            <aside><img src="img/harrington_book_.jpg"></aside>
-        <p>In about 1997 a friend recently returned from Cuba was raving about the "La Floradita" bar he'd frequented.
-            A internet search fetched upon the now sadly defunct site (www.hotwired.com/cocktail/archive/) and the Floridita cocktail.
-            A year or so later an accompanying book was published. I got copies for myself and friends. Still available, deep pockets required. The book reads better sat back with a favoured glass then hunched over a bar. I decided to come up with a bar-friendly version, taking inspiration from the wonderful illustrations I got busy on photoshop and sneaked in a short print run to prouduce a comb-bound booklet of, mostly, classic cocktail recipes. I decided re-purpose the booklet when I attended a web design refresher course. By this time the original site had disappeared, but it was kind of archived at <a href="https://www.chanticleersociety.org/index.php?title=Main_Page">The Chanticleer Society</a>. In turn that too has disappeared. However quoted searches will still fetch up the articles Paul Harrington wrote. (The actual text on this site is a replica of the published book, slightly tighter than the original hotwired articles.)
-            </p></div>
+ 
+</div>
             
         <?php }//isset
         else { ?>
