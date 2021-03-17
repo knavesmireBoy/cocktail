@@ -1019,10 +1019,10 @@ speakEasy.Util = (function() {
 			if (flag) {
 				return {
 					add: function(el, type, fn) {
-						el.addEventListener(type, fn, false);
+						el && el.addEventListener(type, fn, false);
 					},
 					remove: function(el, type, fn) {
-						el.removeEventListener(type, fn, false);
+						el && el.removeEventListener(type, fn, false);
 					},
 					preventers: {
 						preventDefault: function(e) {
@@ -1039,10 +1039,10 @@ speakEasy.Util = (function() {
 			}
 			return {
 				add: function(el, type, fn) {
-					el.attachEvent('on' + type, fn);
+					el && el.attachEvent('on' + type, fn);
 				},
 				remove: function(el, type, fn) {
-					el.detachEvent('on' + type, fn);
+					el && el.detachEvent('on' + type, fn);
 				},
 				preventers: {
 					preventDefault: function(e) {

@@ -204,7 +204,8 @@ fieldset:first-child legend {
 }
 main form.hide {
 	height: 0px;
-    display: none;
+    position: absolute;
+    left: -9999px;
 }
 .show main>div {
 	margin: 0 9em 0 0;
