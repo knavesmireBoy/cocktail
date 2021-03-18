@@ -22,8 +22,8 @@ $unit;
     }
     
      function colspanHead($v){
-        $str = "<h3>Bartender! Get me a <span>$v<span>!</h3><section><table><tr><th colspan='2'>RECIPE</th></tr>";
-        print !empty($v) ? $str : "<h3>Bartender!</h3><section><table><tr><th colspan='2'>RECIPE</th></tr>";
+        $str = "<h3>Bartender! Get me a <span>$v<span>!</h3><section><section><table><tr><th colspan='2'>RECIPE</th></tr>";
+        print !empty($v) ? $str : "<h3>Bartender!</h3><section><section><table><tr><th colspan='2'>RECIPE</th></tr>";
     }
     
 
@@ -82,7 +82,7 @@ if (isset($_POST['action']) and $_POST['action'] == 'go') {
         }
         
         if($k === 'cocktail'){
-                colspan($v, $k);
+          colspan($v, $k);
             continue;
             }
         
@@ -98,6 +98,7 @@ if (isset($_POST['action']) and $_POST['action'] == 'go') {
             }
             */
             elseif(isset($fn)){
+                
                 if(!isset($pre)){
                     $pre = concat_curry($v);
                     continue;
@@ -111,5 +112,5 @@ if (isset($_POST['action']) and $_POST['action'] == 'go') {
                 }
             }//!empty
         }//foreach
-    echo '</table></section><a><img src="img/cbook.jpg"></a><p>I should point out that the "RULES" are taken from another marvellous <a href="https://www.amazon.co.uk/Esquire-Drinks-Opinionated-Irreverent-Drinking/dp/1588162052">book</a> by a more establshed writer on the subject.</p>';
+    echo '</table></section><a><img src="img/cbook.jpg"></a></section><p>I should point out that the "RULES" are taken from another marvellous <a href="https://www.amazon.co.uk/Esquire-Drinks-Opinionated-Irreverent-Drinking/dp/1588162052">book</a> by a more establshed writer on the subject.</p>';
  }//isset
