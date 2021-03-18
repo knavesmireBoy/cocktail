@@ -47,6 +47,7 @@ include 'response.php';
     <script src="js/classlist.js"></script>
     <script src="js/basicIterator.js"></script>
     <script src="js/global.js"></script>
+    <script src="js/slideshow.js"></script>
           <script>
         var hijax = window.speakEasy.Hijax(),
             c = speakEasy.Util.$('response');              

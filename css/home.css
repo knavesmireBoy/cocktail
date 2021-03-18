@@ -52,7 +52,7 @@ main {
 main>* {
 	filter: sepia();
 	border-width: 0;
-	flex: 1 1 100px;
+	flex: 3 1 100px;
 	position: relative;
 }
 h1 {
@@ -92,10 +92,11 @@ main > * {
     border: dotted 1px yellow;
     padding: 50px;
 }
-
+/*
 .showtime .placeholder {
     padding-right: 50px;
 }
+*/
 fieldset {
 	border: 0
 }
@@ -140,8 +141,8 @@ form li {
 
 main form {
 	box-sizing: border-box;
-	min-width: 550px;
     height: 100%;
+    width: auto;
 }
 
 main > div:first-child {
@@ -217,8 +218,7 @@ fieldset:first-child legend {
 .response .placeholder img{
     object-fit: cover;
 }
-.response #response {
-}
+
 .show main>div {
 	margin: 0 9em 0 0;
 }
@@ -457,6 +457,11 @@ li.unit label:first-child, input[type="number"] {
     background-repeat: no-repeat;
     padding: 1em;
     overflow: hidden;
+    flex: 2 1 100px;
+}
+
+.response #response {
+    flex: 5 1 100px;
 }
 
 #response p {
@@ -468,7 +473,7 @@ li.unit label:first-child, input[type="number"] {
 #response aside {
     margin: 1em 1em 0;
     float: left;
-    width: 200px;
+    width: 250px;
 }
 
 #response img {

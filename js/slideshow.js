@@ -93,7 +93,7 @@
 		doCurry = utils.curryFactory,
 		cssopacity = getNativeOpacity(!window.addEventListener),
 		event_actions = ['preventDefault', 'stopPropagation', 'stopImmediatePropagation'],
-		drinks = ['dry_martini', 'manhattan', 'margarita', 'mai_tai', 'moscow_mule', 'sidecar', 'julep'],
+		drinks = ['dry_martini', 'manhattan', 'margarita', 'mai_tai', 'moscow_mule', 'sidecar', 'julep', 'daiquiri', 'floridita', 'cosmopolitan'],
 		eventing = utils.eventer,
 		defer_once = doCurry(1, true),
 		twice = doCurry(2),
@@ -380,9 +380,6 @@
 		}
 	}, $('controls')).execute();
 	locate.execute();
-    //con(document.forms[0])
-    
-
 	Looper.onpage = Looper.from(randomSort(_.map(drinks, doImagePath)), doInc(getLength(drinks)));
 }({
 	src: 'img/cbook.jpg'

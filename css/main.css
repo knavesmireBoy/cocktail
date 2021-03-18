@@ -667,7 +667,19 @@ main>article {
         background-position: 80% 40%;
 	}
     
-	#menu-toggle:checked+nav ul li {
+    .c8 header aside {
+		background-image: url("../img/daiquiri.jpg");
+        background-position: 80% 40%;
+	}
+    .c9 header aside {
+		background-image: url("../img/cosmopolitan.jpg");
+        background-position: 80% 40%;
+	}
+    .c10 header aside {
+		background-image: url("../img/floridita.jpg");
+        background-position: 80% 40%;
+	}
+    #menu-toggle:checked+nav ul li {
 		height: 2em;
 		font-size: 1.2em;
 	}
