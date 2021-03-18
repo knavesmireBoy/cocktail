@@ -86,7 +86,6 @@ if (isset($_POST['action']) and $_POST['action'] == 'go')
     foreach ($res as $k => $v)
     {
         $v = str_replace('_', ' ', $v);
-        echo ($k);
         if (is_array($v))
         {
             $partial = concat($v[0]);

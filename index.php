@@ -49,9 +49,7 @@ include 'response.php';
     <script src="js/global.js"></script>
           <script>
         var hijax = window.speakEasy.Hijax(),
-            c = speakEasy.Util.$('response');
-              console.log(speakEasy.Util.getBody())
-              
+            c = speakEasy.Util.$('response');              
         hijax.setContainer(document.forms[0]);
         hijax.setCanvas(c);
         hijax.setUrl('response.php');
