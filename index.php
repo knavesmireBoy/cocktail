@@ -34,8 +34,8 @@
       
 
         <?php
-    include 'response.php';
-        ?>
+include 'response.php';
+?>
         </main>
     <footer>
   <div class="arrow-down"></div>
