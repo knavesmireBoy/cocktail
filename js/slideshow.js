@@ -380,16 +380,9 @@
 		}
 	}, $('controls')).execute();
 	locate.execute();
-    con(document.forms[0])
+    //con(document.forms[0])
     
-	eventing('submit', [], function (e) {
-        con(e.target);
-		utils.addClass('hide', e.target);
-        /*
-		comp(ptL(utils.setAttributes, config), twice(doInvoke)('img'), anCr, drill(['parentNode']), utils.setText('Bartender!'), twice(doInvoke)('h3'), anCr, anCr(e.target.parentNode))('section');
-        */
-	}, document.forms[0]).execute();
-    
+
 	Looper.onpage = Looper.from(randomSort(_.map(drinks, doImagePath)), doInc(getLength(drinks)));
 }({
 	src: 'img/cbook.jpg'
