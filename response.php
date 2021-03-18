@@ -45,7 +45,7 @@ $unit;
         
         
      function inc($arg) {
-        $list = array('submit', 'on', 'ml', 'oz', 'go', 'x', 'y');
+        $list = array('submit', 'go', 'on', 'X', 'Y');
         return !empty($arg) && !in_array($arg, $list);
     }
   
@@ -60,23 +60,23 @@ if (isset($_POST['action']) and $_POST['action'] == 'go') {
     
     /*We present the result in a table so first have to hang-on to the VALUE of the ingredient, store in a closure and on the next pass invoke the table row with the VALUE of the measure. This in itself is a composite of number and unit, two more closures.
     The design of the form has the unit choice (oz/ml) coming AFTER the base spirit but BEFORE the other ingredients
-    so we hang on to the ingredient name in $pre and then add the value of the unit on the next pass. The value of this (oz/ml) is set for the remaining ingredients.
+    so we hang on to the ingredient name in $curry and then add the value of the unit on the next pass. The value of this (oz/ml) is set for the remaining ingredients.
     */
     
     $res = $_POST;
-    $fn = NULL;
-    $post = NULL;
-    $pre = NULL;
+    $output = NULL;
+    $partial = NULL;
+    $curry = NULL;
        
     foreach ($res as $k => $v) {
         //$k = ucfirst($k);
         $v = str_replace('_', ' ', $v);
         
         if(is_array($v)){
-            $post = concat($v[0]);
-            if(isset($pre) && isset($fn)){
-                $fn($pre($v[0]));
-                $fn = NULL; 
+            $partial = concat($v[0]);
+            if(isset($curry) && isset($output)){
+                $output($curry($v[0]));
+                $output = NULL; 
             }
             continue;
         }
@@ -94,23 +94,26 @@ if (isset($_POST['action']) and $_POST['action'] == 'go') {
             /*
              elseif($k === 'Email'){
                 output($k)($v);
-                $fn = NULL;
+                $output = NULL;
             }
             */
-            elseif(isset($fn)){
+            elseif(isset($output)){
                 
-                if(!isset($pre)){
-                    $pre = concat_curry($v);
+                if(!isset($curry)){
+                    $curry = concat_curry($v);
                     continue;
                 }
-                $v = isset($post) ? $post($v) : $v;
-                $fn($v);
-                $fn = NULL;
+                $v = isset($partial) ? $partial($v) : $v;
+                $output($v);
+                $output = NULL;
             }
             else {
-                $fn = output($v);
+                //exit($v);
+                $output = output($v);
                 }
             }//!empty
         }//foreach
+    
+    
     echo '</table></section><a><img src="img/cbook.jpg"></a></section><p>I should point out that the "RULES" are taken from another marvellous <a href="https://www.amazon.co.uk/Esquire-Drinks-Opinionated-Irreverent-Drinking/dp/1588162052">book</a> by a more establshed writer on the subject.</p>';
  }//isset

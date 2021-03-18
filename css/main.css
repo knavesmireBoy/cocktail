@@ -64,15 +64,7 @@ nav {
 i, cite, b {
 	color: silver;
 }
-footer, footer a {
-	color: rgba(204, 0, 204, 1);
-}
-footer {
-	clear: both;
-	padding: 1em 1em 0 2em;
-	z-index: 1;
-	box-sizing: border-box;
-}
+
 header blockquote {
 	color: rgba(204, 0, 204, 1);
 	border: 1px dotted;
@@ -84,13 +76,7 @@ header blockquote {
 	font-style: italic;
 	text-align: center;
 }
-footer div {
-	float: left;
-}
-footer p {
-	float: right;
-	margin: -.5em 0 0;
-}
+
 p strong {
 	text-transform: uppercase;
 	font-weight: normal;
@@ -137,17 +123,7 @@ main aside, main>article {
 	margin-bottom: -30em;
 	padding-bottom: 30em;
 }
-footer:before {
-	content: "";
-	display: block;
-	width: 0;
-	height: 0;
-	border-left: 20px solid transparent;
-	border-right: 20px solid transparent;
-	border-top: 20px solid rgba(204, 0, 204, 1);
-	position: relative;
-	right: 19px;
-}
+
 header aside h2 {
 	text-align: right;
 }
@@ -204,8 +180,6 @@ main aside img {
 	display: block;
 	position: relative;
 	right: 1.5em;
-    
-    
 }
 main aside a {
 	color: rgba(255, 255, 255, .9);
@@ -272,14 +246,7 @@ nav>ul>li a {
 	font: italic 1em/1.2 'Lora', Georgia, serif;
 	line-height: calc(100vw / 46);
 }
-.arrow-down {
-	width: 2px;
-	height: 44px;
-	display: block;
-	background: rgba(204, 0, 204, 1);
-	position: relative;
-	bottom: 18px;
-}
+
 .variant {
 	width: 100%;
 	height: 100%;
@@ -298,27 +265,7 @@ nav>ul>li a {
 .variant b {
 	color: chartreuse;
 }
-.arrow-down:before {
-	content: "";
-	display: block;
-	width: 0;
-	height: 0;
-	border-left: 16px solid transparent;
-	border-right: 16px solid transparent;
-	border-top: 16px solid #000;
-	position: relative;
-	right: 15px;
-}
-.arrow-down:after {
-	width: 26px;
-	height: 2px;
-	content: "";
-	display: block;
-	background: rgba(204, 0, 204, 1);
-	position: relative;
-	right: 12px;
-	top: 26px;
-}
+
 .variant p::before {
 	content: "";
 	float: right;
@@ -780,24 +727,6 @@ main>article {
 }
   
 
-@media only screen and (max-width: 480px) {
-    footer:before {
-        content: none;
-        border-width: 0;
-    }
-    .arrow-down {
-        position: absolute;
-        left: -999px;
-        top:0;
-    }
-    footer p {
-        clear: left;
-        float: none;
-        margin: 0;
-    }
- 
-}
-
 @media only screen and (max-width: 414px) {
     
 	h1 {
@@ -807,14 +736,6 @@ main>article {
 		top: 7em;
 	}
     
-       footer {
-	padding: .5em;
-           font-size: .9em;
-           
-}
-    footer p {
-        text-align: center;
-    }
     
     main>article {
 		padding: 1em;
@@ -833,7 +754,6 @@ main>article {
         right:3em;
     }
     
-
 }
 @media only screen and (min-width: 1038px) {
 	.c6 .quote-wrapper {

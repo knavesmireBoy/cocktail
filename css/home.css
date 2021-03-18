@@ -47,6 +47,7 @@ main {
 	overflow: hidden;
 	width: 100%;
 	box-sizing: border-box;
+    border-bottom: solid 1px white;
 }
 main>* {
 	filter: sepia();
@@ -305,7 +306,7 @@ li.unit label:first-child, input[type="number"] {
 	margin-right: 1em
 }
 #cocktail, #email {
-	width: 33em;
+	width: 30em;
 }
 #controls {
 	top: 0em;
@@ -524,12 +525,15 @@ table {
 }
 
 td {
+    text-transform: capitalize;
+}
+tr {
     border: dotted 1px #444;
     border-width: 1px 0;
-    text-transform: capitalize;
 }
 th {
     text-align: center;
+    color: red;
 }
 .method {
     color: #222;
