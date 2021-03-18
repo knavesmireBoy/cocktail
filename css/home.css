@@ -139,9 +139,12 @@ form li {
 
 main form {
 	box-sizing: border-box;
-	border-left: dotted 1px white;
 	min-width: 550px;
     height: 100%;
+}
+
+main > div:first-child {
+border-right: dotted 1px white;
 }
 
 .showtime form {
@@ -206,6 +209,14 @@ fieldset:first-child legend {
 	height: 0px;
     position: absolute;
     left: -9999px;
+}
+.response .placeholder {
+    height: 100%;
+}
+.response .placeholder img{
+    object-fit: cover;
+}
+.response #response {
 }
 .show main>div {
 	margin: 0 9em 0 0;
@@ -444,11 +455,8 @@ li.unit label:first-child, input[type="number"] {
 #response {
     background-size: contain;
     background-repeat: no-repeat;
-    flex-wrap: wrap;
     padding: 1em;
-    justify-content: space-around;
     overflow: hidden;
-    flex: 2 1 100px;
 }
 
 #response p {
