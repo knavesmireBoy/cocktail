@@ -202,7 +202,7 @@ h1 em:hover {
 fieldset:first-child legend {
 	font-size: 2em;
 }
-main form.hide {
+.response main form, .response #controls {
 	height: 0px;
     position: absolute;
     left: -9999px;
@@ -529,3 +529,4 @@ h3 span {
     margin-top: 1em;
     float: left;
 }
+
