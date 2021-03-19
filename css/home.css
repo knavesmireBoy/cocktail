@@ -211,11 +211,7 @@ h1 em:hover {
 fieldset:first-child legend {
 	font-size: 2em;
 }
-.response main form, .response #controls, .response main > div:first-child {
-	height: 0px;
-    position: absolute;
-    left: -9999px;
-}
+
 .response .placeholder {
     height: 100%;
 }

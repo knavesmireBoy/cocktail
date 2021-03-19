@@ -23,14 +23,7 @@
 <div class="wrapper">
 
     <main>
-        <div>
-        <div class="placeholder"><img src="img/fc.jpg" id="base"/></div>
-        <section id="controls" class="static">
-            <button id="backbutton"></button>
-            <button id="playbutton"></button>
-            <button id="forwardbutton"></button>
-        </section>
-            </div>
+     
       
 
         <?php
@@ -51,6 +44,8 @@ include 'response.php';
           <script>
         var hijax = window.speakEasy.Hijax(),
             c = speakEasy.Util.$('response');              
+            c = _.compose(speakEasy.Util.getZero, _.partial(speakEasy.Util.getByTag, 'main'))();       
+              console.log(c);
         hijax.setContainer(document.forms[0]);
         hijax.setCanvas(c);
         hijax.setUrl('response.php');

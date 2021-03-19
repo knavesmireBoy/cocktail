@@ -147,6 +147,14 @@ if (isset($_POST['action']) and $_POST['action'] == 'go')
 } //isset
 else
 { ?>
+       <div>
+        <div class="placeholder"><img src="img/fc.jpg" id="base"/></div>
+        <section id="controls" class="static">
+            <button id="backbutton"></button>
+            <button id="playbutton"></button>
+            <button id="forwardbutton"></button>
+        </section>
+            </div>
 <div id="response">
       <form  action="." method="post">
         <fieldset><legend>or  mix your own...</legend></fieldset>

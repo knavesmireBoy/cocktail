@@ -1,0 +1,30 @@
+body {
+    background: white;
+    color: black;
+}
+
+header, footer, h2, .sidebar div, svg {
+    display: none;
+}
+
+main article.content p {
+    color: #444;
+}
+
+main article.content p strong, main article.content em, main article.content a {
+    color: black;
+}
+
+main>article>p:first-child::first-letter {
+	color: #444;
+	font-size: 300%;
+	line-height: 1.1;
+	margin: -4px 10px 0 0;
+	padding: 0 6px;
+	float: left;
+	border: solid 1px #444;
+}
+
+main, .sidebar> div:first-child {
+    display: block;
+}
