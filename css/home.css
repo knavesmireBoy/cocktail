@@ -334,11 +334,12 @@ li.unit label:first-child, input[type="number"] {
 	/*
 	opacity: 0;
 	filter: alpha(opacity=0);
+    	background: rgba(204, 0, 204, .5);
+	border-top: solid 1px white;
     */
 	min-width: 300px;
 	width: 100%;
-	background: rgba(204, 0, 204, .5);
-	border-top: solid 1px white;
+
 }
 #backbutton {
 	background-position: 50% 14.9%;

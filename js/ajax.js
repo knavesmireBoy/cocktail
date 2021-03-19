@@ -61,13 +61,16 @@ window.speakEasy.Hijax = function () {
     
 	function fromPost(form) {
 		var i,
-			query = '';
+			query = '',
+            val;
 		for (i = 0; i < form.elements.length; i += 1) {
 			query += form.elements[i].name;
+            val = form.elements[i].value === 'on' ? form.elements[i].checked : form.elements[i].value;
 			query += "=";
-			query += encodeURI(form.elements[i].value);
+			query += encodeURI(val);
 			query += "&";
 		}
+        
 		return query;
 	}
 

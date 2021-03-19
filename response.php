@@ -89,7 +89,7 @@ if (isset($_POST['action']) and $_POST['action'] == 'go')
     $partial = NULL;
     $curry = NULL;
 
-    foreach ($res as $k => $v)
+    foreach ($_POST as $k => $v)
     {
         $v = str_replace('_', ' ', $v);
         
@@ -118,9 +118,9 @@ if (isset($_POST['action']) and $_POST['action'] == 'go')
             {
                 colspan($v, $k);
             }
-            
-             elseif($k === 'dash'){
-                output('bitters')($k);
+            /*BIT clunky AJAX passing on checkbox value regardless of checked status setting string to false/true in ajax.js line 68 as tmp solution*/
+             elseif($k === 'dash' && $v !== 'false'){
+                output('dash')('bitters');
                 $output = NULL;
             }
             

@@ -179,7 +179,6 @@ main aside div {
 main aside img {
 	display: block;
 	position: relative;
-	right: 1.5em;
 }
 main aside a {
 	color: rgba(255, 255, 255, .9);
@@ -416,6 +415,7 @@ p:nth-of-type(odd) em, p:nth-of-type(odd) strong {
 }
 .c2 main aside a {
 	top: 5em;
+    left: .5em;
 }
 .c4 main aside a {
 	top: 3.5em;
@@ -423,6 +423,20 @@ p:nth-of-type(odd) em, p:nth-of-type(odd) strong {
 .c6 main aside a {
 	top: 3em;
 	right: .9em;
+}
+.c7 main aside a {
+    top: 2.5em;
+	left: .7em;
+}
+
+.c8 main aside a {
+    top: 6em;
+    left: .4em;
+}
+
+.c9 main aside a {
+    top: 1.6em;
+	left: .2em;
 }
 nav ul>li>a:hover+ul {
 	color: red !important;
