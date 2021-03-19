@@ -278,13 +278,12 @@ header ul li:nth-child(6) a {
 	background-position: 0 0;
 }
 
-.svgfilters header ul li a {
+.svgfilters header ul li a, .no-js header ul li a {
 	background-position: 0 0;
     filter: sepia(80%);
 }
 
-.svgfilters header ul li a:hover {
-	background-position: 0 0;
+.svgfilters header ul li a:hover, .no-js header ul li a:hover{
     filter: none;
 }
 
