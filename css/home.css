@@ -242,9 +242,7 @@ header ul a:link {
 	background-size: cover;
 	display: block;
 }
-header ul a:hover {
-	background-position: 0 0
-}
+
 
 form fieldset ul:last-child {
 	text-align: left;
@@ -274,6 +272,20 @@ header ul li:nth-child(5) a {
 header ul li:nth-child(6) a {
 	background-image: url("../img/cognac_s.png");
 	border-width: 0;
+}
+
+.no-svgfilters header ul a:hover {
+	background-position: 0 0;
+}
+
+.svgfilters header ul li a {
+	background-position: 0 0;
+    filter: sepia();
+}
+
+.svgfilters header ul li a:hover {
+	background-position: 0 0;
+    filter: none;
 }
 
 .show fieldset.ingredients {

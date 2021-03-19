@@ -243,7 +243,7 @@ nav>ul>li a {
 	height: 180px;
 	width: 180px;
 	margin: 2em auto;
-	font: italic 1em/1.2 'Lora', Georgia, serif;
+	font: italic .95em/1.2 'Lora', Georgia, serif;
 	line-height: calc(100vw / 46);
 }
 

@@ -144,7 +144,8 @@
 			],
         daiquiri: [["Shake with cracked ice.","Strain into a chilled cocktail glass.", "Garnish with a lime wheel"],
 				["<a href='.'>Daiquiri</a>", "1½ oz light rum", "¾ oz lime juice", "¼ ounce of simple syrup", "<b>Cocktail Glass</b>"],["No doubt the frozen kiwi-banana Daiquiri and the watermelon-strawberry Daiquiri are superlative choices when training for a drunken balcony-to-balcony climb at a Daytona Beach hotel midway through spring break. But the odss are you're already past that - or somehow resisted such antics in the first place - and can now appreciate an unalduterated Daiquiri.", "Only mildly difficult to prepare, this drink is best served ice-cold. When a dash of <strong>grenadine</strong> is added it's known as a Bacardi Cocktail. If the lime is too tart, add a dash of maraschino, orgeat, or crème d'ananas. Never opt of Rose's lime juice; you'll end up with a mutated Gimlet. Always shake or flash blend the ingredients thoroughly with cracked ice.", "Similar drinks include the Floridita."]],
-        cosmopolitan: [["Shake with cracked ice; strain into chilled cocktail glass. Garnish with a lime wheel."],["<a href='.'>Cosmopolitan</a>", "1½ oz vodka", "¾ oz Cointreau", "½ ounce lime juice", "1 splash cranberry juice"],[]]
+        cosmopolitan: [["Shake with cracked ice.","Strain into chilled cocktail glass.", "Garnish with a lime wheel."],["<a href='.'>Cosmopolitan</a>", "1½ oz vodka", "¾ oz Cointreau", "½ ounce lime juice", "1 splash cranberry juice"],["When faced with a sudden onslaught of univited guests around the cocktail hour, serve Cosmopolitans. A drink like this is easily adapted by home hosts on those occasions when mixing seems like too much stress and strain.", "Avoid situations in which guests recite their take on the Cosmo's recipe. There are hundreds of variations, but only a few are worth mentioning and even fewer worth drinking.", "With any version of the Cosmopolitan, remember that without the proper of lime, the drink will also be too sweet. Also, avoid mixing syrups or <strong>simple syrup</strong> in this crisp cocktail.", "Citrus-infused vodkas will allow for plenty of experimentation.", "Similar drinks include the Evan, the Edisonian and the Jasmine."]],
+        floridita: [["Shake with cracked ice.","Strain into chilled cocktail glass.", "Garnish with a lime wheel."],["<a href='.'>Floridita</a>", "1½ oz light rum", "½ ounce lime juice", "½ ounce sweet vermouth", "1 dash white crème de cacao", "1 dash of grenadine"],["The Floridita offers itself as common ground for even the most disparate of cocktail crowds. Unlike the Manhattan and the Old Fashioned, which provide the perfect backdrop for an event, the Floridita is so unusual taht it actually provokes conversation.", "When mixing a Floridita, shake well, and never add too much crème de cacao or grenadine. With so many ingredients, this drink often ends up unbalanced. The key to a well-made Floridita is the layering of tastes it contains. The citrus should hit first and the cacao least. Although brown crème de cacao tastes no different from the cordial's clear version, steer clear of it unless you want a cocktail that looks like mud.", "Similar drinks include the Cosmopolitan and the Hemingway Daiquiri."]]
 		},
 		lookup = {
 			c1: 'dry_martini',
@@ -154,7 +155,9 @@
 			c4: 'mint_julep',
 			c5: 'moscow_mule',
             c7: 'manhattan',
-            c8: 'daiquiri'
+            c8: 'daiquiri',
+            c9: 'cosmopolitan',
+            c10: 'floridita'
 		},
 		utils = speakEasy.Util,
 		con = window.console.log.bind(window),
