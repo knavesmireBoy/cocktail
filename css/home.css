@@ -90,7 +90,7 @@ main > * {
     max-width: 500px;
     margin: 1em auto;
     border: dotted 1px yellow;
-    padding: 50px;
+    padding: 2em 2em 2em .3em;
 }
 /*
 .showtime .placeholder {
@@ -280,7 +280,7 @@ header ul li:nth-child(6) a {
 
 .svgfilters header ul li a {
 	background-position: 0 0;
-    filter: sepia();
+    filter: sepia(80%);
 }
 
 .svgfilters header ul li a:hover {
@@ -336,10 +336,13 @@ li.unit label:first-child, input[type="number"] {
 	filter: alpha(opacity=0);
     	background: rgba(204, 0, 204, .5);
 	border-top: solid 1px white;
+    width: 100%;
     */
 	min-width: 300px;
-	width: 100%;
-
+}
+.showtime #controls {
+    top: 1em;
+    left: 1em;
 }
 #backbutton {
 	background-position: 50% 14.9%;
