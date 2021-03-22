@@ -80,7 +80,6 @@
 	function doCallbacks(cb, coll, p) {
         p = p || 'each';
         cb = cb || getResult;
-        con(coll)
 		return _[p](coll, cb);
 	}
 
@@ -117,7 +116,7 @@
 		doMap = utils.doMap,
 		drill = utils.drillDown,
 		getLength = doGet('length'),
-		makeCommand = thricedefer(doMethod)('makeCommand')(null)(utils),
+		//makeCommand = thricedefer(doMethod)('makeCommand')(null)(utils),
 		parser = thrice(doMethod)('match')(/img\/[a-z]+\.jpe?g$/),
 		doParse = comp(ptL(add, ''), doGet(0), parser),
 		doImagePath = comp(ptL(add, 'img/'), twice(add)('.jpg')),
@@ -132,7 +131,7 @@
 		getPlaceHolder = ptL(utils.findByClass, 'placeholder'),
         exitInPlay = ptL(klasRem, ['inplay', 'playing'], main),
         exitPlus = comp(noshow, getBod, exitInPlay),
-        restoreBaseImg = ptL(comp, ptL(utils.setter, utils.$('base'), 'src'), doImagePath, always('fc')),
+        restoreBaseImg = comp(noshow, ptL(utils.setter, utils.$('base'), 'src'), doImagePath, always('fc')),
         remInPlay = comp(noshow, getBod, ptL(klasRem, ['inplay', 'playing'], main)),
 		slide_player = {
 			execute: function () {
@@ -371,14 +370,15 @@
 				myprev = COR(ptL(invokeArgs, equals, 'backbutton'), prev_driver),
                 //myplayer = COR(doPrepSlideShow, invoke_player),
 				myplayer = COR(ptL(invokeArgs, equals, 'playbutton'), comp(invoke_player, doPrepSlideShow)),
-                myend = COR(always(true), next_driver);
+                myend = COR(_.negate($$('slide')), restoreBaseImg);
+                            
 				
 			myplayer.validate = function () {
 				return this;
 			};
 			mynext.setSuccessor(myprev);
 			myprev.setSuccessor(myplayer);
-			//myplayer.setSuccessor(myend);
+			myplayer.setSuccessor(myend);
 			recur.i = 0; //slide is clone of base initially, so fade can start quickly
 			return mynext;
 		},
@@ -391,8 +391,9 @@
 		if (node.match(/button/i)) {
 			//!!REPLACE the original chain reference, validate will return either the original or brand new instance
 			chain = chain.validate(str);
-			chain.handle(str);
+			//chain.handle(str);
 		}
+        chain.handle(str);//if empty area of #controls is clicked restore initial layout if slideshow is not active, or do nowt
        
 	}, $('controls')).execute();
     
@@ -401,7 +402,7 @@
           chain = chain.validate('next');
           chain.handle('next');
           exitshow();
-          [$('base'), $('slide')].forEach(removeNodeOnComplete);
+          [ $('base'), $('slide')].forEach(removeNodeOnComplete);
           locate.unrender();
           setup.render();
         }, compose(close_cb, close_aside));
