@@ -78,6 +78,9 @@
 	}
 
 	function doCallbacks(cb, coll, p) {
+        p = p || 'each';
+        cb = cb || getResult;
+        con(coll)
 		return _[p](coll, cb);
 	}
 
@@ -89,6 +92,10 @@
 		comp = _.compose,
 		always = utils.always,
 		con = window.console.log.bind(window),
+        con2 = function(arg){
+            con(arg);
+            return arg;
+        },
 		Looper = speakEasy.Iterator,
 		doCurry = utils.curryFactory,
 		cssopacity = getNativeOpacity(!window.addEventListener),
@@ -123,13 +130,17 @@
 		checkShowTime = ptL(utils.getBest, _.negate(showtime), [show, function () {}]),
 		main = document.getElementsByTagName('main')[0],
 		getPlaceHolder = ptL(utils.findByClass, 'placeholder'),
-		remInPlay = comp(noshow, getBod, ptL(klasRem, ['inplay', 'playing'], main)),
+        exitInPlay = ptL(klasRem, ['inplay', 'playing'], main),
+        exitPlus = comp(noshow, getBod, exitInPlay),
+        restoreBaseImg = ptL(comp, ptL(utils.setter, utils.$('base'), 'src'), doImagePath, always('fc')),
+        remInPlay = comp(noshow, getBod, ptL(klasRem, ['inplay', 'playing'], main)),
 		slide_player = {
 			execute: function () {
 				checkShowTime()();
 			},
 			undo: function (e) {
 				Looper.onpage = Looper.from(randomSort(_.map(drinks, doImagePath)), doInc(getLength(drinks)));
+                //comp(ptL(doCallbacks, getResult), ptL(utils.getBest, $$('slide'), [[exitInPlay], [exitPlus, restoreBaseImg]]))();
 				comp(ptL(utils.setter, utils.$('base'), 'src'), doImagePath)('fc');
 				remInPlay();
 			}
@@ -347,7 +358,7 @@
 						},
 						validate: function (str) {
 							if ($('slide') && recur.t && test(str)) {
-								con('clear');
+								//con('clear');
 								//return fresh instance on exiting slideshow IF in play mode
 								clear();
 								return chainFactory();
@@ -358,12 +369,16 @@
 				},
 				mynext = COR(ptL(invokeArgs, equals, 'forwardbutton'), next_driver),
 				myprev = COR(ptL(invokeArgs, equals, 'backbutton'), prev_driver),
-				myplayer = COR(doPrepSlideShow, invoke_player);
+                //myplayer = COR(doPrepSlideShow, invoke_player),
+				myplayer = COR(ptL(invokeArgs, equals, 'playbutton'), comp(invoke_player, doPrepSlideShow)),
+                myend = COR(always(true), next_driver);
+				
 			myplayer.validate = function () {
 				return this;
 			};
 			mynext.setSuccessor(myprev);
 			myprev.setSuccessor(myplayer);
+			//myplayer.setSuccessor(myend);
 			recur.i = 0; //slide is clone of base initially, so fade can start quickly
 			return mynext;
 		},
@@ -378,7 +393,19 @@
 			chain = chain.validate(str);
 			chain.handle(str);
 		}
+       
 	}, $('controls')).execute();
+    
+    /*
+       exit = eventing('click', function(e) {
+          chain = chain.validate('next');
+          chain.handle('next');
+          exitshow();
+          [$('base'), $('slide')].forEach(removeNodeOnComplete);
+          locate.unrender();
+          setup.render();
+        }, compose(close_cb, close_aside));
+        */
 	locate.execute();
 	Looper.onpage = Looper.from(randomSort(_.map(drinks, doImagePath)), doInc(getLength(drinks)));
 }({

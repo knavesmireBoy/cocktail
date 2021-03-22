@@ -179,6 +179,7 @@ main aside div {
 main aside img {
 	display: block;
 	position: relative;
+    right: .6em;
 }
 main aside a {
 	color: rgba(255, 255, 255, .9);
@@ -382,9 +383,15 @@ h1 em:hover {
 p:nth-of-type(odd) strong {
 	color: white;
 }
-.c3 aside img, .c5 aside img {
-	right: 2.22em;
+.c1 aside img{
+	right: 1.7em;
 }
+
+.c5 aside img {
+	right: 1.2em;
+}
+
+
 main aside div:last-child {
 	transition: all 1.5s;
 }
