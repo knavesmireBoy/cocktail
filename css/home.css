@@ -492,6 +492,10 @@ li.unit label:first-child, input[type="number"] {
     line-height: 1.3;
 }
 
+p:nth-of-type(odd) {
+	color: white;
+}
+
 
 #response aside {
     margin: 1em 1em 0;
