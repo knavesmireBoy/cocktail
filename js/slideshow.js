@@ -116,7 +116,6 @@
 		doMap = utils.doMap,
 		drill = utils.drillDown,
 		getLength = doGet('length'),
-		//makeCommand = thricedefer(doMethod)('makeCommand')(null)(utils),
 		parser = thrice(doMethod)('match')(/img\/[a-z]+\.jpe?g$/),
 		doParse = comp(ptL(add, ''), doGet(0), parser),
 		doImagePath = comp(ptL(add, 'img/'), twice(add)('.jpg')),
@@ -139,9 +138,8 @@
 			},
 			undo: function (e) {
 				Looper.onpage = Looper.from(randomSort(_.map(drinks, doImagePath)), doInc(getLength(drinks)));
-                //comp(ptL(doCallbacks, getResult), ptL(utils.getBest, $$('slide'), [[exitInPlay], [exitPlus, restoreBaseImg]]))();
-				comp(ptL(utils.setter, utils.$('base'), 'src'), doImagePath)('fc');
-				remInPlay();
+				//comp(ptL(utils.setter, utils.$('base'), 'src'), doImagePath)('fc');
+				//remInPlay();
 			}
 		},
 		init_slideshow = thricedefer(doMethod)('execute')(null)(slide_player),
@@ -371,9 +369,8 @@
                 //myplayer = COR(doPrepSlideShow, invoke_player),
 				myplayer = COR(ptL(invokeArgs, equals, 'playbutton'), comp(invoke_player, doPrepSlideShow)),
                 myend = COR(_.negate($$('slide')), restoreBaseImg);
-                            
-				
-			myplayer.validate = function () {
+            
+            myplayer.validate = function () {
 				return this;
 			};
 			mynext.setSuccessor(myprev);
