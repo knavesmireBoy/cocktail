@@ -329,21 +329,24 @@ li.unit label:first-child, input[type="number"] {
 	border-spacing: .5em;
 	-webkit-transition: all 1s;
 	-o-transition: all 1s;
-	transition: all 1s;
+	transition: all 1.5s;
 	display: table;
 	/*
 	opacity: 0;
 	filter: alpha(opacity=0);
-    	background: rgba(204, 0, 204, .5);
 	border-top: solid 1px white;
-    width: 100%;
+    
     */
 	min-width: 300px;
+    background-color: rgba(55,55,55,.5);
+    width: 100%;
 }
 .showtime #controls {
     top: 1em;
     left: 1em;
     border-spacing: 0;
+    background-color: rgba(255,255,255,0);
+    width: auto;
 }
 #backbutton {
 	background-position: 50% 14.9%;

@@ -391,22 +391,10 @@
 		if (node.match(/button/i)) {
 			//!!REPLACE the original chain reference, validate will return either the original or brand new instance
 			chain = chain.validate(str);
-			//chain.handle(str);
 		}
-        chain.handle(str);//if empty area of #controls is clicked restore initial layout if slideshow is not active, or do nowt
+        chain.handle(str);//if empty area of #controls is clicked restore initial layout IF slideshow is not active
        
 	}, $('controls')).execute();
-    
-    /*
-       exit = eventing('click', function(e) {
-          chain = chain.validate('next');
-          chain.handle('next');
-          exitshow();
-          [ $('base'), $('slide')].forEach(removeNodeOnComplete);
-          locate.unrender();
-          setup.render();
-        }, compose(close_cb, close_aside));
-        */
 	locate.execute();
 	Looper.onpage = Looper.from(randomSort(_.map(drinks, doImagePath)), doInc(getLength(drinks)));
 }({
