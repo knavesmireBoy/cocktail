@@ -49,9 +49,7 @@ header>* {
 	flex: 2 1 0;
 	margin: 0 1em;
 }
-header section {
-	flex: 3 1 0;
-}
+
 main {
 	display: flex;
 	position: relative;
@@ -103,6 +101,13 @@ label {
 	width: 5.5em;
 	display: inline-block;
 }
+
+i, cite, b, footer, footer a {
+	color: #c0c0c0;
+}
+header section {
+	flex: 3 1 0;
+}
 h1 span {
 	font-size: 2vw;
 }
@@ -110,9 +115,6 @@ h3 span {
 	font-style: italic;
 	color: #fffb74;
 	text-transform: capitalize;
-}
-i, cite, b, footer, footer a {
-	color: #c0c0c0;
 }
 header ul {
 	flex: 0 0 auto;
@@ -157,30 +159,29 @@ section img {
 header ul li {
 	display: inline-block;
 }
-.showtime main>div {
-	max-width: 500px;
-	margin: 1em auto;
-	border: dotted 1px yellow;
-	padding: 1.8em 2em 1.8em 0;
-	background: black;
-}
-.showtime form {
-	height: 0px;
-}
-.showtime #response {
-	display: none;
-}
-main>div:first-child {
-	border: dotted 1px white;
-	border-width: 0 1px 0 0;
-}
-p:nth-of-type(odd) {
-	color: white;
-}
+
 .wrapper {
 	overflow: hidden;
 	/*background: url("../img/wallpaper.jpg"); */
 }
+
+.esquire {
+	width: 8%;
+	transform: rotate(-3deg);
+}
+.method {
+	color: #222;
+	text-align: center;
+	border: solid 1px red;
+}
+.showtime form {
+	height: 0px;
+}
+
+p:nth-of-type(odd) {
+	color: white;
+}
+
 .placeholder img {
 	display: block;
 	height: 100%;
@@ -207,37 +208,40 @@ input[type="number"] {
 	display: table;
 	clear: both;
 }
+
+main>div:first-child {
+	border: dotted 1px white;
+	border-width: 0 1px 0 0;
+}
+
+.showtime main>div {
+	max-width: 500px;
+	margin: 1em auto;
+	border: dotted 1px yellow;
+	padding: 1.8em 2em 1.8em 0;
+	background: black;
+}
 h1 em:hover {
 	color: cyan;
 }
 fieldset:first-child legend {
 	font-size: 2em;
 }
-.response .placeholder {
-	height: 100%;
-}
-.response .placeholder img {
-	object-fit: cover;
-}
+
 .show main>div {
 	margin: 0 9em 0 0;
 }
+
 .ingredients legend em {
 	color: rgba(204, 0, 204, .8);
 	font-size: 1.5em
 }
+
+
 footer a:hover {
 	color: white
 }
-.esquire {
-	width: 8%;
-	transform: rotate(-3deg);
-}
-.method {
-	color: #222;
-	text-align: center;
-	border: solid 1px red;
-}
+
 li.unit label, li.unit input {
 	width: 1em;
 	margin-right: .5em
@@ -250,6 +254,12 @@ header ul a:link {
 	background-size: cover;
 	display: block;
 }
+
+.svgfilters header ul li a, .no-js header ul li a {
+	background-position: 0 0;
+	filter: sepia(80%);
+}
+
 form fieldset ul:last-child {
 	text-align: left;
 }
@@ -258,6 +268,7 @@ form>ul:last-of-type li {
 	margin-left: 50%;
 	right: 50px;
 }
+
 header ul li:nth-child(1) a {
 	background-image: url("../img/gin_s.png")
 }
@@ -277,22 +288,29 @@ header ul li:nth-child(6) a {
 	background-image: url("../img/cognac_s.png");
 	border-width: 0;
 }
-.no-svgfilters header ul a:hover {
-	background-position: 0 0;
-}
-.svgfilters header ul li a, .no-js header ul li a {
-	background-position: 0 0;
-	filter: sepia(80%);
-}
-.svgfilters header ul li a:hover, .no-js header ul li a:hover {
-	filter: none;
+.response .placeholder {
+	height: 100%;
 }
 .show fieldset.ingredients {
 	width: 80%;
 }
+
+.response .placeholder img {
+	object-fit: cover;
+}
+
+.no-svgfilters header ul a:hover {
+	background-position: 0 0;
+}
+
 li.unit label:first-child, input[type="number"] {
 	width: 2.75em;
 }
+
+.svgfilters header ul li a:hover, .no-js header ul li a:hover {
+	filter: none;
+}
+
 #result {
 	width: 40%;
 	border-top: 1px dotted palegoldenrod;
@@ -308,9 +326,7 @@ li.unit label:first-child, input[type="number"] {
 	width: 100px;
 	height: 92px;
 }
-#units {
-	display: none
-}
+
 #dash {
 	margin-right: 1em;
 }
@@ -348,6 +364,26 @@ li.unit label:first-child, input[type="number"] {
 	overflow: hidden;
 	flex: 2 1 100px;
 }
+
+#controls button {
+	width: 3em;
+	height: 3em;
+	padding: 0;
+	margin: 0 .3em;
+	display: table-cell;
+	border: solid 1px;
+	border-radius: .2em;
+	line-height: 1.6;
+	background-image: url(../img/buttons_sprite_lowend.png);
+	background-color: hsla(270, 50%, 40%, 1);
+	background-repeat: no-repeat;
+	cursor: pointer;
+	background-color: #990;
+	border: 1px solid #cc6;
+	-webkit-box-shadow: 2px 2px 4px black;
+	box-shadow: 2px 2px 4px black;
+	text-shadow: 1px 1px 1px black;
+}
 #response p {
 	padding: .5em 1em;
 	line-height: 1.3;
@@ -371,6 +407,7 @@ li.unit label:first-child, input[type="number"] {
 #response table {
 	box-sizing: border-box;
 }
+
 #response>section {
 	position: relative;
 	height: 0;
@@ -401,25 +438,7 @@ li.unit label:first-child, input[type="number"] {
 #response a img {
 	border-radius: 50%;
 }
-#controls button {
-	width: 3em;
-	height: 3em;
-	padding: 0;
-	margin: 0 .3em;
-	display: table-cell;
-	border: solid 1px;
-	border-radius: .2em;
-	line-height: 1.6;
-	background-image: url(../img/buttons_sprite_lowend.png);
-	background-color: hsla(270, 50%, 40%, 1);
-	background-repeat: no-repeat;
-	cursor: pointer;
-	background-color: #990;
-	border: 1px solid #cc6;
-	-webkit-box-shadow: 2px 2px 4px black;
-	box-shadow: 2px 2px 4px black;
-	text-shadow: 1px 1px 1px black;
-}
+
 #controls.static {
 	margin-top: -3.3em;
 	opacity: 1;
@@ -444,9 +463,21 @@ li.unit label:first-child, input[type="number"] {
 	opacity: 0.9;
 	filter: alpha(opacity=90);
 }
+
+input[type=submit], #paused, #lemon, .showtime #response, #paused, .inplay.playing #paused {
+position: absolute;
+   top: -9999px;
+   left: -9999px;
+}
 .response #response {
 	flex: 5 1 100px;
 }
+
+.inplay #slide, .inplay #paused {
+	margin-left: -100%;
+	display: block;
+}
+
 #response .esquire img {
 	display: block;
 	width: 100%;
@@ -456,13 +487,7 @@ li.unit label:first-child, input[type="number"] {
 #controls.static button {
 	border: 1px solid #FFF;
 }
-.inplay #slide, .inplay #paused {
-	margin-left: -100%;
-	display: block;
-}
-#paused, .inplay.playing #paused {
-	display: none;
-}
+
 #controls button:hover, #controls button:focus {
 	background-color: silver;
 	background-color: rgba(150, 150, 150, .5);
@@ -472,9 +497,7 @@ li.unit label:first-child, input[type="number"] {
 .showtime #controls:hover {
 	cursor: crosshair;
 }
-#lemon, input[type=submit] {
-	display: none;
-}
+
 #response p:last-child {
 	border-top: solid 1px white;
 	margin-top: 1em;
@@ -507,10 +530,14 @@ li.unit label:first-child, input[type="number"] {
 		max-width: 600px;
 	}
 	main>div {
-		display: none;
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
 	}
 	#response, .showtime main>div {
-		display: block;
+		position: relative;
+        top: 0;
+        left: 0;
 	}
 	#home section {
 		flex: 1 1 100%;
