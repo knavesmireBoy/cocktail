@@ -21,14 +21,10 @@
 <h2><em>What's it going to be...</em></h2></section>
     <ul><li><a href="c1"></a></li><li><a href="c5"></a></li><li><a href="c3"></a></li><li><a href="c6"></a></li><li><a href="c4"></a></li><li><a href="c2"></a></li></ul></header>
 <div class="wrapper">
-
     <main>
-     
-      
-
         <?php
-include 'response.php';
-?>
+        include 'response.php';
+        ?>
         </main>
     <footer>
   <div class="arrow-down"></div>
@@ -41,7 +37,7 @@ include 'response.php';
     <script src="js/basicIterator.js"></script>
     <script src="js/global.js"></script>
     <script src="js/slideshow.js"></script>
-          <script>
+    <script>
         var hijax = window.speakEasy.Hijax(),
             c = speakEasy.Util.$('response');              
             c = _.compose(speakEasy.Util.getZero, _.partial(speakEasy.Util.getByTag, 'main'))();       
@@ -52,13 +48,10 @@ include 'response.php';
         hijax.setCallback(_.partial(speakEasy.Util.addClass, 'response', speakEasy.Util.getBody));
         hijax.captureData();
     </script>
-
-    <!--<script src="js/slideshow.js"></script>-->
     </body>
 </html>
 
 <!--
-
 \n\s+
 (^[^<]+?)\n
 //no para tag
@@ -75,5 +68,4 @@ include 'response.php';
 $1">$1
 //add trailing slash to root directories
 (?<="../c\d)(?!\/)
-
 -->

@@ -83,7 +83,6 @@ if (isset($_POST['action']) and $_POST['action'] == 'go')
     The design of the form has the unit choice (oz/ml) coming AFTER the base spirit but BEFORE the other ingredients
     so we hang on to the ingredient name in $curry and then add the value of the unit on the next pass. The value of this (oz/ml) is set for the remaining ingredients.
     */
-
     $res = $_POST;
     $output = NULL;
     $partial = NULL;
@@ -92,14 +91,12 @@ if (isset($_POST['action']) and $_POST['action'] == 'go')
     foreach ($_POST as $k => $v)
     {
         $v = str_replace('_', ' ', $v);
-        
         if ($k === 'cocktail')
         {
             colspan($v, $k);
             continue;
         }
-        
-         if (isUnit($k))
+        if (isUnit($k))
         {
             $partial = concat($v);
             if (isset($curry) && isset($output))
@@ -111,14 +108,12 @@ if (isset($_POST['action']) and $_POST['action'] == 'go')
         }
 
         if (inc($v) && inc($k))
-             
         {
-
             if ($k === 'prep')
             {
                 colspan($v, $k);
             }
-            /*BIT clunky AJAX passing on checkbox value regardless of checked status setting string to false/true in ajax.js line 68 as tmp solution*/
+            /* BIT clunky AJAX passing "on" checkbox value regardless of checked status. Setting string to false/true in ajax.js line 68 as tmp solution */
              elseif($k === 'dash' && $v !== 'false'){
                 output('dash')('bitters');
                 $output = NULL;
@@ -139,10 +134,7 @@ if (isset($_POST['action']) and $_POST['action'] == 'go')
             {
                 $output = output($v);
             }
-        } //!empty
-       
-        
-        
+        } //!empty        
     } //foreach
     echo '</table></section><a><img src="img/cbook.jpg"></a></section><div class="esquire"><a href="https://www.amazon.co.uk/Esquire-Drinks-Opinionated-Irreverent-Drinking/dp/1588162052"><img src="img/esquire.jpg"></a></div><p>I should point out that the “RULES” are taken from another marvellous book by a more establshed writer on the subject.</p></div>';
 } //isset
@@ -190,16 +182,15 @@ else
         <ul><li><input type="hidden" name="action" value="go">
             <label><input type="submit">
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 141.5 113.5">
-      
     <defs>
-           <filter id="shadow">
-    <feDropShadow dx="2" dy="2" flood-color="black" flood-opacity="0.5" stdDeviation="3"/>
-  </filter>
-    <clipPath id="mepath">
-	<ellipse cx="70.648" cy="56.611" rx="69.655" ry="55.198"/>
-</clipPath>
+        <filter id="shadow">
+            <feDropShadow dx="2" dy="2" flood-color="black" flood-opacity="0.5" stdDeviation="3"/>
+        </filter>
+        <clipPath id="mepath">
+            <ellipse cx="70.648" cy="56.611" rx="69.655" ry="55.198"/>
+        </clipPath>
         <clipPath id="stroke">
-	<path d="M22.277,68.695c-0.146,1.092-0.182,1.639-0.583,1.639c-0.218,0-0.364-0.146-0.364-0.51c0-0.51,0.364-2.368,0.364-5.573
+            <path d="M22.277,68.695c-0.146,1.092-0.182,1.639-0.583,1.639c-0.218,0-0.364-0.146-0.364-0.51c0-0.51,0.364-2.368,0.364-5.573
 		c0-3.314-0.218-5.062-0.218-5.317c0-0.364,0.109-0.583,0.328-0.583c0.255,0,0.401,0.255,0.474,0.802l0.328,2.586
 		c2.513,2.914,5.864,4.443,9.543,4.443c3.824,0,5.9-1.529,5.9-3.86c0-3.133-2.659-3.861-7.904-4.809
 		c-2.549-0.437-4.698-0.728-6.337-2.222c-1.42-1.274-2.186-3.096-2.186-5.354c0-5.099,3.497-8.377,9.251-8.377
@@ -245,21 +236,21 @@ else
 		c-1.421-0.182-2.259-0.254-2.514-0.254h-2.076l-0.072,5.718c0,0.182,0,0.328,0,0.474c0,2.695,0.327,3.934,2.112,3.934
 		c1.529,0,2.513-1.129,2.986-1.129c0.255,0,0.4,0.109,0.4,0.327c0,0.802-2.804,2.914-5.682,2.914c-2.914,0-3.569-1.566-3.569-4.917
 		c0-0.182,0-0.4,0-0.583l0.109-6.737C112.79,56.238,111.916,56.311,111.115,56.42z"/>
-</clipPath>
+        </clipPath>
     </defs>
-<g>
-	<g clip-path="url(#mepath)">
-        <image  width="774" height="734" id="button" xlink:href="button.jpg"  transform="matrix(0.2162 0 0 0.2162 -11.7319 -26.0098)">
-		</image>
-	</g>
     <g>
-    <g clip-path="url(#stroke)">
-        <image  width="774" height="734" id="button" xlink:href="button2.jpg"  transform="matrix(0.2162 0 0 0.2162 -11.7319 -26.0098)">
-		</image>
-	</g>
+        <g clip-path="url(#mepath)">
+            <image  width="774" height="734" id="button" xlink:href="button.jpg"  transform="matrix(0.2162 0 0 0.2162 -11.7319 -26.0098)">
+            </image>
         </g>
-</g>
-</svg></label>
+        <g>
+            <g clip-path="url(#stroke)">
+                <image  width="774" height="734" id="button" xlink:href="button2.jpg"  transform="matrix(0.2162 0 0 0.2162 -11.7319 -26.0098)">
+                </image>
+            </g>
+        </g>
+    </g>
+                </svg></label>
             <input id="lemon" type="image" src="img/button.png" alt="Submit" value="Submit"/>
             <!--<input type="submit" name="submit" value="Submit">--></li></ul>
         </form></div>
