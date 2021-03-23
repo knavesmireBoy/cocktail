@@ -59,13 +59,14 @@ window.speakEasy.Hijax = function () {
         };
     }
     
+    
 	function fromPost(form) {
 		var i,
 			query = '',
             val;
 		for (i = 0; i < form.elements.length; i += 1) {
 			query += form.elements[i].name;
-            val = form.elements[i].value === 'on' ? form.elements[i].checked : form.elements[i].value;
+            val = (form.elements[i].value === 'on' && typeof form.elements[i].checked !== 'undefined') ? form.elements[i].checked : form.elements[i].value;
 			query += "=";
 			query += encodeURI(val);
 			query += "&";
