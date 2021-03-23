@@ -29,8 +29,8 @@ function close($n)
 
 function colspanHead($v)
 {
-    $str = "<h3>Bartender! Get me a <span>$v<span>!</h3><section><section><table><tr><th colspan='2'>RECIPE</th></tr>";
-    print !empty($v) ? $str : "<h3>Bartender!</h3><section><section><table><tr><th colspan='2'>RECIPE</th></tr>";
+    $str = "<h3>Bartender! Get me a <span>$v<span>!</h3><section><div><table><tr><th colspan='2'>RECIPE</th></tr>";
+    print !empty($v) ? $str : "<h3>Bartender!</h3><section><div><table><tr><th colspan='2'>RECIPE</th></tr>";
 }
 
 function colspan($v, $k)
@@ -76,7 +76,7 @@ if (isset($_POST['action']) and $_POST['action'] == 'go')
 ?>
 <div id="response">
         <aside><img src="img/cocktail_book.jpg"></aside>
-            <p>Sometime in 1997 a friend, recently returned from Cuba, dropped by, told of his travels and raved about the cocktails imbibed at the famous “La Floradita” bar in Havana. The search term ‘Floridita’ led us to a great little site hosted at www.hotwired.com/cocktail. Classic cocktails were beginning to enjoy something of a <a href="https://www.berkeleyside.com/2017/09/15/west-coast-cocktail-revival-started-emeryville-thanks-man">renaissance</a>, not least due to the efforts of<a href="http://frodelius.com/goodspiritsnews/paulharrington.html"> Paul Harrington</a>, who had penned a series of articles for hotwired and was practising what he preached at the <a href="https://www.townhouseemeryville.com">Townhouse Bar &#38; Grill</a> in Emeryville, CA.</p><p>There was enough material to justify the publication of a companion book <a href="https://www.amazon.co.uk/Cocktail-Paul-Harrington/dp/0670880221/ref=sr_1_2?dchild=1&keywords=paul+harrington&qid=1615892712&s=books&sr=1-2" title="by Paul Harrington and Laura Moorhead. Illustrations by Douglas Bowman.">“Cocktail”</a> which appeared the following year. The hardcover book is a treasure trove and truly deserved better than being pawed over in the kitchen at party time. A bar-friendly digest was in order. Inspired by the wonderful <a href="https://dribbble.com/shots/18495-Frisco">illustrations</a> in “Cocktail”, I got to down to some weekend photoshopping, sneaked in a cheeky print run and produced a comb-bound booklet, or three, of, chiefly, classic cocktail recipes.</p><p>When I enrolled in a web design refresher course many years later I decided to re-purpose the booklet as my chosen personal project. By this time the original hotwired site was long gone, but an archive of sorts was maintained by enthusiasts at <a href="https://www.chanticleersociety.org/index.php?title=Main_Page">The Chanticleer Society</a>. I was able to grab some copy and complete my project.</p><p>Several years on from that project I discovered the Chanticleer archive was no longer to be found. Shame. However, all is not lost. Quoted searches from passages of the book will still fetch up Harrington’s original copy in various sites, often uncredited. There are a few discrepancies between the web articles and the printed version so the text on this site is a facsimile of the published book. My copy did survive, it is pictured left. You can still pick up a <a href= "https://www.amazon.co.uk/Cocktail-Paul-Harrington/dp/0670880221/ref=sr_1_2?dchild=1&keywords=paul+harrington&qid=1615892712&s=books&sr=1-2--">copy</a> on Amazon, albeit for the price of a very good single malt. I do aspire to get the thing into a database at some point, although it may very well drive me to drink. Speaking of which...
+            <p>Sometime in 1997 a friend, recently returned from Cuba, dropped by, told of his travels and raved about the cocktails imbibed at the famous “La Floradita” bar in Havana. The search term ‘Floridita’ led us to a great little site hosted at www.hotwired.com/cocktail. Classic cocktails were beginning to enjoy something of a <a href="https://www.berkeleyside.com/2017/09/15/west-coast-cocktail-revival-started-emeryville-thanks-man">renaissance</a>, not least due to the efforts of<a href="http://frodelius.com/goodspiritsnews/paulharrington.html"> Paul Harrington</a>, who had penned a series of articles for hotwired and was practising what he preached at the <a href="https://www.townhouseemeryville.com">Townhouse Bar &#38; Grill</a> in Emeryville, CA.</p><p>There was enough material to justify the publication of a companion book <a href="https://www.amazon.co.uk/Cocktail-Paul-Harrington/dp/0670880221/ref=sr_1_2?dchild=1&keywords=paul+harrington&qid=1615892712&s=books&sr=1-2" title="by Paul Harrington and Laura Moorhead. Illustrations by Douglas Bowman.">“Cocktail”</a> which appeared the following year. The hardcover book is a treasure trove and truly deserved better than being pawed over in the kitchen at party time. A bar-friendly digest was in order. Inspired by the wonderful <a href="https://dribbble.com/shots/18495-Frisco">illustrations</a> in “Cocktail”, I got to down to some weekend photoshopping, sneaked in a cheeky print run and produced a comb-bound booklet, or three, of, chiefly, classic cocktail recipes.</p><p>When I enrolled in a web design refresher course many years later I decided to re-purpose the booklet as my chosen personal project. By this time the original hotwired site was long gone, but an archive of sorts was maintained by enthusiasts at <a href="https://www.chanticleersociety.org/index.php?title=Main_Page">The Chanticleer Society</a>. I was able to grab some copy and complete my project.</p><p>Several years on from that project I discovered the Chanticleer archive was no longer to be found. Shame. However, all is not lost. Quoted searches from passages of the book will still fetch up Harrington’s original copy in various sites, often uncredited. There are a few discrepancies between the web articles and the printed version so the text on this site is a facsimile of the published book. My copy did survive, it is <span class="insert">pictured</span>. You can still pick up a <a href= "https://www.amazon.co.uk/Cocktail-Paul-Harrington/dp/0670880221/ref=sr_1_2?dchild=1&keywords=paul+harrington&qid=1615892712&s=books&sr=1-2--">copy</a> on Amazon, albeit for the price of a very good single malt. I do aspire to get the thing into a database at some point, although it may very well drive me to drink. Speaking of which...
             </p>              
     <?php
     /*We present the result in a table so first have to hang-on to the VALUE of the ingredient, store in a closure and on the next pass invoke the table row with the VALUE of the measure. This in itself is a composite of number and unit, two more closures.
@@ -87,13 +87,16 @@ if (isset($_POST['action']) and $_POST['action'] == 'go')
     $output = NULL;
     $partial = NULL;
     $curry = NULL;
+    $gang = array('prep' => 'colspan', 'cocktail' => 'colspan');
 
     foreach ($_POST as $k => $v)
     {
         $v = str_replace('_', ' ', $v);
-        if ($k === 'cocktail')
+        //if ($k === 'cocktail')
+        if(isset($gang[$k]))
         {
-            colspan($v, $k);
+           // colspan($v, $k);
+            $gang[$k]($v, $k);
             continue;
         }
         if (isUnit($k))
@@ -103,6 +106,10 @@ if (isset($_POST['action']) and $_POST['action'] == 'go')
             {
                 $output($curry($v));
                 $output = NULL;
+            }
+            else {
+                //base spirit omitted, first DEFINITE value is unit (oz/ml) $curry won't be required but set to a value to keep sync
+               $curry = true;
             }
             continue;
         }
@@ -117,7 +124,7 @@ if (isset($_POST['action']) and $_POST['action'] == 'go')
              elseif($k === 'dash' && $v !== 'false'){
                 output('dash')('bitters');
                 $output = NULL;
-            }
+            }   
             
             elseif (isset($output))
             {
@@ -134,9 +141,13 @@ if (isset($_POST['action']) and $_POST['action'] == 'go')
             {
                 $output = output($v);
             }
-        } //!empty        
+        } //!empty
+        else if(!inc($v) && $output){
+            //IF $output is primed but there's no value reset
+            $output = NULL;
+        }
     } //foreach
-    echo '</table></section><a><img src="img/cbook.jpg"></a></section><div class="esquire"><a href="https://www.amazon.co.uk/Esquire-Drinks-Opinionated-Irreverent-Drinking/dp/1588162052"><img src="img/esquire.jpg"></a></div><p>I should point out that the “RULES” are taken from another marvellous book by a more establshed writer on the subject.</p></div>';
+    echo '</table></div><a><img src="img/cbook.jpg"></a></section><div class="esquire"><a href="https://www.amazon.co.uk/Esquire-Drinks-Opinionated-Irreverent-Drinking/dp/1588162052"><img src="img/esquire.jpg"></a></div><p>I should point out that the “RULES” are taken from another marvellous book by a more establshed writer on the subject.</p></div>';
 } //isset
 else
 { ?>
@@ -152,7 +163,7 @@ else
       <form  action="." method="post">
         <fieldset><legend>or  mix your own...</legend></fieldset>
         <ul>
-            <li><label for="cocktail">Name</label><input type="text" name="cocktail" id="cocktail" placeholder="Quarantini">
+            <li><label for="cocktail">Name</label><input type="text" name="cocktail" id="cocktail" placeholder="Quarantini" required>
             <li id="reset"><input type="reset" name="reset" value="X" title="Reset the form"></li>
             <li><label for="spirit">Base Spirit</label><select name="spirit" id="spirit">
                 <option value="">Your poison...</option>
@@ -170,7 +181,7 @@ else
             <li class="unit"><label>Units:</label><label for="oz" title="Specify all measures in ounces">oz</label><input type="radio" name="unit" id="oz" value="oz"><label for="ml" title="Specify all measures in milliliters">ml</label><input type="radio" name="unit" id="ml" value="ml" checked></li>
         </ul>
         <fieldset class="ingredients"><legend><b><em>Further Ingredients</em></b></legend>
-            <ul> <li><label for="i2">Second</label><input type="text" name="second" id="i2"></li><li><label for="m2">Measure</label><input type="number" step="any" name="m2" id="m2"></li>
+            <ul><li><label for="i2">Second</label><input type="text" name="second" id="i2"></li><li><label for="m2">Measure</label><input type="number" step="any" name="m2" id="m2"></li>
                 <li><label for="i3">Third</label><input type="text" name="third"  id="i3"></li><li><label for="m3">Measure</label><input type="number" step="any" name="m3" id="m3"></li>
                 <li><label for="i4">Fourth</label><input type="text" name="fourth" id="i4"></li><li><label for="m4">Measure</label><input type="number" step="any" name="m4" id="m4"></li>
             </ul></fieldset>
