@@ -54,15 +54,6 @@ function output($o)
     };
 }
 
-function deferoutput($o, $c)
-{
-    return function () use ($o, $c)
-    {
-        print open($o) . close($c);
-    };
-}
-
-
 function notFalse($str){
     return $str !== 'false';
 }
@@ -105,7 +96,6 @@ if (isset($_POST['action']) and $_POST['action'] == 'go')
     $output = NULL;
     $cocktail_unit = NULL;
     $base_spirit_measure = NULL;
-    $dash = deferoutput('dash', 'bitters');
     $gang = array('prep' => 'colspan', 'cocktail' => 'colspan');
 
     foreach ($_POST as $k => $v)
