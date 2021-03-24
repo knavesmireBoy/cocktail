@@ -6,19 +6,19 @@ function open($str)
     return "<tr><td>$str</td>";
 }
 
-function concat($b)
+function concat_curry($unit)
 {
-    return function ($a) use ($b)
+    return function ($int) use ($unit)
     {
-        return $a . $b;
+        return $int . $unit;
     };
 }
 
-function concat_curry($b)
+function concat_partial($int)
 {
-    return function ($a) use ($b)
+    return function ($unit) use ($int)
     {
-        return $b . $a;
+        return $int . $unit;
     };
 }
 
@@ -54,6 +54,19 @@ function output($o)
     };
 }
 
+function deferoutput($o, $c)
+{
+    return function () use ($o, $c)
+    {
+        print open($o) . close($c);
+    };
+}
+
+
+function notFalse($str){
+    return $str !== 'false';
+}
+
 function inc($arg)
 {
     $list = array(
@@ -67,9 +80,14 @@ function inc($arg)
  // return !empty($arg);
 }
 
+function doWhen($pred, $action){
+    return $pred ? $action() : '';
+}
+
 function isUnit($arg){
     return $arg === 'unit';
 }
+
 
 if (isset($_POST['action']) and $_POST['action'] == 'go')
 {
@@ -81,45 +99,46 @@ if (isset($_POST['action']) and $_POST['action'] == 'go')
     <?php
     /*We present the result in a table so first have to hang-on to the VALUE of the ingredient, store in a closure and on the next pass invoke the table row with the VALUE of the measure. This in itself is a composite of number and unit, two more closures.
     The design of the form has the unit choice (oz/ml) coming AFTER the base spirit but BEFORE the other ingredients
-    so we hang on to the ingredient name in $curry and then add the value of the unit on the next pass. The value of this (oz/ml) is set for the remaining ingredients.
+    so we hang on to the ingredient name in $base_spirit_measure and then add the value of the unit on the next pass. The value of this (oz/ml) is set for the remaining ingredients.
     */
     $res = $_POST;
     $output = NULL;
-    $partial = NULL;
-    $curry = NULL;
+    $cocktail_unit = NULL;
+    $base_spirit_measure = NULL;
+    $dash = deferoutput('dash', 'bitters');
     $gang = array('prep' => 'colspan', 'cocktail' => 'colspan');
 
     foreach ($_POST as $k => $v)
     {
         $v = str_replace('_', ' ', $v);
-        //if ($k === 'cocktail')
-        if(isset($gang[$k]))
-        {
-           // colspan($v, $k);
-            $gang[$k]($v, $k);
-            continue;
-        }
+     
+
         if (isUnit($k))
-        {
-            $partial = concat($v);
-            if (isset($curry) && isset($output))
+        {//one off
+            $cocktail_unit = concat_curry($v);
+            if (isset($base_spirit_measure) && isset($output))
             {
-                $output($curry($v));
+                $output($base_spirit_measure($v));//complete base spirit row
                 $output = NULL;
             }
+            /* A unit (oz/ml) is the first guaranteed value to be set
+            if a base spirit was omitted then $base_spirit_measure won't be avaiable at this point AND won't be required as the unit value is passed to $cocktail_unit for further ingredients, set partial to true to disallow continue
+            */
             else {
-                //base spirit omitted, first DEFINITE value is unit (oz/ml) $curry won't be required but set to a value to keep sync
-               $curry = true;
+               $base_spirit_measure = true;
             }
             continue;
         }
 
         if (inc($v) && inc($k))
         {
-            if ($k === 'prep')
-            {
-                colspan($v, $k);
-            }
+
+            if(isset($gang[$k]))
+        {
+            $gang[$k]($v, $k);
+            continue;
+        }
+            
             /* BIT clunky AJAX passing "on" checkbox value regardless of checked status. Setting string to false/true in ajax.js line 68 as tmp solution */
              elseif($k === 'dash' && $v !== 'false'){
                 output('dash')('bitters');
@@ -128,18 +147,18 @@ if (isset($_POST['action']) and $_POST['action'] == 'go')
             
             elseif (isset($output))
             {
-                if (!isset($curry))
-                {
-                    $curry = concat_curry($v);
+                if (!isset($base_spirit_measure))
+                {//one off
+                    $base_spirit_measure = concat_partial($v);//store base spirit measure (an integer)
                     continue;
                 }
-                $v = isset($partial) ? $partial($v) : $v;
+                $v = isset($cocktail_unit) ? $cocktail_unit($v) : $v;//concat stored unit (ml/oz) OR pass ingredient value
                 $output($v);
                 $output = NULL;
             }
-            else
+            elseif(!is_numeric($v))
             {
-                $output = output($v);
+                $output = output($v);//partially apply row
             }
         } //!empty
         else if(!inc($v) && $output){
@@ -163,7 +182,7 @@ else
       <form  action="." method="post">
         <fieldset><legend>or  mix your own...</legend></fieldset>
         <ul>
-            <li><label for="cocktail">Name</label><input type="text" name="cocktail" id="cocktail" placeholder="Quarantini" required>
+            <li><label for="cocktail">Name</label><input type="text" name="cocktail" id="cocktail" placeholder="Quarantini" pattern="[\w\s]{3,50}" required>
             <li id="reset"><input type="reset" name="reset" value="X" title="Reset the form"></li>
             <li><label for="spirit">Base Spirit</label><select name="spirit" id="spirit">
                 <option value="">Your poison...</option>
