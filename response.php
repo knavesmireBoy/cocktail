@@ -14,6 +14,22 @@ function concat_curry($unit)
     };
 }
 
+function every($args){
+    $pass = true;
+    foreach($args as $arg){
+        $pass = $pass && !empty($arg);
+    }
+    return $pass;
+}
+
+function checkPairs($cb){
+    return function($a) use($cb){
+        return function($b) use($cb, $a){
+            return every(array($a, $b)) ?  $cb($a, $b) : '';
+        }
+    };
+}
+
 function equals($a, $b){
     return $a === $b;
 }
@@ -86,6 +102,7 @@ function doWhen($pred, $thunk){
          if($pred($arg)){
              return $thunk();
          }
+        return '';
     };
 }
 
@@ -96,6 +113,7 @@ function defer_output_proxy($f){
             if(!empty($c) && !empty($o)){
                 return $f($o, $c);
             }
+            return '';
             };
     };
 }
@@ -135,49 +153,31 @@ if (isset($_POST['action']) and $_POST['action'] == 'go')
     */
     $res = $_POST;
     $output = NULL;
-    $falsy = equalsDefer(true, 'false');
     $doDash = doWhen(equalsDefer(true, 'false'), soPrintBridgeDefer('dash', 'bitters'));
     $proxy = defer_output_proxy('soPrintBridge');
-    $coll = array();
     $cocktail_unit = NULL;
     $base_spirit_measure = NULL;
     
-    $gang = array('prep' => 'colspan', 'cocktail' => 'colspan');
+    $gang = array('prep' => 'colspan', 'cocktail' => 'colspan', 'dash' => $doDash);
 
     foreach ($_POST as $k => $v)
     {
         $v = str_replace('_', ' ', $v);
+        
+        if (inc($k)) {
+            if(isset($gang[$k])){
+                $gang[$k]($v, $k);//one hit
+                continue;
+            }
 
-        if (isUnit($k))
-        {//one off
+        if (isUnit($k)) {//one off
             $cocktail_unit = concat_curry($v);
-            if (isset($output))
-            {
+            if (isset($output)) {
                 $output($base_spirit_measure($v));//complete base spirit row
                 $output = NULL;
             }
-            /* A unit (oz/ml) is the first guaranteed value to be set
-            if a base spirit was omitted then $base_spirit_measure won't be avaiable at this point AND won't be required as the unit value is passed to $cocktail_unit for further ingredients, set partial to true to disallow continue
-            */
             continue;
-        }
-
-        if (inc($k))
-        {
-
-            if(isset($gang[$k]))
-            {
-                $gang[$k]($v, $k);
-                continue;
-            }
-            
-            /* BIT clunky AJAX passing "on" checkbox value regardless of checked status. Setting string to false/true in ajax.js line 68 as tmp solution */
-             elseif($k === 'dash'){
-                 $doDash($v);
-                 $output = NULL;
-                 continue;
-            }   
-            
+        }           
             elseif (isset($output))
             {
                 if (!isset($base_spirit_measure))
@@ -193,7 +193,7 @@ if (isset($_POST['action']) and $_POST['action'] == 'go')
                 $output = NULL;
             }
             else {
-                $output = $proxy($v);//partially apply row
+                $output = $proxy($v);
             }
         } //!empty
     } //foreach
