@@ -6,12 +6,9 @@ function open($str)
     return "<tr><td>$str</td>";
 }
 
-function concat_curry($unit)
+function close($n)
 {
-    return function ($int) use ($unit)
-    {
-        return $int . $unit;
-    };
+    return "<td>$n</td></tr>";
 }
 
 function every($args){
@@ -22,14 +19,6 @@ function every($args){
     return $pass;
 }
 
-function checkPairs($cb){
-    return function($a) use($cb){
-        return function($b) use($cb, $a){
-            return every(array($a, $b)) ?  $cb($a, $b) : '';
-        }
-    };
-}
-
 function equals($a, $b){
     return $a === $b;
 }
@@ -38,21 +27,6 @@ function equalsDefer($flag, $a){
     return function($b) use($flag, $a) {
         return $flag ? !equals($a, $b) : equals($a, $b);
     };
-}
-
-function concat_partial($int)
-{
-    return function ($unit) use ($int)
-    {
-        return $int . $unit;
-    };
-}
-
-
-
-function close($n)
-{
-    return "<td>$n</td></tr>";
 }
 
 function colspanHead($v)
@@ -78,6 +52,25 @@ function doConcat($a, $b){
     return $a . $b;
 }
 
+function doConcatDefer($flag){
+    return function($a, $b) use($flag) {
+        return $flag ? $b . $a : $a . $b;
+    };
+}
+
+function decorate($cb, $decos){
+    return function($a) use($cb, $decos){
+        $max = count($decos);
+        $fns = array();
+        for($i = 0; $i < $max; $i++){
+            $f[] = $decos[$i](func_get_arg($i));
+        }
+        call_user_func_array($cb, $fns);
+    };
+    
+}
+
+
 function soPrintBridge($o, $c){
     print doConcat(open($o), close($c));
 }
@@ -88,15 +81,6 @@ function soPrintBridgeDefer($o, $c){
     };
 }
 
-function output($o)
-{
-    return function ($c) use ($o)
-    {
-        print open($o) . close($c);
-    };
-}
-
-
 function doWhen($pred, $thunk){
     return function($arg) use($pred, $thunk){
          if($pred($arg)){
@@ -106,21 +90,14 @@ function doWhen($pred, $thunk){
     };
 }
 
-
-function defer_output_proxy($f){
-    return function ($o) use ($f) {
-        return function($c) use($f, $o){
-            if(!empty($c) && !empty($o)){
-                return $f($o, $c);
-            }
-            return '';
-            };
+function checkPairs($cb){
+    return function($a) use($cb){
+        return function($b) use($cb, $a){
+            return every(array($a, $b)) ?  $cb($a, $b) : '';
+        };
     };
 }
 
-function notFalse($str){
-    return $str !== 'false';
-}
 
 function inc($arg)
 {
@@ -154,53 +131,42 @@ if (isset($_POST['action']) and $_POST['action'] == 'go')
     $res = $_POST;
     $output = NULL;
     $doDash = doWhen(equalsDefer(true, 'false'), soPrintBridgeDefer('dash', 'bitters'));
-    $proxy = defer_output_proxy('soPrintBridge');
+    $proxy = checkPairs('soPrintBridge');
+    $concat = checkPairs(doConcatDefer(false));
+    $concatRev = checkPairs(doConcatDefer(true));
     $cocktail_unit = NULL;
     $base_spirit_measure = NULL;
-    
     $gang = array('prep' => 'colspan', 'cocktail' => 'colspan', 'dash' => $doDash);
+    $deco = decorate(array('strtoupper', 'ucfirst'));
+    $res = $deco('thunderball', 'moonraker');
+    
 
     foreach ($_POST as $k => $v)
     {
         $v = str_replace('_', ' ', $v);
-        
         if (inc($k)) {
-            if(isset($gang[$k])){
+            if(isset($gang[$k]) && !empty($v)){
                 $gang[$k]($v, $k);//one hit
                 continue;
             }
-
-        if (isUnit($k)) {//one off
-            $cocktail_unit = concat_curry($v);
-            if (isset($output)) {
-                $output($base_spirit_measure($v));//complete base spirit row
+            if (isUnit($k)) {
+                $cocktail_unit = $concatRev($v);
+                $output($base_spirit_measure($v));
                 $output = NULL;
-            }
-            continue;
-        }           
-            elseif (isset($output))
-            {
-                if (!isset($base_spirit_measure))
-                {//one off
-                    $base_spirit_measure = concat_partial($v);//store base spirit measure (an integer)
-                    if(empty($v)){
-                      $output = NULL;  
-                    }
+            }           
+            elseif(isset($output)){
+                if (!isset($base_spirit_measure)) {
+                    $base_spirit_measure = $concat($v);
                     continue;
                 }
-                $v = !empty($v) ? $cocktail_unit($v) : '';
-                $output($v);
+                $output($cocktail_unit($v));
                 $output = NULL;
             }
             else {
                 $output = $proxy($v);
             }
-        } //!empty
+        } //allowed
     } //foreach
-    
-    
- //exit(var_dump($coll));
-    
 
     echo '</table></div><a><img src="img/cbook.jpg"></a></section><div class="esquire"><a href="https://www.amazon.co.uk/Esquire-Drinks-Opinionated-Irreverent-Drinking/dp/1588162052"><img src="img/esquire.jpg"></a></div><p>I should point out that the “RULES” are taken from another marvellous book by a more establshed writer on the subject.</p></div>';
 } //isset
