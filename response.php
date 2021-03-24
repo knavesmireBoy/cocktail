@@ -14,6 +14,16 @@ function concat_curry($unit)
     };
 }
 
+function equals($a, $b){
+    return $a === $b;
+}
+
+function equalsDefer($flag, $a){
+    return function($b) use($flag, $a) {
+        return $flag ? !equals($a, $b) : equals($a, $b);
+    };
+}
+
 function concat_partial($int)
 {
     return function ($unit) use ($int)
@@ -21,6 +31,8 @@ function concat_partial($int)
         return $int . $unit;
     };
 }
+
+
 
 function close($n)
 {
@@ -46,11 +58,45 @@ function colspan($v, $k)
     }
 }
 
+function doConcat($a, $b){
+    return $a . $b;
+}
+
+function soPrintBridge($o, $c){
+    print doConcat(open($o), close($c));
+}
+
+function soPrintBridgeDefer($o, $c){
+    return function() use($o, $c){
+        print doConcat(open($o), close($c));
+    };
+}
+
 function output($o)
 {
     return function ($c) use ($o)
     {
         print open($o) . close($c);
+    };
+}
+
+
+function doWhen($pred, $thunk){
+    return function($arg) use($pred, $thunk){
+         if($pred($arg)){
+             return $thunk();
+         }
+    };
+}
+
+
+function defer_output_proxy($f){
+    return function ($o) use ($f) {
+        return function($c) use($f, $o){
+            if(!empty($c) && !empty($o)){
+                return $f($o, $c);
+            }
+            };
     };
 }
 
@@ -67,12 +113,7 @@ function inc($arg)
         'x',
         'y'
     );
-  return !empty($arg) && !in_array($arg, $list);
- // return !empty($arg);
-}
-
-function doWhen($pred, $action){
-    return $pred ? $action() : '';
+  return !in_array($arg, $list);
 }
 
 function isUnit($arg){
@@ -94,19 +135,23 @@ if (isset($_POST['action']) and $_POST['action'] == 'go')
     */
     $res = $_POST;
     $output = NULL;
+    $falsy = equalsDefer(true, 'false');
+    $doDash = doWhen(equalsDefer(true, 'false'), soPrintBridgeDefer('dash', 'bitters'));
+    $proxy = defer_output_proxy('soPrintBridge');
+    $coll = array();
     $cocktail_unit = NULL;
     $base_spirit_measure = NULL;
+    
     $gang = array('prep' => 'colspan', 'cocktail' => 'colspan');
 
     foreach ($_POST as $k => $v)
     {
         $v = str_replace('_', ' ', $v);
-     
 
         if (isUnit($k))
         {//one off
             $cocktail_unit = concat_curry($v);
-            if (isset($base_spirit_measure) && isset($output))
+            if (isset($output))
             {
                 $output($base_spirit_measure($v));//complete base spirit row
                 $output = NULL;
@@ -114,25 +159,23 @@ if (isset($_POST['action']) and $_POST['action'] == 'go')
             /* A unit (oz/ml) is the first guaranteed value to be set
             if a base spirit was omitted then $base_spirit_measure won't be avaiable at this point AND won't be required as the unit value is passed to $cocktail_unit for further ingredients, set partial to true to disallow continue
             */
-            else {
-               $base_spirit_measure = true;
-            }
             continue;
         }
 
-        if (inc($v) && inc($k))
+        if (inc($k))
         {
 
             if(isset($gang[$k]))
-        {
-            $gang[$k]($v, $k);
-            continue;
-        }
+            {
+                $gang[$k]($v, $k);
+                continue;
+            }
             
             /* BIT clunky AJAX passing "on" checkbox value regardless of checked status. Setting string to false/true in ajax.js line 68 as tmp solution */
-             elseif($k === 'dash' && $v !== 'false'){
-                output('dash')('bitters');
-                $output = NULL;
+             elseif($k === 'dash'){
+                 $doDash($v);
+                 $output = NULL;
+                 continue;
             }   
             
             elseif (isset($output))
@@ -140,22 +183,25 @@ if (isset($_POST['action']) and $_POST['action'] == 'go')
                 if (!isset($base_spirit_measure))
                 {//one off
                     $base_spirit_measure = concat_partial($v);//store base spirit measure (an integer)
+                    if(empty($v)){
+                      $output = NULL;  
+                    }
                     continue;
                 }
-                $v = isset($cocktail_unit) ? $cocktail_unit($v) : $v;//concat stored unit (ml/oz) OR pass ingredient value
+                $v = !empty($v) ? $cocktail_unit($v) : '';
                 $output($v);
                 $output = NULL;
             }
-            elseif(!is_numeric($v))
-            {
-                $output = output($v);//partially apply row
+            else {
+                $output = $proxy($v);//partially apply row
             }
         } //!empty
-        else if(!inc($v) && $output){
-            //IF $output is primed but there's no value reset
-            $output = NULL;
-        }
     } //foreach
+    
+    
+ //exit(var_dump($coll));
+    
+
     echo '</table></div><a><img src="img/cbook.jpg"></a></section><div class="esquire"><a href="https://www.amazon.co.uk/Esquire-Drinks-Opinionated-Irreverent-Drinking/dp/1588162052"><img src="img/esquire.jpg"></a></div><p>I should point out that the “RULES” are taken from another marvellous book by a more establshed writer on the subject.</p></div>';
 } //isset
 else
