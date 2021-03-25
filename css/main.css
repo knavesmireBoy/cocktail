@@ -449,7 +449,7 @@ nav ul>li>a:hover+ul {
 }
 
 .c7 .quote-wrapper{
-	line-height: calc(100vw / 50);
+	line-height: calc(100vw/50);
 }
 .c8 .quote-wrapper{
 	font-size: 1.4em;
