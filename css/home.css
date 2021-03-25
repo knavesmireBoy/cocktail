@@ -94,10 +94,12 @@ textarea {
 	width: 28.15em;
 	height: 8em
 }
+/*
 label {
 	width: 5.5em;
 	display: inline-block;
 }
+*/
 
 i, cite, b, footer, footer a {
 	color: #c0c0c0;
@@ -144,6 +146,12 @@ form ul {
 }
 form li {
 	margin: .5em 0 0 1em;
+    display: flex;
+    background-color: orchid;
+}
+
+form li label {
+   flex: 1 1 4em; 
 }
 
 section img {
@@ -239,9 +247,8 @@ footer a:hover {
 	color: #FFF;
 }
 
-li.unit label, li.unit input {
-	width: 1em;
-	margin-right: .5em
+li.unit label {
+    flex: 1 1 1px;
 }
 header ul a:link {
 	height: 6.66em;
@@ -274,11 +281,9 @@ form ul:first-of-type li:first-child {
 form ul:first-of-type li{
     display: flex;
     flex: 1 1 auto;
+    align-items: center;
 }
 
-form ul li:first-child label{
-    flex: 1 1 5em.5;
-}
 
 header ul li:nth-child(1) a {
 	background-image: url("../img/gin_s.png")
@@ -341,7 +346,7 @@ flex: 0 0 auto;
 	margin-right: 1em;
 }
 #cocktail {
-    flex: 1 1 30em;
+    flex: 6 1 auto;
 }
 #controls {
 	text-align: center;
