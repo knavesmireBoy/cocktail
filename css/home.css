@@ -191,9 +191,11 @@ a:hover {
 main>*:hover {
 	filter: none;
 }
+/*
 input[type="number"] {
 	margin-left: -1.5em
 }
+*/
 .placeholder:after {
 	content: "";
 	display: table;

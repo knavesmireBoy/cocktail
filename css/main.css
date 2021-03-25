@@ -346,7 +346,7 @@ body.c1, body.c2, body.c3, body.c4, body.c5, body.c6 {
 	background-size: 170%;
 }
 .inlinesvg svg {
-	font: 1.5rem 'Arial-Black', Arial, sans-serif;
+	font: 1.5rem 'BlackArial', Arial, sans-serif;
 	fill: rgba(255, 0, 255, .8);
 	width: 100%;
 	padding: 5% 10%;
