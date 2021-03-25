@@ -6,6 +6,7 @@
   <meta content="width=device-width, initial-scale=1" name="viewport">
     <title>Welcome</title>
     <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/myhome.css">
     <link rel="stylesheet" href="css/fonts.css">
            	<script>
 	   document.cookie='resolution='+Math.max(screen.width,screen.height)+'; path=/'; 

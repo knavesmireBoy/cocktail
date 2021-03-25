@@ -22,9 +22,7 @@ a {
 	text-decoration: none;
 }
 header {
-	display: flex;
 	border-bottom: solid 1px #FFF;
-	justify-content: space-between;
 }
 table {
 	border-collapse: collapse;
@@ -51,7 +49,6 @@ header>* {
 }
 
 main {
-	display: flex;
 	position: relative;
 	overflow: hidden;
 	width: 100%;
@@ -61,7 +58,6 @@ main {
 main>* {
 	filter: sepia();
 	border-width: 0;
-	flex: 3 1 100px;
 	position: relative;
 }
 h1 {
@@ -94,12 +90,10 @@ textarea {
 	width: 28.15em;
 	height: 8em
 }
-/*
 label {
 	width: 5.5em;
 	display: inline-block;
 }
-*/
 
 i, cite, b, footer, footer a {
 	color: #c0c0c0;
@@ -146,12 +140,6 @@ form ul {
 }
 form li {
 	margin: .5em 0 0 1em;
-    display: flex;
-    background-color: orchid;
-}
-
-form li label {
-   flex: 1 1 4em; 
 }
 
 section img {
@@ -161,6 +149,7 @@ section img {
 header ul li {
 	display: inline-block;
 }
+
 
 .wrapper {
 	overflow: hidden;
@@ -247,8 +236,9 @@ footer a:hover {
 	color: #FFF;
 }
 
-li.unit label {
-    flex: 1 1 1px;
+li.unit label, li.unit input {
+	width: 1em;
+	margin-right: .5em
 }
 header ul a:link {
 	height: 6.66em;
@@ -272,18 +262,6 @@ form>ul:last-of-type li {
 	margin-left: 50%;
 	right: 50px;
 }
-
-form ul:first-of-type li:first-child {
-    display: flex;
-    width: 100%;
-}
-
-form ul:first-of-type li{
-    display: flex;
-    flex: 1 1 auto;
-    align-items: center;
-}
-
 
 header ul li:nth-child(1) a {
 	background-image: url("../img/gin_s.png")
@@ -333,10 +311,7 @@ li.unit label:first-child, input[type="number"] {
 	margin-left: -2px;
 	padding: 0 5%;
 }
-#reset {
-flex: 0 0 auto;
-    margin-left: 1em;
-}
+
 #lemon {
 	width: 100px;
 	height: 92px;
@@ -345,8 +320,8 @@ flex: 0 0 auto;
 #dash {
 	margin-right: 1em;
 }
-#cocktail {
-    flex: 6 1 auto;
+#cocktail, #email {
+	width: 30em;
 }
 #controls {
 	text-align: center;
@@ -377,7 +352,6 @@ flex: 0 0 auto;
 	background-repeat: no-repeat;
 	padding: 1em;
 	overflow: hidden;
-	flex: 2 1 100px;
 }
 
 #controls button {
@@ -485,7 +459,6 @@ position: absolute;
    left: -9999px;
 }
 .response #response {
-	flex: 5 1 100px;
     border: 0;
 }
 
@@ -540,16 +513,13 @@ position: absolute;
     content: ' above';
 }
     
-    #response>section div {
-	padding: 5% 5% 0;
+    #response section>div {
+        padding: 5% 5% 0;
     }
 
 }
 @media only screen and (max-width: 888px) {
-	header {
-		flex-wrap: wrap;
-		justify-content: center;
-	}
+
 	main form {
 		margin: 0 auto;
 		border-width: 0;
@@ -565,9 +535,7 @@ position: absolute;
         top: 0;
         left: 0;
 	}
-	#home section {
-		flex: 1 1 100%;
-	}
+
 	#home h2 {
 		text-align: center;
 	}

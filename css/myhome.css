@@ -1,0 +1,127 @@
+header {
+	display: flex;
+	justify-content: space-between;
+}
+
+header>* {
+	flex: 2 1 0;
+	margin: 0 1em;
+}
+
+main {
+	display: flex;
+}
+main>* {
+	flex: 3 1 100px;
+}
+
+header section {
+	flex: 3 1 0;
+}
+
+header ul {
+	flex: 0 0 auto;
+	margin: 0 1em;
+}
+
+form ul {
+	display: flex;
+	flex-wrap: wrap;
+    width: 100%;
+}
+
+form ul:first-of-type > *{
+    flex: 1 1 1em;
+}
+
+
+form {
+    padding: 1em;
+}
+
+form li {
+    margin: 0.5em 0 0;
+}
+
+form > ul:first-of-type li {
+    display: flex;
+    align-items: center;
+    margin-right: 1em;
+}
+
+form > ul:first-of-type li:first-child {
+    width: 100%;
+    margin: 0;
+}
+form > ul:first-of-type li:last-child {
+     margin: .5em 0 0 0;
+}
+
+li.unit {
+    justify-content: space-between;
+}
+li.unit label:first-child {
+    width: auto;
+}
+form ul:first-of-type li > *{
+    flex: 1 1 1em;
+}
+
+form ul:first-of-type li label{
+    flex: 0 1 5.5em;
+}
+
+form ul li.unit label, form ul li.unit input {
+    width: auto;
+    margin: 0;
+    flex: 0 1 1em;
+}
+
+fieldset.ingredients ul {
+    align-content: flex-end;
+}
+
+fieldset.ingredients ul li {
+    margin: .5em 1em 0 0;
+    display: flex;
+    
+}
+fieldset.ingredients ul li input {
+    flex: 1 1 2.5em;
+}
+
+fieldset.ingredients ul li:nth-child(odd){
+    margin: .5em 1em 0 0;
+}
+fieldset.ingredients ul li input[type=number] {
+    flex: 0 1 2.5em;
+}
+
+#response {
+	flex: 2 1 100px;
+}
+
+#cocktail {
+    flex: 1 1 20em;
+}
+
+#reset {
+    flex: 0 0 auto;
+    margin: 0 0 0 1em;
+}
+
+
+.response #response {
+	flex: 5 1 100px;
+}
+
+@media only screen and (max-width: 888px) {
+	header {
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	#home section {
+		flex: 1 1 100%;
+	}
+}
