@@ -266,6 +266,20 @@ form>ul:last-of-type li {
 	right: 50px;
 }
 
+form ul:first-of-type li:first-child {
+    display: flex;
+    width: 100%;
+}
+
+form ul:first-of-type li{
+    display: flex;
+    flex: 1 1 auto;
+}
+
+form ul li:first-child label{
+    flex: 1 1 5em.5;
+}
+
 header ul li:nth-child(1) a {
 	background-image: url("../img/gin_s.png")
 }
@@ -315,9 +329,8 @@ li.unit label:first-child, input[type="number"] {
 	padding: 0 5%;
 }
 #reset {
-	text-align: right;
-	display: block;
-	margin-right: 2.25em;
+flex: 0 0 auto;
+    margin-left: 1em;
 }
 #lemon {
 	width: 100px;
@@ -327,8 +340,8 @@ li.unit label:first-child, input[type="number"] {
 #dash {
 	margin-right: 1em;
 }
-#cocktail, #email {
-	width: 30em;
+#cocktail {
+    flex: 1 1 30em;
 }
 #controls {
 	text-align: center;
@@ -521,6 +534,10 @@ position: absolute;
 .insert:after {
     content: ' above';
 }
+    
+    #response>section div {
+	padding: 5% 5% 0;
+    }
 
 }
 @media only screen and (max-width: 888px) {

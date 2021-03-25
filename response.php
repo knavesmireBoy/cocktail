@@ -137,8 +137,6 @@ if (isset($_POST['action']) and $_POST['action'] == 'go')
     $cocktail_unit = NULL;
     $base_spirit_measure = NULL;
     $gang = array('prep' => 'colspan', 'cocktail' => 'colspan', 'dash' => $doDash);
-    $deco = decorate(array('strtoupper', 'ucfirst'));
-    $res = $deco('thunderball', 'moonraker');
     
 
     foreach ($_POST as $k => $v)
@@ -185,7 +183,7 @@ else
         <fieldset><legend>or  mix your own...</legend></fieldset>
         <ul>
             <li><label for="cocktail">Name</label><input type="text" name="cocktail" id="cocktail" placeholder="Quarantini" pattern="[\w\s]{3,50}" required>
-            <li id="reset"><input type="reset" name="reset" value="X" title="Reset the form"></li>
+            <input type="reset" name="reset" id="reset" value="X" title="Reset the form"></li>
             <li><label for="spirit">Base Spirit</label><select name="spirit" id="spirit">
                 <option value="">Your poison...</option>
                 <option value="Gin">Gin</option>
@@ -198,13 +196,13 @@ else
                 <option value="Scotch">Scotch</option>
                 <option value="Brandy">Brandy</option>
             </select></li>
-            <li><label for="m1">Measure</label><input type="number" step=".25" name="m1" id="m1"></li>
+            <li><label for="m1">Measure</label><input type="number" step=".25" name="m1" id="m1" min=".25" max="12"></li>
             <li class="unit"><label>Units:</label><label for="oz" title="Specify all measures in ounces">oz</label><input type="radio" name="unit" id="oz" value="oz"><label for="ml" title="Specify all measures in milliliters">ml</label><input type="radio" name="unit" id="ml" value="ml" checked></li>
         </ul>
         <fieldset class="ingredients"><legend><b><em>Further Ingredients</em></b></legend>
-            <ul><li><label for="i2">Second</label><input type="text" name="second" id="i2"></li><li><label for="m2">Measure</label><input type="number" step="any" name="m2" id="m2"></li>
-                <li><label for="i3">Third</label><input type="text" name="third"  id="i3"></li><li><label for="m3">Measure</label><input type="number" step="any" name="m3" id="m3"></li>
-                <li><label for="i4">Fourth</label><input type="text" name="fourth" id="i4"></li><li><label for="m4">Measure</label><input type="number" step="any" name="m4" id="m4"></li>
+            <ul><li><label for="i2">Second</label><input type="text" name="second" id="i2"></li><li><label for="m2">Measure</label><input type="number" step="any" name="m2" id="m2" min=".25" max="12"></li>
+                <li><label for="i3">Third</label><input type="text" name="third"  id="i3"></li><li><label for="m3">Measure</label><input type="number" step="any" name="m3" id="m3" min=".25" max="12"></li>
+                <li><label for="i4">Fourth</label><input type="text" name="fourth" id="i4"></li><li><label for="m4">Measure</label><input type="number" step="any" name="m4" id="m4" min=".25" max="12"></li>
             </ul></fieldset>
         <ul>
             <li><label for="dash">Add Bitters:</label><input type="checkbox" name="dash" id="dash"></li></ul>
