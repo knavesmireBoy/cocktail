@@ -6,6 +6,7 @@
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <link rel="stylesheet" href="../css/fonts.css">
   <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/mymain.css">
   <link rel="stylesheet" href="../css/hoverTabs.css">
     <script>
 document.cookie='resolution='+Math.max(screen.width,screen.height)+'; path=/';
@@ -34,23 +35,46 @@ document.cookie='resolution='+Math.max(screen.width,screen.height)+'; path=/';
 <main>
 <aside class="sidebar">
  <div><a href="https::/esquire.com/food-drink/drinks/recipes/a3713/manhattan-drink-recipe/">Manhattan</a><img src="../img/manhattan.jpg"></div>
-     <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 200 200">
-         <defs>
+<svg viewbox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+			<defs>
 				<radialgradient id="myGradient">
 					<stop offset="25%" stop-color="black"></stop>
 					<stop offset="97%" stop-color="purple"></stop>
 					<stop offset="100%" stop-color="yellow"></stop>
 				</radialgradient>
 			</defs>
-  <circle  id="round"  fill="none" cx="100.577" cy="95.966" r="71.601"/>
-  <text transform="rotate(-41.412 87.165 -36.944)">
-    <tspan x="0" y="0">R</tspan><tspan x="17.736" y="-.207" rotate="14.596">U</tspan><tspan x="36.135" y="4.712" rotate="28.28">L</tspan><tspan x="49.556" y="11.821" rotate="40.484">E</tspan><tspan x="61.945" y="22.892" rotate="50.348"> </tspan><tspan x="66.945" y="28.36" rotate="59.422">#</tspan><tspan x="74.662" y="41.234" rotate="71.508">1</tspan><tspan x="79.561" y="55.613" rotate="83.574">2</tspan>
-  </text>
-  <circle cx="100.577" cy="95.965" r="65.847" fill="url('#myGradient')" id="circ" opacity=".8"/>
-</svg>
+			<circle cx="100.577" cy="95.966" fill="none" r="71.601"></circle>
+			<text transform="rotate(-46.621 83.238 -22.08)">
+				<tspan x="0" y="0">
+					R
+				</tspan>
+				<tspan rotate="14.563" x="17.742" y="-.205">
+					U
+				</tspan>
+				<tspan rotate="28.216" x="36.145" y="4.702">
+					L
+				</tspan>
+				<tspan rotate="40.869" x="49.583" y="11.725">
+					E
+				</tspan>
+				<tspan rotate="50.34" x="61.96" y="22.874"></tspan>
+				<tspan rotate="59.353" x="66.955" y="28.336">
+					#
+				</tspan>
+				<tspan rotate="71.477" x="74.697" y="41.216">
+					1
+				</tspan>
+				<tspan rotate="83.565" x="79.597" y="55.567">
+					2
+				</tspan>
+				<tspan rotate="95.594" x="81.384" y="70.645">
+					3
+				</tspan>
+			</text>
+			<circle cx="100.577" cy="95.965" fill="url('#myGradient')" id="circ" opacity=".8" r="65.847"></circle></svg>
     
    <div class="quote-wrapper"><blockquote class="variant">
-    <p><br>A cocktail shoud not take you back to your childhood, unless of course you grew up in a bar.</p>
+    <p><br>If the bartender can't make a decent <b>Manhattan</b>, that “house special” will probably suck too.</p>
     </blockquote></div>
 </aside>
 <article class="content">
@@ -70,8 +94,8 @@ document.cookie='resolution='+Math.max(screen.width,screen.height)+'; path=/';
   <script src="../js/classlist.js"></script>
   <script src="../js/global.js"></script>
   <script src="../js/cocktail.js"></script>
-    <script>
-     var repl = [5, 7];
+         <script>
+     var repl = [8,2,3];
         _.map(_.filter(speakEasy.Util.getByTag('tspan', document), function(str, i){
          return i > 5;
      }), function(el, i){

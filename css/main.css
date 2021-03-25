@@ -34,7 +34,6 @@ main {
 	position: relative;
 	overflow: hidden;
 	box-sizing: border-box;
-	display: flex;
 	border-bottom: 1px solid white;
 }
 a {
@@ -101,17 +100,14 @@ nav>ul {
 	position: relative;
     background-color: rgb(204, 0, 204);
 	background-image: linear-gradient(rgb(204, 0, 204), black);
-	display: flex;
 	width: 100%;
 }
 main aside {
-	flex: 2 1 220px;
 	min-width: 200px;
 	box-sizing: border-box;
 	position: relative;
 }
 main>article {
-	flex: 5 1 0;
 	box-sizing: border-box;
 	position: relative;
     padding: 3em 4em 32em 2rem;
@@ -133,10 +129,7 @@ header aside a {
 blockquote em span {
 	color: rgb(255, 251, 116);
 }
-main aside {
-	display: flex;
-	flex-direction: column;
-}
+
 nav ul ul {
 	font-size: 1rem;
 }
@@ -170,7 +163,6 @@ header blockquote:after {
 	top: 19px;
 }
 main aside>div {
-	flex: 0 0 auto;
     transition: all 2s ease-in-out;
 }
 main aside div {
@@ -208,7 +200,6 @@ nav ul>li {
 	white-space: nowrap;
 	text-align: center;
 	z-index: 2;
-	flex: 1 0 0;
 }
 nav ul li ul {
 	position: absolute;
@@ -456,6 +447,18 @@ nav ul>li>a:hover+ul {
 	font-size: 1.2em;
 	line-height: calc(100vw / 44);
 }
+
+.c7 .quote-wrapper{
+	line-height: calc(100vw / 50);
+}
+.c8 .quote-wrapper{
+	font-size: 1.4em;
+	line-height: calc(100vw / 33);
+}
+.c9 .quote-wrapper {
+	font-size: 1.3em;
+	line-height: calc(100vw / 44);
+}
 .showtime aside div:last-child {
 	transform: rotate(360deg);
 }
@@ -497,14 +500,7 @@ nav ul>li>a:hover+ul {
 	left: -9990px;
 }
 
-@media only screen and (max-width: 1280px) {
-main aside {
-	flex: 1 1 220px;
-}
-main>article {
-	flex: 5 1 0;
-}
-}
+
 @media only screen and (max-width: 1024px) {
 	.quote-wrapper {
 		line-height: calc(100vw / 46);
@@ -566,9 +562,7 @@ main>article {
     .inlinesvg svg, .quote-wrapper {
         display: none;
     }
-    main>article {
-        flex: 7 1 0;
-    }
+
 }
 @media only screen and (max-width: 768px) {
 	main {
@@ -608,7 +602,6 @@ main>article {
 		top: 4rem;
 		right: 1rem;
 		padding: 0 .5em;
-		flex-direction: column;
 		width: auto;
         background-color: transparent;
         background-image: linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.9));
@@ -798,4 +791,37 @@ main>article {
 	.c4 .quote-wrapper {
 		line-height: calc(100vw / 40);
 	}
+}
+
+@media print {
+  body {
+    background: white;
+    color: black;
+}
+
+header, footer, h2, .sidebar div, svg {
+    display: none;
+}
+
+main article.content p {
+    color: #444;
+}
+
+main article.content p strong, main article.content em, main article.content a {
+    color: black;
+}
+
+main>article>p:first-child::first-letter {
+	color: #444;
+	font-size: 300%;
+	line-height: 1.1;
+	margin: -4px 10px 0 0;
+	padding: 0 6px;
+	float: left;
+	border: solid 1px #444;
+}
+
+main, .sidebar> div:first-child {
+    display: block;
+}
 }
