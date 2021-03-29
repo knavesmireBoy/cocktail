@@ -150,35 +150,5 @@
     <script src="js/global.js"></script>
     <script src="js/slideshow.js"></script>
     <script src="js/form.js"></script>
-    <!--
-    <script>
-        var hijax = window.speakEasy.Hijax(),
-            c = speakEasy.Util.$('response');              
-            c = _.compose(speakEasy.Util.getZero, _.partial(speakEasy.Util.getByTag, 'main'))();       
-        hijax.setContainer(document.forms[0]);
-        hijax.setCanvas(c);
-        hijax.setUrl('response.php');
-        hijax.setCallback(_.partial(speakEasy.Util.addClass, 'response', speakEasy.Util.getBody));
-        hijax.captureData();
-    </script>->
     </body>
 </html>
-
-<!--
-\n\s+
-(^[^<]+?)\n
-//no para tag
-\n\s*(?=[A-Z])\n
-
-//opening tag only
-(?)\n\s*(?=<)
-
-\n ]+>([^<]+)
-//replace end of sentence with ...
-(?<=\.)(?<=\))?\s
-//copy option value to option
-(?<=")(.+)">
-$1">$1
-//add trailing slash to root directories
-(?<="../c\d)(?!\/)
--->
