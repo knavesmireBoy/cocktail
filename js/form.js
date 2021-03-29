@@ -130,6 +130,10 @@
 			return el;
 		}
 	}
+    
+    function flatten(sub){
+        return _.isArray(sub[0]) ? sub[0] : sub;
+    }
 
 	function fromPost(list) {
 		return _.filter(_.filter(list, function(el) {
@@ -155,6 +159,36 @@
 		if (typeof s !== 'string') return s;
 		return s.charAt(0).toUpperCase() + s.slice(1);
 	}
+    
+     function tbl(data){
+        var i,
+            j,
+            str = '',
+            td;
+        for(i = 0; i < data.length; i += 1){
+            str += i ? '\n' : '';
+            for(j = 0; j < data[i].length; j += 1){
+                str += (j+i) % 2;
+            }
+        }
+        return str;
+    }
+    
+    
+    function tbl2(data, i){
+        i = typeof i === 'undefined' ? 0 : i;
+        str += i ? '\n' : '';
+            
+        if(_.isArray(data[i])){
+            return tbl2(data[i], i);
+           }
+        else {
+            str += (i) % 2;
+            return tbl2(data, i);
+        }
+            
+        }
+    }
 
 	function post(e) {
 		var res = _.filter(_.map(fromPost(e.target.elements), _.identity), function(arg) {
@@ -179,26 +213,26 @@
 				} else {
 					return el.value;
 				}
-			},
+			};
 			res = _.chunk(res, 2);
 		if (_.last(res)[1]) {
 			dash = res.splice(-1, 1)[0];
 			res.push([dash[0]])
 			res.push([dash[1]])
 		}
-		res = _.filter(res, function(sub) {
+		res = _.map(_.map(_.filter(res, function(sub) {
 			return _.every(sub, function(el) {
 				return include(el);
 			})
-		});
-		res = _.map(res, function(sub) {
+		}), function(sub) {
 			return _.map(sub, append);
-		});
-        res = _.map(res, function(sub){
-            return _.isArray(sub[0]) ? sub[0] : sub;
-        })
+		}), flatten);
+        
         console.log(res);
+        
 	}
+    
+   
 	var bumf = ['Sometime in 1997 a friend, recently returned from Cuba, dropped by, told of his travels and raved about the cocktails imbibed at the famous “La Floradita” bar in Havana. The search term ‘Floridita’ led us to a great little site hosted at www.hotwired.com/cocktail. Classic cocktails were beginning to enjoy something of a <a href="https://www.berkeleyside.com/2017/09/15/west-coast-cocktail-revival-started-emeryville-thanks-man">renaissance</a>, not least due to the efforts of<a href="http://frodelius.com/goodspiritsnews/paulharrington.html"> Paul Harrington</a>, who had penned a series of articles for hotwired and was practising what he preached at the <a href="https://www.townhouseemeryville.com">Townhouse Bar &#38; Grill</a> in Emeryville, CA.', 'There was enough material to justify the publication of a companion book <a href="https://www.amazon.co.uk/Cocktail-Paul-Harrington/dp/0670880221/ref=sr_1_2?dchild=1&keywords=paul+harrington&qid=1615892712&s=books&sr=1-2" title="by Paul Harrington and Laura Moorhead. Illustrations by Douglas Bowman.">“Cocktail”</a> which appeared the following year. The hardcover book is a treasure trove and truly deserved better than being pawed over in the kitchen at party time. A bar-friendly digest was in order. Inspired by the wonderful <a href="https://dribbble.com/shots/18495-Frisco">illustrations</a> in “Cocktail”, I got to down to some weekend photoshopping, sneaked in a cheeky print run and produced a comb-bound booklet, or three, of, chiefly, classic cocktail recipes.', 'When I enrolled in a web design refresher course many years later I decided to re-purpose the booklet as my chosen personal project. By this time the original hotwired site was long gone, but an archive of sorts was maintained by enthusiasts at <a href="https://www.chanticleersociety.org/index.php?title=Main_Page">The Chanticleer Society</a>. I was able to grab some copy and complete my project.', 'Several years on from that project I discovered the Chanticleer archive was no longer to be found. Shame. However, all is not lost. Quoted searches from passages of the book will still fetch up Harrington’s original copy in various sites, often uncredited. There are a few discrepancies between the web articles and the printed version so the text on this site is a facsimile of the published book. My copy did survive, it is <span class="insert">pictured</span>. You can still pick up a <a href= "https://www.amazon.co.uk/Cocktail-Paul-Harrington/dp/0670880221/ref=sr_1_2?dchild=1&keywords=paul+harrington&qid=1615892712&s=books&sr=1-2--">copy</a> on Amazon, albeit for the price of a very good single malt. I do aspire to get the thing into a database at some point, although it may very well drive me to drink. Speaking of which...'],
 		esquire = ['I should point out that the “RULES” are taken from another marvellous book by a more establshed writer on the subject.'],
 		harrington_book = {
