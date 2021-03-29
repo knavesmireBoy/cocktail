@@ -172,7 +172,7 @@
             for(j = 0; j < data[i].length; j += 1){
                 td =  _.compose(utils.setText(data[i][j]), anCr(tr))('td');
                 if(!j && !data[i][j+1]){
-                    utils.setAttributes({colspan: 2}, td);
+                    setAttrs({colspan: 2}, td);
                 }
             }
         }
@@ -180,8 +180,7 @@
     }
 
 	function post(e) {
-		var section,
-            div,
+        var anchor = anCr($('response')),
             res = _.filter(_.map(fromPost(e.target.elements), _.identity), function(arg) {
 				return arg;
 			}),
@@ -219,10 +218,15 @@
 			return _.map(sub, append);
 		}), flatten);
         
+        
+        _.compose(ptL(setAttrs, comb_bound), anCr(anchor))('img');
+        
         klasAdd('response', utils.getBody);
-        section = anCr($('response'))('section');
-        div = anCr(section)('div');
+        anchor = anchor('section');
+        div = anCr(anchor)('div');
         anCr(div)(tbl(res));
+        anchor = anCr(anchor)('a');
+        _.compose(ptL(setAttrs, comb_bound), anCr(anchor))('img');
 	}
     
    
@@ -272,6 +276,7 @@
 		klasAdd = utils.addClass,
 		klasTog = utils.toggleClass,
 		klasRem = utils.removeClass,
+        setAttrs = utils.setAttributes,
 		doGet = twice(utils.getter),
 		getChecked = doGet('checked'),
 		//deferEach = twice(doCallbacks)('each'),
