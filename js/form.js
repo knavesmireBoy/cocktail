@@ -1,21 +1,21 @@
 /*jslint nomen: true */
 /*global window: false */
-/*global Modernizr: false */
 /*global speakEasy: false */
 /*global document: false */
 /*global _: false */
-(function() {
-
+(function () {
+    "use strict";
+    
 	function invoke(f, arg) {
 		return f(arg);
 	}
-    
+
 	function doConcatDefer(flag, a) {
-		return function(b) {
+		return function (b) {
 			return flag ? b + a : a + b;
 		};
 	}
-    
+
 	function doMethod(o, v, p) {
 		return o[p] && o[p](v);
 	}
@@ -23,19 +23,19 @@
 	function lazyVal(v, o, p) {
 		return doMethod(o, v, p);
 	}
-    
-    function getValue(el){
-        return el.value;
-    }
+
+	function getValue(el) {
+		return el.value;
+	}
 
 	function flatten(sub) {
 		return _.isArray(sub[0]) ? sub[0] : sub;
 	}
 
 	function fromPost(list) {
-		return _.filter(_.filter(list, function(el) {
+		return _.filter(_.filter(list, function (el) {
 			return !_.contains(['reset', 'submit', 'hidden'], el.type);
-		}), function(el) {
+		}), function (el) {
 			return el.name;
 		});
 	}
@@ -45,7 +45,9 @@
 	}
 
 	function capitalize(s) {
-		if (typeof s !== 'string') return s;
+		if (typeof s !== 'string') {
+            return s;
+        }
 		return s.charAt(0).toUpperCase() + s.slice(1);
 	}
 
@@ -54,7 +56,7 @@
 			j,
 			tr,
 			td,
-            method = once(ptL(klasAdd, 'method')),
+			method = once(ptL(klasAdd, 'method')),
 			fragment = anCr($('response'))(),
 			tbod = anCr(anCr(fragment)('table'))('tbody');
 		for (i = 0; i < data.length; i += 1) {
@@ -62,7 +64,9 @@
 			for (j = 0; j < data[i].length; j += 1) {
 				td = doComp(utils.setText(data[i][j]), anCr(tr))(i ? 'td' : 'th');
 				if (!j && !data[i][j + 1]) {
-					doComp(ptL(utils.doWhen, !data[i+1]), method, ptL(setAttrs, { colspan: 2 }), utils.always(td))();
+					doComp(ptL(utils.doWhen, !data[i + 1]), method, ptL(setAttrs, {
+						colspan: 2
+					}), utils.always(td))();
 				}
 			}
 		}
@@ -70,29 +74,29 @@
 	}
 
 	function tagFactory(tag, ptl, txt) {
-        ptl(tag)(txt);
+		ptl(tag)(txt);
 	}
 
 	function post(e) {
 		var div,
 			dash,
 			anchor = anCr($('response')),
-			data = _.filter(_.map(fromPost(e[mytarget].elements), _.identity), function(arg) {
+			data = _.filter(_.map(fromPost(e[mytarget].elements), _.identity), function (arg) {
 				return arg;
 			}),
 			cocktail = getValue(data.splice(0, 1)[0]),
-			units = _.filter(data.splice(2, 2), function(el) {
+			units = _.filter(data.splice(2, 2), function (el) {
 				return el.checked;
 			}),
 			addUnit = doConcatDefer(true, getValue(units[0])),
-			getValueWrap = _.wrap(getValue, function(f, arg) {
+			getValueWrap = _.wrap(getValue, function (f, arg) {
 				if (f(arg) === 'on') {
 					return ['Dash', 'Bitters'];
 				}
 				return capitalize(f(arg));
 			}),
 			append = doComp(invoke, ptL(utils.getBest, doComp(isInteger, getValue), [doComp(addUnit, getValue), getValueWrap])),
-			include = function(el) {
+			include = function (el) {
 				if (el.type === 'checkbox') {
 					return el.checked;
 				} else {
@@ -102,15 +106,17 @@
 		data = _.chunk(data, 2);
 		if (_.last(data)[1]) {
 			dash = data.splice(-1, 1)[0];
-			data.push([dash[0]])
-			data.push([dash[1]])
+			data.push([dash[0]]);
+			data.push([dash[1]]);
 		}
-        data.unshift([{value: "recipe"}]);
-		data = _.map(_.map(_.filter(data, function(sub) {
-			return _.every(sub, function(el) {
+		data.unshift([{
+			value: "recipe"
+		}]);
+		data = _.map(_.map(_.filter(data, function (sub) {
+			return _.every(sub, function (el) {
 				return include(el);
-			})
-		}), function(sub) {
+			});
+		}), function (sub) {
 			return _.map(sub, append);
 		}), flatten);
 		doComp(ptL(setAttrs, harrington_book), anCr(anchor('aside')))('img');
@@ -138,13 +144,13 @@
 			href: "https://www.amazon.co.uk/Esquire-Drinks-Opinionated-Irreverent-Drinking/dp/1588162052"
 		},
 		utils = speakEasy.Util,
-		con = window.console.log.bind(window),
+		//con = window.console.log.bind(window),
 		ptL = _.partial,
 		doComp = _.compose,
 		curryFactory = utils.curryFactory,
 		event_actions = ['preventDefault', 'stopPropagation', 'stopImmediatePropagation'],
 		eventing = utils.eventer,
-        once = curryFactory(1, true),
+		once = curryFactory(1, true),
 		twice = curryFactory(2),
 		thrice = curryFactory(3),
 		anCr = utils.append(),
@@ -152,18 +158,16 @@
 		klasRem = utils.removeClass,
 		setAttrs = utils.setAttributes,
 		doText = thrice(utils.lazySet)('innerHTML'),
-		//deferEach = twice(doCallbacks)('each'),
 		mytarget = !window.addEventListener ? 'srcElement' : 'target',
 		$ = thrice(lazyVal)('getElementById')(document);
-    
-    eventing('submit', event_actions.slice(0), post, document.forms[0]).execute();
-    eventing('click', event_actions.slice(0), function(e){
-        klasRem('response', utils.getBody);
-        var resp = $('response'),
-            form = resp.removeChild(document.forms[0]),
-            nodes = _.toArray(resp.childNodes);
-        _.each(nodes, utils.removeNodeOnComplete);
-        resp.appendChild(form);
-    }, utils.getByTag('h1')[0]).execute();
+	eventing('submit', event_actions.slice(0), post, document.forms[0]).execute();
+	eventing('click', event_actions.slice(0), function () {
+		klasRem('response', utils.getBody);
+		var resp = $('response'),
+			form = resp.removeChild(document.forms[0]),
+			nodes = _.toArray(resp.childNodes);
+		_.each(nodes, utils.removeNodeOnComplete);
+		resp.appendChild(form);
+	}, utils.getByTag('h1')[0]).execute();
 }());
 //create div=response, aside, img, p list, h3, span, [SECTION [div table] <a>img] <div class="esquire">
