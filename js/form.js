@@ -27,12 +27,10 @@
 	}
 
 	function doWhen(pred, action) {
-		return function(arg) {
 			if (pred(arg)) {
 				return action(arg);
 			}
 			return '';
-		};
 	}
     
 	function doMethod(o, v, p) {
@@ -52,6 +50,10 @@
 			return el;
 		}
 	}
+    
+    function getValue(el){
+        return el.value;
+    }
 
 	function flatten(sub) {
 		return _.isArray(sub[0]) ? sub[0] : sub;
@@ -75,20 +77,20 @@
 	}
 
 	function tbl(data) {
+        con(data)
 		var i,
 			j,
 			tr,
 			td,
+            method = once(ptL(klasAdd, 'method')),
 			fragment = anCr($('response'))(),
 			tbod = anCr(anCr(fragment)('table'))('tbody');
 		for (i = 0; i < data.length; i += 1) {
 			tr = anCr(tbod)('tr');
 			for (j = 0; j < data[i].length; j += 1) {
-				td = _.compose(utils.setText(data[i][j]), anCr(tr))('td');
+				td = _.compose(utils.setText(data[i][j]), anCr(tr))(i ? 'td' : 'th');
 				if (!j && !data[i][j + 1]) {
-					setAttrs({
-						colspan: 2
-					}, td);
+					_.compose(ptL(utils.doWhen, !data[i+1]), method, ptL(setAttrs, { colspan: 2 }), utils.always(td))();
 				}
 			}
 		}
@@ -96,7 +98,7 @@
 	}
 
 	function tagFactory(tag, ptl, txt) {
-		ptl(tag)(txt);
+        ptl(tag)(txt);
 	}
 
 	function post(e) {
@@ -106,6 +108,7 @@
 			data = _.filter(_.map(fromPost(e[mytarget].elements), _.identity), function(arg) {
 				return arg;
 			}),
+            
 			cocktail = getValue(data.splice(0, 1)[0]),
 			units = _.filter(data.splice(2, 2), function(el) {
 				return el.checked;
@@ -131,6 +134,7 @@
 			data.push([dash[0]])
 			data.push([dash[1]])
 		}
+        data.unshift([{value: "recipe"}]);
 		data = _.map(_.map(_.filter(data, function(sub) {
 			return _.every(sub, function(el) {
 				return include(el);
@@ -173,7 +177,9 @@
 		curryFactory = utils.curryFactory,
 		event_actions = ['preventDefault', 'stopPropagation', 'stopImmediatePropagation'],
 		eventing = utils.eventer,
+        once = curryFactory(1, true),
 		twice = curryFactory(2),
+		twicedefer = curryFactory(2, true),
 		thrice = curryFactory(3),
 		anCr = utils.append(),
 		klasAdd = utils.addClass,
