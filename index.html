@@ -35,7 +35,7 @@
       <form  action="." method="post">
         <fieldset><legend>or  mix your own...</legend></fieldset>
         <ul>
-            <li><label for="cocktail">Name</label><input type="text" name="cocktail" id="cocktail" placeholder="Quarantini" pattern="[\w\s]{3,50}" required>
+            <li><label for="cocktail">Name</label><input type="text" name="cocktail" id="cocktail" placeholder="Quarantini" pattern="[\w\s]{3,50}" require>
             <input type="reset" name="reset" id="reset" value="X" title="Reset the form"></li>
             <li><label for="spirit">Base Spirit</label><select name="spirit" id="spirit">
                 <option value="">Your poison...</option>
@@ -149,6 +149,8 @@
     <script src="js/basicIterator.js"></script>
     <script src="js/global.js"></script>
     <script src="js/slideshow.js"></script>
+    <script src="js/form.js"></script>
+    <!--
     <script>
         var hijax = window.speakEasy.Hijax(),
             c = speakEasy.Util.$('response');              
@@ -158,7 +160,7 @@
         hijax.setUrl('response.php');
         hijax.setCallback(_.partial(speakEasy.Util.addClass, 'response', speakEasy.Util.getBody));
         hijax.captureData();
-    </script>
+    </script>->
     </body>
 </html>
 

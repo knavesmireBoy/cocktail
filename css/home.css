@@ -461,6 +461,11 @@ position: absolute;
    top: -9999px;
    left: -9999px;
 }
+
+.response form, .response main > div:first-child {
+    position: absolute;
+    left: -9999px;
+}
 .response #response {
     border: 0;
 }

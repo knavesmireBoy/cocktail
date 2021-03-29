@@ -205,7 +205,7 @@ speakEasy.Util = (function() {
 	}
 
 	function mittleInvoke(m, arg, o) {
-		o = o || document;
+        o = o || document;
 		return getResult(o)[m](arg);
 	}
 
