@@ -160,38 +160,29 @@
 		return s.charAt(0).toUpperCase() + s.slice(1);
 	}
     
-     function tbl(data){
+    function tbl(data){
         var i,
             j,
-            str = '',
-            td;
+            tr,
+            td,
+            fragment = anCr($('response'))(),
+            tbod = anCr(anCr(fragment)('table'))('tbody');
         for(i = 0; i < data.length; i += 1){
-            str += i ? '\n' : '';
+            tr = anCr(tbod)('tr');
             for(j = 0; j < data[i].length; j += 1){
-                str += (j+i) % 2;
+                td =  _.compose(utils.setText(data[i][j]), anCr(tr))('td');
+                if(!j && !data[i][j+1]){
+                    utils.setAttributes({colspan: 2}, td);
+                }
             }
         }
-        return str;
-    }
-    
-    
-    function tbl2(data, i){
-        i = typeof i === 'undefined' ? 0 : i;
-        str += i ? '\n' : '';
-            
-        if(_.isArray(data[i])){
-            return tbl2(data[i], i);
-           }
-        else {
-            str += (i) % 2;
-            return tbl2(data, i);
-        }
-            
-        }
+        return fragment;
     }
 
 	function post(e) {
-		var res = _.filter(_.map(fromPost(e.target.elements), _.identity), function(arg) {
+		var section,
+            div,
+            res = _.filter(_.map(fromPost(e.target.elements), _.identity), function(arg) {
 				return arg;
 			}),
 			cocktail = res.splice(0, 1),
@@ -228,8 +219,10 @@
 			return _.map(sub, append);
 		}), flatten);
         
-        console.log(res);
-        
+        klasAdd('response', utils.getBody);
+        section = anCr($('response'))('section');
+        div = anCr(section)('div');
+        anCr(div)(tbl(res));
 	}
     
    
