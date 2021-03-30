@@ -44,10 +44,6 @@ th {
 	text-align: center;
 	color: red;
 }
-header>* {
-	flex: 2 1 0;
-	margin: 0 1em;
-}
 
 main {
 	position: relative;
@@ -99,9 +95,7 @@ label {
 i, cite, b, footer, footer a {
 	color: #c0c0c0;
 }
-header section {
-	flex: 3 1 0;
-}
+
 h1 span {
 	font-size: 2vw;
 }
@@ -110,10 +104,7 @@ h3 span {
 	color: #fffb74;
 	text-transform: capitalize;
 }
-header ul {
-	flex: 0 0 auto;
-	margin: 0 1em;
-}
+
 h1 em {
 	color: #FF00FF;
 }
@@ -135,10 +126,7 @@ main h3 {
 	margin: 0 auto;
 	text-align: center;
 }
-form ul {
-	display: flex;
-	flex-wrap: wrap;
-}
+
 form li {
 	margin: .5em 0 0 1em;
 }
@@ -147,10 +135,22 @@ section img {
 	width: 100%;
 	height: 100%;
 }
-header ul li {
-	display: inline-block;
-}
 
+header ul li {
+    height: 6.66em;
+	width: 5em;
+	border-right: 1px dotted #FFF;
+    display: inline-block;
+}
+header ul li:last-child {
+    border-width: 0;
+}
+header ul a {
+    height: 100%;
+	background: no-repeat 0 100%;
+	background-size: cover;
+	display: block;
+}
 
 .wrapper {
 	overflow: hidden;
@@ -172,6 +172,16 @@ header ul li {
 
 p:nth-of-type(odd) {
 	color: #FFF;
+}
+
+.placeholder:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.insert:after {
+    content: ' left';
 }
 
 .placeholder img {
@@ -197,15 +207,8 @@ input[type="number"] {
 	margin-left: -1.5em
 }
 */
-.placeholder:after {
-	content: "";
-	display: table;
-	clear: both;
-}
 
-.insert:after {
-    content: ' left';
-}
+
 
 main>div:first-child {
 	border: dotted 1px #FFF;
@@ -243,14 +246,7 @@ li.unit label, li.unit input {
 	width: 1em;
 	margin-right: .5em
 }
-header ul a:link {
-	height: 6.66em;
-	width: 5em;
-	border-right: 1px dotted #FFF;
-	background: no-repeat 0 100%;
-	background-size: cover;
-	display: block;
-}
+
 
 .svgfilters header ul li a, .no-js header ul li a {
 	background-position: 0 0;
@@ -300,8 +296,12 @@ header ul li:nth-child(6) a {
 	background-position: 0 0;
 }
 
-li.unit label:first-child, input[type="number"] {
+li.unit label:first-child {
 	width: 2.75em;
+}
+input[type="number"] {
+    width: 2em;
+    max-width: 3em;
 }
 
 .svgfilters header ul li a:hover, .no-js header ul li a:hover {
@@ -456,7 +456,7 @@ li.unit label:first-child, input[type="number"] {
 	filter: alpha(opacity=90);
 }
 
-input[type=submit], #paused, #unit, #lemon, .showtime #response, #paused, .inplay.playing #paused {
+input[type=submit], #paused, #unit, #lemon, .showtime #response, #paused, .inplay.playing #paused, .unit label:first-child {
 position: absolute;
    top: -9999px;
    left: -9999px;

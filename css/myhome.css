@@ -20,6 +20,8 @@ header {
 	-ms-flex-pack: justify;
 	justify-content: space-between;
 }
+
+
 header>* {
 	-webkit-box-flex: 2;
 	-ms-flex: 2 1 0px;
@@ -44,6 +46,7 @@ header section {
 	-ms-flex: 3 1 0px;
 	flex: 3 1 0;
 }
+
 header ul {
 	-webkit-box-flex: 0;
 	-ms-flex: 0 0 auto;
@@ -58,19 +61,17 @@ form ul {
 	flex-wrap: wrap;
 	width: 100%;
 }
+
 form li {
 	margin: 0.5em 0 0;
 }
 form>ul:first-of-type>* {
-	-webkit-box-flex: 1;
-	-ms-flex: 1 1 1em;
-	flex: 1 1 1em;
+	-webkit-box-flex: 5;
+	-ms-flex: 5 1 6em;
+	flex: 5 1 6em;
 }
-li.unit {
-	-webkit-box-pack: justify;
-	-ms-flex-pack: justify;
-	justify-content: space-between;
-}
+
+
 form>ul:first-of-type li {
 	display: -webkit-box;
 	display: -ms-flexbox;
@@ -78,7 +79,7 @@ form>ul:first-of-type li {
 	-webkit-box-align: center;
 	-ms-flex-align: center;
 	align-items: center;
-	margin-right: 1em;
+	margin-right: .5em;
 }
 form>ul:first-of-type li:first-child {
 	width: 100%;
@@ -92,17 +93,44 @@ li.unit label:first-child {
 }
 form ul:first-of-type li>* {
 	-webkit-box-flex: 1;
-	-ms-flex: 1 1 1em;
-	flex: 1 1 1em;
+	-ms-flex: 1 1 2em;
+	flex: 1 1 2em;
 }
-form ul:first-of-type li label {
-	-webkit-box-flex: 0;
-	-ms-flex: 0 1 5.5em;
-	flex: 0 1 5.5em;
+form ul:first-of-type li input[type=number]{
+    max-width: 3em;
+}
+
+form > ul:first-of-type li>* {
+	-webkit-box-flex: 6;
+	-ms-flex: 6 0 2em;
+	flex: 6 0 2em;
+}
+
+form > ul:first-of-type li:nth-child(3) {
+	-webkit-box-flex: 1;
+	-ms-flex: 1 1 2em;
+	flex: 1 1 2em;
+}
+
+form > ul:first-of-type li:nth-child(4) {
+	-webkit-box-flex: 1;
+	-ms-flex: 1 8 2em;
+	flex: 1 8 2em;
+}
+
+form ul:first-of-type li:nth-child(2) label {
+	-webkit-box-flex: 1;
+	-ms-flex: 1 1 5.5em;
+	flex: 1 1 5.5em;
+}
+
+form ul:first-of-type li:nth-child(3) label {
+	width: 4em;
+    margin-right: .2em;
 }
 form ul li.unit label, form ul li.unit input {
 	width: auto;
-	margin: 0;
+	margin: 0 .2em;
 	-webkit-box-flex: 0;
 	-ms-flex: 0 1 1em;
 	flex: 0 1 1em;
@@ -163,8 +191,11 @@ fieldset.ingredients ul li input[type=number] {
 }
 #cocktail {
 	-webkit-box-flex: 1;
-	-ms-flex: 1 1 20em;
-	flex: 1 1 20em;
+	-ms-flex: 1 1 30em;
+	flex: 1 1 30em;
+}
+#spirit {
+    flex: 1 1 12em;
 }
 #reset {
 	-webkit-box-flex: 0;
@@ -201,4 +232,12 @@ fieldset.ingredients ul li input[type=number] {
 		    -ms-flex-pack: start;
 		        justify-content: flex-start;
 	}
+}
+
+header ul {
+    display: flex;
+}
+
+header ul li {
+flex: 0 0 5em;
 }
