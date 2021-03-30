@@ -84,11 +84,13 @@ legend {
 	padding: .25em 1em;
 }
 textarea {
-	width: 28.15em;
+	width: 100%;
 	height: 8em
 }
-label {
-	width: 5.5em;
+form ul li label {
+	width: 5em;
+    min-width: 4em;
+    max-width: 7em;
 	display: inline-block;
 }
 
@@ -526,7 +528,7 @@ position: absolute;
     }
 
 }
-@media only screen and (max-width: 888px) {
+@media only screen and (max-width: 812px) {
 
 	main form {
 		margin: 0 auto;
