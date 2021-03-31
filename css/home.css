@@ -7,7 +7,7 @@
 }
 
 header {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     padding: 0 1rem;
 }
 
@@ -18,7 +18,7 @@ header section {
 }
 ul {
 	list-style: none;
-    font-size: 1em;
+    font-size: .75em;
     text-align: center;
     margin: 0 auto;
 }
@@ -274,7 +274,6 @@ h1 em:hover {
 	color: #0FF;
 }
 fieldset:first-child legend {
-	font-size: calc(var(--heading) * .75);
 }
 
 .show main>div {
@@ -283,7 +282,6 @@ fieldset:first-child legend {
 
 .ingredients legend em {
 	color: rgba(204, 0, 204, .8);
-	font-size: 1.5em;
 }
 .ingredients input {
     width: 18em;
