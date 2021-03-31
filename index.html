@@ -6,7 +6,7 @@
   <meta content="width=device-width, initial-scale=1" name="viewport">
     <title>Welcomey</title>
     <link rel="stylesheet" href="css/home.css">
-    <link rel="stylesheet" href="css/myhome.css">
+    <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/fonts.css">
            	<script>
 	   document.cookie='resolution='+Math.max(screen.width,screen.height)+'; path=/'; 
@@ -33,10 +33,10 @@
             </div>
 <div id="response">
       <form  action="." method="post">
-        <fieldset><legend>or  mix your own...</legend></fieldset>
+        <fieldset><legend>or  mix your own...</legend><input type="reset" name="reset" id="reset" value="X" title="Reset the form"></fieldset>
         <ul>
             <li><label for="cocktail">Name</label><input type="text" name="cocktail" id="cocktail" placeholder="Quarantini" pattern="[\w\s]{3,50}" require>
-            <input type="reset" name="reset" id="reset" value="X" title="Reset the form"></li>
+            </li>
             <li><label for="spirit">Base Spirit</label><select name="spirit" id="spirit">
                 <option value="">Your poison...</option>
                 <option value="Gin">Gin</option>
@@ -59,7 +59,7 @@
             </ul></fieldset>
         <ul>
             <li><label for="dash">Add Bitters:</label><input type="checkbox" name="dash" id="dash"></li></ul>
-      <ul><li><label for="prep">Preparation:</label><textarea id="prep" maxlength="400" placeholder="To prepare: first off, plenty of ice!" cols="30" rows="5" name="prep"></textarea></li></ul>
+      <ul><li><label for="prep">Preparation:</label><textarea id="prep" maxlength="400" placeholder="To prepare: first off, plenty of ice!" cols="47" rows="5" name="prep"></textarea></li></ul>
         <!--<ul><li><label for="email">Email:</label><input type="email" name="email" id="email" ></li></ul>-->
 <!--required aria-required ="true" -->
         <ul><li><input type="hidden" name="action" value="go">

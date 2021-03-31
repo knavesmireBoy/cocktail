@@ -228,10 +228,7 @@ fieldset.ingredients ul li input[type=number] {
 	}
 }
 @media only screen and (min-width: 813px) and (max-width: 1024px) {
-	fieldset.ingredients ul li:nth-child(even) label {
-		position: absolute;
-		left: -9999px;
-	}
+
 	fieldset.ingredients ul li:nth-child(even) {
 		-webkit-box-pack: start;
 		    -ms-flex-pack: start;
