@@ -16,20 +16,13 @@ header {
 }
 
 header section {
-    text-indent: 1rem;
-    margin: 0 auto 1em;
     font-size: 1rem;
-    float: left;
-    width: calc(60vw - .25rem);
-    margin: 0;
+    width: calc(360px +  (768 - 385) * (100vw - 768px) / (1280 - 768));
 }
 
 header ul {
-    float: right;
-    width: calc(40vw - .25rem);
     font-size: 1em;
 }
-
 
 body {
 	margin: 1em 0 0;
@@ -85,7 +78,6 @@ h1 {
 	line-height: 1;
 	position: static;
 	border-width: 0;
-    font-size: 2rem;
 }
 h1 span {
     font-size: 50%;
@@ -202,11 +194,14 @@ section img {
 }
 
 header ul li {
+    
     height: calc(6.9em * 1.3333);
 	width: 6.9em;
+        width: calc(64px +  (83 - 64) * (100vw - 768px) / (1280 - 768));
+        height: calc(83px +  ((83 - 64) * (100vw - 768px) / (1280 - 768)) * 1.3333);
+
     border-right: 1px dotted #FFF;
     display: inline-block;
-    
 }
 header ul li:last-child {
     border-width: 0;
@@ -600,20 +595,28 @@ position: absolute;
   }
 }
 */
-@media screen and (min-width: 48em) {
+@media screen and (min-width: 769px) {
+    header ul {
+            float: right;
+    }
+     header section {
+        float: left;
+    }
     
+    header h1 {
+        text-indent: 1px;
+    }
 }
 
 
 
-@media only screen and (min-width: 48em) and (max-width: 1024px) {
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
 .ingredients li:nth-child(even) label, label[for=m1]{
     position: absolute;
     left: -9999px;
 }
 }
 
-  
 @media only screen and (max-width: 930px) {
 
 .insert:after {
@@ -625,14 +628,47 @@ position: absolute;
     }
 
 }
-@media only screen and (max-width: 48em) {
+@media only screen and (max-width: 768px) {
 
 	main form {
 		margin: 0 auto;
 		border-width: 1;
 		max-width: 600px;
 	}
-	main>div {
+	
+    #response aside {
+        width: 17rem;
+    }
+    
+    header ul li {
+        width: 100px;
+        height: 133px;
+    }
+    header section, header ul {
+        margin: 0 auto;
+        text-align: center;
+    }
+    header section {
+        text-indent: 2%;
+        font-size: 2rem;
+        width: 100%;
+        margin: 0 auto 1rem;
+    }
+    
+    h3 {
+        text-align: center;
+    }
+    
+   
+    
+}
+
+
+@media only screen and (max-width: 667px) {
+    #response aside {
+        width: 7rem;
+    }
+    main>div {
         position: absolute;
         top: -9999px;
         left: -9999px;
@@ -642,17 +678,6 @@ position: absolute;
         top: 0;
         left: 0;
 	}
-    #response aside {
-        width: 17rem;
-    }
-    
-}
-
-
-@media only screen and (max-width: 667px) {
-    #response aside {
-        width: 7rem;
-    }
 }
 
 header ul, header section, html {
