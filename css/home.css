@@ -5,35 +5,40 @@
 :root {
     --rooty: 2rem;
 }
+/*https://www.smashingmagazine.com/2016/05/fluid-typography/*/
 
+html {
+   font-size: 1.875vw;
+}
 header {
-    font-size: 1.75rem;
-    padding: 0 1rem;
+    padding: .25rem;
+    
 }
 
 header section {
-    text-align: center;
+    text-indent: 1rem;
     margin: 0 auto 1em;
-    
+    font-size: 1rem;
+    float: left;
+    width: calc(60vw - .25rem);
+    margin: 0;
 }
-ul {
-	list-style: none;
-    font-size: .75em;
-    text-align: center;
-    margin: 0 auto;
+
+header ul {
+    float: right;
+    width: calc(40vw - .25rem);
+    font-size: 1em;
 }
+
 
 body {
 	margin: 1em 0 0;
 	background-color: #000;
-	background-image: radial-gradient(#FFF, rgba(255, 255, 255, .2) 2px, transparent 40px), radial-gradient(#FFF, rgba(255, 255, 255, .15) 1px, transparent 30px), radial-gradient(#FFF, rgba(255, 255, 255, .1) 2px, transparent 40px), radial-gradient(rgba(255, 255, 255, .4), rgba(255, 255, 255, .1) 2px, transparent 30px);
+	font: .5em/1.2 cochin, 'latin_modern_roman10_regular', serif;
 	background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
 	background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
 	color: rgb(255, 251, 116);
-	font-family: cochin, 'latin_modern_roman10_regular', serif;
-	font-size: 1rem;
-	line-height: 1.2;
-	box-sizing: border-box;
+	
 }
 a {
 	color: rgb(204, 0, 204);
@@ -66,7 +71,7 @@ main {
 	position: relative;
 	overflow: hidden;
 	width: 100%;
-	box-sizing: border-box;
+	
 	border-bottom: solid 1px #FFF;
 }
 main>* {
@@ -80,14 +85,19 @@ h1 {
 	line-height: 1;
 	position: static;
 	border-width: 0;
-}
-h2 {
-	color: rgb(204, 0, 204);
     font-size: 2rem;
+}
+h1 span {
+    font-size: 50%;
+}
+h3 {
+	color: rgb(204, 0, 204);
+    font-style: italic;
+    text-align: right;
 }
 form {
     border: solid 1px red;
-    padding: 0 0 1em;
+    padding: .1rem 2rem 2rem;
 }
 
 fieldset {
@@ -104,11 +114,9 @@ fieldset:first-child input{
 
 legend {
 	color: #FFD700;
-	font-weight: bold;
-	font-style: italic;
-	font-family: cochin, 'latin_modern_roman10BdIt', serif;
+    font: italic bold 2em/2 cochin, 'latin_modern_roman10BdIt', serif;
 	text-indent: 2em;
-    line-height: 2;
+    
 }
 textarea {
 	height: 8em
@@ -140,12 +148,13 @@ main {
 }
 
 main > div {
-    display: table-cell;
-    vertical-align: top;
+    float: left;
 }
 
 main > div:first-child {
-    width: 60%;
+    width: 32rem;
+    width: calc(400px +  (768 - 400) * (100vw - 800px) / (800 - 400));
+    width: calc(385px +  (768 - 385) * (100vw - 768px) / (1280 - 768));
 }
 
 main > div:last-child form ul > * {
@@ -159,9 +168,9 @@ main > div:last-child form ul:nth-child(5) > * {
     
 }
 main form {
-	box-sizing: border-box;
 	height: 100%;
 	width: auto;
+    position: relative;
 }
 main h3 {
 	background: rgba(96, 85, 65, .7);
@@ -193,10 +202,11 @@ section img {
 }
 
 header ul li {
-    height: 6.66em;
-	width: 5em;
-	border-right: 1px dotted #FFF;
+    height: calc(6.9em * 1.3333);
+	width: 6.9em;
+    border-right: 1px dotted #FFF;
     display: inline-block;
+    
 }
 header ul li:last-child {
     border-width: 0;
@@ -380,6 +390,12 @@ input[type="number"] {
 #cocktail, #email {
 	width: 31em;
 }
+
+#reset {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
 #controls {
 	text-align: center;
 	position: relative;
@@ -407,7 +423,7 @@ input[type="number"] {
 #response {
 	background-size: contain;
 	background-repeat: no-repeat;
-	padding: 1em;
+	padding: 1em 0;
 	overflow: hidden;
 }
 
@@ -451,7 +467,7 @@ input[type="number"] {
 	object-fit: cover;
 }
 #response table {
-	box-sizing: border-box;
+	
 }
 
 #response>section {
@@ -469,7 +485,7 @@ input[type="number"] {
 	top: 0;
 	border-radius: 50%;
 	margin: 0 0%;
-	box-sizing: border-box;
+	
 }
 #response>section>a {
 	right: 0;
@@ -554,6 +570,10 @@ position: absolute;
 	margin-top: 1em;
 	text-align: center;
 }
+
+#response {
+    width: 40vw;
+}
 @media only screen {
 	#controls button {
 		background-image: url(../img/buttons_sprite.png);
@@ -566,42 +586,22 @@ position: absolute;
 	}
 }
 
-
-@media screen and (max-width: 74.99em) {
+/*
+@media screen and (min-width: 400px) and (max-width: 1200px) {
   html {
+      /*assuming 600px:
+      (600px - 400px) : 200px
+      200px / (400) : .5px
+      .5px * 8 : 4px
+      4px + 16px: 20px
+      
+    font-size: calc(16px +  (24 - 16) * (100vw - 400px) / (1200 - 400));
     font-size: 2vw;
-      border: solid 2px orange;
   }
 }
-
-@media screen and (min-width: 75em) {
-  html {
-    font-size: 1.5em;
-    border: solid 2px red;
-  }
-   
-}
-
-@media screen and (min-width: 48.1em) {
+*/
+@media screen and (min-width: 48em) {
     
-    main > div {
-    width: 40%;
-    }
-    html {
-    border: solid 2px yellow;
-    }
-    
-    header section {
-    float: left;
-    width: 28rem;
-        margin: 0;
-    }
-    header ul {
-    float: right;
-    }
-    h2 {
-        text-align: right;
-    }
 }
 
 
@@ -630,7 +630,7 @@ position: absolute;
 	main form {
 		margin: 0 auto;
 		border-width: 1;
-		max-width: 470px;
+		max-width: 600px;
 	}
 	main>div {
         position: absolute;
@@ -642,21 +642,19 @@ position: absolute;
         top: 0;
         left: 0;
 	}
+    #response aside {
+        width: 17rem;
+    }
     
 }
 
-@media only screen and (max-width: 48em) {
-    #response aside {
-        width: 17em;
-    }
-}
 
 @media only screen and (max-width: 667px) {
     #response aside {
-        width: 7em;
+        width: 7rem;
     }
 }
 
-header ul, header section {
-    border: solid 0px yellow;
+header ul, header section, html {
+    border: solid 0 yellow;
 }
