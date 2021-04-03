@@ -16,7 +16,7 @@ header {
 }
 
 header section {
-    font-size: 1rem;
+    font-size: 1.4rem;
     width: calc(360px +  (768 - 385) * (100vw - 768px) / (1280 - 768));
 }
 
@@ -27,7 +27,7 @@ header ul {
 body {
 	margin: 1em 0 0;
 	background-color: #000;
-	font: .5em/1.2 cochin, 'latin_modern_roman10_regular', serif;
+	font: .75em/1.2 cochin, 'latin_modern_roman10_regular', serif;
 	background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
 	background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
 	color: rgb(255, 251, 116);
@@ -89,7 +89,7 @@ h3 {
 }
 form {
     border: solid 1px red;
-    padding: .1rem 2rem 2rem;
+    padding: .1em 0 1em 1em;
 }
 
 fieldset {
@@ -106,7 +106,7 @@ fieldset:first-child input{
 
 legend {
 	color: #FFD700;
-    font: italic bold 2em/2 cochin, 'latin_modern_roman10BdIt', serif;
+    font: italic bold 1.25rem/2 cochin, 'latin_modern_roman10BdIt', serif;
 	text-indent: 2em;
     
 }
@@ -145,8 +145,8 @@ main > div {
 
 main > div:first-child {
     width: 32rem;
-    width: calc(400px +  (768 - 400) * (100vw - 800px) / (800 - 400));
     width: calc(385px +  (768 - 385) * (100vw - 768px) / (1280 - 768));
+    /*width: calc(334px +  (668 - 334) * (100vw - 668px) / (1280 - 668));*/
 }
 
 main > div:last-child form ul > * {
@@ -160,8 +160,6 @@ main > div:last-child form ul:nth-child(5) > * {
     
 }
 main form {
-	height: 100%;
-	width: auto;
     position: relative;
 }
 main h3 {
@@ -263,10 +261,6 @@ main>*:hover {
 	filter: none;
 }
 
-main>div:first-child {
-	border: dotted 1px #FFF;
-	border-width: 0 1px 0 0;
-}
 
 .showtime main>div {
 	max-width: 500px;
@@ -384,12 +378,13 @@ input[type="number"] {
 }
 #cocktail, #email {
 	width: 31em;
+    width: calc(200px +  (340 - 200) * (100vw - 768px) / (1280 - 768));
 }
 
 #reset {
     position: absolute;
-    right: 0;
-    top: 0;
+    right: 1em;
+    top: 1em;
 }
 #controls {
 	text-align: center;
@@ -567,7 +562,7 @@ position: absolute;
 }
 
 #response {
-    width: 40vw;
+    float: none;
 }
 @media only screen {
 	#controls button {
@@ -606,6 +601,10 @@ position: absolute;
     header h1 {
         text-indent: 1px;
     }
+    main>div:first-child {
+	border: dotted 1px #FFF;
+	border-width: 0 1px 0 0;
+}
 }
 
 
@@ -658,9 +657,7 @@ position: absolute;
     h3 {
         text-align: center;
     }
-    
-   
-    
+        
 }
 
 
@@ -668,16 +665,30 @@ position: absolute;
     #response aside {
         width: 7rem;
     }
-    main>div {
+    #response form{
         position: absolute;
         top: -9999px;
         left: -9999px;
 	}
+    #response:after {
+        content: "or mix your own...";
+        text-align: center;
+        display: block;
+        font: italic bold 3rem/normal cochin, 'latin_modern_roman10BdIt', serif;
+    }
+    #response {
+        width: 100%;
+    }
+    /*
 	#response, .showtime main>div {
 		position: relative;
         top: 0;
         left: 0;
 	}
+    */
+    main > div:first-child {
+        width: 100%;
+    }
 }
 
 header ul, header section, html {
