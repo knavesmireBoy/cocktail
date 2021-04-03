@@ -376,9 +376,9 @@ input[type="number"] {
 #dash {
 	margin-right: 1em;
 }
-#cocktail, #email {
+#cocktail, #email, textarea {
 	width: 31em;
-    width: calc(200px +  (340 - 200) * (100vw - 768px) / (1280 - 768));
+    width: calc(250px +  (340 - 250) * (100vw - 768px) / (1280 - 768));
 }
 
 #reset {
