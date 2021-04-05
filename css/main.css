@@ -63,7 +63,6 @@ nav {
 i, cite, b {
 	color: silver;
 }
-
 header blockquote {
 	color: rgba(204, 0, 204, 1);
 	border: 1px dotted;
@@ -75,7 +74,6 @@ header blockquote {
 	font-style: italic;
 	text-align: center;
 }
-
 p strong {
 	text-transform: uppercase;
 	font-weight: normal;
@@ -85,7 +83,7 @@ div>img {
 	height: auto;
 }
 h1 em {
-		color: rgba(222, 0, 222, .8);
+	color: rgba(222, 0, 222, .8);
 	text-shadow: 2px 2px 2px rgba(255, 255, 255, .9);
 }
 header aside {
@@ -98,7 +96,7 @@ nav>ul {
 	border-top: 1px solid white;
 	padding-left: 2%;
 	position: relative;
-    background-color: rgb(204, 0, 204);
+	background-color: rgb(204, 0, 204);
 	background-image: linear-gradient(rgb(204, 0, 204), black);
 	width: 100%;
 }
@@ -110,16 +108,14 @@ main aside {
 main>article {
 	box-sizing: border-box;
 	position: relative;
-    padding: 3em 4em 32em 2rem;
+	padding: 3em 4em 32em 2rem;
 	border: dotted 1px white;
 	border-width: 0 0 0 1px;
 }
-
 main aside, main>article {
 	margin-bottom: -30em;
 	padding-bottom: 30em;
 }
-
 header aside h2 {
 	text-align: right;
 }
@@ -129,7 +125,6 @@ header aside a {
 blockquote em span {
 	color: rgb(255, 251, 116);
 }
-
 nav ul ul {
 	font-size: 1rem;
 }
@@ -163,7 +158,7 @@ header blockquote:after {
 	top: 19px;
 }
 main aside>div {
-    transition: all 2s ease-in-out;
+	transition: all 2s ease-in-out;
 }
 main aside div {
 	margin-top: -2.4em;
@@ -171,7 +166,7 @@ main aside div {
 main aside img {
 	display: block;
 	position: relative;
-    right: .6em;
+	right: .6em;
 }
 main aside a {
 	color: rgba(255, 255, 255, .9);
@@ -234,10 +229,10 @@ nav>ul>li a {
 	height: 180px;
 	width: 180px;
 	margin: 2em auto;
-	font: italic .95em/1.2 'Lora', Georgia, serif;
-	line-height: calc(100vw / 46);
+	font-family: 'Lora', Georgia, serif;
+	font-size: calc(16px + (18 - 16) * (100vw - 860px) / (1280 - 860));
+	line-height: calc(19px + (24 - 19) * (100vw - 860px) / (1280 - 860));
 }
-
 .variant {
 	width: 100%;
 	height: 100%;
@@ -256,7 +251,6 @@ nav>ul>li a {
 .variant b {
 	color: chartreuse;
 }
-
 .variant p::before {
 	content: "";
 	float: right;
@@ -368,21 +362,18 @@ a:hover {
 	overflow: hidden;
 }
 h1 em:hover {
-    color: rgba(0, 255, 255, .5);
+	color: rgba(0, 255, 255, .5);
 	text-shadow: 2px 2px 2px rgba(255, 0, 255, .8);
 }
 p:nth-of-type(odd) strong {
 	color: white;
 }
-.c1 aside img{
+.c1 aside img {
 	right: 1.7em;
 }
-
 .c5 aside img {
 	right: 1.2em;
 }
-
-
 main aside div:last-child {
 	transition: all 1.5s;
 }
@@ -413,7 +404,7 @@ p:nth-of-type(odd) em, p:nth-of-type(odd) strong {
 }
 .c2 main aside a {
 	top: 5em;
-    left: .5em;
+	left: .5em;
 }
 .c4 main aside a {
 	top: 3.5em;
@@ -423,17 +414,15 @@ p:nth-of-type(odd) em, p:nth-of-type(odd) strong {
 	right: .9em;
 }
 .c7 main aside a {
-    top: 2.5em;
+	top: 2.5em;
 	left: .7em;
 }
-
 .c8 main aside a {
-    top: 6em;
-    left: .4em;
+	top: 6em;
+	left: .4em;
 }
-
 .c9 main aside a {
-    top: 1.6em;
+	top: 1.6em;
 	left: .2em;
 }
 nav ul>li>a:hover+ul {
@@ -443,21 +432,21 @@ nav ul>li>a:hover+ul {
 	position: relative;
 	left: 0;
 }
-.c1 .quote-wrapper, .c4 .quote-wrapper {
-	font-size: 1.2em;
-	line-height: calc(100vw / 44);
+.c1 .quote-wrapper, .c4 .quote-wrapper, .c8 .quote-wrapper, .c9 .quote-wrapper {
+	font-size: calc(18px + (24 - 18) * (100vw - 860px) / (1280 - 860));
+	line-height: calc(22px + (28 - 22) * (100vw - 860px) / (1280 - 860));
 }
-
-.c7 .quote-wrapper{
-	line-height: calc(100vw/50);
+.c7 .quote-wrapper {
+	line-height: calc(18px + (22 - 18) * (100vw - 860px) / (1280 - 860));
 }
-.c8 .quote-wrapper{
-	font-size: 1.4em;
-	line-height: calc(100vw / 33);
+.c8 .quote-wrapper {
+	line-height: calc(32px + (36 - 32) * (100vw - 860px) / (1280 - 860));
 }
 .c9 .quote-wrapper {
-	font-size: 1.3em;
-	line-height: calc(100vw / 44);
+	line-height: calc(23px + (24 - 23) * (100vw - 860px) / (1280 - 860));
+}
+.c10 .quote-wrapper {
+	line-height: calc(20px + (26 - 20) * (100vw - 860px) / (1280 - 860));
 }
 .showtime aside div:last-child {
 	transform: rotate(360deg);
@@ -465,7 +454,7 @@ nav ul>li>a:hover+ul {
 .c1 .variant::before, .c1 .variant p::before, .c4 .variant::before, .c4 .variant p::before {
 	shape-margin: 2vw;
 }
-.inlinesvg .quote-wrapper{
+.inlinesvg .quote-wrapper {
 	width: 53%;
 	height: 0;
 	padding-top: 53%;
@@ -473,16 +462,15 @@ nav ul>li>a:hover+ul {
 	overflow: hidden;
 }
 .no-js .quote-wrapper {
-    width: 70%;
-    
+	width: 70%;
 }
 .inlinesvg .variant {
-    background: none;
+	background: none;
 }
 .no-js .variant {
-    background-image: radial-gradient( ellipse at center, rgba(0, 0, 0, 1) 0%, purple 66%, rgba(255, 255, 0, 1) 70%, rgba(255, 255, 255, 0) 70.3%); 
-    background-color: plum;
-    border-radius: 50%;
+	background-image: radial-gradient( ellipse at center, rgba(0, 0, 0, 1) 0%, purple 66%, rgba(255, 255, 0, 1) 70%, rgba(255, 255, 255, 0) 70.3%);
+	background-color: plum;
+	border-radius: 50%;
 }
 .showtime aside div:first-child {
 	overflow: hidden;
@@ -499,70 +487,51 @@ nav ul>li>a:hover+ul {
 	position: absolute;
 	left: -9990px;
 }
-
-
 @media only screen and (max-width: 1024px) {
-	.quote-wrapper {
-		line-height: calc(100vw / 46);
-	}
 	.variant::before, .variant p::before {
 		shape-margin: 1vw;
 	}
-	.c1 .quote-wrapper, .c4 .quote-wrapper {
-		line-height: calc(100vw / 38);
-	}
-    
 }
 @media only screen and (max-width: 960px) {
-  .showtime .sidebar > div {
-        height: 100%;
-    }
-    .showtime .sidebar > div img {
-        height: 100%;
-        object-fit: cover;
-        right: 0;
-        
-    }
-    .showtime .inlinesvg svg, .showtime .quote-wrapper {
-        display: none;
-    }
+	.showtime .sidebar>div {
+		height: 100%;
+	}
+	.showtime .sidebar>div img {
+		height: 100%;
+		object-fit: cover;
+		right: 0;
+	}
+	.showtime .inlinesvg svg, .showtime .quote-wrapper {
+		display: none;
+	}
 }
 @media only screen and (max-width: 860px) {
-	.quote-wrapper {
-		line-height: calc(100vw / 40);
-	}
+
 	.variant::before, .variant p::before {
 		shape-margin: 1vw;
 	}
-	.c1 .quote-wrapper {
-		line-height: calc(100vw / 32);
-	}
-	.c4 .quote-wrapper {
-		line-height: calc(100vw / 30);
-	}
-    
-    .sidebar > div {
-        height: 100%;
-    }
-    .sidebar > div img {
-        height: 100%;
-        object-fit: cover;
-        right: 0;
-    }
-    .c2 main aside a {
-	top: 2em;
-}
-.c4 main aside a {
-	top: 2em;
-}
-.c6 main aside a {
-	top: 2em;
-	right: 0em;
-}
-    .inlinesvg svg, .quote-wrapper {
-        display: none;
-    }
 
+	.sidebar>div {
+		height: 100%;
+	}
+	.sidebar>div img {
+		height: 100%;
+		object-fit: cover;
+		right: 0;
+	}
+	.c2 main aside a {
+		top: 2em;
+	}
+	.c4 main aside a {
+		top: 2em;
+	}
+	.c6 main aside a {
+		top: 2em;
+		right: 0em;
+	}
+	.inlinesvg svg, .quote-wrapper {
+		display: none;
+	}
 }
 @media only screen and (max-width: 768px) {
 	main {
@@ -578,7 +547,6 @@ nav ul>li>a:hover+ul {
 		top: 7em;
 		text-shadow: 1px 1px 2px black;
 	}
-
 	blockquote {
 		display: none;
 	}
@@ -603,11 +571,11 @@ nav ul>li>a:hover+ul {
 		right: 1rem;
 		padding: 0 .5em;
 		width: auto;
-        background-color: transparent;
-        background-image: linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.9));
+		background-color: transparent;
+		background-image: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .9));
 		border-width: 0;
 		line-height: 1.6;
-        border-radius: 0px 0px  8px 8px;
+		border-radius: 0px 0px 8px 8px;
 	}
 	nav ul li {
 		height: 0;
@@ -618,8 +586,8 @@ nav ul>li>a:hover+ul {
 		position: absolute;
 		left: -9999px;
 	}
-    header aside {
-        background-size: 140%;
+	header aside {
+		background-size: 140%;
 		background-position: 100% 33%;
 	}
 	main aside>a {
@@ -643,185 +611,151 @@ nav ul>li>a:hover+ul {
 		-webkit-transition: transform 1s;
 		-o-transition: transform 1s;
 		transition: transform 1s;
-        opacity: .6;
+		opacity: .6;
 	}
 	.menu:hover {
 		background-position: 50% 100%;
 		-webkit-transform: rotate(360deg);
 		transform: rotate(360deg);
 	}
-    
 	.c1 header aside {
 		background-image: url("../img/dry_martini.jpg");
-        
 	}
 	.c2 header aside {
 		background-image: url("../img/sidecar.jpg");
-        background-position: 85% 10%;
+		background-position: 85% 10%;
 	}
 	.c3 header aside {
 		background-image: url("../img/margarita.jpg");
-         background-position: 120% 77%;
+		background-position: 120% 77%;
 	}
 	.c4 header aside {
 		background-image: url("../img/julep.jpg");
-        background-position: 110% 55%;
+		background-position: 110% 55%;
 	}
 	.c5 header aside {
 		background-image: url("../img/moscow_mule.jpg");
-        background-position: 96% 65%;
+		background-position: 96% 65%;
 	}
 	.c6 header aside {
 		background-image: url("../img/mai_tai.jpg");
-        background-position: 76% 50%;
+		background-position: 76% 50%;
 	}
-    .c7 header aside {
+	.c7 header aside {
 		background-image: url("../img/manhattan.jpg");
-         background-size: 160%;
-        background-position: 80% 40%;
+		background-size: 160%;
+		background-position: 80% 40%;
 	}
-    
-    .c8 header aside {
+	.c8 header aside {
 		background-image: url("../img/daiquiri.jpg");
-        background-position: 80% 40%;
+		background-position: 80% 40%;
 	}
-    .c9 header aside {
+	.c9 header aside {
 		background-image: url("../img/cosmopolitan.jpg");
-        background-position: 80% 40%;
+		background-position: 80% 40%;
 	}
-    .c10 header aside {
+	.c10 header aside {
 		background-image: url("../img/floridita.jpg");
-        background-position: 80% 40%;
+		background-position: 80% 40%;
 	}
-    #menu-toggle:checked+nav ul li {
+	#menu-toggle:checked+nav ul li {
 		height: 2em;
 		font-size: 1.2em;
 	}
 }
-
-@media only screen and (max-width: 768px) and (min-width: 415px){
-    
-    h1 em {
-	text-shadow: 1px 1px 1px rgba(255, 255, 255, .9);
+@media only screen and (max-width: 768px) and (min-width: 415px) {
+	h1 em {
+		text-shadow: 1px 1px 1px rgba(255, 255, 255, .9);
+	}
+	h1 em:hover {
+		text-shadow: 1px 1px 1px rgba(255, 0, 255, .8);
+	}
+	h1:after {
+		text-transform: uppercase;
+		font-size: .8em;
+	}
+	.c1 h1:after {
+		content: " ~ Dry Martini";
+		color: rgb(222, 222, 200);
+		text-shadow: 1px 1px purple;
+	}
+	.c2 h1:after {
+		content: " ~ Sidecar";
+		color: gold;
+		text-shadow: 1px 1px red;
+	}
+	.c3 h1:after {
+		content: " ~ Margarita";
+		color: rgb(222, 233, 160);
+		text-shadow: 1px 1px gray;
+	}
+	.c4 h1:after {
+		content: " ~ Mint Julep";
+		color: rgb(160, 100, 30);
+		text-shadow: 1px 1px seagreen;
+	}
+	.c5 h1:after {
+		content: " ~ Moscow Mule";
+		color: rgb(168, 126, 84);
+		text-shadow: 1px 1px maroon;
+	}
+	.c6 h1:after {
+		content: " ~ Mai Tai";
+		color: orange;
+		text-shadow: 1px 1px brown;
+	}
+	.c7 h1:after {
+		content: " ~ Manhattan";
+		color: darkred;
+		text-shadow: 1px 1px red;
+	}
 }
-    
-    h1 em:hover {
-	text-shadow:  1px 1px 1px rgba(255, 0, 255, .8);
-}
-     h1:after {
-         text-transform: uppercase;
-         font-size: .8em;
-    }
-    .c1 h1:after {
-        content: " ~ Dry Martini";
-        color: rgb(222,222, 200);
-        text-shadow: 1px 1px purple;
-    }
-    .c2 h1:after {
-        content: " ~ Sidecar";
-        color: gold;
-        text-shadow: 1px 1px red;
-    }
-     .c3 h1:after {
-        content: " ~ Margarita";
-         color: rgb(222, 233, 160);
-         text-shadow: 1px 1px gray;
-    }
-    .c4 h1:after {
-        content: " ~ Mint Julep";
-        color: rgb(160, 100, 30);
-        text-shadow: 1px 1px seagreen;
-    }
-     .c5 h1:after {
-        content: " ~ Moscow Mule";
-         color: rgb(168, 126, 84);
-         text-shadow: 1px 1px maroon;
-    }
-    .c6 h1:after {
-        content: " ~ Mai Tai";
-        color: orange;
-        text-shadow: 1px 1px brown;
-    }
-    
-    .c7 h1:after {
-        content: " ~ Manhattan";
-        color: darkred;
-        text-shadow: 1px 1px red;
-    }
-    
-  
-}
-  
-
 @media only screen and (max-width: 414px) {
-    
 	h1 {
 		background: rgba(0, 0, 0, .75);
 		margin: 30% 0 7em;
 		padding: 0 1rem;
 		top: 7em;
 	}
-    
-    
-    main>article {
+	main>article {
 		padding: 1em;
 		border-width: 0;
-        font-size: 1.2em;
+		font-size: 1.2em;
 	}
-    
-   
-    nav ul {
-        right: 0;
-        font-size: 1em;
-        line-height: 1.44;
-    }
-    
-     .menu {
-        right:3em;
-    }
-    
-}
-@media only screen and (min-width: 1038px) {
-	.c6 .quote-wrapper {
-		line-height: calc(100vw / 52);
+	nav ul {
+		right: 0;
+		font-size: 1em;
+		line-height: 1.44;
 	}
-	.c2 .quote-wrapper {
-		line-height: calc(100vw / 40);
-	}
-	.c4 .quote-wrapper {
-		line-height: calc(100vw / 40);
+	.menu {
+		right: 3em;
 	}
 }
 
 @media print {
-  body {
-    background: white;
-    color: black;
-}
-
-header, footer, h2, .sidebar div, svg {
-    display: none;
-}
-
-main article.content p {
-    color: #444;
-}
-
-main article.content p strong, main article.content em, main article.content a {
-    color: black;
-}
-
-main>article>p:first-child::first-letter {
-	color: #444;
-	font-size: 300%;
-	line-height: 1.1;
-	margin: -4px 10px 0 0;
-	padding: 0 6px;
-	float: left;
-	border: solid 1px #444;
-}
-
-main, .sidebar> div:first-child {
-    display: block;
-}
+	body {
+		background: white;
+		color: black;
+	}
+	header, footer, h2, .sidebar div, svg {
+		display: none;
+	}
+	main article.content p {
+		color: #444;
+	}
+	main article.content p strong, main article.content em, main article.content a {
+		color: black;
+	}
+	main>article>p:first-child::first-letter {
+		color: #444;
+		font-size: 300%;
+		line-height: 1.1;
+		margin: -4px 10px 0 0;
+		padding: 0 6px;
+		float: left;
+		border: solid 1px #444;
+	}
+	main, .sidebar>div:first-child {
+		display: block;
+	}
 }
