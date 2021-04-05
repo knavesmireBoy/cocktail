@@ -338,7 +338,7 @@ body.c1, body.c2, body.c3, body.c4, body.c5, body.c6 {
 	margin: 0 auto;
 	filter: drop-shadow(0px 0px 20px magenta);
 	animation: myrotate 2s 2s ease-in;
-	transform-origin: 50% 48.5%;
+	transform-origin: 50.1% 48.1%;
 	box-sizing: border-box;
 }
 .inlinesvg svg text {
