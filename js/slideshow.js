@@ -116,7 +116,7 @@
 		doMap = utils.doMap,
 		drill = utils.drillDown,
 		getLength = doGet('length'),
-		parser = thrice(doMethod)('match')(/img\/[a-z]+\.jpe?g$/),
+		parser = thrice(doMethod)('match')(/img\/[a-z_]+\.jpe?g$/),
 		doParse = comp(ptL(add, ''), doGet(0), parser),
 		doImagePath = comp(ptL(add, 'img/'), twice(add)('.jpg')),
 		go_execute = thrice(doMethod)('execute')(null),

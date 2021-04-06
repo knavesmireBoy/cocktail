@@ -172,9 +172,11 @@
 	}, utils.getByTag('h1')[0]).execute();
     
     eventing('click', event_actions.slice(0), function (e) {
-		klasAdd('swap', utils.getBody);
+        if(e.target.id === 'mix'){
+            klasAdd('swap', utils.getBody);
+        }
 		
-	}, $('response')).execute();
+	}, $('mix')).execute();
     
 }());
 //create div=response, aside, img, p list, h3, span, [SECTION [div table] <a>img] <div class="esquire">

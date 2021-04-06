@@ -66,7 +66,8 @@ main>* {
 }
 h1 {
 	text-shadow: 2px 2px 2px #808;
-	margin: 0 0 0 1vw
+	margin: 0 0 0 1vw;
+    font-size: calc(30px + (54 - 30) * (100vw - 768px) / (1280 - 768));
 }
 h3 {
 	color: rgb(204, 0, 204);
@@ -221,6 +222,7 @@ main>div:first-child {
 	border: dotted 1px #FF0;
 	padding: 1.8em 2em 1.8em 0;
 	background: #000;
+    float: none;
 }
 li.unit label, li.unit input {
 	width: auto;
@@ -449,10 +451,15 @@ main>div:last-child form ul:nth-child(5) li {
 	opacity: 0.9;
 	filter: alpha(opacity=90);
 }
-input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing #paused, .unit label:first-child {
+input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing #paused, .unit label:first-child, main>div:first-child>a {
 	position: absolute;
 	top: -9999px;
 	left: -9999px;
+}
+.inplay #paused {
+    position: relative;
+	top: 0;
+	left: 0;
 }
 .response form, .response main>div:first-child {
 	position: absolute;
@@ -488,7 +495,7 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
 	margin-top: 1em;
 	text-align: center;
 }
-.playing #controls {
+.showtime #controls {
 	border-width: 0;
 }
 @media only screen {
@@ -523,19 +530,17 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
 	.insert:after {
 		content: ' above';
 	}
-	/*
-	#response section>div {
-		padding: 5% 5% 0;
-	}
-    */
 }
 @media only screen and (max-width: 768px) {
 	h3 {
 		text-align: center;
 	}
+    h1 {
+        font-size: 4rem;
+    }
 	form {
 		margin: 0 auto;
-		border-width: 1;
+		border-width: 1px;
 		max-width: 600px;
 	}
 	header section, header ul {
@@ -561,6 +566,18 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
 		width: 50%;
 	}
 }
+
+@media only screen and (orientation: portrait) and (max-width: 1024px), (max-width: 667px) {
+	.wrapper main>div {
+		float: none;
+		width: 100vw;
+		margin: 1em auto;
+		border-width: 0;
+	}
+	form {
+		width: 96%;
+	}
+}
 @media only screen and (max-width: 667px) {
 	main>div {
 		width: 100%;
@@ -575,11 +592,13 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
 		top: -9999px;
 		left: -9999px;
 	}
-	#response:after {
-		content: "or mix your own...";
+	main>div:first-child>a {
+        position: relative;
+        top: 0;
+        left: 0;
 		text-align: center;
 		display: block;
-		font: italic bold 3rem/normal cochin, 'latin_modern_roman10BdIt', serif;
+		font: italic bold 3em/normal cochin, 'latin_modern_roman10BdIt', serif;
 		margin: 1rem 0;
 	}
 	#response section>a {
@@ -610,27 +629,7 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
 		right: .5em;
 		top: .5em;
 	}
-}
-@media only screen and (orientation: portrait) and (max-width: 1024px), (max-width: 667px) {
-	.wrapper main>div {
-		float: none;
-		width: 100vw;
-		margin: 1em auto;
-		border-width: 0;
-	}
-	form {
-		width: 96%;
-	}
-}
-@media only screen and (pointer: coarse) and (max-width: 730px) {
-	#controls {
-		padding: 2rem 0 .5rem;
-	}
-	.placeholder {
-		height: 140vw;
-	}
-}
-.swap legend {
+    .swap legend {
 	font-size: 2.5rem;
 }
 .swap label {
@@ -661,6 +660,17 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
 	width: 8rem;
 	width: 12vmax;
 }
+}
+
+@media only screen and (pointer: coarse) and (max-width: 730px) {
+	#controls {
+		padding: 2rem 0 .5rem;
+	}
+	.placeholder {
+		height: 140vw;
+	}
+}
+
 @media only screen and (pointer: coarse) and (orientation: portrait) {
 	.swap legend {
 		font-size: 4rem;
