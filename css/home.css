@@ -603,6 +603,13 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
 		top: 0;
 		left: 0;
 	}
+	.swap #response:after {
+		content: none;
+	}
+	#reset {
+		right: .5em;
+		top: .5em;
+	}
 }
 @media only screen and (orientation: portrait) and (max-width: 1024px), (max-width: 667px) {
 	.wrapper main>div {
@@ -633,25 +640,30 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
 	width: 470px;
 	height: auto;
 }
+.swap textarea {
+	height: 10rem;
+	height: 20vmax;
+}
 .swap #cocktail, .swap textarea {
 	width: calc(280px + (470 - 290) * (100vw - 320px) / (667 - 320));
 }
 .swap #spirit {
 	width: calc(140px + (50) * (100vw - 320px) / (667 - 320));
 }
-.swap .ingredients input {
-	width: calc(210px + (50) * (100vw - 320px) / (667 - 320));
+.swap .ingredients input, .swap #m1 {
+	width: calc(180px + (310 - 180) * (100vw - 320px) / (667 - 320));
 }
 .swap .ingredients li:nth-child(even) label, .swap label[for=m1] {
 	position: relative;
 	left: 0;
 }
+.swap svg {
+	width: 8rem;
+	width: 12vmax;
+}
 @media only screen and (pointer: coarse) and (orientation: portrait) {
 	.swap legend {
-		font-size: 3rem;
-	}
-	#reset {
-		padding: 1em;
+		font-size: 4rem;
 	}
 	.swap label {
 		font-size: 3rem;
@@ -662,8 +674,8 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
 	.swap form ul:first-of-type li:nth-child(-n+2) {
 		width: 100%;
 	}
-	.swap .ingredients input {
-		width: calc(200px + (100) * (100vw - 320px) / (667 - 320));
+	.swap .ingredients input, .swap #m1 {
+		width: calc(170px + (310 - 170) * (100vw - 280px) / (667 - 280));
 	}
 	.swap .ingredients li label {
 		width: 5.5em;
@@ -686,8 +698,8 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
 	.swap textarea, .swap #cocktail {
 		width: 100%;
 	}
-	.swap svg {
-		width: 12rem;
+	#reset {
+		padding: .5em;
 	}
 }
 @media only screen and (orientation: portrait) and (min-width: 667px) {
@@ -728,20 +740,6 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
 		border-width: 0;
 	}
 }
-/*
-@media only screen and (max-width: 667px) {
-	legend {
-		font-size: 22px;
-	}
-	#cocktail, #email, textarea, .ingredients input, #spirit {
-		width: calc(290px + (400 - 290) * (100vw - 320px) / (667 - 320));
-	}
-	textarea {
-		height: auto;
-	}
-}
-*/
-
 header ul, header section, html {
 	border: solid 0 yellow;
 }
