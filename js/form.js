@@ -161,6 +161,7 @@
 		mytarget = !window.addEventListener ? 'srcElement' : 'target',
 		$ = thrice(lazyVal)('getElementById')(document);
 	eventing('submit', event_actions.slice(0), post, document.forms[0]).execute();
+    
 	eventing('click', event_actions.slice(0), function () {
 		klasRem('response', utils.getBody);
 		var resp = $('response'),
@@ -169,5 +170,11 @@
 		_.each(nodes, utils.removeNodeOnComplete);
 		resp.appendChild(form);
 	}, utils.getByTag('h1')[0]).execute();
+    
+    eventing('click', event_actions.slice(0), function (e) {
+		klasAdd('swap', utils.getBody);
+		
+	}, $('response')).execute();
+    
 }());
 //create div=response, aside, img, p list, h3, span, [SECTION [div table] <a>img] <div class="esquire">

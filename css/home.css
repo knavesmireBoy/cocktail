@@ -340,7 +340,8 @@ main>div:last-child form ul:nth-child(5) li {
 	-webkit-transition: all 1s;
 	-o-transition: all 1s;
 	transition: all 1.5s;
-	border-top: solid 1px white;
+	border: solid 1px white;
+    border-width: 1px 0 0;
 	/*background: url(../img/thedaq.jpeg) no-repeat center 17%/cover;*/
 }
 #backbutton {
@@ -359,9 +360,8 @@ main>div:last-child form ul:nth-child(5) li {
 	overflow: hidden;
 }
 #controls button {
-
-    width: calc(25px + (40 - 25) * (100vw - 320px) / (1280 - 320));
-    height: calc(25px + (40 - 25) * (100vw - 320px) / (1280 - 320));
+    width: calc(30px + (40 - 30) * (100vw - 320px) / (1280 - 320));
+    height: calc(30px + (40 - 30) * (100vw - 320px) / (1280 - 320));
 	padding: 0;
 	margin: 0 calc(3px + (5 - 3) * (100vw - 320px) / (1280 - 320));
 	display: table-cell;
@@ -546,7 +546,7 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
 		text-align: center;
 	}
 	header section {
-		font-size: 2.5rem;
+		font-size: 2.75rem;
 		width: 100%;
 		margin: 0 auto 1rem;
 	}
@@ -574,7 +574,7 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
 		width: 100%;
 		cursor: grab;
 	}
-	#response form {
+	#response form, .swap main > div:first-child {
 		position: absolute;
 		top: -9999px;
 		left: -9999px;
@@ -598,10 +598,14 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
 	.response #response:after {
 		content: none;
 	}
-    
     #controls {
         background: none;
         border-width: 0;
+    }
+    .swap #response form{
+        position: relative;
+		top: 0;
+		left: 0;
     }
   
 }
@@ -609,7 +613,7 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
 @media only screen and (orientation: portrait) and (max-width: 1024px), (max-width: 667px){
   .wrapper main > div {
         float: none;
-        width: 80%;
+        width: 100vw;
         margin: 1em auto;
       border-width: 0;
     }
@@ -619,9 +623,12 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
     }
    
 }
-@media only screen and (pointer: coarse) and (max-width: 768px){
+@media only screen and (pointer: coarse) and (max-width: 730px){
     #controls {
-        padding: 1rem 0 .5rem;
+        padding: 2rem 0 .5rem;
+    }
+    .placeholder {
+        height: 140vw;
     }
 }
 
@@ -644,6 +651,10 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
     form {
         padding: 0 2rem;
     }
+   
+     #controls {
+        border-width: 1px 0;
+    }
     
 }
 
@@ -661,9 +672,6 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
         border-width: 0;
     }
     
-    #response:after {
-        margin: 5rem 0 0;
-	}
     
 }
 
