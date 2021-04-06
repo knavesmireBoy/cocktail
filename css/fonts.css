@@ -105,6 +105,7 @@ footer:before {
 	footer p {
 		clear: left;
 		float: none;
+        text-align: center;
 		margin: 0;
 	}
 }
