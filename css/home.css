@@ -9,7 +9,7 @@ body {
 	margin: 1em 0 0;
 	background-color: #000;
 	background-image: radial-gradient(white, rgba(255, 255, 255, .2) 2px, transparent 40px), radial-gradient(white, rgba(255, 255, 255, .15) 1px, transparent 30px), radial-gradient(white, rgba(255, 255, 255, .1) 2px, transparent 40px), radial-gradient(rgba(255, 255, 255, .4), rgba(255, 255, 255, .1) 2px, transparent 30px);
-	font: .75em/1.2 cochin, 'latin_modern_roman10_regular', serif;
+	font: .75em/1.2 'Bernhard Modern Std', 'latin_modern_roman10_regular', serif;
 	background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
 	background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
 	color: rgb(255, 251, 116);
@@ -56,7 +56,7 @@ main {
 	border-bottom: solid 1px #FFF;
 }
 footer {
-	font-size: calc(12px + (16 - 12) * (100vw - 667px) / (1280 - 667));
+	font-size: calc(14px + (18 - 14) * (100vw - 667px) / (1280 - 667));
     flex-shrink: 0;
 }
 main>* {
@@ -70,7 +70,8 @@ h1 {
 }
 h3 {
 	color: rgb(204, 0, 204);
-	font-style: italic;
+    font-family: 'BernhardModernBd', cochin, 'latin_modern_roman10BdIt', Georgia, serif;
+    font-style: italic;
 	text-align: right;
 }
 fieldset {
@@ -93,7 +94,14 @@ footer p:nth-child(even){
 }
 h1 span {
 	font-size: 50%;
+    color: rgb(204,0,204);
 }
+
+h1 span:last-child {
+	font-size: 50%;
+    color: #fffb74;
+}
+
 header section {
 	font-size: 1.25rem;
 	width: calc(360px + (768 - 385) * (100vw - 768px) / (1280 - 768));
@@ -105,6 +113,7 @@ h2 span {
 }
 h1 em {
 	color: #FF00FF;
+    font-family: 'BernhardModernBd', cochin, 'latin_modern_roman10BdIt', Georgia, serif;
 }
 main h2 {
 	color: #F00;
@@ -332,7 +341,7 @@ main>div:last-child form ul:nth-child(5) li {
 	-o-transition: all 1s;
 	transition: all 1.5s;
 	border-top: solid 1px white;
-	background: url(../img/thedaq.jpeg) no-repeat center 17%/cover;
+	/*background: url(../img/thedaq.jpeg) no-repeat center 17%/cover;*/
 }
 #backbutton {
 	background-position: 50% 14.9%;
@@ -482,6 +491,9 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
 	margin-top: 1em;
 	text-align: center;
 }
+.playing #controls {
+        border-width: 0;
+    }
 @media only screen {
 	#controls button {
 		background-image: url(../img/buttons_sprite.png);
@@ -552,6 +564,7 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
 		width: 50%;
 	}
 }
+  
 @media only screen and (max-width: 667px) {
 	main>div {
 		width: 100%;
@@ -590,12 +603,10 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
         background: none;
         border-width: 0;
     }
-    .playing #controls {
-        border-width: 0;
-    }
+  
 }
 
-@media only screen and (orientation: portrait) and (max-width: 768px){
+@media only screen and (orientation: portrait) and (max-width: 1024px), (max-width: 667px){
   .wrapper main > div {
         float: none;
         width: 80%;
@@ -604,16 +615,42 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
     }
     
     form {
-        padding: 0 7rem;
+        border: dotted 1px yellow;
     }
    
 }
+@media only screen and (pointer: coarse) and (max-width: 768px){
+    #controls {
+        padding: 1rem 0 .5rem;
+    }
+}
 
+@media only screen and (orientation: portrait) and (max-width: 768px){
+#cocktail, #email, textarea {
+	width: 400px;
+}
+     .ingredients li:nth-child(even) label, label[for=m1] {
+	position: relative;
+	top: 0;
+	left: 0;
+}
+    #spirit {
+        width: 200px;
+    }
+    
+    .ingredients input {
+        width: 270px;
+    }
+    form {
+        padding: 0 2rem;
+    }
+    
+}
 
-@media only screen and (orientation: portrait) and (max-width: 414px){
+@media only screen and (orientation: portrait) and (max-width: 667px){
     header ul li{
-        width: calc(48px + (66 - 48) * (100vw - 320px) / (414 - 320));
-        height: calc(63px + ((66 - 48) * (100vw - 320px) / (414 - 320)) * 1.333);
+        width: calc(48px + (64 - 48) * (100vw - 320px) / (414 - 320));
+        height: calc(63px + ((64 - 48) * (100vw - 320px) / (414 - 320)) * 1.333);
     }
     footer {
         font-size: 12px;
@@ -628,8 +665,8 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
         margin: 5rem 0 0;
 	}
     
- 
 }
+
 header ul, header section, html {
 	border: solid 0 yellow;
 }
