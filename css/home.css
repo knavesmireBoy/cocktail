@@ -1,5 +1,4 @@
 /*https://www.smashingmagazine.com/2016/05/fluid-typography/*/
-
 html {
 	font-size: 1.875vw;
 }
@@ -67,7 +66,7 @@ main>* {
 h1 {
 	text-shadow: 2px 2px 2px #808;
 	margin: 0 0 0 1vw;
-    font-size: calc(30px + (54 - 30) * (100vw - 768px) / (1280 - 768));
+	font-size: calc(30px + (54 - 30) * (100vw - 768px) / (1280 - 768));
 }
 h3 {
 	color: rgb(204, 0, 204);
@@ -83,10 +82,9 @@ legend {
 	line-height: 1.6;
 	width: 100%;
 	text-indent: 2em;
-    font-style: italic;
-    font-family: 'BernhardModernBd', cochin, 'latin_modern_roman10BdIt', Georgia, serif;
-    font-size: calc(18px + (30 - 18) * (100vw - 667px) / (1280 - 667));
-
+	font-style: italic;
+	font-family: 'BernhardModernBd', cochin, 'latin_modern_roman10BdIt', Georgia, serif;
+	font-size: calc(18px + (30 - 18) * (100vw - 667px) / (1280 - 667));
 }
 textarea {
 	height: calc(60px + (125 - 60) * (100vw - 667px) / (1280 - 667));
@@ -225,7 +223,7 @@ main>div:first-child {
 	border: dotted 1px #FF0;
 	padding: 1.8em 2em 1.8em 0;
 	background: #000;
-    float: none;
+	float: none;
 }
 li.unit label, li.unit input {
 	width: auto;
@@ -324,7 +322,6 @@ main>div:last-child form ul:nth-child(5) li {
 #cocktail, #email, textarea {
 	width: calc(250px + (350 - 250) * (100vw - 768px) / (1280 - 768));
 }
-
 #spirit {
 	width: calc(92px + (130 - 92) * (100vw - 1024px) / (1280 - 1024));
 }
@@ -464,7 +461,7 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
 	left: -9999px;
 }
 .inplay #paused {
-    position: relative;
+	position: relative;
 	top: 0;
 	left: 0;
 }
@@ -532,9 +529,9 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
 		position: absolute;
 		left: -9999px;
 	}
-    #spirit {
-	width: calc(100px + (160 - 100) * (100vw - 667px) / (1024 - 667));
-}
+	#spirit {
+		width: calc(100px + (160 - 100) * (100vw - 667px) / (1024 - 667));
+	}
 }
 @media only screen and (max-width: 930px) {
 	.insert:after {
@@ -545,9 +542,9 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
 	h3 {
 		text-align: center;
 	}
-    h1 {
-        font-size: 4rem;
-    }
+	h1 {
+		font-size: 4rem;
+	}
 	form {
 		margin: 0 auto;
 		border-width: 1px;
@@ -572,9 +569,7 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
 	.method {
 		border-width: 0;
 	}
-	
 }
-
 @media only screen and (orientation: portrait) and (max-width: 1024px), (max-width: 667px) {
 	.wrapper main>div {
 		float: none;
@@ -587,16 +582,21 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
 	}
 }
 @media only screen and (max-width: 730px) {
-	.deviceorientaion #controls {
+	.deviceorientation #controls {
 		padding: 2rem 0 .5rem;
 	}
-	.deviceorientaion .placeholder {
+	.deviceorientation .placeholder {
 		height: 140vw;
 	}
 }
-
+@media only screen and (max-width: 768px) {
+	.deviceorientation #response form, .swap main>div:first-child {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+}
 @media only screen and (max-width: 667px) {
-
 	#response {
 		width: 100%;
 		cursor: grab;
@@ -615,7 +615,7 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
 		font: italic bold 3em/normal cochin, 'latin_modern_roman10BdIt', serif;
 		margin: 1rem 0;
 	}
-    /*hide comb-bound*/
+	/*hide comb-bound*/
 	#response section>a {
 		left: -9999px;
 	}
@@ -625,23 +625,20 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
 	#response section>div {
 		width: 100%;
 	}
-	
 	#controls {
 		background: none;
 		border-width: 0;
 	}
-    #myreset {
+	#myreset {
 		right: .5em;
 		top: .5em;
 	}
-	
 	legend {
 		font-size: 2.5rem;
 	}
 	label {
 		font-size: 1.75rem;
 	}
-	
 	textarea {
 		height: 20vmax;
 	}
@@ -658,12 +655,10 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
 		position: relative;
 		left: 0;
 	}
-    
 	svg {
 		width: 12vmax;
 	}
-    
-    	.no-deviceorientation #response form, .swap.response #response form {
+	.no-deviceorientation #response form, .swap.response #response form {
 		position: absolute;
 		top: -9999px;
 		left: -9999px;
@@ -673,9 +668,7 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
 		top: 0;
 		left: 0;
 	}
-   
 }
-
 @media only screen and (orientation: portrait) and (max-width: 667px) {
 	header ul li {
 		width: calc(48px + (64 - 48) * (100vw - 320px) / (414 - 320));
@@ -688,12 +681,10 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
 	main {
 		border-width: 0;
 	}
-    
-    #cocktail, textarea {
-        width: calc(100vw - 2em);
-    }
-    
-    	legend {
+	#cocktail, textarea {
+		width: calc(100vw - 2em);
+	}
+	legend {
 		font-size: 4rem;
 	}
 	label {
@@ -702,20 +693,18 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
 	form li {
 		margin: .5em 0;
 	}
-    
-    form > ul:first-of-type li:nth-child(2){
-        width: calc(100% - 2em);
-    }
-	
-    .unit label:first-child {
-        position: relative;
-        top: 0;
-        left: 0;
-        margin: 0 1em;
-    }
-    label[for=m1] {
-	width: 5.5em;
-}
+	form>ul:first-of-type li:nth-child(2) {
+		width: calc(100% - 2em);
+	}
+	.unit label:first-child {
+		position: relative;
+		top: 0;
+		left: 0;
+		margin: 0 1em;
+	}
+	label[for=m1] {
+		width: 5.5em;
+	}
 	.ingredients input {
 		width: calc(170px + (310 - 170) * (100vw - 280px) / (667 - 280));
 	}
@@ -737,41 +726,11 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
 	.ingredients li:last-child {
 		border-width: 0 1px 1px;
 	}
-	
 	#myreset {
 		padding: .5em;
 	}
-    
 }
-/*
-@media only screen and (orientation: portrait) and (min-width: 667px) {
-	#cocktail, #email, textarea {
-		width: 400px;
-	}
-	.ingredients li:nth-child(even) label, label[for=m1] {
-		position: relative;
-		top: 0;
-		left: 0;
-	}
-	#spirit {
-		width: 200px;
-	}
-	.ingredients input {
-		width: 270px;
-	}
-	form {
-		padding: 0 2rem;
-	}
-	#controls {
-		border-width: 1px 0;
-	}
-	form {
-		border: dotted 1px yellow;
-	}
-}
-
 header ul, header section, html {
 	border: solid 0 yellow;
 }
-
-	/*https://css-tricks.com/almanac/selectors/n/nth-child/*/
+/*https://css-tricks.com/almanac/selectors/n/nth-child/*/
