@@ -1,7 +1,6 @@
 .csstabs {
 	margin: 2em 0 1em;
 	max-width: 700px;
-	min-width: 450px;
 	position: relative;
 }
 .csstabs>* {
@@ -109,6 +108,12 @@
 }
 #tab2.method+#tab1 ul {
 	opacity: .5;
+}
+
+@media only screen and (min-width: 768px) {
+    .csstabs {
+        min-width: 450px;
+    }
 }
 @media only screen and (max-width: 667px) {
     
