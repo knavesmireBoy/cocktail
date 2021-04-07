@@ -161,9 +161,12 @@
 		mytarget = !window.addEventListener ? 'srcElement' : 'target',
 		$ = thrice(lazyVal)('getElementById')(document);
 	eventing('submit', event_actions.slice(0), post, document.forms[0]).execute();
+	eventing('reset', [], function(){
+        window.location.href = '.';
+    }, document.forms[0]).execute();
     
-	eventing('click', event_actions.slice(0), function () {
-		klasRem('response', utils.getBody);
+    eventing('click', event_actions.slice(0), function () {
+        klasRem('response', utils.getBody);
 		var resp = $('response'),
 			form = resp.removeChild(document.forms[0]),
 			nodes = _.toArray(resp.childNodes);
@@ -171,12 +174,13 @@
 		resp.appendChild(form);
 	}, utils.getByTag('h1')[0]).execute();
     
-    eventing('click', event_actions.slice(0), function (e) {
-        if(e.target.id === 'mix'){
-            klasAdd('swap', utils.getBody);
-        }
-		
-	}, $('mix')).execute();
+     eventing('load', event_actions.slice(0), function () {
+        var el = $('mix');
+         el.innerHTML = "or mix your own..."
+         eventing('click', event_actions.slice(0), function () {
+            klasAdd('swap', utils.getBody);		
+	}, el).execute();
+	}, window).execute();
     
 }());
 //create div=response, aside, img, p list, h3, span, [SECTION [div table] <a>img] <div class="esquire">

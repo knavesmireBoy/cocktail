@@ -321,7 +321,7 @@ main>div:last-child form ul:nth-child(5) li {
 #cocktail, #email, textarea {
 	width: calc(250px + (340 - 250) * (100vw - 768px) / (1280 - 768));
 }
-#reset {
+#myreset {
 	position: absolute;
 	right: 1em;
 	top: 1em;
@@ -625,7 +625,7 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
 	.swap #response:after {
 		content: none;
 	}
-	#reset {
+	#myreset {
 		right: .5em;
 		top: .5em;
 	}
@@ -681,6 +681,7 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
 	.swap form li {
 		margin: .5em 0;
 	}
+    /*https://css-tricks.com/almanac/selectors/n/nth-child/*/
 	.swap form ul:first-of-type li:nth-child(-n+2) {
 		width: 100%;
 	}
@@ -708,11 +709,11 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
 	.swap textarea, .swap #cocktail {
 		width: 100%;
 	}
-	#reset {
+	#myreset {
 		padding: .5em;
 	}
 }
-@media only screen and (orientation: portrait) and (min-width: 667px) {
+@media only screen and (orientation: portrait) and (pointer: coarse) and (min-width: 667px) {
 	#cocktail, #email, textarea {
 		width: 400px;
 	}
@@ -750,6 +751,17 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
 		border-width: 0;
 	}
 }
+    .no-touchevents #response form, .swap.response #response form  {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+.swap #response form {
+         position: relative;
+        top: 0;
+        left: 0;
+    }
+
 header ul, header section, html {
 	border: solid 0 yellow;
 }
