@@ -90,11 +90,13 @@
 		ptL = _.partial,
 		comp = _.compose,
 		always = utils.always,
+        /*
 		con = window.console.log.bind(window),
         con2 = function(arg){
             con(arg);
             return arg;
         },
+        */
 		Looper = speakEasy.Iterator,
 		doCurry = utils.curryFactory,
 		cssopacity = getNativeOpacity(!window.addEventListener),
@@ -131,7 +133,8 @@
         exitInPlay = ptL(klasRem, ['inplay', 'playing'], main),
         exitPlus = comp(noshow, getBod, exitInPlay),
         restoreBaseImg = comp(noshow, ptL(utils.setter, utils.$('base'), 'src'), doImagePath, always('fc')),
-        remInPlay = comp(noshow, getBod, ptL(klasRem, ['inplay', 'playing'], main)),
+        remPlaying = ptL(klasRem, ['inplay', 'playing'], main),
+        remInPlay = comp(noshow, getBod, remPlaying),
 		slide_player = {
 			execute: function () {
 				checkShowTime()();
@@ -139,7 +142,7 @@
 			undo: function (e) {
 				Looper.onpage = Looper.from(randomSort(_.map(drinks, doImagePath)), doInc(getLength(drinks)));
 				//comp(ptL(utils.setter, utils.$('base'), 'src'), doImagePath)('fc');
-				//remInPlay();
+				remPlaying();
 			}
 		},
 		init_slideshow = thricedefer(doMethod)('execute')(null)(slide_player),
