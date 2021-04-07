@@ -80,12 +80,16 @@ fieldset {
 }
 legend {
 	color: #FFD700;
-	font: italic bold 1.25rem/2 cochin, 'latin_modern_roman10BdIt', serif;
+	line-height: 1.6;
 	width: 100%;
 	text-indent: 2em;
+    font-style: italic;
+    font-family: 'BernhardModernBd', cochin, 'latin_modern_roman10BdIt', Georgia, serif;
+    font-size: calc(18px + (30 - 18) * (100vw - 667px) / (1280 - 667));
+
 }
 textarea {
-	height: 4rem;
+	height: calc(60px + (125 - 60) * (100vw - 667px) / (1280 - 667));
 }
 i, cite, b {
 	color: #c0c0c0;
@@ -195,7 +199,6 @@ a:hover {
 	color: #FFF;
 }
 input[type="number"] {
-	width: 3em;
 	max-width: 4em;
 }
 main>*:hover {
@@ -319,12 +322,16 @@ main>div:last-child form ul:nth-child(5) li {
 	margin-right: 1em;
 }
 #cocktail, #email, textarea {
-	width: calc(250px + (340 - 250) * (100vw - 768px) / (1280 - 768));
+	width: calc(250px + (350 - 250) * (100vw - 768px) / (1280 - 768));
+}
+
+#spirit {
+	width: calc(92px + (130 - 92) * (100vw - 1024px) / (1280 - 1024));
 }
 #myreset {
 	position: absolute;
-	right: 1em;
-	top: 1em;
+	right: 1vw;
+	top: 1vw;
 }
 #controls {
 	text-align: center;
@@ -525,6 +532,9 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
 		position: absolute;
 		left: -9999px;
 	}
+    #spirit {
+	width: calc(100px + (160 - 100) * (100vw - 667px) / (1024 - 667));
+}
 }
 @media only screen and (max-width: 930px) {
 	.insert:after {
@@ -562,9 +572,7 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
 	.method {
 		border-width: 0;
 	}
-	main>div:first-child {
-		width: 50%;
-	}
+	
 }
 
 @media only screen and (orientation: portrait) and (max-width: 1024px), (max-width: 667px) {
@@ -578,11 +586,17 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
 		width: 96%;
 	}
 }
-@media only screen and (max-width: 667px) {
-	main>div {
-		width: 100%;
-		border-width: 0;
+@media only screen and (max-width: 730px) {
+	.deviceorientaion #controls {
+		padding: 2rem 0 .5rem;
 	}
+	.deviceorientaion .placeholder {
+		height: 140vw;
+	}
+}
+
+@media only screen and (max-width: 667px) {
+
 	#response {
 		width: 100%;
 		cursor: grab;
@@ -593,14 +607,15 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
 		left: -9999px;
 	}
 	main>div:first-child>a {
-        position: relative;
-        top: 0;
-        left: 0;
+		position: relative;
+		top: 0;
+		left: 0;
 		text-align: center;
 		display: block;
 		font: italic bold 3em/normal cochin, 'latin_modern_roman10BdIt', serif;
 		margin: 1rem 0;
 	}
+    /*hide comb-bound*/
 	#response section>a {
 		left: -9999px;
 	}
@@ -610,110 +625,126 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
 	#response section>div {
 		width: 100%;
 	}
-	.response #response:after {
-		content: none;
-	}
+	
 	#controls {
 		background: none;
 		border-width: 0;
+	}
+    #myreset {
+		right: .5em;
+		top: .5em;
+	}
+	
+	legend {
+		font-size: 2.5rem;
+	}
+	label {
+		font-size: 1.75rem;
+	}
+	
+	textarea {
+		height: 20vmax;
+	}
+	#cocktail, textarea {
+		width: calc(280px + (470 - 290) * (100vw - 320px) / (667 - 320));
+	}
+	#spirit {
+		width: calc(90px + (260 - 90) * (100vw - 320px) / (667 - 320));
+	}
+	.ingredients input, #m1 {
+		width: calc(170px + (330 - 170) * (100vw - 320px) / (667 - 320));
+	}
+	.ingredients li:nth-child(even) label, label[for=m1] {
+		position: relative;
+		left: 0;
+	}
+    
+	svg {
+		width: 12vmax;
+	}
+    
+    	.no-deviceorientation #response form, .swap.response #response form {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
 	}
 	.swap #response form {
 		position: relative;
 		top: 0;
 		left: 0;
 	}
-	.swap #response:after {
-		content: none;
-	}
-	#myreset {
-		right: .5em;
-		top: .5em;
-	}
-    .swap legend {
-	font-size: 2.5rem;
-}
-.swap label {
-	font-size: 1.75rem;
-}
-.swap #cocktail, .swap textarea {
-	width: 470px;
-	height: auto;
-}
-.swap textarea {
-	height: 10rem;
-	height: 20vmax;
-}
-.swap #cocktail, .swap textarea {
-	width: calc(280px + (470 - 290) * (100vw - 320px) / (667 - 320));
-}
-.swap #spirit {
-	width: calc(140px + (50) * (100vw - 320px) / (667 - 320));
-}
-.swap .ingredients input, .swap #m1 {
-	width: calc(180px + (310 - 180) * (100vw - 320px) / (667 - 320));
-}
-.swap .ingredients li:nth-child(even) label, .swap label[for=m1] {
-	position: relative;
-	left: 0;
-}
-.swap svg {
-	width: 8rem;
-	width: 12vmax;
-}
+   
 }
 
-@media only screen and (pointer: coarse) and (max-width: 730px) {
-	#controls {
-		padding: 2rem 0 .5rem;
+@media only screen and (orientation: portrait) and (max-width: 667px) {
+	header ul li {
+		width: calc(48px + (64 - 48) * (100vw - 320px) / (414 - 320));
+		height: calc(63px + ((64 - 48) * (100vw - 320px) / (414 - 320)) * 1.333);
 	}
-	.placeholder {
-		height: 140vw;
+	footer {
+		font-size: 12px;
+		border-top: dotted 1px #fff;
 	}
-}
-
-@media only screen and (pointer: coarse) and (orientation: portrait) {
-	.swap legend {
+	main {
+		border-width: 0;
+	}
+    
+    #cocktail, textarea {
+        width: calc(100vw - 2em);
+    }
+    
+    	legend {
 		font-size: 4rem;
 	}
-	.swap label {
+	label {
 		font-size: 3rem;
 	}
-	.swap form li {
+	form li {
 		margin: .5em 0;
 	}
-    /*https://css-tricks.com/almanac/selectors/n/nth-child/*/
-	.swap form ul:first-of-type li:nth-child(-n+2) {
-		width: 100%;
-	}
-	.swap .ingredients input, .swap #m1 {
+    
+    form > ul:first-of-type li:nth-child(2){
+        width: calc(100% - 2em);
+    }
+	
+    .unit label:first-child {
+        position: relative;
+        top: 0;
+        left: 0;
+        margin: 0 1em;
+    }
+    label[for=m1] {
+	width: 5.5em;
+}
+	.ingredients input {
 		width: calc(170px + (310 - 170) * (100vw - 280px) / (667 - 280));
 	}
-	.swap .ingredients li label {
-		width: 5.5em;
+	.ingredients li label {
+		width: calc(50px + (80 - 50) * (100vw - 280px) / (667 - 280));
 	}
-	.swap .ingredients li {
+	.ingredients li {
 		width: 100%;
 		border: dotted 1px yellow;
 		margin: 0 .5em;
 		padding: .5em;
 	}
-	.swap .ingredients li:nth-child(odd) {
+	.ingredients li:nth-child(odd) {
 		border-width: 1px 1px 0;
 	}
-	.swap .ingredients li:nth-child(even) {
+	.ingredients li:nth-child(even) {
 		border-width: 0 1px 0;
 	}
-	.swap .ingredients li:last-child {
+	.ingredients li:last-child {
 		border-width: 0 1px 1px;
 	}
-	.swap textarea, .swap #cocktail {
-		width: 100%;
-	}
+	
 	#myreset {
 		padding: .5em;
 	}
+    
 }
-@media only screen and (orientation: portrait) and (pointer: coarse) and (min-width: 667px) {
+/*
+@media only screen and (orientation: portrait) and (min-width: 667px) {
 	#cocktail, #email, textarea {
 		width: 400px;
 	}
@@ -738,30 +769,9 @@ input[type=submit], #paused, #unit, #lemon, .showtime #response, .inplay.playing
 		border: dotted 1px yellow;
 	}
 }
-@media only screen and (orientation: portrait) and (max-width: 667px) {
-	header ul li {
-		width: calc(48px + (64 - 48) * (100vw - 320px) / (414 - 320));
-		height: calc(63px + ((64 - 48) * (100vw - 320px) / (414 - 320)) * 1.333);
-	}
-	footer {
-		font-size: 12px;
-		border-top: dotted 1px #fff;
-	}
-	main {
-		border-width: 0;
-	}
-}
-    .no-touchevents #response form, .swap.response #response form  {
-        position: absolute;
-        top: -9999px;
-        left: -9999px;
-    }
-.swap #response form {
-         position: relative;
-        top: 0;
-        left: 0;
-    }
 
 header ul, header section, html {
 	border: solid 0 yellow;
 }
+
+	/*https://css-tricks.com/almanac/selectors/n/nth-child/*/
