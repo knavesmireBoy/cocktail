@@ -45,19 +45,25 @@ a {
 ul {
 	list-style: none;
 }
+/* https://css-tricks.com/snippets/css/fluid-typography/ */
+header {
+    font-size: 1vw;
+}
 h1 {
 	font-size: 4.5vmax;
 	margin: 10rem 0 1rem 0;
 	padding: 0 0 0 7em;
 	text-shadow: 2px 2px 2px purple;
 	position: relative;
+    min-height: 0vw;
 }
 p {
 	margin-bottom: 1em;
 	text-align: justify;
 }
 em {
-	font: 1.2em, cochin, 'latin_modern_roman10BdIt', serif;
+	font-family: 'BernhardModernBd', cochin, 'latin_modern_roman10BdIt', serif;
+    font-size: 1.1em;
 }
 nav {
 	font-size: 1.2rem;
@@ -65,6 +71,7 @@ nav {
 i, cite, b {
 	color: silver;
 }
+
 header blockquote {
 	color: rgba(204, 0, 204, 1);
 	border: 1px dotted;
@@ -84,10 +91,14 @@ div>img {
 	width: 100%;
 	height: auto;
 }
+
 h1 em {
 	color: rgba(222, 0, 222, .8);
-	text-shadow: 2px 2px 2px rgba(255, 255, 255, .9);
+	text-shadow: 2px 2px 2px rgba(0, 255, 255, .9);
+    position: relative;
+    right: .5vmax;
 }
+
 header aside {
 	overflow: hidden;
 	background-image: url("../img/fc.jpg");
@@ -229,7 +240,7 @@ nav>ul>li a {
 	position: absolute;
 	top: 1vw;
 	top: 2vw;
-	right: calc(36px + (72 - 36) * (100vw - 320px) / (768 - 320));
+	right: calc(36px + (60 - 36) * (100vw - 320px) / (768 - 320));
 	height: calc(48px + (72 - 48) * (100vw - 320px) / (768 - 320));
 	width: calc(48px + (72 - 48) * (100vw - 320px) / (768 - 320));
 }
@@ -555,9 +566,10 @@ nav ul>li>a:hover+ul {
 		border: dotted 1px white;
 		border-width: 1px 0;
 		top: 7em;
-        font-size: calc(30px + (48 - 30) * (100vw - 320px) / (768 - 320));
+        font-size: calc(30px + (50 - 30) * (100vw - 320px) / (768 - 320));
 		text-shadow: 1px 1px 2px black;
 	}
+ 
 	blockquote {
 		display: none;
 	}
@@ -585,7 +597,7 @@ nav ul>li>a:hover+ul {
 		background-color: transparent;
 		background-image: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .9));
 		border-width: 0;
-		line-height: 1.6;
+		line-height: 1.9;
 		border-radius: 0px 0px 8px 8px;
 	}
 	nav ul li {
@@ -622,7 +634,7 @@ nav ul>li>a:hover+ul {
 		-webkit-transition: transform 1s;
 		-o-transition: transform 1s;
 		transition: transform 1s;
-		opacity: .6;
+		opacity: .75;
 	}
 	.menu:hover {
 		background-position: 50% 100%;
@@ -671,7 +683,7 @@ nav ul>li>a:hover+ul {
 	}
 	#menu-toggle:checked+nav ul li {
 		height: 2em;
-		font-size: calc(16px + (32 - 16) * (100vw - 320px) / (768 - 320));
+		font-size: calc(18px + (28 - 18) * (100vw - 320px) / (768 - 320));
 	}
 }
 
@@ -681,9 +693,7 @@ nav ul>li>a:hover+ul {
         font-size: calc(10px + (42 - 10) * (100vw - 320px) / (768 - 320));
     }
     
-	h1 em {
-		text-shadow: 1px 1px 1px rgba(255, 255, 255, .9);
-	}
+	
 	h1 em:hover {
 		text-shadow: 1px 1px 1px rgba(255, 0, 255, .8);
 	}
@@ -727,18 +737,33 @@ nav ul>li>a:hover+ul {
 		text-shadow: 1px 1px red;
 	}
 }
+
+
 @media only screen and (max-width: 414px) {
 	h1 {
 		background: rgba(0, 0, 0, .75);
-		margin: 30% 0 7em;
-		padding: 0 1rem;
+		padding: 0 0 0 1rem;
 		top: 7em;
+	}
+    h1 a {
+    padding: 5px 0 0;
+    display: block;
+}
+    
+    h1 em {
+		text-shadow: 1px 1px 1px rgba(0, 255, 255, .9);
 	}
 	main>article {
 		padding: 1em;
 		border-width: 0;
 		font-size: 1.2em;
 	}
+    
+    p {
+        text-align: left;
+    }
+    
+    
 	
 }
 

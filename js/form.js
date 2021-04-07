@@ -183,4 +183,6 @@
 	}, window).execute();
     
 }());
+
+
 //create div=response, aside, img, p list, h3, span, [SECTION [div table] <a>img] <div class="esquire">
