@@ -202,15 +202,17 @@
 		splice = ptL(invokeMethod, callbacks, 'splice', 0, 1),
 		unshift = ptL(splice, clear),
 		manageCallbacks = [unshift, splice],
-		manageQuery = [_.negate(contains), always(true)],
+		manageQuery = [/*_.negate(contains), */always(true)],
         doReset = ptL(utils.doWhen, ptL(utils.isDesktop, threshold), resetLists),
         forceReset = ptL(utils.doWhen, true, resetLists),
 		negator = function() {
+            console.log('negat')
 			/* for mobile toggle regardless, for desktop conditional on current status
-			only add/toggle when csstabs !contain class
+			only add/toggle when csstabs !contain class (recipe/method/serve)
 			mobile env empties callbacks
 			*/
 			if (!getEnvironment()) {
+                console.log('negatE')
 				clear();
 				pass = Number(!pass);
 				manageCallbacks[pass]();
@@ -278,10 +280,10 @@
 		addKlasWhen = doComp(deferEach, thrice(utils.lazyVal)('concat')(callbacks), doComp(deferTabs, identity)),
 		//we need to obtain a function on the fly not capture it in a closure, manageQuery flips between two predicates for desktop/mobile and we obtain the correct one
 		deferContains = ptL(partial, twicedefer(getter)(0)(manageQuery)),
-		recipe = utils.COR(matchReg(/^R/i), ptL(utils.invokeWhen, deferContains, addKlasWhen)),
-		method = utils.COR(matchReg(/^M/i), ptL(utils.invokeWhen, deferContains, addKlasWhen)),
-		serve = utils.COR(matchReg(/^S/i), ptL(utils.invokeWhen, deferContains, addKlasWhen)),
-		isHead = ptL(utils.getBest, node_from_target, [doComp(recipe.handle.bind(recipe), toLower, drill([mytarget, 'innerHTML'])), cor.handle]),
+		$recipe = utils.COR(matchReg(/^R/i), ptL(utils.invokeWhen, deferContains, addKlasWhen)),
+		$method = utils.COR(matchReg(/^M/i), ptL(utils.invokeWhen, deferContains, addKlasWhen)),
+		$serve = utils.COR(matchReg(/^S/i), ptL(utils.invokeWhen, deferContains, addKlasWhen)),
+		isHead = ptL(utils.getBest, node_from_target, [doComp($recipe.handle.bind($recipe), toLower, drill([mytarget, 'innerHTML'])), cor.handle]),
 		cb = _.wrap(doComp(invoke, isHead), function(f, e) {
             var el = getCssTabs(),
                 hi = getHeight(el),
@@ -337,8 +339,8 @@
     
 	eventing('click', event_actions.slice(0, 1), doAltRecipe([ptL(execute, lookup[page_id]), undo]), doComp(ptL(utils.byIndex, 0), ptL(utils.getByTag, 'h2', document))).execute();
     
-	recipe.setSuccessor(method);
-	method.setSuccessor(serve);
+	$recipe.setSuccessor($method);
+	$method.setSuccessor($serve);
 	_.each(utils.getByTag('a', $('nav')), ptL(utils.invokeWhen, utils.getNext, doComp(utils.removeNodeOnComplete, utils.getNext)));
 	callbacks.unshift(clear);
 	negator();
