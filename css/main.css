@@ -711,52 +711,52 @@ nav ul>li>a:hover+ul {
         letter-spacing: -1px;
 	}
 	.c1 h1:after {
-		content: " ::: Dry Martini";
+		content: " :: Dry Martini";
 		color: rgb(222, 222, 200);
 		text-shadow: 1px 1px purple;
 	}
 	.c2 h1:after {
-		content: " ::: Sidecar";
+		content: " :: Sidecar";
 		color: gold;
 		text-shadow: 1px 1px red;
 	}
 	.c3 h1:after {
-		content: " ::: Margarita";
+		content: " :: Margarita";
 		color: rgb(222, 233, 160);
 		text-shadow: 1px 1px gray;
 	}
 	.c4 h1:after {
-		content: " ::: Mint Julep";
+		content: " :: Mint Julep";
 		color: rgb(160, 100, 30);
 		text-shadow: 1px 1px seagreen;
 	}
 	.c5 h1:after {
-		content: " ::: Moscow Mule";
+		content: " :: Moscow Mule";
 		color: rgb(168, 126, 84);
 		text-shadow: 1px 1px maroon;
 	}
 	.c6 h1:after {
-		content: " ::: Mai Tai";
+		content: " :: Mai Tai";
 		color: orange;
 		text-shadow: 1px 1px brown;
 	}
 	.c7 h1:after {
-		content: " ::: Manhattan";
+		content: " :: Manhattan";
 		color: darkred;
 		text-shadow: 1px 1px red;
 	}
     .c8 h1:after {
-		content: " ::: Daiquiri";
+		content: " :: Daiquiri";
 		color: lightcyan;
 		text-shadow: 1px 1px darkgreen;
 	}
     .c9 h1:after {
-		content: " ::: Cosmopolitan";
+		content: " :: Cosmopolitan";
 		color: mistyrose;
 		text-shadow: 1px 1px maroon;
 	}
     .c10 h1:after {
-		content: " ::: Floridita";
+		content: " :: Floridita";
 		color: coral;
 		text-shadow: 1px 1px darkred;
 	}

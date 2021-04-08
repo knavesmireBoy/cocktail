@@ -51,7 +51,15 @@
 #tab1 {
 	margin: 0 0 2em;
 }
-
+#tab1, #tab2 {
+	margin-left: -100%;
+}
+#tab2 h3 {
+	left: 34%;
+}
+#tab3 h3 {
+	left: 68%;
+}
 .method #tab1 ul, .serving #tab1 ul, #tab2 div, #tab3 section,  #tab3 div,  #tab2 ul {
 	opacity: 0;
 }
@@ -106,28 +114,18 @@
     .csstabs {
         min-width: 450px;
     }
-    #tab1, #tab2 {
-	margin-left: -100%;
 }
-#tab2 h3 {
-	left: 34%;
-}
-#tab3 h3 {
-	left: 68%;
-}
-}
-@media only screen and (max-width: 667px) {
+@media only screen and (max-width: 768px) {
     
     .csstabs {
         display: flex;
         flex-direction: column-reverse;
         margin: 2em 0 0;
-        /*fix:*/
-        width: 100%;
+        width: 100%;/*fix*/
     }
 	.csstabs>*, .csstabs p{
+		float: none;
         text-align: center;
-        margin: 0;
 	}
 	.tabcontent {
 		position: absolute;
@@ -169,6 +167,5 @@
     
     .tabcontent {
         border: dotted 1px white;
-    }
-   
+    }   
 }
