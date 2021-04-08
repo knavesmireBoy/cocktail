@@ -53,7 +53,7 @@ h1 {
 	font-size: 4.5vmax;
 	margin: 10rem 0 1rem 0;
 	padding: 0 0 0 7em;
-	text-shadow: 2px 2px 2px purple;
+	text-shadow: 1px 1px 1px purple;
 	position: relative;
     min-height: 0vw;
 }
@@ -94,7 +94,7 @@ div>img {
 
 h1 em {
 	color: rgba(222, 0, 222, .8);
-	text-shadow: 2px 2px 2px rgba(0, 255, 255, .9);
+	text-shadow: 1px 1px 1px rgba(0, 255, 255, .9);
     position: relative;
     right: .5vmax;
 }
@@ -236,14 +236,7 @@ nav>ul>li a {
 .hide {
 	display: none;
 }
-.menu {
-	position: absolute;
-	top: 1vw;
-	top: 2vw;
-	right: calc(36px + (60 - 36) * (100vw - 320px) / (768 - 320));
-	height: calc(48px + (72 - 48) * (100vw - 320px) / (768 - 320));
-	width: calc(48px + (72 - 48) * (100vw - 320px) / (768 - 320));
-}
+
 .quote-wrapper {
 	position: relative;
 	text-align: center;
@@ -301,6 +294,9 @@ body.c1, body.c2, body.c3, body.c4, body.c5, body.c6 {
 	background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
 	background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
 }
+.content h2:hover {
+    filter: blur(1px);
+}
 .c1 h2 {
 	background-image: url('../img/dry_martini.jpg');
 	background-position: 50% 30%;
@@ -351,6 +347,9 @@ body.c1, body.c2, body.c3, body.c4, body.c5, body.c6 {
 	background-position: 90% 33%;
 	background-size: 170%;
 }
+.showtime .content h2 {
+    background-size: 500%;
+}
 .inlinesvg svg {
 	font: 1.5rem 'BlackArial', Arial, sans-serif;
 	fill: rgba(255, 0, 255, .8);
@@ -384,7 +383,7 @@ a:hover {
 }
 h1 em:hover {
 	color: rgba(0, 255, 255, .5);
-	text-shadow: 2px 2px 2px rgba(255, 0, 255, .8);
+	text-shadow: 1px 1px 1px rgba(255, 0, 255, .8);
 }
 p:nth-of-type(odd) strong {
 	color: white;
@@ -567,7 +566,7 @@ nav ul>li>a:hover+ul {
 		border-width: 1px 0;
 		top: 7em;
         font-size: calc(30px + (50 - 30) * (100vw - 320px) / (768 - 320));
-		text-shadow: 1px 1px 2px black;
+		text-shadow: 1px 1px 1px black;
 	}
  
 	blockquote {
@@ -623,6 +622,15 @@ nav ul>li>a:hover+ul {
 		background-color: transparent;
 		color: rgba(239, 251, 116, 0.88);
 	}
+    .menu {
+	position: absolute;
+	top: 1vw;
+	top: 2vw;
+	right: calc(36px + (56 - 36) * (100vw - 320px) / (768 - 320));
+	height: calc(48px + (72 - 48) * (100vw - 320px) / (768 - 320));
+	width: calc(48px + (72 - 48) * (100vw - 320px) / (768 - 320));
+    min-height: 0vw;
+}
 	.menu {
 		background: 50% 0% url("../img/polo_ball_sprite.png") no-repeat;
 		-o-background-size: 105%;
@@ -699,43 +707,60 @@ nav ul>li>a:hover+ul {
 	}
 	h1:after {
 		text-transform: uppercase;
-		font-size: .8em;
+		font-size: 1em;
+        letter-spacing: -1px;
 	}
 	.c1 h1:after {
-		content: " ~ Dry Martini";
+		content: " ::: Dry Martini";
 		color: rgb(222, 222, 200);
 		text-shadow: 1px 1px purple;
 	}
 	.c2 h1:after {
-		content: " ~ Sidecar";
+		content: " ::: Sidecar";
 		color: gold;
 		text-shadow: 1px 1px red;
 	}
 	.c3 h1:after {
-		content: " ~ Margarita";
+		content: " ::: Margarita";
 		color: rgb(222, 233, 160);
 		text-shadow: 1px 1px gray;
 	}
 	.c4 h1:after {
-		content: " ~ Mint Julep";
+		content: " ::: Mint Julep";
 		color: rgb(160, 100, 30);
 		text-shadow: 1px 1px seagreen;
 	}
 	.c5 h1:after {
-		content: " ~ Moscow Mule";
+		content: " ::: Moscow Mule";
 		color: rgb(168, 126, 84);
 		text-shadow: 1px 1px maroon;
 	}
 	.c6 h1:after {
-		content: " ~ Mai Tai";
+		content: " ::: Mai Tai";
 		color: orange;
 		text-shadow: 1px 1px brown;
 	}
 	.c7 h1:after {
-		content: " ~ Manhattan";
+		content: " ::: Manhattan";
 		color: darkred;
 		text-shadow: 1px 1px red;
 	}
+    .c8 h1:after {
+		content: " ::: Daiquiri";
+		color: lightcyan;
+		text-shadow: 1px 1px darkgreen;
+	}
+    .c9 h1:after {
+		content: " ::: Cosmopolitan";
+		color: mistyrose;
+		text-shadow: 1px 1px maroon;
+	}
+    .c10 h1:after {
+		content: " ::: Floridita";
+		color: coral;
+		text-shadow: 1px 1px darkred;
+	}
+    
 }
 
 
