@@ -26,7 +26,7 @@
 body {
 	color: hsl(65, 80%, 70%);
 	font-family: 'Bernhard Modern Std', cochin, 'latin_modern_roman10_regular', Georgia, serif;
-    font-size: 1em;
+	font-size: 1rem;
 	line-height: 1.2;
 	background-color: black;
 	box-sizing: border-box;
@@ -36,7 +36,6 @@ main {
 	overflow: hidden;
 	box-sizing: border-box;
 	border-bottom: 1px solid white;
-    
 }
 a {
 	color: rgba(204, 0, 204, 1);
@@ -46,16 +45,17 @@ ul {
 	list-style: none;
 }
 /* https://css-tricks.com/snippets/css/fluid-typography/ */
+
 header {
-    font-size: 1vw;
+	font-size: 1vw;
 }
 h1 {
 	font-size: 4.5vmax;
 	margin: 10rem 0 1rem 0;
 	padding: 0 0 0 7em;
-	text-shadow: 1px 1px 1px purple;
+	text-shadow: 2px 2px 2px purple;
 	position: relative;
-    min-height: 0vw;
+	min-height: 0vw;
 }
 p {
 	margin-bottom: 1em;
@@ -63,7 +63,9 @@ p {
 }
 em {
 	font-family: 'BernhardModernBd', cochin, 'latin_modern_roman10BdIt', serif;
-    font-size: 1.1em;
+}
+.content em {
+	font-size: 115%;
 }
 nav {
 	font-size: 1.2rem;
@@ -71,7 +73,6 @@ nav {
 i, cite, b {
 	color: silver;
 }
-
 header blockquote {
 	color: rgba(204, 0, 204, 1);
 	border: 1px dotted;
@@ -91,14 +92,12 @@ div>img {
 	width: 100%;
 	height: auto;
 }
-
 h1 em {
 	color: rgba(222, 0, 222, .8);
-	text-shadow: 1px 1px 1px rgba(0, 255, 255, .9);
-    position: relative;
-    right: .5vmax;
+	text-shadow: 1px 1px 3px rgba(0, 255, 255, .9);
+	position: relative;
+	right: .5vmax;
 }
-
 header aside {
 	overflow: hidden;
 	background-image: url("../img/fc.jpg");
@@ -139,7 +138,7 @@ blockquote em span {
 	color: rgb(255, 251, 116);
 }
 nav {
-   font-size: 1.3rem; 
+	font-size: 1.3rem;
 }
 nav ul ul {
 	font-size: 1rem;
@@ -191,7 +190,7 @@ main aside a {
 	display: block;
 	position: relative;
 	z-index: 1;
-	text-shadow: 2px 2px 2px rgb(50, 0, 0);
+	text-shadow: 2px 2px 2px rgb(99, 0, 0);
 	top: 2em;
 	font-weight: bold;
 }
@@ -220,8 +219,9 @@ nav ul li ul {
 	background-image: linear-gradient(black, rgba(204, 0, 204, 0.5));
 }
 nav ul>li>a {
-	text-shadow: 3px 3px 2px #000;
+	text-shadow: 2px 2px 2px #000;
 	font-weight: bold;
+    font-size: 1.2em;
 }
 nav>ul>li a {
 	display: block;
@@ -229,14 +229,12 @@ nav>ul>li a {
 	color: rgba(255, 255, 255, .8);
 	white-space: nowrap;
 }
-
 .content, header blockquote {
-    font-family: Cochin, 'latin_modern_roman10_regular', Georgia, serif;
+	font-family: Cochin, 'latin_modern_roman10_regular', Georgia, serif;
 }
 .hide {
 	display: none;
 }
-
 .quote-wrapper {
 	position: relative;
 	text-align: center;
@@ -295,7 +293,7 @@ body.c1, body.c2, body.c3, body.c4, body.c5, body.c6 {
 	background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
 }
 .content h2:hover {
-    filter: blur(1px);
+	filter: blur(1px);
 }
 .c1 h2 {
 	background-image: url('../img/dry_martini.jpg');
@@ -348,7 +346,7 @@ body.c1, body.c2, body.c3, body.c4, body.c5, body.c6 {
 	background-size: 170%;
 }
 .showtime .content h2 {
-    background-size: 500%;
+	background-size: 500%;
 }
 .inlinesvg svg {
 	font: 1.5rem 'BlackArial', Arial, sans-serif;
@@ -383,7 +381,7 @@ a:hover {
 }
 h1 em:hover {
 	color: rgba(0, 255, 255, .5);
-	text-shadow: 1px 1px 1px rgba(255, 0, 255, .8);
+	text-shadow: 1px 1px 3px rgba(255, 0, 255, .8);
 }
 p:nth-of-type(odd) strong {
 	color: white;
@@ -526,11 +524,9 @@ nav ul>li>a:hover+ul {
 	}
 }
 @media only screen and (max-width: 860px) {
-
 	.variant::before, .variant p::before {
 		shape-margin: 1vw;
 	}
-
 	.sidebar>div {
 		height: 100%;
 	}
@@ -557,7 +553,7 @@ nav ul>li>a:hover+ul {
 	main {
 		position: static;
 		display: block;
-	}    
+	}
 	h1 {
 		background: rgba(0, 0, 0, .75);
 		margin: 40% 0 7em;
@@ -565,10 +561,9 @@ nav ul>li>a:hover+ul {
 		border: dotted 1px white;
 		border-width: 1px 0;
 		top: 7em;
-        font-size: calc(30px + (50 - 30) * (100vw - 320px) / (768 - 320));
-		text-shadow: 1px 1px 1px black;
+		font-size: calc(30px + (50 - 30) * (100vw - 320px) / (768 - 320));
+		text-shadow: 1px 1px 1px purple;
 	}
- 
 	blockquote {
 		display: none;
 	}
@@ -622,15 +617,15 @@ nav ul>li>a:hover+ul {
 		background-color: transparent;
 		color: rgba(239, 251, 116, 0.88);
 	}
-    .menu {
-	position: absolute;
-	top: 1vw;
-	top: 2vw;
-	right: calc(36px + (56 - 36) * (100vw - 320px) / (768 - 320));
-	height: calc(48px + (72 - 48) * (100vw - 320px) / (768 - 320));
-	width: calc(48px + (72 - 48) * (100vw - 320px) / (768 - 320));
-    min-height: 0vw;
-}
+	.menu {
+		position: absolute;
+		top: 1vw;
+		top: 2vw;
+		right: calc(36px + (56 - 36) * (100vw - 320px) / (768 - 320));
+		height: calc(48px + (72 - 48) * (100vw - 320px) / (768 - 320));
+		width: calc(48px + (72 - 48) * (100vw - 320px) / (768 - 320));
+		min-height: 0vw;
+	}
 	.menu {
 		background: 50% 0% url("../img/polo_ball_sprite.png") no-repeat;
 		-o-background-size: 105%;
@@ -694,21 +689,17 @@ nav ul>li>a:hover+ul {
 		font-size: calc(18px + (28 - 18) * (100vw - 320px) / (768 - 320));
 	}
 }
-
 @media only screen and (max-width: 768px) and (min-width: 415px) {
-  
-    h1 {
-        font-size: calc(10px + (42 - 10) * (100vw - 320px) / (768 - 320));
-    }
-    
-	
+	h1 {
+		font-size: calc(10px + (42 - 10) * (100vw - 320px) / (768 - 320));
+	}
 	h1 em:hover {
-		text-shadow: 1px 1px 1px rgba(255, 0, 255, .8);
+		text-shadow: 1px 1px 3px rgba(255, 0, 255, .8);
 	}
 	h1:after {
 		text-transform: uppercase;
 		font-size: 1em;
-        letter-spacing: -1px;
+		letter-spacing: -1px;
 	}
 	.c1 h1:after {
 		content: " :: Dry Martini";
@@ -745,37 +736,33 @@ nav ul>li>a:hover+ul {
 		color: darkred;
 		text-shadow: 1px 1px red;
 	}
-    .c8 h1:after {
+	.c8 h1:after {
 		content: " :: Daiquiri";
 		color: lightcyan;
 		text-shadow: 1px 1px darkgreen;
 	}
-    .c9 h1:after {
+	.c9 h1:after {
 		content: " :: Cosmopolitan";
 		color: mistyrose;
 		text-shadow: 1px 1px maroon;
 	}
-    .c10 h1:after {
+	.c10 h1:after {
 		content: " :: Floridita";
 		color: coral;
 		text-shadow: 1px 1px darkred;
 	}
-    
 }
-
-
 @media only screen and (max-width: 414px) {
 	h1 {
 		background: rgba(0, 0, 0, .75);
 		padding: 0 0 0 1rem;
 		top: 7em;
 	}
-    h1 a {
-    padding: 5px 0 0;
-    display: block;
-}
-    
-    h1 em {
+	h1 a {
+		padding: 5px 0 0;
+		display: block;
+	}
+	h1 em {
 		text-shadow: 1px 1px 1px rgba(0, 255, 255, .9);
 	}
 	main>article {
@@ -783,15 +770,15 @@ nav ul>li>a:hover+ul {
 		border-width: 0;
 		font-size: 1.2em;
 	}
-    
-    p {
-        text-align: left;
-    }
-    
-    
-	
+	p {
+		text-align: left;
+	}
 }
-
+@media only screen and (orientation: landscape)  {
+    .deviceorientation .content p {
+        font-size: 125%;
+    }
+}
 @media print {
 	body {
 		background: white;
