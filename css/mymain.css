@@ -5,6 +5,8 @@
 * Browsers: last 4 version
 */
 
+
+
 main, nav>ul, main aside {
 	display: -webkit-box;
 	display: -ms-flexbox;
@@ -42,6 +44,29 @@ nav ul>li {
 	        flex: 1 1 auto;
 }
 
+.quote-wrapper {
+	font-size: calc(16px + (18 - 16) * (100vw - 860px) / (1280 - 860));
+	line-height: calc(19px + (24 - 19) * (100vw - 860px) / (1280 - 860));
+}
+
+
+.c1 .quote-wrapper, .c4 .quote-wrapper, .c8 .quote-wrapper, .c9 .quote-wrapper {
+	font-size: calc(18px + (24 - 18) * (100vw - 860px) / (1280 - 860));
+	line-height: calc(22px + (28 - 22) * (100vw - 860px) / (1280 - 860));
+}
+.c7 .quote-wrapper {
+	line-height: calc(18px + (22 - 18) * (100vw - 860px) / (1280 - 860));
+}
+.c8 .quote-wrapper {
+	line-height: calc(32px + (36 - 32) * (100vw - 860px) / (1280 - 860));
+}
+.c9 .quote-wrapper {
+	line-height: calc(23px + (24 - 23) * (100vw - 860px) / (1280 - 860));
+}
+.c10 .quote-wrapper {
+	line-height: calc(20px + (26 - 20) * (100vw - 860px) / (1280 - 860));
+}
+
 @media only screen and (max-width: 1280px) {
 main aside {
 	-webkit-box-flex: 1;
@@ -62,13 +87,42 @@ main>article {
                 flex: 7 1 0;
     }
 }
-@media only screen and (max-width: 768px) {
 
-	nav ul {
+
+@media only screen and (max-width: 768px) {
+    
+    nav ul {
 		-webkit-box-orient: vertical;
 		-webkit-box-direction: normal;
 		    -ms-flex-direction: column;
 		        flex-direction: column;
 
+	}
+
+	h1 {
+		font-size: calc(30px + (50 - 30) * (100vw - 320px) / (768 - 320));
+	}
+    
+    	nav ul {
+		top: calc(60px + (100 - 60) * (100vw - 320px) / (768 - 320));
+
+	}
+    
+    	.menu {
+		top: 1vw;
+		top: 2vw;
+		right: calc(36px + (56 - 36) * (100vw - 320px) / (768 - 320));
+		height: calc(48px + (72 - 48) * (100vw - 320px) / (768 - 320));
+		width: calc(48px + (72 - 48) * (100vw - 320px) / (768 - 320));
+		min-height: 0vw;
+	}
+    #menu-toggle:checked+nav ul li {
+		height: 2em;
+		font-size: calc(18px + (28 - 18) * (100vw - 320px) / (768 - 320));
+	}
+}
+@media only screen and (max-width: 768px) and (min-width: 415px) {
+	h1 {
+		font-size: calc(10px + (42 - 10) * (100vw - 320px) / (768 - 320));
 	}
 }

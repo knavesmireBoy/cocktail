@@ -25,7 +25,7 @@
 }
 body {
 	color: hsl(65, 80%, 70%);
-	font-family: 'Bernhard Modern Std', cochin, 'latin_modern_roman10_regular', Georgia, serif;
+	font-family: 'Bernhard Modern Std', Cochin, Georgia, serif;
 	font-size: 1rem;
 	line-height: 1.2;
 	background-color: black;
@@ -65,16 +65,12 @@ p {
 em{
 	font-family: 'BernhardModernBd', cochin, 'latin_modern_roman10BdIt', serif;
 }
-.content a {
+.content a, .content em {
     font-family: 'Bernhard Modern Std', cochin, 'latin_modern_roman10BdIt', serif;
+    font-size: 115%;
+    font-style: normal;
 }
 
-.content em, .content a {
-	font-size: 115%;
-}
-.content em {
-	font-style: italic;
-}
 nav {
 	font-size: 1.2rem;
 }
@@ -260,8 +256,6 @@ nav>ul>li a {
 	width: 180px;
 	margin: 2em auto;
 	font-family: 'Lora', Georgia, serif;
-	font-size: calc(16px + (18 - 16) * (100vw - 860px) / (1280 - 860));
-	line-height: calc(19px + (24 - 19) * (100vw - 860px) / (1280 - 860));
 }
 .variant {
 	width: 100%;
@@ -320,6 +314,9 @@ body.c1, body.c2, body.c3, body.c4, body.c5, body.c6 {
 .content h2:hover {
 	filter: blur(1px);
 	filter: contrast(150%);
+}
+.content h2 {
+    transition: background-size 4s;
 }
 .c1 h2 {
 	background-image: url('../img/dry_martini.jpg');
@@ -409,7 +406,8 @@ body.c1, body.c2, body.c3, body.c4, body.c5, body.c6 {
 	background-position: 85% 25%;
 }
 .inlinesvg svg {
-	font: 1.5rem 'BlackArial', Arial, sans-serif;
+	font-size: 1.5rem;
+    font-family: 'BlackArial', Arial, sans-serif;
 	fill: rgba(255, 0, 255, .8);
 	width: 100%;
 	padding: 5% 10%;
@@ -525,22 +523,7 @@ nav ul>li>a:hover+ul {
 	position: relative;
 	left: 0;
 }
-.c1 .quote-wrapper, .c4 .quote-wrapper, .c8 .quote-wrapper, .c9 .quote-wrapper {
-	font-size: calc(18px + (24 - 18) * (100vw - 860px) / (1280 - 860));
-	line-height: calc(22px + (28 - 22) * (100vw - 860px) / (1280 - 860));
-}
-.c7 .quote-wrapper {
-	line-height: calc(18px + (22 - 18) * (100vw - 860px) / (1280 - 860));
-}
-.c8 .quote-wrapper {
-	line-height: calc(32px + (36 - 32) * (100vw - 860px) / (1280 - 860));
-}
-.c9 .quote-wrapper {
-	line-height: calc(23px + (24 - 23) * (100vw - 860px) / (1280 - 860));
-}
-.c10 .quote-wrapper {
-	line-height: calc(20px + (26 - 20) * (100vw - 860px) / (1280 - 860));
-}
+
 .showtime aside div:last-child {
 	transform: rotate(360deg);
 }
@@ -636,7 +619,6 @@ nav ul>li>a:hover+ul {
 		border: dotted 1px white;
 		border-width: 1px 0;
 		top: 7em;
-		font-size: calc(30px + (50 - 30) * (100vw - 320px) / (768 - 320));
 		text-shadow: 1px 1px 1px purple;
 	}
 	blockquote {
@@ -659,7 +641,6 @@ nav ul>li>a:hover+ul {
 	}
 	nav ul {
 		position: absolute;
-		top: calc(60px + (100 - 60) * (100vw - 320px) / (768 - 320));
 		right: 1vw;
 		padding: 0 .5em;
 		width: auto;
@@ -694,12 +675,6 @@ nav ul>li>a:hover+ul {
 	}
 	.menu {
 		position: absolute;
-		top: 1vw;
-		top: 2vw;
-		right: calc(36px + (56 - 36) * (100vw - 320px) / (768 - 320));
-		height: calc(48px + (72 - 48) * (100vw - 320px) / (768 - 320));
-		width: calc(48px + (72 - 48) * (100vw - 320px) / (768 - 320));
-		min-height: 0vw;
 	}
 	.menu {
 		background: 50% 0% url("../img/polo_ball_sprite.png") no-repeat;
@@ -759,15 +734,9 @@ nav ul>li>a:hover+ul {
 		background-image: url("../img/floridita.jpg");
 		background-position: 80% 40%;
 	}
-	#menu-toggle:checked+nav ul li {
-		height: 2em;
-		font-size: calc(18px + (28 - 18) * (100vw - 320px) / (768 - 320));
-	}
+	
 }
 @media only screen and (max-width: 768px) and (min-width: 415px) {
-	h1 {
-		font-size: calc(10px + (42 - 10) * (100vw - 320px) / (768 - 320));
-	}
 	h1 em:hover {
 		text-shadow: 1px 1px 3px rgba(255, 0, 255, .8);
 	}
