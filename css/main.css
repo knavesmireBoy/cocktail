@@ -26,7 +26,7 @@
 body {
 	color: hsl(65, 80%, 70%);
 	font-family: 'Bernhard Modern Std', Cochin, Georgia, serif;
-	font-size: 1rem;
+	font-size: 1em;
 	line-height: 1.2;
 	background-color: black;
 	box-sizing: border-box;
@@ -46,18 +46,18 @@ ul {
 	list-style: none;
 }
 /* https://css-tricks.com/snippets/css/fluid-typography/ */
-
 header {
-	font-size: 1vw;
+    font-size: 3.5em;
 }
 h1 {
-	font-size: 4.5vmax;
-	margin: 10rem 0 1rem 0;
+    font-size: 1em;
+    margin: 2.8em 0 .3em 0;
+    margin: 10rem 0 1rem 0;
 	padding: 0 0 0 7em;
 	text-shadow: 2px 2px 2px purple;
 	position: relative;
-	min-height: 0vw;
 }
+
 p {
 	margin-bottom: 1em;
 	text-align: justify;
@@ -71,9 +71,6 @@ em{
     font-style: normal;
 }
 
-nav {
-	font-size: 1.2rem;
-}
 #nav li{
     display: table-cell;
 }
@@ -87,10 +84,13 @@ header blockquote {
 	color: rgba(204, 0, 204, 1);
 	border: 1px dotted;
 	width: 15em;
-	padding: 1rem;
+	padding: .7em;
+    padding: 1rem;
+    margin: .7em .7em 0;
 	margin: 1rem 1rem 0;
 	float: right;
-	font-size: 1.25rem;
+    font-size: .4em;
+    font-size: 1.25rem;
 	font-style: italic;
 	text-align: center;
 }
@@ -131,7 +131,7 @@ main aside {
 main>article {
 	box-sizing: border-box;
 	position: relative;
-	padding: 3em 4em 32em 2rem;
+	padding: 3em 4em 32em 2em;
 	border: dotted 1px white;
 	border-width: 0 0 0 1px;
     float: left;
@@ -151,10 +151,11 @@ blockquote em span {
 	color: rgb(255, 251, 116);
 }
 nav {
-	font-size: 1.3rem;
+	font-size: .5em;
+    text-shadow: 2px 2px 2px #000;
+	font-weight: bold;
 }
 nav ul ul {
-	font-size: 1rem;
 }
 header blockquote em {
 	font-size: .85rem;
@@ -233,14 +234,12 @@ nav ul li ul {
 	background-image: linear-gradient(black, rgba(204, 0, 204, 0.5));
 }
 nav ul>li>a {
-	text-shadow: 2px 2px 2px #000;
-	font-weight: bold;
-    font-size: 1.2em;
+
 }
 nav>ul>li a {
 	display: block;
 	padding: .5em 0;
-	color: rgba(255, 255, 255, .8);
+    color: rgba(255, 255, 255, .8);
 	white-space: nowrap;
 }
 .content, header blockquote {
@@ -553,6 +552,9 @@ nav ul>li>a:hover+ul {
 }
 .c1 nav>ul>li:nth-child(1)>a, .c2 nav>ul>li:nth-child(6)>a, .c3 nav>ul>li:nth-child(3)>a, .c4 nav>ul>li:nth-child(5)>a, .c5 nav>ul>li:nth-child(2)>a, .c6 nav>ul>li:nth-child(4)>a {
 	color: white;
+}
+.c1 nav>ul>li:nth-child(1)>a:hover, .c2 nav>ul>li:nth-child(6)>a:hover, .c3 nav>ul>li:nth-child(3)>a:hover, .c4 nav>ul>li:nth-child(5)>a:hover, .c5 nav>ul>li:nth-child(2)>a:hover, .c6 nav>ul>li:nth-child(4)>a:hover {
+    opacity: 1;
 }
 /*restrict drop down to current page OR alter html*/
 

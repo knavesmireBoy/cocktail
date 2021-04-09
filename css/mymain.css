@@ -5,7 +5,18 @@
 * Browsers: last 4 version
 */
 
+header {
+	font-size: 4.5vw;
+}
 
+h1 {
+    font-size: calc(44px + (58 - 44) * (100vw - 768px) / (1280 - 768));
+    min-height: 0vw;
+}
+
+nav {
+    font-size: calc(22px + (28 - 22) * (100vw - 768px) / (1280 - 768));
+}
 
 main, nav>ul, main aside {
 	display: -webkit-box;

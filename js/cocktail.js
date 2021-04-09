@@ -206,13 +206,11 @@
         doReset = ptL(utils.doWhen, ptL(utils.isDesktop, threshold), resetLists),
         forceReset = ptL(utils.doWhen, true, resetLists),
 		negator = function() {
-            console.log('negat')
 			/* for mobile toggle regardless, for desktop conditional on current status
 			only add/toggle when csstabs !contain class (recipe/method/serve)
 			mobile env empties callbacks
 			*/
 			if (!getEnvironment()) {
-                console.log('negatE')
 				clear();
 				pass = Number(!pass);
 				manageCallbacks[pass]();
@@ -244,7 +242,7 @@
 		best = ptL(utils.getBestPred, handleEl, [showTab, hideTab]),
 		concat = doComp(thrice(doMethod)('reverse')(null), ptL(cat, [getLower])),
         /* obtain tab collection, concatenate with corresponding innerHTML set to lowercase, both collections available on invoking
-        zip the two collections [[func, arg], [func, arg]...] invoke func with arg only run below 668px*/
+        zip the two collections [[func, arg], [func, arg]...] invoke func with arg only run below 768px*/
 		scroller = doComp(twice(_.each)(invokeBridge), ptL(invokeArray, _.zip), twice(_.map)(getResult), concat, twicedefer(_.map)(best), toggleElements),
         restore_user_toggle = function(){
             _.each(hidden, function(el){
