@@ -238,7 +238,7 @@ li.unit label {
 h1 em:hover {
 	color: #0FF;
 }
-footer a:hover {
+footer p:last-child a:first-child{
 	color: #FFF;
 	/* margin: 0 0 -10.1em;*/
 }

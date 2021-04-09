@@ -41,6 +41,7 @@ main {
 a {
 	color: rgba(204, 0, 204, 1);
 }
+
 ul {
 	list-style: none;
 }
@@ -61,13 +62,18 @@ p {
 	margin-bottom: 1em;
 	text-align: justify;
 }
-em, .content a {
+em{
 	font-family: 'BernhardModernBd', cochin, 'latin_modern_roman10BdIt', serif;
+}
+.content a {
+    font-family: 'Bernhard Modern Std', cochin, 'latin_modern_roman10BdIt', serif;
 }
 
 .content em, .content a {
 	font-size: 115%;
-    font-style: italic;
+}
+.content em {
+	font-style: italic;
 }
 nav {
 	font-size: 1.2rem;
@@ -160,7 +166,7 @@ header blockquote em {
 	color: snow;
     display: block;
 }
-p em, main>article p strong {
+p em, q, main>article p strong {
 	color: white;
 }
 header blockquote:before {
@@ -272,8 +278,9 @@ nav>ul>li a {
 	font-style: italic;
 	height: 100%;
 }
-.content a {
-    color: white;
+
+.content a[href ^= "../"]{
+	color: white;
 }
 .content a:hover {
     text-decoration: underline;
@@ -390,6 +397,9 @@ h2:hover {
 a:hover {
 	color: white;
 }
+p a:hover {
+   color: #6200ff;
+}
 .show main>article>* {
 	position: absolute;
 	left: -999em;
@@ -401,8 +411,9 @@ h1 em:hover {
 	color: rgba(0, 255, 255, .5);
 	text-shadow: 1px 1px 3px rgba(255, 0, 255, .8);
 }
-p:nth-of-type(odd) strong {
+p:nth-of-type(odd) strong, q {
 	color: white;
+    font-weight: bold;
 }
 .c1 aside img {
 	right: 1.7em;
@@ -433,14 +444,19 @@ main>article>p:first-child::first-letter {
 	border: solid 1px magenta;
 }
 main>article p:nth-of-type(odd) {
-	color: whitesmoke;
+	color: ghostwhite;
 }
-p:nth-of-type(odd) em, p:nth-of-type(odd) strong {
+p:nth-of-type(odd) em, p:nth-of-type(odd) strong, p:nth-of-type(odd) q{
 	color: hsl(65, 70%, 50%);
 }
-p:nth-of-type(odd) a {
+
+p:nth-of-type(odd) a[href ^= "../"]{
 	color: hsl(65, 100%, 70%);
 }
+p a[href ^= "../"]:hover {
+    color: magenta;
+}
+
 p:nth-of-type(odd) a:hover {
 	text-decoration: underline;
 }

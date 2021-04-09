@@ -92,6 +92,14 @@
 footer, footer a {
 	color: rgba(204, 0, 204, 1);
 }
+
+footer p:last-child a{
+	color: rgba(204, 0, 204, 1);
+}
+footer p:last-child a:hover{
+	color: #FFF;
+    text-decoration: none;
+}
 footer {
 	clear: both;
 	padding: 1em 1em 0 2em;
