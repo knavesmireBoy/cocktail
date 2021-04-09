@@ -319,6 +319,7 @@ body.c1, body.c2, body.c3, body.c4, body.c5, body.c6 {
 }
 .content h2:hover {
 	filter: blur(1px);
+	filter: contrast(150%);
 }
 .c1 h2 {
 	background-image: url('../img/dry_martini.jpg');
@@ -347,7 +348,7 @@ body.c1, body.c2, body.c3, body.c4, body.c5, body.c6 {
 }
 .c6 h2 {
 	background-image: url('../img/mai_tai.jpg');
-	background-position: 90% 55%;
+	background-position: 80% 55%;
 	background-size: 170%;
 }
 .c7 h2 {
@@ -372,6 +373,40 @@ body.c1, body.c2, body.c3, body.c4, body.c5, body.c6 {
 }
 .showtime .content h2 {
 	background-size: 500%;
+}
+
+.c3 .showtime .content h2 {
+    background-position: center;
+}
+
+.c2 .showtime .content h2 {
+    background-position: 80% 10%;
+}
+
+.c4 .showtime .content h2 {
+    background-position: 55% 33%;
+}
+
+.c5 .showtime .content h2 {
+    background-position: 60% 50%;
+}
+.c6 .showtime .content h2 {
+    background-position: 85% 50%;
+}
+
+.c7 h2 {
+	background-position: 80% 22%;
+}
+
+.c8 h2 {
+	background-position: 80% 26%;
+}
+.c9 h2 {
+	background-position: 75% 35%;
+}
+
+.c10 h2 {
+	background-position: 85% 25%;
 }
 .inlinesvg svg {
 	font: 1.5rem 'BlackArial', Arial, sans-serif;
