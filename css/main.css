@@ -37,9 +37,9 @@ main {
 	box-sizing: border-box;
 	border-bottom: 1px solid white;
 }
+
 a {
 	color: rgba(204, 0, 204, 1);
-	text-decoration: none
 }
 ul {
 	list-style: none;
@@ -61,16 +61,24 @@ p {
 	margin-bottom: 1em;
 	text-align: justify;
 }
-em {
+em, .content a {
 	font-family: 'BernhardModernBd', cochin, 'latin_modern_roman10BdIt', serif;
 }
-.content em {
+
+.content em, .content a {
 	font-size: 115%;
+    font-style: italic;
 }
 nav {
 	font-size: 1.2rem;
 }
-i, cite, b {
+#nav li{
+    display: table-cell;
+}
+#nav {
+    display: table;
+}
+i, cite, b{
 	color: silver;
 }
 header blockquote {
@@ -78,7 +86,7 @@ header blockquote {
 	border: 1px dotted;
 	width: 15em;
 	padding: 1rem;
-	margin: 1rem;
+	margin: 1rem 1rem 0;
 	float: right;
 	font-size: 1.25rem;
 	font-style: italic;
@@ -106,7 +114,6 @@ header aside {
 }
 nav>ul {
 	border-top: 1px solid white;
-	padding-left: 2%;
 	position: relative;
 	background-color: rgb(204, 0, 204);
 	background-image: linear-gradient(rgb(204, 0, 204), black);
@@ -116,6 +123,8 @@ main aside {
 	min-width: 200px;
 	box-sizing: border-box;
 	position: relative;
+    float: left;
+    width: 30%;
 }
 main>article {
 	box-sizing: border-box;
@@ -123,6 +132,8 @@ main>article {
 	padding: 3em 4em 32em 2rem;
 	border: dotted 1px white;
 	border-width: 0 0 0 1px;
+    float: left;
+    width: 70%;
 }
 main aside, main>article {
 	margin-bottom: -30em;
@@ -147,6 +158,7 @@ header blockquote em {
 	font-size: .85rem;
 	font-style: normal;
 	color: snow;
+    display: block;
 }
 p em, main>article p strong {
 	color: white;
@@ -225,7 +237,7 @@ nav ul>li>a {
 }
 nav>ul>li a {
 	display: block;
-	padding: .5em 1em;
+	padding: .5em 0;
 	color: rgba(255, 255, 255, .8);
 	white-space: nowrap;
 }
@@ -259,6 +271,12 @@ nav>ul>li a {
 	text-align: center;
 	font-style: italic;
 	height: 100%;
+}
+.content a {
+    color: white;
+}
+.content a:hover {
+    text-decoration: underline;
 }
 .variant b {
 	color: chartreuse;
@@ -418,7 +436,13 @@ main>article p:nth-of-type(odd) {
 	color: whitesmoke;
 }
 p:nth-of-type(odd) em, p:nth-of-type(odd) strong {
-	color: hsl(65, 80%, 70%);
+	color: hsl(65, 70%, 50%);
+}
+p:nth-of-type(odd) a {
+	color: hsl(65, 100%, 70%);
+}
+p:nth-of-type(odd) a:hover {
+	text-decoration: underline;
 }
 .c2 main aside a {
 	top: 5em;
@@ -774,8 +798,8 @@ nav ul>li>a:hover+ul {
 		text-align: left;
 	}
 }
-@media only screen and (orientation: landscape)  {
-    .deviceorientation .content p {
+@media only screen and (orientation: landscape) and (pointer: coarse) {
+    .content p {
         font-size: 125%;
     }
 }
