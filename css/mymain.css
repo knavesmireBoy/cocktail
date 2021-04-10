@@ -24,6 +24,7 @@ body {
 	background-image: radial-gradient(white, rgba(255, 255, 255, .2) 2px, transparent 40px), radial-gradient(white, rgba(255, 255, 255, .15) 1px, transparent 30px), radial-gradient(white, rgba(255, 255, 255, .1) 2px, transparent 40px), radial-gradient(rgba(255, 255, 255, .4), rgba(255, 255, 255, .1) 2px, transparent 30px);
 	background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
 }
+/* https://css-tricks.com/snippets/css/fluid-typography/ */
 header {
 	font-size: 4.5vw;
 }
@@ -171,6 +172,44 @@ header blockquote:after {
 	transform-origin: 50.1% 48.1%;
 }
 
+p:nth-of-type(odd) strong, q {
+	color: white;
+	font-weight: bold;
+}
+
+.inlinesvg svg text {
+	stroke-width: 1px;
+	stroke: #eee8aa;
+}
+
+main>article>p:first-child::first-letter {
+	color: white;
+	font-size: 300%;
+	line-height: 1.1;
+	margin: -4px 10px 0 0;
+	padding: 0 6px;
+	float: left;
+	border: solid 1px magenta;
+}
+main>article p:nth-of-type(odd) {
+	color: ghostwhite;
+    color: rgb(248, 248, 255);
+}
+p:nth-of-type(odd) em, p:nth-of-type(odd) strong, p:nth-of-type(odd) q {
+	color: #cad926;
+	color: hsl(65, 70%, 50%);
+}
+p:nth-of-type(odd) a[href ^="../"] {
+	color: #f2ff66;
+	color: hsl(65, 100%, 70%);
+}
+p a[href ^="../"]:hover {
+	color: magenta;
+}
+p:nth-of-type(odd) a:hover {
+	text-decoration: underline;
+}
+
 .no-js .variant {
 	background-image: radial-gradient( ellipse at center, rgba(0, 0, 0, 1) 0%, purple 66%, rgba(255, 255, 0, 1) 70%, rgba(255, 255, 255, 0) 70.3%);
 	background-color: plum;
@@ -225,6 +264,10 @@ main aside div:last-child {
 	transform: rotate(360deg);
 }
 
+.showtime aside div:first-child {
+	overflow: hidden;
+}
+
 .variant p:before {
 	content: "";
 	float: right;
@@ -238,6 +281,20 @@ main aside div:last-child {
 	height: 100%;
 	width: 50%;
 	background-color: rgba(111, 222, 22, 0);
+}
+
+
+
+.c1 nav>ul>li:nth-child(1)>a, .c2 nav>ul>li:nth-child(6)>a, .c3 nav>ul>li:nth-child(3)>a, .c4 nav>ul>li:nth-child(5)>a, .c5 nav>ul>li:nth-child(2)>a, .c6 nav>ul>li:nth-child(4)>a {
+	color: white;
+}
+.c1 nav>ul>li:nth-child(1)>a:hover, .c2 nav>ul>li:nth-child(6)>a:hover, .c3 nav>ul>li:nth-child(3)>a:hover, .c4 nav>ul>li:nth-child(5)>a:hover, .c5 nav>ul>li:nth-child(2)>a:hover, .c6 nav>ul>li:nth-child(4)>a:hover {
+	opacity: 1;
+}
+/*restrict drop down to current page OR alter html*/
+
+.c1 nav>ul>li:nth-child(1):hover a+ul, .c2 nav>ul>li:nth-child(6):hover a+ul, .c3 nav>ul>li:nth-child(3):hover a+ul, .c4 nav>ul>li:nth-child(5):hover a+ul, .c5 nav>ul>li:nth-child(2):hover a+ul, .c6 nav>ul>li:nth-child(4):hover a+ul {
+	left: auto;
 }
 @media only screen and (max-width: 1280px) {
 	main aside {
@@ -391,4 +448,32 @@ main aside div:last-child {
 		text-shadow: 1px 1px 1px rgba(0, 255, 255, .9);
 	}
 
+}
+
+@media print {
+	body {
+		background: white;
+		color: black;
+	}
+	header, footer, h2, .sidebar div, svg {
+		display: none;
+	}
+	main article.content p {
+		color: #444;
+	}
+	main article.content p strong, main article.content em, main article.content a {
+		color: black;
+	}
+	main>article>p:first-child::first-letter {
+		color: #444;
+		font-size: 300%;
+		line-height: 1.1;
+		margin: -4px 10px 0 0;
+		padding: 0 6px;
+		float: left;
+		border: solid 1px #444;
+	}
+	main, .sidebar>div:first-child {
+		display: block;
+	}
 }

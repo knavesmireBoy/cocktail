@@ -15,10 +15,6 @@ main {
 a {
 	color: rgb(204, 0, 204);
 }
-ul {
-	list-style: none;
-}
-/* https://css-tricks.com/snippets/css/fluid-typography/ */
 
 header {
 	font-size: 3.5em;
@@ -37,20 +33,17 @@ p {
 em {
 	font-family: 'BernhardModernBd', cochin, 'latin_modern_roman10BdIt', serif;
 }
-.content a, .content em {
-	font-family: 'Bernhard Modern Std', cochin, 'latin_modern_roman10BdIt', serif;
-	font-size: 115%;
-	font-style: normal;
+i, cite, b {
+	color: silver;
+}
+
+nav ul {
+	display: table;
 }
 nav li {
 	display: table-cell;
 }
-nav ul {
-	display: table;
-}
-i, cite, b {
-	color: silver;
-}
+
 header blockquote {
 	color: rgb(204, 0, 204);
 	border: 1px dotted;
@@ -178,6 +171,8 @@ nav>ul>li a {
 	color: rgba(255, 255, 255, .8);
 	white-space: nowrap;
 }
+
+
 .content, header blockquote {
 	font-family: Cochin, 'latin_modern_roman10_regular', Georgia, serif;
 }
@@ -200,10 +195,17 @@ nav>ul>li a {
 	left: 0;
 	color: white;
 }
+
 .variant p {
 	text-align: center;
 	font-style: italic;
 	height: 100%;
+}
+
+.content a, .content em {
+	font-family: 'Bernhard Modern Std', cochin, 'latin_modern_roman10BdIt', serif;
+	font-size: 115%;
+	font-style: normal;
 }
 .content a[href ^="../"] {
 	color: white;
@@ -293,10 +295,7 @@ nav>ul>li a {
 	padding: 5% 10%;
 	margin: 0 auto;
 }
-.inlinesvg svg text {
-	stroke-width: 1px;
-	stroke: palegoldenrod;
-}
+
 body.show {
 	margin: 3em;
 }
@@ -317,10 +316,6 @@ p a:hover {
 	overflow: hidden;
 }
 
-p:nth-of-type(odd) strong, q {
-	color: white;
-	font-weight: bold;
-}
 .c1 aside img {
 	right: 1.7em;
 }
@@ -339,32 +334,7 @@ nav>ul>li>a:hover {
 	text-decoration: none;
 	opacity: .5;
 }
-main>article>p:first-child::first-letter {
-	color: white;
-	font-size: 300%;
-	line-height: 1.1;
-	margin: -4px 10px 0 0;
-	padding: 0 6px;
-	float: left;
-	border: solid 1px magenta;
-}
-main>article p:nth-of-type(odd) {
-	color: ghostwhite;
-}
-p:nth-of-type(odd) em, p:nth-of-type(odd) strong, p:nth-of-type(odd) q {
-	color: #cad926;
-	color: hsl(65, 70%, 50%);
-}
-p:nth-of-type(odd) a[href ^="../"] {
-	color: #f2ff66;
-	color: hsl(65, 100%, 70%);
-}
-p a[href ^="../"]:hover {
-	color: magenta;
-}
-p:nth-of-type(odd) a:hover {
-	text-decoration: underline;
-}
+
 .c2 main aside a {
 	top: 5em;
 	left: .5em;
@@ -410,20 +380,6 @@ nav ul>li>a:hover+ul {
 	background: none;
 }
 
-.showtime aside div:first-child {
-	overflow: hidden;
-}
-.c1 nav>ul>li:nth-child(1)>a, .c2 nav>ul>li:nth-child(6)>a, .c3 nav>ul>li:nth-child(3)>a, .c4 nav>ul>li:nth-child(5)>a, .c5 nav>ul>li:nth-child(2)>a, .c6 nav>ul>li:nth-child(4)>a {
-	color: white;
-}
-.c1 nav>ul>li:nth-child(1)>a:hover, .c2 nav>ul>li:nth-child(6)>a:hover, .c3 nav>ul>li:nth-child(3)>a:hover, .c4 nav>ul>li:nth-child(5)>a:hover, .c5 nav>ul>li:nth-child(2)>a:hover, .c6 nav>ul>li:nth-child(4)>a:hover {
-	opacity: 1;
-}
-/*restrict drop down to current page OR alter html*/
-
-.c1 nav>ul>li:nth-child(1):hover a+ul, .c2 nav>ul>li:nth-child(6):hover a+ul, .c3 nav>ul>li:nth-child(3):hover a+ul, .c4 nav>ul>li:nth-child(5):hover a+ul, .c5 nav>ul>li:nth-child(2):hover a+ul, .c6 nav>ul>li:nth-child(4):hover a+ul {
-	left: auto;
-}
 #menu-toggle {
 	position: absolute;
 	left: -9990px;
@@ -596,32 +552,5 @@ nav ul>li>a:hover+ul {
 @media only screen and (orientation: landscape) and (pointer: coarse) {
 	.content p {
 		font-size: 125%;
-	}
-}
-@media print {
-	body {
-		background: white;
-		color: black;
-	}
-	header, footer, h2, .sidebar div, svg {
-		display: none;
-	}
-	main article.content p {
-		color: #444;
-	}
-	main article.content p strong, main article.content em, main article.content a {
-		color: black;
-	}
-	main>article>p:first-child::first-letter {
-		color: #444;
-		font-size: 300%;
-		line-height: 1.1;
-		margin: -4px 10px 0 0;
-		padding: 0 6px;
-		float: left;
-		border: solid 1px #444;
-	}
-	main, .sidebar>div:first-child {
-		display: block;
 	}
 }
