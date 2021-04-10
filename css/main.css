@@ -1,4 +1,5 @@
 body {
+	color: #e6f075;
 	color: hsl(65, 80%, 70%);
 	font-family: 'Bernhard Modern Std', Cochin, Georgia, serif;
 	font-size: 1em;
@@ -12,7 +13,7 @@ main {
 	border-bottom: 1px solid white;
 }
 a {
-	color: rgba(204, 0, 204, 1);
+	color: rgb(204, 0, 204);
 }
 ul {
 	list-style: none;
@@ -27,7 +28,6 @@ h1 {
 	margin: 2.8em 0 .3em 0;
 	margin: 10rem 0 1rem 0;
 	padding: 0 0 0 7em;
-	text-shadow: 2px 2px 2px purple;
 	position: relative;
 }
 p {
@@ -52,7 +52,7 @@ i, cite, b {
 	color: silver;
 }
 header blockquote {
-	color: rgba(204, 0, 204, 1);
+	color: rgb(204, 0, 204);
 	border: 1px dotted;
 	width: 15em;
 	padding: .7em;
@@ -74,10 +74,9 @@ div>img {
 	height: auto;
 }
 h1 em {
-	color: rgba(222, 0, 222, .8);
-	text-shadow: 1px 1px 3px rgba(0, 255, 255, .9);
+	color: #de00de;
+    color: rgba(222, 0, 222, .8);
 	position: relative;
-	right: .5vmax;
 }
 header aside {
 	overflow: hidden;
@@ -88,7 +87,6 @@ nav>ul {
 	border-top: 1px solid white;
 	position: relative;
 	background-color: rgb(204, 0, 204);
-	background-image: linear-gradient(rgb(204, 0, 204), black);
 	width: 100%;
 }
 main aside {
@@ -120,10 +118,8 @@ blockquote em span {
 }
 nav {
 	font-size: .5em;
-	text-shadow: 2px 2px 2px #000;
 	font-weight: bold;
 }
-nav ul ul {}
 header blockquote em {
 	font-size: .7em;
 	font-size: .85rem;
@@ -134,27 +130,7 @@ header blockquote em {
 p em, q, main>article p strong {
 	color: white;
 }
-header blockquote:before {
-	content: '_';
-	display: block;
-	width: 100%;
-	background: black;
-	color: black;
-	height: 5px;
-	margin: -20px auto 10px;
-	text-align: center;
-}
-header blockquote:after {
-	content: '_';
-	font-size: 0px;
-	display: block;
-	width: 100%;
-	background: black;
-	height: 5px;
-	text-align: center;
-	position: relative;
-	top: 19px;
-}
+
 
 main aside div {
 	margin-top: -2.4em;
@@ -165,13 +141,13 @@ main aside img {
 	right: .6em;
 }
 main aside a {
+	color: #FFF;
 	color: rgba(255, 255, 255, .9);
 	font-size: 2em;
 	text-align: center;
 	display: block;
 	position: relative;
 	z-index: 1;
-	text-shadow: 2px 2px 2px rgb(99, 0, 0);
 	top: 2em;
 	font-weight: bold;
 }
@@ -181,10 +157,7 @@ main>article h2 {
 	float: right;
 	height: 111px;
 	width: 111px;
-	shape-outside: circle(50%);
-	border-radius: 50%;
 	border: solid 10px black;
-	filter: grayscale(80%);
 }
 nav ul>li {
 	position: relative;
@@ -197,12 +170,11 @@ nav ul li ul {
 	z-index: 22;
 	left: -999em;
 	width: 100%;
-	background-image: linear-gradient(black, rgba(204, 0, 204, 0.5));
 }
-nav ul>li>a {}
 nav>ul>li a {
 	display: block;
 	padding: .5em 0;
+	color: #fff;
 	color: rgba(255, 255, 255, .8);
 	white-space: nowrap;
 }
@@ -223,12 +195,10 @@ nav>ul>li a {
 .variant {
 	width: 100%;
 	height: 100%;
-	text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.3);
 	position: absolute;
 	top: 0;
 	left: 0;
 	color: white;
-	text-shadow: 2px 2px 2px black;
 }
 .variant p {
 	text-align: center;
@@ -244,20 +214,7 @@ nav>ul>li a {
 .variant b {
 	color: chartreuse;
 }
-.variant p::before {
-	content: "";
-	float: right;
-	height: 100%;
-	width: 50%;
-	background-color: rgba(222, 111, 22, 0);
-}
-.variant::before {
-	content: "";
-	float: left;
-	height: 100%;
-	width: 50%;
-	background-color: rgba(111, 222, 22, 0);
-}
+
 .no-inlinesvg svg, .no-js svg {
 	position: absolute;
 	left: -9999px;
@@ -359,10 +316,7 @@ p a:hover {
 .showtime aside {
 	overflow: hidden;
 }
-h1 em:hover {
-	color: rgba(0, 255, 255, .5);
-	text-shadow: 1px 1px 3px rgba(255, 0, 255, .8);
-}
+
 p:nth-of-type(odd) strong, q {
 	color: white;
 	font-weight: bold;
@@ -375,6 +329,7 @@ p:nth-of-type(odd) strong, q {
 }
 
 nav ul>li>a:hover {
+	color: #e6f075;
 	color: hsl(65, 80%, 70%);
 }
 nav>ul>li>a:hover {
@@ -397,9 +352,11 @@ main>article p:nth-of-type(odd) {
 	color: ghostwhite;
 }
 p:nth-of-type(odd) em, p:nth-of-type(odd) strong, p:nth-of-type(odd) q {
+	color: #cad926;
 	color: hsl(65, 70%, 50%);
 }
 p:nth-of-type(odd) a[href ^="../"] {
+	color: #f2ff66;
 	color: hsl(65, 100%, 70%);
 }
 p a[href ^="../"]:hover {
@@ -452,11 +409,7 @@ nav ul>li>a:hover+ul {
 .inlinesvg .variant {
 	background: none;
 }
-.no-js .variant {
-	background-image: radial-gradient( ellipse at center, rgba(0, 0, 0, 1) 0%, purple 66%, rgba(255, 255, 0, 1) 70%, rgba(255, 255, 255, 0) 70.3%);
-	background-color: plum;
-	border-radius: 50%;
-}
+
 .showtime aside div:first-child {
 	overflow: hidden;
 }
@@ -517,14 +470,14 @@ nav ul>li>a:hover+ul {
 		display: block;
 	}
 	h1 {
-		background: rgba(0, 0, 0, .75);
+		background-color: silver;
+		background-color: rgba(0, 0, 0, .75);
 		margin: 40% 0 7em;
 		font-size: .6em;
 		padding: .4em 0 .2em .5em;
 		border: dotted 1px white;
 		border-width: 1px 0;
 		top: 7em;
-		text-shadow: 1px 1px 1px purple;
 	}
 	blockquote {
 		display: none;
@@ -549,10 +502,8 @@ nav ul>li>a:hover+ul {
 		padding: 0 .5em;
 		width: auto;
 		background-color: transparent;
-		background-image: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .9));
 		border-width: 0;
 		line-height: 1.9;
-		border-radius: 0px 0px 8px 8px;
 	}
 	nav ul li {
 		height: 0;
@@ -571,6 +522,7 @@ nav ul>li>a:hover+ul {
 	nav ul li a {
 		padding: 0;
 		background-color: transparent;
+		color: #effb74;
 		color: rgba(239, 251, 116, 0.88);
 	}
 	.menu {
@@ -619,68 +571,10 @@ nav ul>li>a:hover+ul {
 		background-position: 80% 40%;
 	}
 }
-@media only screen and (max-width: 768px) and (min-width: 415px) {
-	h1 em:hover {
-		text-shadow: 1px 1px 3px rgba(255, 0, 255, .8);
-	}
-	h1:after {
-		text-transform: uppercase;
-		font-size: 1em;
-		letter-spacing: -1px;
-	}
-	.c1 h1:after {
-		content: " :: Dry Martini";
-		color: rgb(222, 222, 200);
-		text-shadow: 1px 1px purple;
-	}
-	.c2 h1:after {
-		content: " :: Sidecar";
-		color: gold;
-		text-shadow: 1px 1px red;
-	}
-	.c3 h1:after {
-		content: " :: Margarita";
-		color: rgb(222, 233, 160);
-		text-shadow: 1px 1px gray;
-	}
-	.c4 h1:after {
-		content: " :: Mint Julep";
-		color: rgb(160, 100, 30);
-		text-shadow: 1px 1px seagreen;
-	}
-	.c5 h1:after {
-		content: " :: Moscow Mule";
-		color: rgb(168, 126, 84);
-		text-shadow: 1px 1px maroon;
-	}
-	.c6 h1:after {
-		content: " :: Mai Tai";
-		color: orange;
-		text-shadow: 1px 1px brown;
-	}
-	.c7 h1:after {
-		content: " :: Manhattan";
-		color: darkred;
-		text-shadow: 1px 1px red;
-	}
-	.c8 h1:after {
-		content: " :: Daiquiri";
-		color: lightcyan;
-		text-shadow: 1px 1px darkgreen;
-	}
-	.c9 h1:after {
-		content: " :: Cosmopolitan";
-		color: mistyrose;
-		text-shadow: 1px 1px maroon;
-	}
-	.c10 h1:after {
-		content: " :: Floridita";
-		color: coral;
-		text-shadow: 1px 1px darkred;
-	}
-}
+
 @media only screen and (max-width: 414px) {
 	h1 {
+		background: silver;
 		background: rgba(0, 0, 0, .75);
 		padding: 0 0 0 .5em;
 		top: 7em;
@@ -689,9 +583,7 @@ nav ul>li>a:hover+ul {
 		padding: 5px 0 0;
 		display: block;
 	}
-	h1 em {
-		text-shadow: 1px 1px 1px rgba(0, 255, 255, .9);
-	}
+	
 	main>article {
 		padding: 1em;
 		border-width: 0;

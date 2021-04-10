@@ -30,9 +30,11 @@ header {
 h1 {
 	font-size: calc(44px + (58 - 44) * (100vw - 768px) / (1280 - 768));
 	min-height: 0vw;
+    text-shadow: 2px 2px 2px purple;
 }
 nav {
 	font-size: calc(22px + (28 - 22) * (100vw - 768px) / (1280 - 768));
+    text-shadow: 2px 2px 2px #000;
 }
 main, nav>ul, main aside {
 	display: -webkit-box;
@@ -42,6 +44,10 @@ main, nav>ul, main aside {
 }
 header aside {
 	background-size: contain;
+}
+
+nav>ul {
+	background-image: linear-gradient(rgb(204, 0, 204), black);
 }
 main aside {
 	-webkit-box-flex: 2;
@@ -66,11 +72,42 @@ main aside>div {
     transition: all 2s ease-in-out;
 }
 
+main aside a {
+    text-shadow: 2px 2px 2px rgb(99, 0, 0);
+}
+
+main>article h2 {
+	shape-outside: circle(50%);
+	border-radius: 50%;
+	filter: grayscale(80%);
+}
+
 nav ul>li {
 	-webkit-box-flex: 1;
 	-ms-flex: 1 0 0px;
 	flex: 1 1 auto;
 }
+
+h1 em {
+    text-shadow: 1px 1px 3px rgba(0, 255, 255, .9);
+    right: .5vmax;
+}
+
+nav ul li ul {
+	background-image: linear-gradient(black, rgba(204, 0, 204, 0.5));
+}
+
+.variant {
+	text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.3);
+	text-shadow: 2px 2px 2px black;
+}
+
+h1 em:hover {
+	color: rgba(0, 255, 255, .5);
+	text-shadow: 1px 1px 3px rgba(255, 0, 255, .8);
+}
+
+
 .content h2 {
 	transition: background-size 4s;
 }
@@ -105,11 +142,39 @@ nav ul>li {
 	background-size: 170%;
 }
 
+header blockquote:before {
+	content: '_';
+	display: block;
+	width: 100%;
+	background: black;
+	color: black;
+	height: 5px;
+	margin: -20px auto 10px;
+	text-align: center;
+}
+header blockquote:after {
+	content: '_';
+	font-size: 0px;
+	display: block;
+	width: 100%;
+	background: black;
+	height: 5px;
+	text-align: center;
+	position: relative;
+	top: 19px;
+}
+
 .inlinesvg svg {
 	fill: rgba(255, 0, 255, .8);
 	filter: drop-shadow(0px 0px 20px magenta);
 	animation: myrotate 2s 2s ease-in;
 	transform-origin: 50.1% 48.1%;
+}
+
+.no-js .variant {
+	background-image: radial-gradient( ellipse at center, rgba(0, 0, 0, 1) 0%, purple 66%, rgba(255, 255, 0, 1) 70%, rgba(255, 255, 255, 0) 70.3%);
+	background-color: plum;
+	border-radius: 50%;
 }
 
 main aside div:last-child {
@@ -159,6 +224,21 @@ main aside div:last-child {
 .showtime aside div:last-child {
 	transform: rotate(360deg);
 }
+
+.variant p:before {
+	content: "";
+	float: right;
+	height: 100%;
+	width: 50%;
+	background-color: rgba(222, 111, 22, 0);
+}
+.variant:before {
+	content: "";
+	float: left;
+	height: 100%;
+	width: 50%;
+	background-color: rgba(111, 222, 22, 0);
+}
 @media only screen and (max-width: 1280px) {
 	main aside {
 		-webkit-box-flex: 1;
@@ -191,14 +271,18 @@ main aside div:last-child {
     
     h1 {
 		font-size: calc(30px + (50 - 30) * (100vw - 320px) / (768 - 320));
+        text-shadow: 1px 1px 1px purple;
 	}
 	nav ul {
 		-webkit-box-orient: vertical;
 		-webkit-box-direction: normal;
 		-ms-flex-direction: column;
 		flex-direction: column;
+        background-image: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .9));
         top: calc(60px + (100 - 60) * (100vw - 320px) / (768 - 320));
+        border-radius: 0px 0px 8px 8px;
 	}
+
 	
 	header aside {
 		background-size: 140%;
@@ -238,8 +322,73 @@ main aside div:last-child {
 		font-size: calc(18px + (28 - 18) * (100vw - 320px) / (768 - 320));
 	}
 }
+
 @media only screen and (max-width: 768px) and (min-width: 415px) {
-	h1 {
+    	h1 {
 		font-size: calc(10px + (42 - 10) * (100vw - 320px) / (768 - 320));
 	}
+	h1 em:hover {
+		text-shadow: 1px 1px 3px rgba(255, 0, 255, .8);
+	}
+	h1:after {
+		text-transform: uppercase;
+		font-size: 1em;
+		letter-spacing: -1px;
+	}
+	.c1 h1:after {
+		content: " :: Dry Martini";
+		color: rgb(222, 222, 200);
+		text-shadow: 1px 1px purple;
+	}
+	.c2 h1:after {
+		content: " :: Sidecar";
+		color: gold;
+		text-shadow: 1px 1px red;
+	}
+	.c3 h1:after {
+		content: " :: Margarita";
+		color: rgb(222, 233, 160);
+		text-shadow: 1px 1px gray;
+	}
+	.c4 h1:after {
+		content: " :: Mint Julep";
+		color: rgb(160, 100, 30);
+		text-shadow: 1px 1px seagreen;
+	}
+	.c5 h1:after {
+		content: " :: Moscow Mule";
+		color: rgb(168, 126, 84);
+		text-shadow: 1px 1px maroon;
+	}
+	.c6 h1:after {
+		content: " :: Mai Tai";
+		color: orange;
+		text-shadow: 1px 1px brown;
+	}
+	.c7 h1:after {
+		content: " :: Manhattan";
+		color: darkred;
+		text-shadow: 1px 1px red;
+	}
+	.c8 h1:after {
+		content: " :: Daiquiri";
+		color: lightcyan;
+		text-shadow: 1px 1px darkgreen;
+	}
+	.c9 h1:after {
+		content: " :: Cosmopolitan";
+		color: mistyrose;
+		text-shadow: 1px 1px maroon;
+	}
+	.c10 h1:after {
+		content: " :: Floridita";
+		color: coral;
+		text-shadow: 1px 1px darkred;
+	}
+}
+@media only screen and (max-width: 414px) {
+    h1 em {
+		text-shadow: 1px 1px 1px rgba(0, 255, 255, .9);
+	}
+
 }
