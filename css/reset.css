@@ -8,6 +8,14 @@
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
+
+/*Don't show shadows when selecting text */
+
+::-moz-selection, ::selection {
+	background: #5af;
+	color: #fff;
+	text-shadow: none;
+}
 /* Fix font rendering defaults */
 
 html, button {

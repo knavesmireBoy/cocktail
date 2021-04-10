@@ -5,6 +5,21 @@
 * Browsers: last 4 version
 */
 
+@keyframes myrotate {
+	0% {
+		transform: rotate(-10deg);
+	}
+	30% {
+		transform: rotate(0deg);
+	}
+	80% {
+		transform: rotate(370deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
 body {
 	background-image: radial-gradient(white, rgba(255, 255, 255, .2) 2px, transparent 40px), radial-gradient(white, rgba(255, 255, 255, .15) 1px, transparent 30px), radial-gradient(white, rgba(255, 255, 255, .1) 2px, transparent 40px), radial-gradient(rgba(255, 255, 255, .4), rgba(255, 255, 255, .1) 2px, transparent 30px);
 	background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
@@ -48,7 +63,9 @@ main aside>div {
 	-webkit-box-flex: 0;
 	-ms-flex: 0 0 auto;
 	flex: 0 0 auto;
+    transition: all 2s ease-in-out;
 }
+
 nav ul>li {
 	-webkit-box-flex: 1;
 	-ms-flex: 1 0 0px;
@@ -86,6 +103,17 @@ nav ul>li {
 }
 .c10 h2 {
 	background-size: 170%;
+}
+
+.inlinesvg svg {
+	fill: rgba(255, 0, 255, .8);
+	filter: drop-shadow(0px 0px 20px magenta);
+	animation: myrotate 2s 2s ease-in;
+	transform-origin: 50.1% 48.1%;
+}
+
+main aside div:last-child {
+	transition: all 1.5s;
 }
 .showtime .content h2 {
 	background-size: 500%;
@@ -127,6 +155,10 @@ nav ul>li {
 .c10 .quote-wrapper {
 	line-height: calc(20px + (26 - 20) * (100vw - 860px) / (1280 - 860));
 }
+
+.showtime aside div:last-child {
+	transform: rotate(360deg);
+}
 @media only screen and (max-width: 1280px) {
 	main aside {
 		-webkit-box-flex: 1;
@@ -154,21 +186,26 @@ nav ul>li {
 		shape-margin: 1vw;
 	}
 }
+
 @media only screen and (max-width: 768px) {
+    
+    h1 {
+		font-size: calc(30px + (50 - 30) * (100vw - 320px) / (768 - 320));
+	}
 	nav ul {
 		-webkit-box-orient: vertical;
 		-webkit-box-direction: normal;
 		-ms-flex-direction: column;
 		flex-direction: column;
+        top: calc(60px + (100 - 60) * (100vw - 320px) / (768 - 320));
 	}
-	h1 {
-		font-size: calc(30px + (50 - 30) * (100vw - 320px) / (768 - 320));
-	}
-	nav ul {
-		top: calc(60px + (100 - 60) * (100vw - 320px) / (768 - 320));
-	}
+	
 	header aside {
 		background-size: 140%;
+	}
+    
+    	nav ul li {
+		transition: height .9s ease-out;
 	}
 	.menu {
 		-o-background-size: 105%;
