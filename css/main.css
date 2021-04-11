@@ -15,7 +15,6 @@ main {
 a {
 	color: rgb(204, 0, 204);
 }
-
 header {
 	font-size: 3.5em;
 }
@@ -33,21 +32,18 @@ p {
 em {
 	font-family: 'BernhardModernBd', cochin, 'latin_modern_roman10BdIt', serif;
 }
-
 h1 em:hover {
 	color: cyan;
 	text-shadow: 1px 1px 3px magenta;
 }
-
-nav > ul {
+nav>ul {
 	display: table;
 }
 nav ul li {
 	display: table-cell;
 }
-
 header blockquote {
-    color: #c0c;
+	color: #c0c;
 	color: rgb(204, 0, 204);
 	border: 1px dotted;
 	width: 15em;
@@ -71,7 +67,7 @@ div img {
 }
 h1 em {
 	color: #de00de;
-    color: rgb(222, 0, 222);
+	color: rgb(222, 0, 222);
 	position: relative;
 }
 header aside {
@@ -79,7 +75,7 @@ header aside {
 	background-image: url("../img/fc.jpg");
 	background-repeat: no-repeat;
 }
-nav > ul {
+nav>ul {
 	border-top: 1px solid white;
 	position: relative;
 	background-color: #c0c;
@@ -112,8 +108,8 @@ header aside a {
 	color: rgb(255, 250, 250);
 }
 blockquote em span {
-    color: #eaff00;
-    color: hsl(65, 100%, 50%);
+	color: #eaff00;
+	color: hsl(65, 100%, 50%);
 }
 nav {
 	font-size: .5em;
@@ -124,14 +120,12 @@ header blockquote em {
 	font-size: .85rem;
 	font-style: normal;
 	color: snow;
-    color: rgb(255, 250, 250);
+	color: rgb(255, 250, 250);
 	display: block;
 }
 p em, q, main article p strong {
 	color: white;
 }
-
-
 main aside div {
 	margin-top: -2.4em;
 }
@@ -170,11 +164,9 @@ nav ul li ul {
 	z-index: 22;
 	left: -999em;
 	width: 100%;
-    
-    
 }
-nav ul li ul li{
-    display: block;
+nav ul li ul li {
+	display: block;
 }
 nav ul>li a {
 	display: block;
@@ -183,8 +175,6 @@ nav ul>li a {
 	color: rgba(255, 255, 255, .8);
 	white-space: nowrap;
 }
-
-
 .content, header blockquote {
 	font-family: Cochin, 'latin_modern_roman10_regular', Georgia, serif;
 }
@@ -207,21 +197,17 @@ nav ul>li a {
 	left: 0;
 	color: white;
 }
-
 .variant p {
 	text-align: center;
 	font-style: italic;
 	height: 100%;
 }
-
 .content a, .content em {
 	font-family: 'Bernhard Modern Std', cochin, 'latin_modern_roman10BdIt', serif;
 	font-size: 115%;
 	font-style: normal;
 }
-.content a[href ^="../"] {
-	color: white;
-}
+
 .content a:hover {
 	text-decoration: underline;
 }
@@ -229,7 +215,6 @@ nav ul>li a {
 	color: chartreuse;
 	color: hsl(90, 100%, 50%);
 }
-
 .no-inlinesvg svg, .no-js svg {
 	position: absolute;
 	left: -9999px;
@@ -308,11 +293,9 @@ nav ul>li a {
 	padding: 5% 10%;
 	margin: 0 auto;
 }
-
 body.show {
 	margin: 3em;
 }
-
 a:hover {
 	color: white;
 }
@@ -326,14 +309,12 @@ p a:hover {
 .showtime aside {
 	overflow: hidden;
 }
-
 .c1 aside img {
 	right: 1.7em;
 }
 .c5 aside img {
 	right: 1.2em;
 }
-
 nav ul>li>a:hover {
 	color: #e6f075;
 	color: hsl(65, 80%, 70%);
@@ -342,8 +323,6 @@ nav>ul>li>a:hover {
 	color: white;
 	opacity: .5;
 }
-
-
 .c2 main aside a {
 	top: 5em;
 	left: .5em;
@@ -367,12 +346,10 @@ nav>ul>li>a:hover {
 	top: 1.6em;
 	left: .2em;
 }
-
 .show main>article .csstabs {
 	position: relative;
 	left: 0;
 }
-
 .inlinesvg .quote-wrapper {
 	width: 53%;
 	height: 0;
@@ -386,7 +363,6 @@ nav>ul>li>a:hover {
 .inlinesvg .variant {
 	background: none;
 }
-
 #menu-toggle {
 	position: absolute;
 	left: -9990px;
@@ -397,7 +373,6 @@ nav>ul>li>a:hover {
 	}
 	.showtime .sidebar>div img {
 		height: 100%;
-		object-fit: cover;
 		right: 0;
 	}
 	.showtime .inlinesvg svg, .showtime .quote-wrapper {
@@ -409,9 +384,8 @@ nav>ul>li>a:hover {
 		height: 100%;
 	}
 	.sidebar>div img {
-		height: 100%;
-		object-fit: cover;
-		right: 0;
+		-o-object-fit: cover;
+		   object-fit: cover;
 	}
 	.c2 main aside a {
 		top: 2em;
@@ -472,11 +446,11 @@ nav>ul>li>a:hover {
 		height: 0;
 		font-size: 0;
 	}
-    nav>ul>li>a:hover {
-        opacity: 1;
-        color: #cad926;
-        color: hsl(65, 70%, 50%);
-}
+	nav>ul>li>a:hover {
+		opacity: 1;
+		color: #cad926;
+		color: hsl(65, 70%, 50%);
+	}
 	main aside {
 		position: absolute;
 		left: -9999px;
@@ -490,14 +464,14 @@ nav>ul>li>a:hover {
 	nav ul li a {
 		padding: 0;
 		background-color: transparent;
-        color: #e6f075;
-        color: hsl(65, 80%, 70%);
+		color: #e6f075;
+		color: hsl(65, 80%, 70%);
 	}
-    
-    
 	.menu {
 		position: absolute;
-		background: 50% 0% url("../img/polo_ball_sprite.png") no-repeat;
+		background-image: url("../img/polo_ball_sprite.png");
+		background-position: 50% 0%;
+		background-repeat: no-repeat;
 		cursor: pointer;
 		opacity: .75;
 	}
@@ -541,7 +515,6 @@ nav>ul>li>a:hover {
 		background-position: 80% 40%;
 	}
 }
-
 @media only screen and (max-width: 414px) {
 	h1 {
 		background: silver;
@@ -553,7 +526,6 @@ nav>ul>li>a:hover {
 		padding: 5px 0 0;
 		display: block;
 	}
-	
 	main>article {
 		padding: 1em;
 		border-width: 0;
