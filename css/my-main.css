@@ -475,7 +475,6 @@ main aside div:last-child {
 		top: 2vw;
 		right: -webkit-calc(36px + (56 - 36) * (100vw - 320px) / (768 - 320));
 		right: calc(36px + (56 - 36) * (100vw - 320px) / (768 - 320));
-        right: 0;
 		height: -webkit-calc(48px + (72 - 48) * (100vw - 320px) / (768 - 320));
 		height: calc(48px + (72 - 48) * (100vw - 320px) / (768 - 320));
 		width: -webkit-calc(48px + (72 - 48) * (100vw - 320px) / (768 - 320));
