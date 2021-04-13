@@ -19,7 +19,7 @@ header {
 	font-size: 3.5em;
 }
 h1 {
-	font-size: 1em;
+    font-size: 1em;
 	margin: 2.8em 0 .3em 0;
 	margin: 10rem 0 1rem 0;
 	padding: 0 0 0 7em;
@@ -70,26 +70,18 @@ h1 em {
 	color: rgb(222, 0, 222);
 	position: relative;
 }
-.textshadow h1 em {
-}
 header aside {
 	overflow: hidden;
-	background-image: url("../img/fc.jpg");
+	background-image: url("../img/fc_bg.jpg");
 	background-repeat: no-repeat;
 }
 nav>ul {
 	border-top: 1px solid white;
 	position: relative;
-	background-color: #c0c;
-    background-color: rgb(204, 0, 204);
 	width: 100%;
-}
-
-.no-cssgradients nav > ul {
     background-color: #680068;
 	background-color: rgb(104, 0, 104);
 }
-
 
 main aside {
 	min-width: 200px;
@@ -268,48 +260,54 @@ header blockquote:after {
 	position: relative;
 	top: 19px;
 }
+.quote-wrapper {
+	width: 53%;
+	height: 0;
+	padding-top: 53%;
+	margin: -73% auto 2em;
+	overflow: hidden;
+}
 .variant b {
 	color: chartreuse;
 	color: hsl(90, 100%, 50%);
 }
-
-.c1 h2 {
+.js .c1 h2 {
 	background-image: url('../img/dry_martini.jpg');
 	background-position: 50% 30%;
 }
-.c2 h2 {
+.js .c2 h2 {
 	background-image: url('../img/sidecar.jpg');
 	background-position: 90% 10%;
 }
-.c3 h2 {
+.js .c3 h2 {
 	background-image: url('../img/margarita.jpg');
 	background-position: 30% 60%;
 }
-.c4 h2 {
+.js .c4 h2 {
 	background-image: url('../img/julep.jpg');
 	background-position: 90% 55%;
 }
-.c5 h2 {
+.js .c5 h2 {
 	background-image: url('../img/moscow_mule.jpg');
 	background-position: 90% 30%;
 }
-.c6 h2 {
+.js .c6 h2 {
 	background-image: url('../img/mai_tai.jpg');
 	background-position: 80% 55%;
 }
-.c7 h2 {
+.js .c7 h2 {
 	background-image: url('../img/manhattan.jpg');
 	background-position: 90% 33%;
 }
-.c8 h2 {
+.js .c8 h2 {
 	background-image: url('../img/daiquiri.jpg');
 	background-position: 75% 33%;
 }
-.c9 h2 {
+.js .c9 h2 {
 	background-image: url('../img/cosmopolitan.jpg');
 	background-position: 90% 33%;
 }
-.c10 h2 {
+.js .c10 h2 {
 	background-image: url('../img/floridita.jpg');
 	background-position: 90% 33%;
 }
@@ -322,7 +320,7 @@ header blockquote:after {
 .c9 h2 {
 	background-position: 75% 35%;
 }
-.c10 h2 {
+.js .c10 h2 {
 	background-position: 85% 25%;
 }
 p:nth-of-type(odd) strong, q {
@@ -374,18 +372,9 @@ p a[href ^="../"]:hover {
 .c6 .showtime .content h2 {
 	background-position: 85% 50%;
 }
-svg {
-	font-size: 1.5em;
-	font-family: 'BlackArial', Arial, sans-serif;
-	width: 100%;
-	padding: 5% 10%;
-	margin: 0 auto;
-}
-
 .no-shapes #circ {
-    fill: none;
+	fill: none;
 }
-
 body.show {
 	margin: 3em;
 }
@@ -443,38 +432,26 @@ nav>ul>li>a:hover {
 	position: relative;
 	left: 0;
 }
-.inlinesvg .quote-wrapper {
-	width: 53%;
-	height: 0;
-	padding-top: 53%;
-	margin: -73% auto 2em;
-	overflow: hidden;
-}
-.no-js .quote-wrapper {
-	width: 70%;
-}
-.shapes .variant {
-	background: none;
-}
 .content a[href ^="../"] {
 	color: white;
 }
 .showtime aside div:first-child {
 	overflow: hidden;
 }
-.shapes .variant p:before {
-	content: "";
-	float: right;
-	height: 100%;
-	width: 50%;
+@supports (shape-margin: 1em) {
+	.variant p:before {
+		content: "";
+		float: right;
+		height: 100%;
+		width: 50%;
+	}
+	.variant:before {
+		content: "";
+		float: left;
+		height: 100%;
+		width: 50%;
+	}
 }
-.shapes .variant:before {
-	content: "";
-	float: left;
-	height: 100%;
-	width: 50%;
-}
-
 .c1 nav>ul>li:nth-child(1)>a, .c2 nav>ul>li:nth-child(6)>a, .c3 nav>ul>li:nth-child(3)>a, .c4 nav>ul>li:nth-child(5)>a, .c5 nav>ul>li:nth-child(2)>a, .c6 nav>ul>li:nth-child(4)>a {
 	color: white;
 }
@@ -489,7 +466,7 @@ nav>ul>li>a:hover {
 .showtime .content h2 {
 	background-size: 500%;
 }
-.no-shapes svg, .no-js svg, .no-shapes .variant:before, .no-shapes .variant p:before {
+.no-shapes svg, .no-shapes .variant:before, .no-shapes .variant p:before {
 	position: absolute;
 	left: -9999px;
 }
@@ -499,7 +476,6 @@ nav>ul>li>a:hover {
 	margin: 0 auto 2em;
 	overflow: hidden;
 }
-
 #menu-toggle {
 	position: absolute;
 	left: -9990px;
