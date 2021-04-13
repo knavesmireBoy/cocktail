@@ -324,15 +324,18 @@ header blockquote:after {
 	background-position: 85% 25%;
 }
 
-.borderradius h2:first-of-type {
+.no-borderradius h2:first-of-type {
     background-image: url('../img/cocktail_pink.svg');
     background-size: contain;
 }
 
-.borderradius main article h2 {
+.no-borderradius main article h2 {
 	height: 131px;
 	width: 150px;
-    
+}
+.no-js main article h2  {
+    width: 0px;
+    height: 0px;
 }
 p:nth-of-type(odd) strong, q {
 	color: white;
