@@ -212,14 +212,14 @@ main aside div:last-child {
 	-o-transition: all 1.5s;
 	transition: all 1.5s;
 }
-/*support only if shapes*/
+/*support only if shapes
 .no-js .variant {
 	background-color: purple;
 	background-image: -o-radial-gradient( center, ellipse, rgba(0, 0, 0, 1) 0%, purple 66%, rgba(255, 255, 0, 1) 70%, rgba(255, 255, 255, 0) 70.3%);
 	background-image: radial-gradient( ellipse at center, rgba(0, 0, 0, 1) 0%, purple 66%, rgba(255, 255, 0, 1) 70%, rgba(255, 255, 255, 0) 70.3%);
 	-webkit-border-radius: 50%;
 	border-radius: 50%;
-}
+}*/
 .c1 .quote-wrapper, .c4 .quote-wrapper, .c8 .quote-wrapper, .c9 .quote-wrapper {
 	font-size: -webkit-calc(18px + (24 - 18) * (100vw - 860px) / (1280 - 860));
 	font-size: calc(18px + (24 - 18) * (100vw - 860px) / (1280 - 860));

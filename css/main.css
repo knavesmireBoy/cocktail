@@ -374,7 +374,7 @@ p a[href ^="../"]:hover {
 .c6 .showtime .content h2 {
 	background-position: 85% 50%;
 }
-.inlinesvg svg {
+svg {
 	font-size: 1.5em;
 	font-family: 'BlackArial', Arial, sans-serif;
 	width: 100%;
