@@ -36,8 +36,6 @@ h1 em:hover {
 	color: cyan;
 	text-shadow: 1px 1px 3px magenta;
 }
-
-
 nav>ul {
 	display: table;
 }
@@ -72,6 +70,8 @@ h1 em {
 	color: rgb(222, 0, 222);
 	position: relative;
 }
+.textshadow h1 em {
+}
 header aside {
 	overflow: hidden;
 	background-image: url("../img/fc.jpg");
@@ -81,9 +81,16 @@ nav>ul {
 	border-top: 1px solid white;
 	position: relative;
 	background-color: #c0c;
-	background-color: rgb(204, 0, 204);
+    background-color: rgb(204, 0, 204);
 	width: 100%;
 }
+
+.no-cssgradients nav > ul {
+    background-color: #680068;
+	background-color: rgb(104, 0, 104);
+}
+
+
 main aside {
 	min-width: 200px;
 	position: relative;
@@ -109,9 +116,6 @@ header aside a {
 	color: snow;
 	color: rgb(255, 250, 250);
 }
-
-
-
 blockquote em span {
 	color: #eaff00;
 	color: hsl(65, 100%, 50%);
@@ -212,7 +216,6 @@ nav ul>li a {
 	font-size: 115%;
 	font-style: normal;
 }
-
 .c1 h2 {
 	background-size: 250%;
 }
@@ -243,7 +246,6 @@ nav ul>li a {
 .c10 h2 {
 	background-size: 170%;
 }
-
 header blockquote:before {
 	content: '_';
 	display: block;
@@ -259,23 +261,18 @@ header blockquote:after {
 	font-size: 0px;
 	display: block;
 	width: 100%;
-    color: black;
+	color: black;
 	background-color: black;
 	height: 5px;
 	text-align: center;
 	position: relative;
 	top: 19px;
 }
-
-
 .variant b {
 	color: chartreuse;
 	color: hsl(90, 100%, 50%);
 }
-.no-inlinesvg svg, .no-js svg {
-	position: absolute;
-	left: -9999px;
-}
+
 .c1 h2 {
 	background-image: url('../img/dry_martini.jpg');
 	background-position: 50% 30%;
@@ -332,22 +329,17 @@ p:nth-of-type(odd) strong, q {
 	color: white;
 	font-weight: bold;
 }
-
-
 p:nth-of-type(odd) em, p:nth-of-type(odd) strong, p:nth-of-type(odd) q {
 	color: #cad926;
 	color: hsl(65, 70%, 50%);
 }
-
 main>article p:nth-of-type(odd) {
 	color: ghostwhite;
-    color: rgb(248, 248, 255);
+	color: rgb(248, 248, 255);
 }
-
 p:nth-of-type(odd) a:hover {
 	text-decoration: underline;
 }
-
 main>article>p:first-child::first-letter {
 	color: white;
 	font-size: 300%;
@@ -360,7 +352,6 @@ main>article>p:first-child::first-letter {
 .content a:hover {
 	text-decoration: underline;
 }
-
 p:nth-of-type(odd) a[href ^="../"] {
 	color: #f2ff66;
 	color: hsl(65, 100%, 70%);
@@ -383,7 +374,6 @@ p a[href ^="../"]:hover {
 .c6 .showtime .content h2 {
 	background-position: 85% 50%;
 }
-
 .inlinesvg svg {
 	font-size: 1.5em;
 	font-family: 'BlackArial', Arial, sans-serif;
@@ -391,6 +381,11 @@ p a[href ^="../"]:hover {
 	padding: 5% 10%;
 	margin: 0 auto;
 }
+
+.no-shapes #circ {
+    fill: none;
+}
+
 body.show {
 	margin: 3em;
 }
@@ -407,8 +402,6 @@ p a:hover {
 .showtime aside {
 	overflow: hidden;
 }
-
-
 .c1 aside img {
 	right: 1.7em;
 }
@@ -460,7 +453,7 @@ nav>ul>li>a:hover {
 .no-js .quote-wrapper {
 	width: 70%;
 }
-.inlinesvg .variant {
+.shapes .variant {
 	background: none;
 }
 .content a[href ^="../"] {
@@ -469,20 +462,17 @@ nav>ul>li>a:hover {
 .showtime aside div:first-child {
 	overflow: hidden;
 }
-
-.variant p:before {
+.shapes .variant p:before {
 	content: "";
 	float: right;
 	height: 100%;
 	width: 50%;
-	background-color: rgba(222, 111, 22, 0);
 }
-.variant:before {
+.shapes .variant:before {
 	content: "";
 	float: left;
 	height: 100%;
 	width: 50%;
-	background-color: rgba(111, 222, 22, 0);
 }
 
 .c1 nav>ul>li:nth-child(1)>a, .c2 nav>ul>li:nth-child(6)>a, .c3 nav>ul>li:nth-child(3)>a, .c4 nav>ul>li:nth-child(5)>a, .c5 nav>ul>li:nth-child(2)>a, .c6 nav>ul>li:nth-child(4)>a {
@@ -492,13 +482,24 @@ nav>ul>li>a:hover {
 	opacity: 1;
 }
 /*restrict drop down to current page OR alter html*/
+
 .c1 nav>ul>li:nth-child(1):hover a+ul, .c2 nav>ul>li:nth-child(6):hover a+ul, .c3 nav>ul>li:nth-child(3):hover a+ul, .c4 nav>ul>li:nth-child(5):hover a+ul, .c5 nav>ul>li:nth-child(2):hover a+ul, .c6 nav>ul>li:nth-child(4):hover a+ul {
 	left: auto;
 }
-
 .showtime .content h2 {
 	background-size: 500%;
 }
+.no-shapes svg, .no-js svg, .no-shapes .variant:before, .no-shapes .variant p:before {
+	position: absolute;
+	left: -9999px;
+}
+.no-shapes .quote-wrapper {
+	width: 53%;
+	height: 0;
+	margin: 0 auto 2em;
+	overflow: hidden;
+}
+
 #menu-toggle {
 	position: absolute;
 	left: -9990px;
@@ -516,12 +517,8 @@ nav>ul>li>a:hover {
 	}
 }
 @media only screen and (max-width: 860px) {
-	.sidebar>div {
+	.sidebar>div, .sidebar>div img {
 		height: 100%;
-	}
-	.sidebar>div img {
-		-o-object-fit: cover;
-		   object-fit: cover;
 	}
 	.c2 main aside a {
 		top: 2em;
@@ -565,13 +562,13 @@ nav>ul>li>a:hover {
 	main aside, main>article {
 		margin-bottom: 0px;
 	}
-    main aside {
+	main aside {
 		position: absolute;
 		left: -9999px;
 	}
 	header aside {
 		background-position: 100% 33%;
-        background-size: 140%;
+		background-size: 140%;
 	}
 	main>article {
 		padding: 2em 2em 1em;
@@ -590,14 +587,13 @@ nav>ul>li>a:hover {
 		height: 0;
 		font-size: 0;
 	}
-    nav ul li a {
+	nav ul li a {
 		padding: 0;
 		background-color: transparent;
 		color: #e6f075;
 		color: hsl(65, 80%, 70%);
 	}
-    
-    .menu {
+	.menu {
 		position: absolute;
 		background-image: url("../img/polo_ball_sprite.png");
 		background-position: 50% 0%;
@@ -605,19 +601,14 @@ nav>ul>li>a:hover {
 		cursor: pointer;
 		opacity: .75;
 	}
-    
 	nav>ul>li>a:hover {
 		opacity: 1;
 		color: #cad926;
 		color: hsl(65, 70%, 50%);
 	}
-	
 	.no-backgroundsize header aside {
 		background-position: -20% 0%;
 	}
-    	
-    
-	
 	.c1 header aside {
 		background-image: url("../img/dry_martini.jpg");
 	}
@@ -657,14 +648,12 @@ nav>ul>li>a:hover {
 		background-image: url("../img/floridita.jpg");
 		background-position: 80% 40%;
 	}
-    
-        	.c7 header aside {
+	.c7 header aside {
 		background-size: 160%;
 	}
-    
-    #nav {
-        display: block;
-    }
+	#nav {
+		display: block;
+	}
 }
 @media only screen and (max-width: 414px) {
 	h1 {
