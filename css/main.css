@@ -268,43 +268,43 @@ header blockquote:after {
 	color: chartreuse;
 	color: hsl(90, 100%, 50%);
 }
-.js .c1 h2 {
+.c1 h2 {
 	background-image: url('../img/dry_martini.jpg');
 	background-position: 50% 30%;
 }
-.js .c2 h2 {
+.c2 h2 {
 	background-image: url('../img/sidecar.jpg');
 	background-position: 90% 10%;
 }
-.js .c3 h2 {
+.c3 h2 {
 	background-image: url('../img/margarita.jpg');
 	background-position: 30% 60%;
 }
-.js .c4 h2 {
+.c4 h2 {
 	background-image: url('../img/julep.jpg');
 	background-position: 90% 55%;
 }
-.js .c5 h2 {
+.c5 h2 {
 	background-image: url('../img/moscow_mule.jpg');
 	background-position: 90% 30%;
 }
-.js .c6 h2 {
+.c6 h2 {
 	background-image: url('../img/mai_tai.jpg');
 	background-position: 80% 55%;
 }
-.js .c7 h2 {
+.c7 h2 {
 	background-image: url('../img/manhattan.jpg');
 	background-position: 90% 33%;
 }
-.js .c8 h2 {
+.c8 h2 {
 	background-image: url('../img/daiquiri.jpg');
 	background-position: 75% 33%;
 }
-.js .c9 h2 {
+.c9 h2 {
 	background-image: url('../img/cosmopolitan.jpg');
 	background-position: 90% 33%;
 }
-.js .c10 h2 {
+.c10 h2 {
 	background-image: url('../img/floridita.jpg');
 	background-position: 90% 33%;
 }
@@ -317,7 +317,7 @@ header blockquote:after {
 .c9 h2 {
 	background-position: 75% 35%;
 }
-.js .c10 h2 {
+.c10 h2 {
 	background-position: 85% 25%;
 }
 
@@ -330,10 +330,7 @@ header blockquote:after {
 	height: 131px;
 	width: 150px;
 }
-.no-js main article h2  {
-    width: 0px;
-    height: 0px;
-}
+
 p:nth-of-type(odd) strong, q {
 	color: white;
 	font-weight: bold;
@@ -490,6 +487,13 @@ nav>ul li a:hover {
 #menu-toggle {
 	position: absolute;
 	left: -9990px;
+}
+
+@media only screen and (min-width: 769px) {
+.no-js main article h2  {
+    width: 0px;
+    height: 0px;
+}
 }
 @media only screen and (max-width: 960px) {
 	.showtime .sidebar>div {

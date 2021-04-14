@@ -276,7 +276,7 @@ svg {
 	shape-margin: 2vw;
 }
     
-    .js main>article h2 {
+    main>article h2 {
 	-webkit-shape-outside: circle(50%);
 	shape-outside: circle(50%);
 	-webkit-border-radius: 50%;
