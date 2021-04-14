@@ -160,7 +160,7 @@
 	.recipe #tab1 ul {
 		opacity: 1;
 	}
-	.recipe #tab1 h3+ul, .method #tab2 h3+div, .serving #tab3 h3+section {
+	.recipe #tab1 h3+ul, .method #tab2 h3+div, .serving #tab3 h3+section, .no-js #override .content h3:hover + .tabcontent {
 		position: relative;
 		left: 0;
 	}
