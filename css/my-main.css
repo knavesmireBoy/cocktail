@@ -172,7 +172,7 @@ h2:hover {
 	-webkit-filter: none;
 	filter: none;
 }
-.myrecipe {
+.therecipe {
 	-webkit-transition: background-size 4s;
 	-o-transition: background-size 4s;
 	transition: background-size 4s;
@@ -219,7 +219,7 @@ main aside div:last-child {
 	line-height: -webkit-calc(20px + (26 - 20) * (100vw - 860px) / (1280 - 860));
 	line-height: calc(20px + (26 - 20) * (100vw - 860px) / (1280 - 860));
 }
-.content h2:hover {
+.therecipe:hover {
 	-webkit-filter: blur(1px);
 	filter: blur(1px);
 	-webkit-filter: contrast(150%);
@@ -258,7 +258,7 @@ main aside div:last-child {
 		-webkit-shape-margin: 2vw;
 		shape-margin: 2vw;
 	}
-	.myrecipe {
+	.therecipe {
 		-webkit-shape-outside: circle(50%);
 		shape-outside: circle(50%);
 		-webkit-border-radius: 50%;
@@ -474,7 +474,7 @@ main aside div:last-child {
 		background: white;
 		color: black;
 	}
-	header, footer, h2, .sidebar div, svg {
+	header, footer, .therecipe, .sidebar div, svg, h2 {
 		display: none;
 	}
 	main article.content p {

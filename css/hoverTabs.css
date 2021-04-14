@@ -83,7 +83,7 @@
 .no-js #override .content h3:hover + .tabcontent {
     opacity: 1;
 }
-.recipe #tab1 ul, .method #tab2 div, .serving #tab3 section {
+.recipe #tab1 ul, .method #tab2 div, .serving #tab3 section, .no-js #tab1 ul, .no-js #tab2 div, .no-js #tab3 section {
 	transition: opacity 1.5s ease-in;
 }
 #tab1 h3, .method #tab2 h3, .serving #tab3 h3, .no-js #tab2 h3:hover, .no-js #tab3 h3:hover {
@@ -127,7 +127,7 @@
 		float: none;
         text-align: center;
 	}
-	.tabcontent {
+	.no-js .recipe #tab1 h3+ul, .tabcontent {
 		position: absolute;
 		left: -9999px;
 		width: 100%;
@@ -160,9 +160,13 @@
 	.recipe #tab1 ul {
 		opacity: 1;
 	}
+    .no-js .recipe #tab1 ul {
+		opacity: 0;
+	}
 	.recipe #tab1 h3+ul, .method #tab2 h3+div, .serving #tab3 h3+section, .no-js #override .content h3:hover + .tabcontent {
 		position: relative;
 		left: 0;
+        border-width: 1px;
 	}
     
     .tabcontent {

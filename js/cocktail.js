@@ -335,7 +335,7 @@
 		},
 		undo = doComp($noShowtime, ptL(utils.climbDom, 2), utils.removeNodeOnComplete, utils.getZero, ptL(utils.getByClass, 'csstabs', document));
     
-	eventing('click', event_actions.slice(0, 1), doAltRecipe([ptL(execute, lookup[page_id]), undo]), doComp(ptL(utils.byIndex, 0), ptL(utils.getByTag, 'h2', document))).execute();
+	eventing('click', event_actions.slice(0, 1), doAltRecipe([ptL(execute, lookup[page_id]), undo]), ptL(utils.findByClass, 'therecipe', document)).execute();
     
 	$recipe.setSuccessor($method);
 	$method.setSuccessor($serve);

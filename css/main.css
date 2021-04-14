@@ -141,7 +141,7 @@ main aside a {
 	top: 2em;
 	font-weight: bold;
 }
-main article .myrecipe {
+main article .therecipe {
 	background-color: transparent;
 	background-repeat: no-repeat;
 	float: right;
@@ -203,34 +203,34 @@ nav ul>li a {
 	font-size: 115%;
 	font-style: normal;
 }
-.c1 .myrecipe {
+.c1 .therecipe {
 	background-size: 250%;
 }
-.c2 .myrecipe {
+.c2 .therecipe {
 	background-size: 200%;
 }
-.c3 .myrecipe {
+.c3 .therecipe {
 	background-size: 225%;
 }
-.c4 .myrecipe {
+.c4 .therecipe {
 	background-size: 170%;
 }
-.c5 .myrecipe {
+.c5 .therecipe {
 	background-size: 170%;
 }
-.c6 .myrecipe {
+.c6 .therecipe {
 	background-size: 170%;
 }
-.c7 .myrecipe {
+.c7 .therecipe {
 	background-size: 170%;
 }
-.c8 .myrecipe {
+.c8 .therecipe {
 	background-size: 170%;
 }
-.c9 .myrecipe {
+.c9 .therecipe {
 	background-size: 170%;
 }
-.c10 .myrecipe {
+.c10 .therecipe {
 	background-size: 170%;
 }
 header blockquote:before {
@@ -266,56 +266,56 @@ header blockquote:after {
 	color: chartreuse;
 	color: hsl(90, 100%, 50%);
 }
-.c1 .myrecipe {
+.c1 .therecipe {
 	background-image: url('../img/dry_martini.jpg');
 	background-position: 50% 30%;
 }
-.c2 .myrecipe {
+.c2 .therecipe {
 	background-image: url('../img/sidecar.jpg');
 	background-position: 90% 10%;
 }
-.c3 .myrecipe {
+.c3 .therecipe {
 	background-image: url('../img/margarita.jpg');
 	background-position: 30% 60%;
 }
-.c4 .myrecipe {
+.c4 .therecipe {
 	background-image: url('../img/julep.jpg');
 	background-position: 90% 55%;
 }
-.c5 .myrecipe {
+.c5 .therecipe {
 	background-image: url('../img/moscow_mule.jpg');
 	background-position: 90% 30%;
 }
-.c6 .myrecipe {
+.c6 .therecipe {
 	background-image: url('../img/mai_tai.jpg');
 	background-position: 80% 55%;
 }
-.c7 .myrecipe {
+.c7 .therecipe {
 	background-image: url('../img/manhattan.jpg');
 	background-position: 90% 33%;
 }
-.c8 .myrecipe {
+.c8 .therecipe {
 	background-image: url('../img/daiquiri.jpg');
 	background-position: 75% 33%;
 }
-.c9 .myrecipe {
+.c9 .therecipe {
 	background-image: url('../img/cosmopolitan.jpg');
 	background-position: 90% 33%;
 }
-.c10 .myrecipe {
+.c10 .therecipe {
 	background-image: url('../img/floridita.jpg');
 	background-position: 90% 33%;
 }
-.c7 .myrecipe {
+.c7 .therecipe {
 	background-position: 80% 22%;
 }
-.c8 .myrecipe {
+.c8 .therecipe {
 	background-position: 80% 26%;
 }
-.c9 .myrecipe {
+.c9 .therecipe {
 	background-position: 75% 35%;
 }
-.c10 .myrecipe {
+.c10 .therecipe {
 	background-position: 85% 25%;
 }
 p:nth-of-type(odd) strong, q {
@@ -352,19 +352,19 @@ p:nth-of-type(odd) a[href ^="../"] {
 p a[href ^="../"]:hover {
 	color: magenta;
 }
-.c3 .showtime .myrecipe {
+.c3 .showtime .therecipe {
 	background-position: center;
 }
-.c2 .showtime .myrecipe {
+.c2 .showtime .therecipe {
 	background-position: 80% 10%;
 }
-.c4 .showtime .myrecipe {
+.c4 .showtime .therecipe {
 	background-position: 55% 33%;
 }
-.c5 .showtime .myrecipe {
+.c5 .showtime .therecipe {
 	background-position: 60% 50%;
 }
-.c6 .showtime .myrecipe {
+.c6 .showtime .therecipe {
 	background-position: 85% 50%;
 }
 .no-shapes #circ {
@@ -458,7 +458,7 @@ nav>ul li a:hover {
 .c1 nav>ul>li:nth-child(1):hover a+ul, .c2 nav>ul>li:nth-child(6):hover a+ul, .c3 nav>ul>li:nth-child(3):hover a+ul, .c4 nav>ul>li:nth-child(5):hover a+ul, .c5 nav>ul>li:nth-child(2):hover a+ul, .c6 nav>ul>li:nth-child(4):hover a+ul {
 	left: auto;
 }
-.showtime .myrecipe {
+.showtime .therecipe {
 	background-size: 500%;
 }
 .no-shapes svg, .no-shapes .variant:before, .no-shapes .variant p:before {
@@ -476,7 +476,7 @@ nav>ul li a:hover {
 	left: -9990px;
 }
 @media only screen and (min-width: 769px) {
-	.no-js .myrecipe {
+	.no-js .therecipe {
 		width: 0px;
 		height: 0px;
 	}
@@ -579,7 +579,7 @@ nav>ul li a:hover {
 		opacity: .75;
 	}
 	@supports not (border-radius: 50%) {
-		.myrecipe {
+		.therecipe {
 			background-image: url('../img/cocktail_pink.svg');
 			background-size: contain;
 			height: 131px;
@@ -636,7 +636,7 @@ nav>ul li a:hover {
 	.c7 header aside {
 		background-size: 160%;
 	}
-	.no-borderradius .myrecipe {
+	.no-borderradius .therecipe {
 		background-image: url('../img/cocktail_pink.svg');
 		background-size: contain;
 		height: 131px;
