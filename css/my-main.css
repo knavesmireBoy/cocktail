@@ -172,7 +172,7 @@ h2:hover {
 	-webkit-filter: none;
 	filter: none;
 }
-.recipe {
+.myrecipe {
 	-webkit-transition: background-size 4s;
 	-o-transition: background-size 4s;
 	transition: background-size 4s;
@@ -258,7 +258,7 @@ main aside div:last-child {
 		-webkit-shape-margin: 2vw;
 		shape-margin: 2vw;
 	}
-	.recipe {
+	.myrecipe {
 		-webkit-shape-outside: circle(50%);
 		shape-outside: circle(50%);
 		-webkit-border-radius: 50%;
