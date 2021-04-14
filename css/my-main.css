@@ -4,9 +4,9 @@
 * Autoprefixer: v9.7.6
 * Browsers: last 20 version
 */
+
 /*support for shapes css was generally added after feature queries so prefer this over the Modernizr approach*/
 
- 
 @-webkit-keyframes myrotate {
 	0% {
 		-webkit-transform: rotate(-10deg);
@@ -65,7 +65,6 @@ nav {
 	font-size: calc(22px + (28 - 22) * (100vw - 768px) / (1280 - 768));
 	text-shadow: 2px 2px 2px #000;
 }
-
 svg {
 	fill: rgba(255, 0, 255, .8);
 	-webkit-filter: drop-shadow(0px 0px 20px magenta);
@@ -80,7 +79,6 @@ svg text {
 	stroke-width: 1px;
 	stroke: #eee8aa;
 }
-
 main, nav>ul, main aside {
 	display: -webkit-box;
 	display: -ms-flexbox;
@@ -91,21 +89,18 @@ main, nav>ul, main aside {
 	-webkit-box-pack: start;
 	-ms-flex-pack: start;
 }
-
-@supports (background-image: linear-gradient(black, white)){
-nav>ul {
-	background-image: -webkit-gradient(linear, left top, left bottom, from(transparent), to(black));
-    background-image: -o-linear-gradient(transparent, black);
-    background-image: linear-gradient(transparent, black);
+@supports (background-image: linear-gradient(black, white)) {
+	nav>ul {
+		background-image: -webkit-gradient(linear, left top, left bottom, from(transparent), to(black));
+		background-image: -o-linear-gradient(transparent, black);
+		background-image: linear-gradient(transparent, black);
+	}
 }
-}
-
 .cssgradients nav>ul {
-    background-image: -webkit-gradient(linear, left top, left bottom, from(transparent), to(black));
-    background-image: -o-linear-gradient(transparent, black);
-    background-image: linear-gradient(transparent, black);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(transparent), to(black));
+	background-image: -o-linear-gradient(transparent, black);
+	background-image: linear-gradient(transparent, black);
 }
-   
 h1 em {
 	text-shadow: 1px 1px 3px rgba(0, 255, 255, .9);
 	right: .5vmax;
@@ -133,10 +128,9 @@ main aside {
 	-webkit-flex-direction: column;
 	flex-direction: column;
 }
-
 nav ul ul {
 	font-size: .85em;
-    font-size: -webkit-calc(17px + (21 - 22) * (100vw - 768px) / (1280 - 768));
+	font-size: -webkit-calc(17px + (21 - 22) * (100vw - 768px) / (1280 - 768));
 	font-size: calc(17px + (21 - 17) * (100vw - 768px) / (1280 - 768));
 }
 main aside>div {
@@ -151,44 +145,38 @@ main aside>div {
 main aside a {
 	text-shadow: 2px 2px 2px black;
 }
-
 nav>ul li {
 	-webkit-box-flex: 1;
 	-ms-flex: 1 0 0px;
 	-webkit-flex: 1 1 auto;
 	flex: 1 1 auto;
 }
-
 li ul {
 	background-color: black;
-    	background-color: rgba(0,0,0,.8);
-     background-image: -o-linear-gradient(black, rgba(204, 0, 204, 0.5));
+	background-color: rgba(0, 0, 0, .8);
+	background-image: -o-linear-gradient(black, rgba(204, 0, 204, 0.5));
 	background-image: -webkit-gradient(linear, left top, left bottom, from(black), to(rgba(204, 0, 204, 0.5)));
-	background-image: linear-gradient(black, rgba(204, 0, 204, 0.5));   
+	background-image: linear-gradient(black, rgba(204, 0, 204, 0.5));
 }
 .variant {
 	text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.3);
 	text-shadow: 2px 2px 2px black;
 }
-
 .quote-wrapper {
 	font-size: -webkit-calc(16px + (18 - 16) * (100vw - 860px) / (1280 - 860));
 	font-size: calc(16px + (18 - 16) * (100vw - 860px) / (1280 - 860));
 	line-height: -webkit-calc(19px + (24 - 19) * (100vw - 860px) / (1280 - 860));
 	line-height: calc(19px + (24 - 19) * (100vw - 860px) / (1280 - 860));
 }
-
 h2:hover {
 	-webkit-filter: none;
 	filter: none;
 }
-.content h2 {
+.recipe {
 	-webkit-transition: background-size 4s;
 	-o-transition: background-size 4s;
 	transition: background-size 4s;
 }
-
-
 .flexboxlegacy nav ul {
 	display: -webkit-box;
 	/* OLD - iOS 6-, Safari 3.1-6 */
@@ -204,13 +192,11 @@ h2:hover {
 	-webkit-align-items: flex-start;
 	align-items: flex-start;
 }
-
 main aside div:last-child {
 	-webkit-transition: all 1.5s;
 	-o-transition: all 1.5s;
 	transition: all 1.5s;
 }
-
 .c1 .quote-wrapper, .c4 .quote-wrapper, .c8 .quote-wrapper, .c9 .quote-wrapper {
 	font-size: -webkit-calc(18px + (24 - 18) * (100vw - 860px) / (1280 - 860));
 	font-size: calc(18px + (24 - 18) * (100vw - 860px) / (1280 - 860));
@@ -233,7 +219,6 @@ main aside div:last-child {
 	line-height: -webkit-calc(20px + (26 - 20) * (100vw - 860px) / (1280 - 860));
 	line-height: calc(20px + (26 - 20) * (100vw - 860px) / (1280 - 860));
 }
-
 .content h2:hover {
 	-webkit-filter: blur(1px);
 	filter: blur(1px);
@@ -245,72 +230,65 @@ main aside div:last-child {
 	-ms-transform: rotate(360deg);
 	transform: rotate(360deg);
 }
-
 @supports (shape-margin: 1em) {
-svg {
-	font-size: 1.5em;
-	font-family: 'BlackArial', Arial, sans-serif;
-	width: 100%;
-	padding: 5% 10%;
-	margin: 0 auto;
+	svg {
+		font-size: 1.5em;
+		font-family: 'BlackArial', Arial, sans-serif;
+		width: 100%;
+		padding: 5% 10%;
+		margin: 0 auto;
+	}
+	.variant p:before {
+		-webkit-shape-outside: polygon(3% -4.5%, 100% 0%, 100.00% 100.00%, 1% 97.5%, 52% 93%, 76.6% 82.7%, 94% 65.6%, 100% 50%, 94% 32.6%, 76.6% 17.3%, 49% 2.5%);
+		shape-outside: polygon(3% -4.5%, 100% 0%, 100.00% 100.00%, 1% 97.5%, 52% 93%, 76.6% 82.7%, 94% 65.6%, 100% 50%, 94% 32.6%, 76.6% 17.3%, 49% 2.5%);
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+		-webkit-shape-margin: 1vw;
+		shape-margin: 1vw;
+	}
+	.variant:before {
+		-webkit-shape-outside: polygon(0px 0px, 99% -8px, 49% 3.5%, 17.40% 17.80%, 6% 32.6%, 0px 50%, 6% 65.6%, 25.4% 81.2%, 55% 92%, 98% 97.5%, 0px 100%);
+		shape-outside: polygon(0px 0px, 99% -8px, 49% 3.5%, 17.40% 17.80%, 6% 32.6%, 0px 50%, 6% 65.6%, 25.4% 81.2%, 55% 92%, 98% 97.5%, 0px 100%);
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+		-webkit-shape-margin: 1vw;
+		shape-margin: 1vw;
+	}
+	.c1 .variant:before, .c4 .variant:before, .c4 .variant p:before, .c1 .variant p:before {
+		-webkit-shape-margin: 2vw;
+		shape-margin: 2vw;
+	}
+	.recipe {
+		-webkit-shape-outside: circle(50%);
+		shape-outside: circle(50%);
+		-webkit-border-radius: 50%;
+		border-radius: 50%;
+		-webkit-filter: grayscale(80%);
+		filter: grayscale(80%);
+	}
 }
-    
-    .variant p:before {
-	-webkit-shape-outside: polygon(3% -4.5%, 100% 0%, 100.00% 100.00%, 1% 97.5%, 52% 93%, 76.6% 82.7%, 94% 65.6%, 100% 50%, 94% 32.6%, 76.6% 17.3%, 49% 2.5%);
-	shape-outside: polygon(3% -4.5%, 100% 0%, 100.00% 100.00%, 1% 97.5%, 52% 93%, 76.6% 82.7%, 94% 65.6%, 100% 50%, 94% 32.6%, 76.6% 17.3%, 49% 2.5%);
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-	-webkit-shape-margin: 1vw;
-	shape-margin: 1vw;
-}
-.variant:before {
-	-webkit-shape-outside: polygon(0px 0px, 99% -8px, 49% 3.5%, 17.40% 17.80%, 6% 32.6%, 0px 50%, 6% 65.6%, 25.4% 81.2%, 55% 92%, 98% 97.5%, 0px 100%);
-	shape-outside: polygon(0px 0px, 99% -8px, 49% 3.5%, 17.40% 17.80%, 6% 32.6%, 0px 50%, 6% 65.6%, 25.4% 81.2%, 55% 92%, 98% 97.5%, 0px 100%);
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-	-webkit-shape-margin: 1vw;
-	shape-margin: 1vw;
-}
-    .c1 .variant:before, .c4 .variant:before, .c4 .variant p:before,  .c1 .variant p:before {
-	-webkit-shape-margin: 2vw;
-	shape-margin: 2vw;
-}
-    
-    main>article h2 {
-	-webkit-shape-outside: circle(50%);
-	shape-outside: circle(50%);
-	-webkit-border-radius: 50%;
-	border-radius: 50%;
-	-webkit-filter: grayscale(80%);
-	filter: grayscale(80%);
-}
-}
-
 @media only screen and (min-width: 769px) {
- 
-    @supports (background-size: contain) {
-        header aside {
-            background-image: url("../img/fc.jpg");
-            background-size: contain;
-        }
-    }
-    .backgroundsize header aside {
-        background-image: url("../img/fc.jpg");
-        background-size: contain;
-    }
-    
-    @supports (background-image: linear-gradient(black, white)) {
-        nav > ul {
-            background-color: #c0c;
-            background-color: rgb(204, 0, 204);
-        }
-    }
-    .cssgradients > nav ul {
-        background-color: #c0c;
-        background-color: rgb(204, 0, 204);
-    }
+	@supports (background-size: contain) {
+		header aside {
+			background-image: url("../img/fc.jpg");
+			background-size: contain;
+		}
+	}
+	.backgroundsize header aside {
+		background-image: url("../img/fc.jpg");
+		background-size: contain;
+	}
+	@supports (background-image: linear-gradient(black, white)) {
+		nav>ul {
+			background-color: #c0c;
+			background-color: rgb(204, 0, 204);
+		}
+	}
+	.cssgradients>nav ul {
+		background-color: #c0c;
+		background-color: rgb(204, 0, 204);
+	}
 }
-
 @media only screen and (max-width: 1280px) {
 	main aside {
 		-webkit-box-flex: 1;
@@ -325,7 +303,6 @@ svg {
 		flex: 5 1 0;
 	}
 }
-
 @media only screen and (max-width: 960px) {
 	.showtime .sidebar>div img {
 		-o-object-fit: cover;
@@ -339,17 +316,16 @@ svg {
 		-webkit-flex: 7 1 0;
 		flex: 7 1 0;
 	}
-    @supports (shape-margin: 1em) {
-        variant:before, .variant p:before {
-		-webkit-shape-margin: 1vw;
-		shape-margin: 1vw;
+	@supports (shape-margin: 1em) {
+		variant:before, .variant p:before {
+			-webkit-shape-margin: 1vw;
+			shape-margin: 1vw;
+		}
 	}
-    }
-
 	.sidebar>div img {
 		-o-object-fit: cover;
 		object-fit: cover;
-        right: 0;
+		right: 0;
 	}
 }
 @media only screen and (max-width: 768px) {
@@ -378,7 +354,6 @@ svg {
 		-o-transition: height .9s ease-out;
 		transition: height .9s ease-out;
 	}
-  
 	.menu {
 		top: 2vw;
 		right: -webkit-calc(36px + (56 - 36) * (100vw - 320px) / (768 - 320));
@@ -403,12 +378,11 @@ svg {
 		-ms-transform: rotate(360deg);
 		transform: rotate(360deg);
 	}
-	
 	/* if no js sub menus will not be removed, maintain no show on hover*/
 	.no-js .c1 nav>ul>li:nth-child(1):hover a+ul, .no-js .c2 nav>ul>li:nth-child(6):hover a+ul, .no-js .c3 nav>ul>li:nth-child(3):hover a+ul, .no-js .c4 nav>ul>li:nth-child(5):hover a+ul, .no-js .c5 nav>ul>li:nth-child(2):hover a+ul, .no-js .c6 nav>ul>li:nth-child(4):hover a+ul {
 		left: -9999px;
 	}
-    #menu-toggle:checked+nav ul li {
+	#menu-toggle:checked+nav ul li {
 		height: 2em;
 		font-size: 2em;
 		font-size: -webkit-calc(18px + (28 - 18) * (100vw - 320px) / (768 - 320));
@@ -421,7 +395,6 @@ svg {
 		font-size: -webkit-calc(10px + (42 - 10) * (100vw - 320px) / (768 - 320));
 		font-size: calc(10px + (42 - 10) * (100vw - 320px) / (768 - 320));
 	}
-	
 	h1:after {
 		text-transform: uppercase;
 		font-size: 1em;
@@ -477,7 +450,7 @@ svg {
 		color: coral;
 		text-shadow: 1px 1px darkred;
 	}
-    h1 em:hover {
+	h1 em:hover {
 		text-shadow: 1px 1px 3px rgba(255, 0, 255, .8);
 	}
 }
@@ -507,7 +480,6 @@ svg {
 	main article.content p {
 		color: #444;
 	}
-	
 	main>article>p:first-child:first-letter {
 		color: #444;
 		font-size: 300%;
@@ -520,7 +492,7 @@ svg {
 	main, .sidebar>div:first-child {
 		display: block;
 	}
-    main article.content p strong, main article.content em, main article.content a {
+	main article.content p strong, main article.content em, main article.content a {
 		color: black;
 	}
 }

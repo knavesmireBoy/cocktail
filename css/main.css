@@ -19,7 +19,7 @@ header {
 	font-size: 3.5em;
 }
 h1 {
-    font-size: 1em;
+	font-size: 1em;
 	margin: 2.8em 0 .3em 0;
 	margin: 10rem 0 1rem 0;
 	padding: 0 0 0 7em;
@@ -32,7 +32,6 @@ p {
 em {
 	font-family: 'BernhardModernBd', cochin, 'latin_modern_roman10BdIt', serif;
 }
-
 nav>ul {
 	display: table;
 }
@@ -76,10 +75,9 @@ nav>ul {
 	border-top: 1px solid white;
 	position: relative;
 	width: 100%;
-    background-color: #680068;
+	background-color: #680068;
 	background-color: rgb(104, 0, 104);
 }
-
 main aside {
 	min-width: 200px;
 	position: relative;
@@ -143,7 +141,7 @@ main aside a {
 	top: 2em;
 	font-weight: bold;
 }
-main article h2 {
+main article .recipe {
 	background-color: transparent;
 	background-repeat: no-repeat;
 	float: right;
@@ -205,34 +203,34 @@ nav ul>li a {
 	font-size: 115%;
 	font-style: normal;
 }
-.c1 h2 {
+.c1 .recipe {
 	background-size: 250%;
 }
-.c2 h2 {
+.c2 .recipe {
 	background-size: 200%;
 }
-.c3 h2 {
+.c3 .recipe {
 	background-size: 225%;
 }
-.c4 h2 {
+.c4 .recipe {
 	background-size: 170%;
 }
-.c5 h2 {
+.c5 .recipe {
 	background-size: 170%;
 }
-.c6 h2 {
+.c6 .recipe {
 	background-size: 170%;
 }
-.c7 h2 {
+.c7 .recipe {
 	background-size: 170%;
 }
-.c8 h2 {
+.c8 .recipe {
 	background-size: 170%;
 }
-.c9 h2 {
+.c9 .recipe {
 	background-size: 170%;
 }
-.c10 h2 {
+.c10 .recipe {
 	background-size: 170%;
 }
 header blockquote:before {
@@ -268,69 +266,58 @@ header blockquote:after {
 	color: chartreuse;
 	color: hsl(90, 100%, 50%);
 }
-.c1 h2 {
+.c1 .recipe {
 	background-image: url('../img/dry_martini.jpg');
 	background-position: 50% 30%;
 }
-.c2 h2 {
+.c2 .recipe {
 	background-image: url('../img/sidecar.jpg');
 	background-position: 90% 10%;
 }
-.c3 h2 {
+.c3 .recipe {
 	background-image: url('../img/margarita.jpg');
 	background-position: 30% 60%;
 }
-.c4 h2 {
+.c4 .recipe {
 	background-image: url('../img/julep.jpg');
 	background-position: 90% 55%;
 }
-.c5 h2 {
+.c5 .recipe {
 	background-image: url('../img/moscow_mule.jpg');
 	background-position: 90% 30%;
 }
-.c6 h2 {
+.c6 .recipe {
 	background-image: url('../img/mai_tai.jpg');
 	background-position: 80% 55%;
 }
-.c7 h2 {
+.c7 .recipe {
 	background-image: url('../img/manhattan.jpg');
 	background-position: 90% 33%;
 }
-.c8 h2 {
+.c8 .recipe {
 	background-image: url('../img/daiquiri.jpg');
 	background-position: 75% 33%;
 }
-.c9 h2 {
+.c9 .recipe {
 	background-image: url('../img/cosmopolitan.jpg');
 	background-position: 90% 33%;
 }
-.c10 h2 {
+.c10 .recipe {
 	background-image: url('../img/floridita.jpg');
 	background-position: 90% 33%;
 }
-.c7 h2 {
+.c7 .recipe {
 	background-position: 80% 22%;
 }
-.c8 h2 {
+.c8 .recipe {
 	background-position: 80% 26%;
 }
-.c9 h2 {
+.c9 .recipe {
 	background-position: 75% 35%;
 }
-.c10 h2 {
+.c10 .recipe {
 	background-position: 85% 25%;
 }
-
-.no-borderradius h2:first-of-type {
-    background-image: url('../img/cocktail_pink.svg');
-    background-size: contain;
-}
-
-.no-borderradius main article h2 {
-	height: 131px;
-	width: 150px;
-}
-
 p:nth-of-type(odd) strong, q {
 	color: white;
 	font-weight: bold;
@@ -365,19 +352,19 @@ p:nth-of-type(odd) a[href ^="../"] {
 p a[href ^="../"]:hover {
 	color: magenta;
 }
-.c3 .showtime .content h2 {
+.c3 .showtime .recipe {
 	background-position: center;
 }
-.c2 .showtime .content h2 {
+.c2 .showtime .recipe {
 	background-position: 80% 10%;
 }
-.c4 .showtime .content h2 {
+.c4 .showtime .recipe {
 	background-position: 55% 33%;
 }
-.c5 .showtime .content h2 {
+.c5 .showtime .recipe {
 	background-position: 60% 50%;
 }
-.c6 .showtime .content h2 {
+.c6 .showtime .recipe {
 	background-position: 85% 50%;
 }
 .no-shapes #circ {
@@ -471,7 +458,7 @@ nav>ul li a:hover {
 .c1 nav>ul>li:nth-child(1):hover a+ul, .c2 nav>ul>li:nth-child(6):hover a+ul, .c3 nav>ul>li:nth-child(3):hover a+ul, .c4 nav>ul>li:nth-child(5):hover a+ul, .c5 nav>ul>li:nth-child(2):hover a+ul, .c6 nav>ul>li:nth-child(4):hover a+ul {
 	left: auto;
 }
-.showtime .content h2 {
+.showtime .recipe {
 	background-size: 500%;
 }
 .no-shapes svg, .no-shapes .variant:before, .no-shapes .variant p:before {
@@ -488,12 +475,11 @@ nav>ul li a:hover {
 	position: absolute;
 	left: -9990px;
 }
-
 @media only screen and (min-width: 769px) {
-.no-js main article h2  {
-    width: 0px;
-    height: 0px;
-}
+	.no-js .recipe {
+		width: 0px;
+		height: 0px;
+	}
 }
 @media only screen and (max-width: 960px) {
 	.showtime .sidebar>div {
@@ -592,10 +578,18 @@ nav>ul li a:hover {
 		cursor: pointer;
 		opacity: .75;
 	}
+	@supports not (border-radius: 50%) {
+		.recipe {
+			background-image: url('../img/cocktail_pink.svg');
+			background-size: contain;
+			height: 131px;
+			width: 150px;
+		}
+	}
 	nav>ul>li>a:hover {
 		color: #cad926;
 		color: hsl(65, 70%, 50%);
-        opacity: 1;
+		opacity: 1;
 	}
 	.no-backgroundsize header aside {
 		background-position: -20% 0%;
@@ -641,6 +635,12 @@ nav>ul li a:hover {
 	}
 	.c7 header aside {
 		background-size: 160%;
+	}
+	.no-borderradius .recipe {
+		background-image: url('../img/cocktail_pink.svg');
+		background-size: contain;
+		height: 131px;
+		width: 150px;
 	}
 	#nav {
 		display: block;
