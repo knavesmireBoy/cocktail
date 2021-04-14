@@ -43,6 +43,7 @@ header section {
 }
 
 
+/*
 header {
 	display: -webkit-box;
 	display: -ms-flexbox;
@@ -59,19 +60,18 @@ header>* {
 	flex: 2 1 0;
 	margin: 0 1em;
 }
+
 main {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
-}
-form {
-	padding: 1em;
 }
 main>* {
 	-webkit-box-flex: 3;
 	-ms-flex: 3 1 100px;
 	flex: 3 1 100px;
 }
+
 header section {
 	-webkit-box-flex: 3;
 	-ms-flex: 3 1 0px;
@@ -84,6 +84,11 @@ header ul {
 	flex: 0 0 auto;
 	margin: 0 1em;
 }
+*/
+form {
+	padding: 1em;
+}
+
 
 form ul label {
 	max-width: 7em;
@@ -96,6 +101,7 @@ header ul li {
 	height: -webkit-calc(83px + ((83 - 64) * (100vw - 768px) / (1280 - 768)) * 1.3333);
 	height: calc(83px + ((83 - 64) * (100vw - 768px) / (1280 - 768)) * 1.3333);
 }
+
 header ul a {
 	background-size: cover;
 }
@@ -195,7 +201,26 @@ main>div:first-child {
 	opacity: 1;
 }
 
-
+@media only screen and (max-width: 768px) {
+    
+    header > * {
+        text-align: center;
+    }
+header section {
+    width: 100vw;
+}
+    
+    header section > *{
+    text-align: center;
+        margin: 0;
+}
+    
+    header ul li {
+        width: 8rem;
+        height: 10.667rem;
+    }
+    
+}
 @media only screen and (max-width: 888px) {
 	header {
 		-ms-flex-wrap: wrap;

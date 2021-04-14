@@ -469,6 +469,16 @@ main aside div:last-child {
 		text-shadow: 1px 1px 1px rgba(0, 255, 255, .9);
 	}
 }
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 2/3)
+{
+    header {
+        font-size: 3.5em;
+    }
+    html body {
+        background: red;
+    }
+}
 @media print {
 	body {
 		background: white;

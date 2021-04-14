@@ -443,7 +443,16 @@ input[type=submit], main>div:first-child>a, .unit label:first-child, #paused, #u
 		-ms-background-size: 128%;
 		-webkit-background-size: 128%;
 		background-size: 128%;
+        background-image: url(../img/buttons_sprite.png);
 	}
+
+	
+}
+
+@media screen and (min-width: 769px) {
+header > * {
+    display: inline-block;
+}
 }
 @media screen and (min-width: 668px) {
 	main>div:first-child {
@@ -494,7 +503,7 @@ input[type=submit], main>div:first-child>a, .unit label:first-child, #paused, #u
 	form {
 		width: 96%;
 	}
-	.wrapper main>div {
+	.wrapper main>div:first-child {
 		width: 100vw;
 	}
 }
