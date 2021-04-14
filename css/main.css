@@ -32,10 +32,7 @@ p {
 em {
 	font-family: 'BernhardModernBd', cochin, 'latin_modern_roman10BdIt', serif;
 }
-h1 em:hover {
-	color: cyan;
-	text-shadow: 1px 1px 3px magenta;
-}
+
 nav>ul {
 	display: table;
 }
@@ -411,11 +408,11 @@ p a:hover {
 .c5 aside img {
 	right: 1.2em;
 }
-nav ul>li>a:hover {
+nav ul li a:hover {
 	color: #e6f075;
 	color: hsl(65, 80%, 70%);
 }
-nav>ul>li>a:hover {
+nav>ul li a:hover {
 	color: white;
 	opacity: .5;
 }
@@ -592,9 +589,9 @@ nav>ul>li>a:hover {
 		opacity: .75;
 	}
 	nav>ul>li>a:hover {
-		opacity: 1;
 		color: #cad926;
 		color: hsl(65, 70%, 50%);
+        opacity: 1;
 	}
 	.no-backgroundsize header aside {
 		background-position: -20% 0%;
