@@ -197,6 +197,8 @@ main aside div:last-child {
 	-o-transition: all 1.5s;
 	transition: all 1.5s;
 }
+
+
 .c1 .quote-wrapper, .c4 .quote-wrapper, .c8 .quote-wrapper, .c9 .quote-wrapper {
 	font-size: -webkit-calc(18px + (24 - 18) * (100vw - 860px) / (1280 - 860));
 	font-size: calc(18px + (24 - 18) * (100vw - 860px) / (1280 - 860));
@@ -267,6 +269,7 @@ main aside div:last-child {
 		filter: grayscale(80%);
 	}
 }
+
 @media only screen and (min-width: 769px) {
 	@supports (background-size: contain) {
 		header aside {
@@ -470,15 +473,7 @@ main aside div:last-child {
 	}
 }
 
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 2/3)
-{
-    header {
-        font-size: 3.5em;
-    }
-    html body {
-        background: red;
-    }
-}
+
 @media print {
 	body {
 		background: white;

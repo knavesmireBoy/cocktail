@@ -90,12 +90,12 @@
 }
 
 
-body {
+html body {
 	background-color: #000;
 	background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
 	background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
 	color: rgb(255, 251, 116);
-    font-family: 'Bernhard Modern Std', Cochin, Georgia, serif;
+    font-family:  'Bernhard Modern Std', mycochin, Georgia, serif;
 }
 
 
