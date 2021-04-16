@@ -177,21 +177,7 @@ h2:hover {
 	-o-transition: background-size 4s;
 	transition: background-size 4s;
 }
-.flexboxlegacy nav ul {
-	display: -webkit-box;
-	/* OLD - iOS 6-, Safari 3.1-6 */
-	/* OLD - Firefox 19- (buggy but mostly works) */
-	display: -ms-flexbox;
-	/* TWEENER - IE 10 */
-	display: -webkit-flex;
-	/* NEW - Chrome */
-	display: flex;
-	/* NEW, Spec - Opera 12.1, Firefox 20+ */
-	-webkit-box-align: start;
-	-ms-flex-align: start;
-	-webkit-align-items: flex-start;
-	align-items: flex-start;
-}
+
 main aside div:last-child {
 	-webkit-transition: all 1.5s;
 	-o-transition: all 1.5s;

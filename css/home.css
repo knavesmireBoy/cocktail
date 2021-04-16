@@ -106,6 +106,9 @@ form ul label {
 	width: 5.5em;
 	display: inline-block;
 }
+form ul > * {
+	display: inline-block;
+}
 header ul li {
 	border-right: 1px dotted #FFF;
 	display: inline-block;
@@ -158,9 +161,7 @@ h1 span:last-child {
 	font-size: 50%;
 	color: #fffb74;
 }
-li.unit label {
-	min-width: 1em;
-}
+
 .showtime main>div:first-child {
 	max-width: 500px;
 	margin: 1em auto;
@@ -231,9 +232,7 @@ header ul li:nth-child(6) a {
 	background-image: url("../img/cognac_s.png");
 	border-width: 0;
 }
-main>div:last-child form ul>* {
-	display: inline-block;
-}
+
 .response .placeholder {
 	height: 100%;
 }
@@ -282,8 +281,8 @@ main>div:last-child form ul:nth-child(5) li {
 }
 #myreset {
 	position: absolute;
-	right: 1vw;
-	top: 1vw;
+	right: 5px;
+	top: 5px;
 }
 #backbutton {
 	background-position: 50% 14.9%;
@@ -434,7 +433,7 @@ main>div:last-child form ul:nth-child(5) li {
 .showtime #controls:hover {
 	cursor: crosshair;
 }
-input[type=submit], main>div:first-child>a, .unit label:first-child, #paused, #unit, #lemon, .showtime #response, .inplay #mix, .inplay.playing #paused, .response main>div:first-child, .response form {
+input[type=submit], main>div:first-child>a, .unit label:first-child, #paused, #unit, #lemon, .showtime #response, .inplay #mix, .inplay.playing #paused, .response main>div:first-child {
 	position: absolute;
 	top: -9999px;
 	left: -9999px;
@@ -452,6 +451,11 @@ input[type=submit], main>div:first-child>a, .unit label:first-child, #paused, #u
 
 #response p a:hover {
     color: #6200ff;
+}
+
+.swap form{
+    position: relative;
+    left: 0;
 }
 @media only screen {
 	#controls button {
@@ -504,9 +508,8 @@ header > * {
 		width: calc(100px + (120 - 100) * (100vw - 667px) / (768 - 667));
 		height: calc(133px + ((120 - 100) * (100vw - 667px) / (768 - 667)) * 1.3333);
 	}
-	.swap main>div:first-child, #response form, .swap.response #response form {
+	.swap main>div:first-child, form, .swap.response form {
 		position: absolute;
-		top: -9999px;
 		left: -9999px;
 	}
 }
@@ -556,21 +559,8 @@ header > * {
 		font: italic bold 3em/normal cochin, 'latin_modern_roman10BdIt', serif;
 		margin: 1rem 0;
 	}
-	.ingredients input, #m1 {
-		width: calc(170px + (330 - 170) * (100vw - 320px) / (667 - 320));
-	}
-    
-	#cocktail, textarea {
-		width: calc(280px + (470 - 290) * (100vw - 320px) / (667 - 320));
-	}
-	#spirit {
-		width: calc(90px + (260 - 90) * (100vw - 320px) / (667 - 320));
-	}
-	#response form, .swap main>div:first-child {
-		position: absolute;
-		top: -9999px;
-		left: -9999px;
-	}
+
+	
 }
 @media only screen and (orientation: portrait) and (max-width: 667px) {
 	legend {
@@ -579,24 +569,24 @@ header > * {
 	label {
 		font-size: 3rem;
 	}
-	header ul li {
-		width: calc(48px + (64 - 48) * (100vw - 320px) / (414 - 320));
-		height: calc(63px + ((64 - 48) * (100vw - 320px) / (414 - 320)) * 1.333);
-	}
+
 	label[for=m1] {
 		width: 5.5em;
 	}
-	.ingredients input {
-		width: calc(170px + (310 - 170) * (100vw - 280px) / (667 - 280));
-	}
-	.ingredients li label {
-		width: calc(50px + (80 - 50) * (100vw - 280px) / (667 - 280));
-	}
+
 	.unit label:first-child {
 		position: relative;
 		top: 0;
 		left: 0;
 		margin: 0 1em;
+	}
+    
+    main div form ul.ingredients li {
+        display: block;
+    }
+    
+    .ingredients li {
+		border: dotted 1px magenta;
 	}
 	.ingredients li:nth-child(odd) {
 		border-width: 1px 1px 0;
@@ -607,12 +597,7 @@ header > * {
 	.ingredients li:last-child {
 		border-width: 0 1px 1px;
 	}
-	form>ul:first-of-type li:nth-child(2) {
-		width: calc(100% - 2em);
-	}
-	#cocktail, textarea {
-		width: calc(100vw - 2em);
-	}
+
 }
 
 /*https://css-tricks.com/almanac/selectors/n/nth-child/*/

@@ -34,10 +34,12 @@ td, th {
 	font-size: -webkit-calc(14px + (18 - 14) * (100vw - 574px) / (1280 - 574));
 	font-size: calc(14px + (18 - 14) * (100vw - 574px) / (1280 - 574));
 }
+/*
 main>* {
 	-webkit-filter: sepia();
 	filter: sepia();
 }
+*/
 legend {
 	font-size: -webkit-calc(18px + (30 - 18) * (100vw - 667px) / (1280 - 667));
 	font-size: calc(18px + (30 - 18) * (100vw - 667px) / (1280 - 667));
@@ -207,50 +209,124 @@ form>ul:last-of-type li {
 	}
 }
 
+@media only screen and (max-width: 667px) {
+
+	.ingredients input, #m1 {
+		width: calc(170px + (330 - 170) * (100vw - 320px) / (667 - 320));
+	}
+    
+	#cocktail, textarea {
+		width: calc(280px + (470 - 290) * (100vw - 320px) / (667 - 320));
+	}
+	#spirit {
+		width: calc(90px + (260 - 90) * (100vw - 320px) / (667 - 320));
+	}
+}
+
+@media only screen and (orientation: portrait) and (max-width: 667px) {
+
+	header ul li {
+		width: calc(48px + (64 - 48) * (100vw - 320px) / (414 - 320));
+		height: calc(63px + ((64 - 48) * (100vw - 320px) / (414 - 320)) * 1.333);
+	}
+
+	.ingredients input {
+		width: calc(170px + (310 - 170) * (100vw - 280px) / (667 - 280));
+	}
+	.ingredients li label {
+		width: calc(50px + (80 - 50) * (100vw - 280px) / (667 - 280));
+	}
+	form>ul:first-of-type li:nth-child(2) {
+		width: calc(100% - 2em);
+	}
+	#cocktail, textarea {
+		width: calc(100vw - 2em);
+	}
+}
+
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 2/3)
 {
-    html {
+    
+    input, label {
+        font-size: 1.4em;
+    }
+    
+      html.flexboxlegacy {
         font-size: .75em;
     }
     
-      header section {
+       .flexboxlegacy header section {
         font-size: 2em;
          width: 100%;
     }
     
-    header ul li {
+    
+      .flexboxlegacy main>div:first-child {
+        width: 100%;
+        height: auto;
+    }
+     .flexboxlegacy .placeholder img {
+        height: auto;
+    }
+    
+     .flexboxlegacy header ul li {
 		width: 6em;
         height: 7.95em;
 	}
     
-    .wrapper main>div:first-child {
-        width: 100%;
-        height: auto;
-    }
-    
-    .placeholder img {
-        height: auto;
-    }
-    
-    #controls button {
-	width: 4em;
-	height: 4em;
+    .flexboxlegacy #controls button {
+        width: 4em;
+        height: 4em;
         margin: 3px;
     }
     
-    .showtime main>div:first-child {
+     .flexboxlegacy .showtime main>div:first-child {
         border-width: 0;
     }
-
+    .flexboxlegacy .ingredients input,  .flexboxlegacy #m1 {
+        width: auto;
+        height: auto;
+	}
+    
+    .flexboxlegacy textarea {
+        width: 96%;
+        height: auto;
+    }
+    
+     legend {
+		font-size: 2em;
+	}
+    
+     .flexboxlegacy #cocktail{
+         width: 18em;
+    }
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 2/3) and (orientation:portrait)
 {
-     header ul li {
+    
+      .flexboxlegacy header ul li {
 		width: 4em;
         height: 5.32em;
 	}
     
-     
+    .unit label:first-child {
+        position: absolute;
+        left: -9999px;
+    }
+    
+     .flexboxlegacy #cocktail{
+         width: 100%;
+    }
+     .flexboxlegacy .ingredients input {
+        width: 100%;
+	}
+    
+    .ingredients li {
+        display: block;
+        margin: 0;
+        padding: 4px;
+    }
+         
 }
