@@ -1,22 +1,9 @@
-/*
-* Prefixed by https://autoprefixer.github.io
-* PostCSS: v7.0.29,
-* Autoprefixer: v9.7.6
-* Browsers: last 20 version
-*/
-
-/*
-* Prefixed by https://autoprefixer.github.io
-* PostCSS: v7.0.29,
-* Autoprefixer: v9.7.6
-* Browsers: last 20 version
-*/
-
 body {
 	background-image: -o-radial-gradient(white, rgba(255, 255, 255, .2) 2px, transparent 40px), -o-radial-gradient(white, rgba(255, 255, 255, .15) 1px, transparent 30px), -o-radial-gradient(white, rgba(255, 255, 255, .1) 2px, transparent 40px), -o-radial-gradient(rgba(255, 255, 255, .4), rgba(255, 255, 255, .1) 2px, transparent 30px);
 	background-image: radial-gradient(white, rgba(255, 255, 255, .2) 2px, transparent 40px), radial-gradient(white, rgba(255, 255, 255, .15) 1px, transparent 30px), radial-gradient(white, rgba(255, 255, 255, .1) 2px, transparent 40px), radial-gradient(rgba(255, 255, 255, .4), rgba(255, 255, 255, .1) 2px, transparent 30px);
-    /*
+	/*
 	display: -webkit-box;
+    */
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
@@ -25,7 +12,6 @@ body {
 	-webkit-flex-direction: column;
 	-ms-flex-direction: column;
 	flex-direction: column;
-    */
 }
 svg {
 	width: 4rem;
@@ -40,15 +26,17 @@ main>* {
 	filter: sepia();
 }
 */
+
 legend {
-	font-size: -webkit-calc(18px + (30 - 18) * (100vw - 667px) / (1280 - 667));
-	font-size: calc(18px + (30 - 18) * (100vw - 667px) / (1280 - 667));
+    font-size: 1.25rem;
+	font-size: -webkit-calc(18px + (30 - 18) * (100vw - 320px) / (1280 - 320));
+	font-size: calc(18px + (30 - 18) * (100vw - 320px) / (1280 - 320));
 	line-height: 1.2;
 }
 textarea {
-	height: -webkit-calc(60px + (125 - 60) * (100vw - 667px) / (1280 - 667));
-	height: calc(60px + (125 - 60) * (100vw - 667px) / (1280 - 667));
+    height: 5.2rem;
 }
+
 header section {
 	width: -webkit-calc(360px + (768 - 385) * (100vw - 768px) / (1280 - 768));
 	width: calc(360px + (768 - 385) * (100vw - 768px) / (1280 - 768));
@@ -59,6 +47,8 @@ form ul label {
 	font-size: calc(16px + (18 - 16) * (100vw - 768px) / (1280 - 768));
 }
 header ul li {
+    width: 3.45em;
+    height: 4.6em;
 	width: -webkit-calc(64px + (83 - 64) * (100vw - 768px) / (1280 - 768));
 	width: calc(64px + (83 - 64) * (100vw - 768px) / (1280 - 768));
 	height: -webkit-calc(83px + ((83 - 64) * (100vw - 768px) / (1280 - 768)) * 1.3333);
@@ -89,6 +79,8 @@ main>*:hover {
 .ingredients input {
 	width: -webkit-calc(178px + (216 - 178) * (100vw - 1024px) / (1280 - 1024));
 	width: calc(178px + (216 - 178) * (100vw - 1024px) / (1280 - 1024));
+    width: 9rem;
+    width: 15em;
 }
 main>div:first-child {
 	width: -webkit-calc(385px + (730 - 385) * (100vw - 768px) / (1280 - 768));
@@ -102,18 +94,14 @@ form>ul:last-of-type li {
 	-webkit-filter: sepia(80%);
 	filter: sepia(80%);
 }
-
 .svgfilters header ul li a:hover, .no-js header ul li a:hover {
 	-webkit-filter: none;
 	filter: none;
 }
 #cocktail, #email, textarea {
+    width: 14.58rem;
 	width: -webkit-calc(250px + (350 - 250) * (100vw - 768px) / (1280 - 768));
 	width: calc(250px + (350 - 250) * (100vw - 768px) / (1280 - 768));
-}
-#spirit {
-	width: -webkit-calc(92px + (130 - 92) * (100vw - 1024px) / (1280 - 1024));
-	width: calc(92px + (130 - 92) * (100vw - 1024px) / (1280 - 1024));
 }
 #controls {
 	-webkit-transition: all 1s;
@@ -180,18 +168,22 @@ form>ul:last-of-type li {
 }
 @media only screen and (min-width: 667px) and (max-width: 1024px) {
 	.ingredients input {
-		width: -webkit-calc(176px + (244 - 176) * (100vw - 667px) / (1024 - 667));
-		width: calc(176px + (244 - 176) * (100vw - 667px) / (1024 - 667));
+        width: 13.33rem;
+        width: -webkit-calc(180px + (244 - 176) * (100vw - 667px) / (1024 - 667));
+		width: calc(180px + (244 - 176) * (100vw - 667px) / (1024 - 667));
 	}
 	#spirit {
-		width: -webkit-calc(100px + (160 - 100) * (100vw - 667px) / (1024 - 667));
-		width: calc(100px + (160 - 100) * (100vw - 667px) / (1024 - 667));
+		/*
+        width: -webkit-calc(100px + (160 - 100) * (100vw - 667px) / (1024 - 667));
+		width: calc(80px + (160 - 80) * (100vw - 667px) / (1024 - 667));
+        */
+        width: 9rem;
 	}
 }
 @media only screen and (max-width: 768px) {
 	header>* {
 		text-align: center;
-        display: block;
+		display: block;
 	}
 	header section {
 		width: 100vw;
@@ -208,13 +200,14 @@ form>ul:last-of-type li {
 		height: calc(80px + ((100 - 64) * (100vw - 320px) / (768 - 320)) * 1.3333);
 	}
 }
-
 @media only screen and (max-width: 667px) {
-
+	header ul li {
+		width: calc(48px + (64 - 48) * (100vw - 320px) / (667 - 320));
+		height: calc(63px + ((64 - 48) * (100vw - 320px) / (667 - 320)) * 1.333);
+	}
 	.ingredients input, #m1 {
 		width: calc(170px + (330 - 170) * (100vw - 320px) / (667 - 320));
 	}
-    
 	#cocktail, textarea {
 		width: calc(280px + (470 - 290) * (100vw - 320px) / (667 - 320));
 	}
@@ -222,111 +215,122 @@ form>ul:last-of-type li {
 		width: calc(90px + (260 - 90) * (100vw - 320px) / (667 - 320));
 	}
 }
-
 @media only screen and (orientation: portrait) and (max-width: 667px) {
-
-	header ul li {
-		width: calc(48px + (64 - 48) * (100vw - 320px) / (414 - 320));
-		height: calc(63px + ((64 - 48) * (100vw - 320px) / (414 - 320)) * 1.333);
-	}
-
-	.ingredients input {
-		width: calc(170px + (310 - 170) * (100vw - 280px) / (667 - 280));
-	}
-	.ingredients li label {
-		width: calc(50px + (80 - 50) * (100vw - 280px) / (667 - 280));
-	}
 	form>ul:first-of-type li:nth-child(2) {
 		width: calc(100% - 2em);
 	}
-	#cocktail, textarea {
-		width: calc(100vw - 2em);
-	}
 }
-
-
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 2/3)
-{
-    
-    input, label {
-        font-size: 1.4em;
-    }
-    
-      html.flexboxlegacy {
-        font-size: .75em;
-    }
-    
-       .flexboxlegacy header section {
-        font-size: 2em;
-         width: 100%;
-    }
-    
-    
-      .flexboxlegacy main>div:first-child {
-        width: 100%;
-        height: auto;
-    }
-     .flexboxlegacy .placeholder img {
-        height: auto;
-    }
-    
-     .flexboxlegacy header ul li {
+@media only screen and (max-width: 480px) {
+	/*safari does not support nested calc till version 11 AROUND the same time support for grid so using that as fallback*/
+	html.no-cssgrid {
+		font-size: .75em;
+	}
+	.no-cssgrid header section {
+		font-size: 2em;
+		width: 100%;
+	}
+	.no-cssgrid main>div:first-child {
+		width: 100%;
+		height: auto;
+	}
+	.no-cssgrid .placeholder img {
+		height: auto;
+	}
+	.no-cssgrid header ul li {
 		width: 6em;
-        height: 7.95em;
+		height: 7.95em;
 	}
-    
-    .flexboxlegacy #controls button {
-        width: 4em;
-        height: 4em;
-        margin: 3px;
-    }
-    
-     .flexboxlegacy .showtime main>div:first-child {
-        border-width: 0;
-    }
-    .flexboxlegacy .ingredients input,  .flexboxlegacy #m1 {
-        width: auto;
-        height: auto;
+	.no-cssgrid #controls button {
+		width: 4em;
+		height: 4em;
+		margin: 3px;
 	}
-    
-    .flexboxlegacy textarea {
-        width: 96%;
-        height: auto;
-    }
-    
-     legend {
+	.no-cssgrid .showtime main>div:first-child {
+		border-width: 0;
+	}
+	.no-cssgrid .ingredients input, .no-cssgrid #m1 {
+		width: auto;
+		height: auto;
+	}
+	textarea {
+		width: 96%;
+		height: auto;
+	}
+	.no-cssgrid legend {
 		font-size: 2em;
 	}
-    
-     .flexboxlegacy #cocktail{
-         width: 18em;
-    }
+	.no-cssgrid #cocktail {
+		width: 18em;
+	}
+	.no-cssgrid #response aside {
+		width: 140px;
+	}
+	.no-cssgrid #response aside img {
+		width: 100%;
+		height: auto;
+	}
+	/*https://css-tricks.com/scale-svg/*/
+	#lemoni {
+		position: relative;
+		height: 0;
+		width: 25%;
+		padding: 0;
+		padding-bottom: 20.05%;
+		margin: 0 auto;
+		box-sizing: content-box;
+		display: block;
+		max-width: none;
+	}
+	#lemoni svg {
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		top: 0;
+		left: 0;
+		margin: 0;
+	}
 }
-
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 2/3) and (orientation:portrait)
-{
-    
-      .flexboxlegacy header ul li {
+@media only screen and (max-width: 480px) and (orientation: portrait) {
+	.no-cssgrid header ul li {
 		width: 4em;
-        height: 5.32em;
+		height: 5.32em;
 	}
-    
-    .unit label:first-child {
-        position: absolute;
-        left: -9999px;
-    }
-    
-     .flexboxlegacy #cocktail{
-         width: 100%;
-    }
-     .flexboxlegacy .ingredients input {
-        width: 100%;
+	.unit label:first-child {
+		position: absolute;
+		left: -9999px;
 	}
-    
-    .ingredients li {
-        display: block;
-        margin: 0;
-        padding: 4px;
-    }
-         
+	.no-cssgrid #cocktail {
+		width: 100%;
+	}
+	.no-cssgrid .ingredients input {
+		width: 100%;
+	}
+	.ingredients li {
+		display: block;
+		margin: 0;
+		padding: 4px;
+	}
+}
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 2/3) {}
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 2/3) and (orientation:portrait) {}
+/*https://css-tricks.com/scale-svg/*/
+
+#lemoni {
+	position: relative;
+	height: 0;
+	width: 25%;
+	padding: 0;
+	padding-bottom: 20.05%;
+	margin: 1em auto;
+	box-sizing: content-box;
+	display: block;
+	max-width: none;
+}
+#lemoni svg {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	margin: 0;
 }

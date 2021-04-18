@@ -85,7 +85,7 @@ input, select, textarea {
 */
 button {
 	cursor: pointer;
-	/*font-size: 100%;*/
+	font-size: 100%;
 }
 /*https://stackoverflow.com/questions/20340138/remove-blue-border-from-css-custom-styled-button-in-chrome*/
 button:focus {
@@ -94,5 +94,3 @@ button:focus {
 ol, ul, dl {
 	list-style: none;
 }
-
-

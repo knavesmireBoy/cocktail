@@ -95,7 +95,7 @@ html body {
 	background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
 	background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
 	color: rgb(255, 251, 116);
-    font-family:  'Bernhard Modern Std', mycochin, Georgia, serif;
+    font-family:  'BernhardModern', mycochin, Georgia, serif;
 }
 
 
@@ -108,12 +108,13 @@ footer p:last-child a:hover{
     text-decoration: none;
 }
 
-
 footer {
 	clear: both;
 	padding: 1em 1em 0 2em;
 	z-index: 1;
 	box-sizing: border-box;
+    font-size: -moz-calc(14px + (18 - 14) * (100vw - 667px) / (1280 - 667));
+    font-size: -webkit-calc(14px + (18 - 14) * (100vw - 667px) / (1280 - 667));
     font-size: calc(14px + (18 - 14) * (100vw - 667px) / (1280 - 667));
 	flex-shrink: 0;
 }
@@ -190,7 +191,6 @@ footer p:last-child a:first-child{
 @media only screen and (max-width: 414px) {
 	footer {
 		padding: .5em;
-		font-size: .9em;
 	}
 	footer p {
 		text-align: center;
