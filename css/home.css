@@ -4,7 +4,7 @@ html {
 	font-size: 1.875vw;
 }
 header {
-	padding: .25rem;
+	padding: .75rem .25rem .25rem;
 	border-bottom: solid 1px #FFF;
 }
 main {
@@ -52,6 +52,11 @@ h3 {
 fieldset {
 	border: 0;
 }
+
+textarea {
+    height: 5.2rem;
+}
+
 legend {
 	color: #FFD700;
 	line-height: 1.6;
@@ -310,7 +315,11 @@ main>div:last-child form ul:nth-child(5) li {
 	cursor: pointer;
 	background-color: #990;
 	border: 1px solid #cc6;
+    width: 1.8em;
+    height: 1.8em;
+    margin: .2em;
 }
+
 #response p {
 	padding: .5em 1em;
 	line-height: 1.3;
