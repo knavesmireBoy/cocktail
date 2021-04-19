@@ -379,8 +379,8 @@ main aside div:last-child {
 		display: block;
 	}
 }
-@media only screen and (max-width: 768px) and (min-width: 415px) {
-	h1 {
+@media only screen and (max-width: 768px) /*and (min-width: 415px) */{
+	section h1 {
 		font-size: -webkit-calc(10px + (42 - 10) * (100vw - 320px) / (768 - 320));
 		font-size: calc(10px + (42 - 10) * (100vw - 320px) / (768 - 320));
 	}
@@ -443,6 +443,12 @@ main aside div:last-child {
 		text-shadow: 1px 1px 3px rgba(255, 0, 255, .8);
 	}
 }
+@media only screen and (max-width: 667px) /*and (min-width: 415px) */{
+	section h1 {
+		font-size: -webkit-calc(10px + (42 - 10) * (100vw - 320px) / (768 - 320));
+		font-size: calc(10px + (42 - 10) * (100vw - 320px) / (768 - 320));
+	}
+}
 @media only screen and (max-width: 480px) {
 	.no-flexbox.flexboxlegacy nav ul {
 		top: 6em;
@@ -453,6 +459,8 @@ main aside div:last-child {
 		width: 3em;
 	}
 }
+
+
 @media only screen and (max-width: 414px) {
 	h1 em {
 		text-shadow: 1px 1px 1px rgba(0, 255, 255, .9);

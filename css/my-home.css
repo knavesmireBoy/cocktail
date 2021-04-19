@@ -20,7 +20,11 @@ td, th {
     font-size: .7rem;
 	font-size: -webkit-calc(14px + (18 - 14) * (100vw - 574px) / (1280 - 574));
 	font-size: calc(14px + (18 - 14) * (100vw - 574px) / (1280 - 574));
-    
+}
+th {
+   font-size: 1rem; 
+    font-size: -webkit-calc(14px + (22 - 14) * (100vw - 574px) / (1280 - 574));
+	font-size: calc(14px + (22 - 14) * (100vw - 574px) / (1280 - 574));
 }
 td.method {
     font-size: calc(10px + (18 - 10) * (100vw - 574px) / (1280 - 574));
@@ -140,8 +144,8 @@ form>ul:last-of-type li {
 	object-fit: cover;
 }
 #response>section div {
-	padding-top: -webkit-calc(48px + (40) * (100vw - 768px) / (1280 - 768));
-	padding-top: calc(48px + (40) * (100vw - 768px) / (1280 - 768));
+	padding-top: -webkit-calc(48px + (30) * (100vw - 768px) / (1280 - 768));
+	padding-top: calc(48px + (30) * (100vw - 768px) / (1280 - 768));
 	padding-left: -webkit-calc(30px + (26) * (100vw - 768px) / (1280 - 768));
 	padding-left: calc(30px + (26) * (100vw - 768px) / (1280 - 768));
 	padding-right: -webkit-calc(30px + (26) * (100vw - 768px) / (1280 - 768));
@@ -202,22 +206,35 @@ form>ul:last-of-type li {
 	}
     */
 }
-@media only screen and (max-width: 667px) {
-    /*
+@media only screen and (max-width: 736px) {
+    
 	header ul li {
-		width: calc(48px + (64 - 48) * (100vw - 320px) / (667 - 320));
-		height: calc(63px + ((64 - 48) * (100vw - 320px) / (667 - 320)) * 1.333);
+		width: calc(48px + (64 - 48) * (100vw - 320px) / (736 - 320));
+		height: calc(63px + ((64 - 48) * (100vw - 320px) / (736 - 320)) * 1.333);
 	}
 	.ingredients input, #m1 {
-		width: calc(170px + (330 - 170) * (100vw - 320px) / (667 - 320));
+		width: calc(170px + (330 - 170) * (100vw - 320px) / (736 - 320));
 	}
 	#cocktail, textarea {
-		width: calc(280px + (470 - 290) * (100vw - 320px) / (667 - 320));
+		width: calc(280px + (470 - 290) * (100vw - 320px) / (736 - 320));
 	}
 	#spirit {
-		width: calc(90px + (260 - 90) * (100vw - 320px) / (667 - 320));
+		width: calc(160px + (260 - 160) * (100vw - 320px) / (736 - 320));
 	}
-    */
+    
+    
+    #response>section div {
+	padding-top: -webkit-calc(60px + (50) * (100vw - 320px) / (736 - 320));
+	padding-top: calc(60px + (50) * (100vw - 320px) / (736 - 320));
+	padding-left: -webkit-calc(40px + (30) * (100vw - 320px) / (736 - 320));
+	padding-left: calc(40px + (30) * (100vw - 320px) / (736 - 320));
+	padding-right: -webkit-calc(40px + (30) * (100vw - 320px) / (736 - 320));
+	padding-right: calc(40px + (30) * (100vw - 320px) / (736 - 320));
+    }
+    
+    td, th, td.method {
+    font-size: 1.5rem;
+	font-size: calc(14px + (20 - 14) * (100vw - 320px) / (736 - 320));
 }
 @media only screen and (orientation: portrait) and (max-width: 667px) {
 	form>ul:first-of-type li:nth-child(2) {
@@ -273,7 +290,35 @@ form>ul:last-of-type li {
 		width: 100%;
 		height: auto;
 	}
-	/*https://css-tricks.com/scale-svg/*/
+}
+    
+    @media only screen and (max-width: 480px) and (orientation: portrait) {
+    
+    /* in this layout lose the Measure labels in ingredients*/
+	.no-cssgrid header ul li {
+		width: 4em;
+		height: 5.32em;
+	}
+	.unit label:first-child, .ingredients ul li:nth-child(even) label {
+		position: absolute;
+		left: -9999px;
+	}
+	.no-cssgrid #cocktail {
+		width: 100%;
+	}
+
+    .wrapper .ingredients ul li {
+        margin: 0;
+		padding: 4px;
+        border-width: 0;
+    }
+    
+    .ingredients input {
+        width: 28rem;
+    }
+
+}
+    	/*https://css-tricks.com/scale-svg/*/
 	#lemoni {
 		position: relative;
 		height: 0;
@@ -283,7 +328,7 @@ form>ul:last-of-type li {
 		margin: 0 auto;
 		box-sizing: content-box;
 		display: block;
-		max-width: none;
+		max-width: 100px;
 	}
 	#lemoni svg {
 		position: absolute;
@@ -293,48 +338,3 @@ form>ul:last-of-type li {
 		left: 0;
 		margin: 0;
 	}
-}
-@media only screen and (max-width: 480px) and (orientation: portrait) {
-	.no-cssgrid header ul li {
-		width: 4em;
-		height: 5.32em;
-	}
-	.unit label:first-child {
-		position: absolute;
-		left: -9999px;
-	}
-	.no-cssgrid #cocktail {
-		width: 100%;
-	}
-	.no-cssgrid .ingredients input {
-		width: 100%;
-	}
-	.ingredients li {
-		display: block;
-		margin: 0;
-		padding: 4px;
-	}
-}
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 2/3) {}
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 2/3) and (orientation:portrait) {}
-/*https://css-tricks.com/scale-svg/*/
-
-#lemoni {
-	position: relative;
-	height: 0;
-	width: 25%;
-	padding: 0;
-	padding-bottom: 20.05%;
-	margin: .5em auto 0;
-	box-sizing: content-box;
-	display: block;
-	max-width: none;
-}
-#lemoni svg {
-	position: absolute;
-	height: 100%;
-	width: 100%;
-	top: 0;
-	left: 0;
-	margin: 0;
-}
