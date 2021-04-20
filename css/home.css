@@ -1,7 +1,7 @@
 /*https://www.smashingmagazine.com/2016/05/fluid-typography/*/
 
 html {
-	font-size: 1.875vw;
+	font-size: 2vw;
 }
 header {
 	padding: .75rem .25rem .25rem;
@@ -22,7 +22,7 @@ a {
 	color: rgb(204, 0, 204);
 }
 h1 {
-    text-indent: .5em;
+    text-indent: .5rem;
 }
 
 table {
@@ -46,9 +46,14 @@ th {
 }
 h3 {
 	color: rgb(204, 0, 204);
-	font-family: 'BernhardModernBd', cochin, 'latin_modern_roman10BdIt', Georgia, serif;
 	font-style: italic;
 	text-align: right;
+}
+
+h3, legend, h1 em, main h2 {
+	font-family: 'Bernhard Modern Std Bold It', mycochin, 'latin_modern_roman10BdIt', Georgia, serif;
+    font-weight: bold;
+    font-style: italic;
 }
 fieldset {
 	border: 0;
@@ -62,7 +67,6 @@ legend {
 	width: 100%;
 	text-indent: 2em;
 	font-style: italic;
-	font-family: 'BernhardModernBd', cochin, 'latin_modern_roman10BdIt', Georgia, serif;
 }
 i, cite, b {
 	color: #c0c0c0;
@@ -91,7 +95,6 @@ h1 span {
 }
 h1 em {
 	color: #FF00FF;
-	font-family: 'BernhardModernBdIt', cochin, 'latin_modern_roman10BdIt', Georgia, serif;
 }
 h2 span {
 	font-style: italic;
@@ -126,7 +129,6 @@ header ul a {
 .wrapper {
 	overflow: hidden;
 }
-.esquire {}
 .method {
 	color: #222;
 	text-align: center;
@@ -312,20 +314,23 @@ main>div:last-child form ul:nth-child(5) li {
 	display: table-cell;
 	border: solid 1px;
 	border-radius: 3px;
-	line-height: 1.6;
 	background-image: url(../img/buttons_sprite_lowend.png);
 	background-color: hsl(270, 50%, 40%);
 	background-repeat: no-repeat;
 	cursor: pointer;
 	background-color: #990;
 	border: 1px solid #cc6;
-	width: 2em;
-	height: 2em;
-	margin: .2em;
+	width: 1.5em;
+	height: 1.5em;
+	margin: .15em;
 }
 #response p {
 	padding: .5em 1em;
 	line-height: 1.3;
+}
+#response p:nth-of-type(2):after {
+    content: ' (pictured below).';
+    content: ' (pictured below).';
 }
 #response aside {
 	position: relative;
@@ -412,9 +417,8 @@ main>div:last-child form ul:nth-child(5) li {
 	display: block;
 }
 .esquire {
-	width: 20%;
+	width: 5rem;
 	margin: 1em;
-	float: left;
 }
 #response .esquire img {
 	width: 100%;
@@ -511,6 +515,16 @@ input[type=submit], main>div:first-child>a, .unit label:first-child, #paused, #u
 		width: 3em;
 		height: 3em;
 	}
+    
+    #response p:last-child {
+	text-align: left;
+}
+    #response p:nth-of-type(2):after {
+    content: '.';
+}
+    .esquire {
+        float: left;
+    }
 }
 @media only screen and (orientation: portrait) and (max-width: 1024px), (max-width: 768px) {
 	/*form {
@@ -619,9 +633,7 @@ input[type=submit], main>div:first-child>a, .unit label:first-child, #paused, #u
 	.ingredients li:last-child {
 		border-width: 0 1px 1px;
 	}
-	textarea {
-		margin-bottom: 1em;
-	}
+
 	#controls button {
 		width: 5em;
 		height: 5em;
@@ -637,5 +649,14 @@ input[type=submit], main>div:first-child>a, .unit label:first-child, #paused, #u
 	.response #response {
 		padding: 1em 3em 0;
 	}
+}
+
+@media only screen and (max-width: 1366px) and (orientation: portrait) and (pointer: coarse) {
+    main {
+        border-width: 0;
+    }
+    footer {
+        border-top: solid 1px white;
+    }
 }
 /*https://css-tricks.com/almanac/selectors/n/nth-child/*/

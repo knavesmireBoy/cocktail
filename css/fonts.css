@@ -37,52 +37,51 @@
 	font-display: swap;
 }
 
+@font-face {
+    font-family: 'Bernhard Modern Std It';
+    src: url('../fonts/BernhardModernStd-Italic.eot');
+    src: url('../fonts/BernhardModernStd-Italic.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/BernhardModernStd-Italic.woff2') format('woff2'),
+        url('../fonts/BernhardModernStd-Italic.woff') format('woff'),
+        url('../fonts/BernhardModernStd-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
 
 @font-face {
-    font-family: 'BernhardModern';
-    src: url('../fonts/BernhardModern-Roman.eot') format('eot');
-    src: url('../fonts/BernhardModern-Roman.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/BernhardModern-Roman.ttf') format('truetype'),
-        url('../fonts/BernhardModern-Roman.woff2') format('woff2'),
-        url(../fonts/BernhardModern-Roman.woff') format('woff'),
-        url('../fonts/BernhardModern-Roman.ttf') format('truetype');
-    font-weight: normal;
+    font-family: 'Bernhard Modern Std Bold It';
+    src: url('../fonts/BernhardModernStd-BoldIt.eot');
+    src: url('../fonts/BernhardModernStd-BoldIt.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/BernhardModernStd-BoldIt.woff2') format('woff2'),
+        url('../fonts/BernhardModernStd-BoldIt.woff') format('woff'),
+        url('../fonts/BernhardModernStd-BoldIt.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Bernhard Modern Std Bold';
+    src: url('../fonts/BernhardModernStd-Bold.eot');
+    src: url('../fonts/BernhardModernStd-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/BernhardModernStd-Bold.woff2') format('woff2'),
+        url('../fonts/BernhardModernStd-Bold.woff') format('woff'),
+        url('../fonts/BernhardModernStd-Bold.ttf') format('truetype');
+    font-weight: bold;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'BernhardModernBd';
-    src: url('../fonts/BernhardModernStd-Bold.eot') format('eot');
-    src: url('../fonts/BernhardModernStd-Bold.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/BernhardModernStd-Bold.woff2') format('woff2'),
-        url('../fonts/BernhardModernStd-Bold.woff') format('woff'),
-        url('../fonts/BernhardModernStd-Bold.ttf') format('truetype');
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'BernhardModernIt';
-    src: url('../fonts/BernhardModern-Italic.eot') format('eot');
-    src: url('../fonts/BernhardModern-Italic.eot?#iefix') format('embedded-opentype'),,
-        url('../fonts/BernhardModern-Italic.woff2') format('woff2'),
-        url('../fonts/BernhardModern-Italic.woff') format('woff'),
-        url('../fonts/BernhardModern-Italic.ttf') format('truetype');
+    font-family: 'Bernhard Modern Std';
+    src: url('../fonts/BernhardModernStd-Roman.eot');
+    src: url('../fonts/BernhardModernStd-Roman.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/BernhardModernStd-Roman.woff2') format('woff2'),
+        url('../fonts/BernhardModernStd-Roman.woff') format('woff'),
+        url('../fonts/BernhardModernStd-Roman.ttf') format('truetype');
     font-weight: normal;
-    font-style: italic;
-    font-display: swap;
-}
-
-
-@font-face {
-    font-family: 'BernhardModernBdIt';
-    src: url('../fonts/BernhardModern-BoldItalic.eot') format('eot');
-    src: url('../fonts/BernhardModern-BoldItalic.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/BernhardModern-BoldItalic.woff2') format('woff2'),
-        url('../fonts/BernhardModern-BoldItalic.woff') format('woff'),
-        url('../fonts/BernhardModern-BoldItalic.ttf') format('truetype');
-    font-weight: bold;
-    font-style: italic;
+    font-style: normal;
     font-display: swap;
 }
 
@@ -104,7 +103,7 @@ html body {
 	background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
 	background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
 	color: rgb(255, 251, 116);
-    font-family: 'BernhardModernBd', mycochin, Georgia, serif;
+    font-family: 'Bernhard Modern Std', mycochin, Georgia, serif;
 }
 
 
