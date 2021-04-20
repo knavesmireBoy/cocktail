@@ -11,19 +11,20 @@ main {
 	position: relative;
 	overflow: hidden;
 	width: 100%;
-	border-bottom: solid 1px #FFF;
+    border-bottom: 1px solid white;
 }
 form {
 	position: relative;
 	padding: 1em;
-    font-size: .75em;
+	font-size: .75em;
 }
 a {
 	color: rgb(204, 0, 204);
 }
 h1 {
-	margin: 0 0 0 1rem;
+    text-indent: .5em;
 }
+
 table {
 	border-collapse: collapse;
 	color: #333;
@@ -52,11 +53,9 @@ h3 {
 fieldset {
 	border: 0;
 }
-
 textarea {
-    height: 5.2rem;
+	height: 5.2rem;
 }
-
 legend {
 	color: #FFD700;
 	line-height: 1.6;
@@ -92,7 +91,7 @@ h1 span {
 }
 h1 em {
 	color: #FF00FF;
-	font-family: 'BernhardModernBd', cochin, 'latin_modern_roman10BdIt', Georgia, serif;
+	font-family: 'BernhardModernBdIt', cochin, 'latin_modern_roman10BdIt', Georgia, serif;
 }
 h2 span {
 	font-style: italic;
@@ -133,7 +132,6 @@ header ul a {
 	text-align: center;
 	border-top: solid 1px red;
 }
-
 input[type="number"] {
 	max-width: 3em;
 }
@@ -143,11 +141,9 @@ a:hover {
 p:nth-of-type(odd) {
 	color: #FFF;
 }
-
 tr:first-child {
 	border-width: 0 0 1px;
 }
-
 tr:last-child {
 	border-width: 1px 0 0;
 }
@@ -295,7 +291,7 @@ main>div:last-child form ul:nth-child(5) li {
 	top: 5px;
 }
 #spirit {
-	width: 5.25rem;    
+	width: 5.25rem;
 }
 #backbutton {
 	background-position: 50% 14.9%;
@@ -323,11 +319,10 @@ main>div:last-child form ul:nth-child(5) li {
 	cursor: pointer;
 	background-color: #990;
 	border: 1px solid #cc6;
-    width: 2em;
-    height: 2em;
-    margin: .2em;
+	width: 2em;
+	height: 2em;
+	margin: .2em;
 }
-
 #response p {
 	padding: .5em 1em;
 	line-height: 1.3;
@@ -418,7 +413,7 @@ main>div:last-child form ul:nth-child(5) li {
 }
 .esquire {
 	width: 20%;
-    margin: 1em;
+	margin: 1em;
 	float: left;
 }
 #response .esquire img {
@@ -508,17 +503,14 @@ input[type=submit], main>div:first-child>a, .unit label:first-child, #paused, #u
 		font-size: 2.75rem;
 		margin: 0 auto 1rem;
 	}
-
 	form, .swap.response form, .swap main>div:first-child {
 		position: absolute;
 		left: -9999px;
 	}
-    
-    #controls button {
-        width: 3em;
-        height: 3em;
-    }
-
+	#controls button {
+		width: 3em;
+		height: 3em;
+	}
 }
 @media only screen and (orientation: portrait) and (max-width: 1024px), (max-width: 768px) {
 	/*form {
@@ -558,14 +550,12 @@ input[type=submit], main>div:first-child>a, .unit label:first-child, #paused, #u
 		position: relative;
 		left: 0;
 	}
-
-    main h2 {
-        font-size: 30px;
-        line-height: 1;
-        margin-bottom: 0 1em 1em;
-}
-    
-    	#response>section>a {
+	main h2 {
+		font-size: 30px;
+		line-height: 1;
+		margin-bottom: 0 1em 1em;
+	}
+	#response>section>a {
 		left: -9999px;
 	}
 	#response>section {
@@ -581,7 +571,7 @@ input[type=submit], main>div:first-child>a, .unit label:first-child, #paused, #u
 	}
 }
 @media only screen and (max-width: 736px) and (pointer: coarse) {
-  	main>div:first-child>a {
+	main>div:first-child>a {
 		position: relative;
 		top: 0;
 		left: 0;
@@ -589,11 +579,14 @@ input[type=submit], main>div:first-child>a, .unit label:first-child, #paused, #u
 		display: block;
 		font: italic bold 3em/normal cochin, 'latin_modern_roman10BdIt', serif;
 		margin: 1rem 0;
-	}  
-    
-    form {
-        margin: 0 auto;
-    }
+	}
+	.showtime main>div:first-child>a {
+		position: absolute;
+		left: -9999px;
+	}
+	form {
+		margin: 0 auto;
+	}
 }
 @media only screen and (orientation: portrait) and (max-width: 736px) {
 	legend {
@@ -626,13 +619,15 @@ input[type=submit], main>div:first-child>a, .unit label:first-child, #paused, #u
 	.ingredients li:last-child {
 		border-width: 0 1px 1px;
 	}
-    
-    textarea {
-        margin-bottom: 1em;
-    }
-
+	textarea {
+		margin-bottom: 1em;
+	}
+	#controls button {
+		width: 5em;
+		height: 5em;
+		margin: 5px;
+	}
 }
-
 @media only screen and (min-width: 414px) {
 	#response aside {
 		float: left;

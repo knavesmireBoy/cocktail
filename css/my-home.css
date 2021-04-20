@@ -16,6 +16,8 @@ body {
 svg {
 	width: 4rem;
 }
+
+
 td, th {
 	font-size: .7rem;
 	font-size: -webkit-calc(14px + (18 - 14) * (100vw - 574px) / (1280 - 574));
@@ -177,7 +179,7 @@ form>ul:last-of-type li {
 	}
 	header section>* {
 		text-align: center;
-		margin: 0;
+		text-indent: 0;
 	}
 	header ul li {
 		width: 7em;
@@ -199,8 +201,8 @@ form>ul:last-of-type li {
 @media only screen and (max-width: 736px) {
 	header ul li {
 		/*decent fallback already declared*/
-		width: calc(48px + (84 - 48) * (100vw - 320px) / (736 - 320));
-		height: calc(63px + ((84 - 48) * (100vw - 320px) / (736 - 320)) * 1.333);
+		width: calc(48px + (100 - 48) * (100vw - 320px) / (736 - 320));
+		height: calc(63px + ((100 - 48) * (100vw - 320px) / (736 - 320)) * 1.333);
 	}
 	#cocktail, textarea {
 		width: 22em;
@@ -302,6 +304,11 @@ form>ul:last-of-type li {
 		.ingredients input {
 			width: 28rem;
 		}
+        
+        #spirit, #cocktail {
+		width: calc(200px + (320 - 200) * (100vw - 320px) / (480 - 320));
+	}
+
 	}
 	/*https://css-tricks.com/scale-svg/*/
 	#lemoni {
