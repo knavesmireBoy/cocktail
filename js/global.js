@@ -350,11 +350,12 @@ speakEasy.Util = (function() {
 	}
 
 	function validateRemove(node) {
+        node = getResult(node);
 		return node && node.parentNode;
 	}
 
 	function removeElement(node) {
-		return node.parentNode.removeChild(node);
+		return node.parentNode.removeChild(getResult(node));
 	}
 
 	function getElementWidth(el) {

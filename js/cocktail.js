@@ -344,6 +344,9 @@
 	negator();
 	eventing('resize', event_actions.slice(0, 1), _.throttle(negator, 99), window).execute();
 	eventing('scroll', event_actions.slice(0), _.throttle(eScroller, 100), window).execute();
+    
+   
+    
 }(Modernizr.mq('only all'), '(min-width: 768px)', [], 0, [], []));
 
 /*https://css-tricks.com/snippets/css/fluid-typography/
