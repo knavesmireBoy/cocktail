@@ -1,6 +1,8 @@
 body {
 	background-image: -webkit-radial-gradient(white, rgba(255, 255, 255, .2) 2px, transparent 40px), -webkit-radial-gradient(white, rgba(255, 255, 255, .15) 1px, transparent 30px), -webkit-radial-gradient(white, rgba(255, 255, 255, .1) 2px, transparent 40px), -webkit-radial-gradient(rgba(255, 255, 255, .4), rgba(255, 255, 255, .1) 2px, transparent 30px);
 	background-image: radial-gradient(white, rgba(255, 255, 255, .2) 2px, transparent 40px), radial-gradient(white, rgba(255, 255, 255, .15) 1px, transparent 30px), radial-gradient(white, rgba(255, 255, 255, .1) 2px, transparent 40px), radial-gradient(rgba(255, 255, 255, .4), rgba(255, 255, 255, .1) 2px, transparent 30px);
+}
+.flexbox body {
 	/*
 	display: -webkit-box;
     */
@@ -206,7 +208,7 @@ main>div:first-child {
 		font-size: 2em;
 	}
 	.no-cssgrid #cocktail {
-		width: 18em;
+		width: 19em;
 	}
 	.no-cssgrid #response aside {
 		width: 140px;
@@ -220,4 +222,12 @@ main>div:first-child {
 	#spirit, #cocktail {
 		width: calc(200px + (320 - 200) * (100vw - 320px) / (480 - 320));
 	}
+    .no-cssgrid #cocktail {
+        width: 14em;
+    }
+    .no-cssgrid header ul li {
+		width: 4.2em;
+		height: 5.55em;
+	}
+    
 }
