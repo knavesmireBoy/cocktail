@@ -416,8 +416,8 @@ main>div:last-child form ul:nth-child(5) li {
 }
 .esquire {
 	width: 5rem;
-	margin: 1em;
-    float: left;
+	margin: 2em;
+    float: right;
 }
 #response .esquire img {
 	width: 100%;
@@ -431,7 +431,6 @@ main>div:last-child form ul:nth-child(5) li {
 #response p:last-child {
 	border-top: solid 1px #FFF;
 	margin-top: 1em;
-	text-align: center;
 }
 #controls button:hover, #controls button:focus {
 	background-color: hsla(60, 100%, 25%, .8);
@@ -521,9 +520,7 @@ input[type=submit], main>div:first-child>a, .unit label:first-child, #paused, #u
     #response p:nth-of-type(2):after {
     content: '.';
 }
-    .esquire {
-        float: left;
-    }
+ 
 }
 @media only screen and (orientation: portrait) and (max-width: 1024px), (max-width: 768px) {
 	/*form {
@@ -557,7 +554,7 @@ input[type=submit], main>div:first-child>a, .unit label:first-child, #paused, #u
 	main h2 {
 		font-size: 30px;
 		line-height: 1;
-		margin-bottom: 0 1em 1em;
+		margin: 0 1em 1em;
 	}
 	#response>section>a {
 		left: -9999px;
@@ -575,6 +572,10 @@ input[type=submit], main>div:first-child>a, .unit label:first-child, #paused, #u
         
     #response aside: {
         width: 28%;
+    }
+    
+    #response h2 {
+        
     }
 }
 @media only screen and (max-width: 736px) and (pointer: coarse) {

@@ -239,13 +239,9 @@ form>ul:last-of-type li {
     */
     #response p {
     font-size: 18px;
-    font-size: 3vmax;
+    font-size: 3.3vmax;
 }
-    
-    .esquire {
-    width: 25vmax;
-    width: 50vmin;
-}
+
     .esquire p {
         line-height: 1;
     }
@@ -370,3 +366,11 @@ form>ul:last-of-type li {
 	}
 
 	}
+@media only screen and (max-width: 736px), (pointer: coarse) {
+    #response p {
+    font-size: 3.3vmax;
+}
+    .esquire {
+        width: 180px;
+    }
+}
