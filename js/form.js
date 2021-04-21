@@ -6,11 +6,11 @@
 /*global _: false */
 (function (mq, query) {
 	"use strict";
-/*
+
 	function is_touch_enabled() {
 		return ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0);
 	}
-*/
+
 	function invoke(f, arg) {
 		return f(arg);
 	}
@@ -132,7 +132,7 @@
 		div = anCr(anchor)('div');
 		anCr(div)(tbl(data));
 		doComp(ptL(setAttrs, comb_bound), anCr(anCr(anchor)('a')))('img');
-		if (/*is_touch_enabled()*/0) {
+		if (is_touch_enabled) {
 			eventing('click', event_actions.slice(0), function (e) {
 				function remove(e) {
 					utils.removeNodeOnComplete(e.target.parentNode);
@@ -203,7 +203,7 @@
 		var el = $('mix');
 		el.innerHTML = "or mix your own..."
 		eventing('click', event_actions.slice(0), function () {
-			klasAdd('swap', utils.getBody());
+			klasAdd('swap', utils.getBody);
 		}, el).execute();
 	}, window).execute();
     

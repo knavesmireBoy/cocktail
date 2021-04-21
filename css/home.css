@@ -353,6 +353,12 @@ main>div:last-child form ul:nth-child(5) li {
 #comb_bound {
     margin: 2em;
     display: block;
+    width: 100%;
+}
+
+#response #comb_bound img {
+    width: 100%;
+    height: auto;
 }
 #lemoni svg {
 	position: absolute;
