@@ -535,16 +535,7 @@ input[type=submit], main>div:first-child>a, .unit label:first-child, #paused, #u
 		width: 100%;
 	}
 }
-@media only screen and (max-width: 736px) {
-	/*
-	.deviceorientation .placeholder {
-		height: 140vw;
-	}
-    */
-	.deviceorientation #controls {
-		border-spacing: 1em;
-	}
-}
+
 @media only screen and (max-width: 736px) {
 	svg {
 		width: 12vmax;
@@ -574,13 +565,12 @@ input[type=submit], main>div:first-child>a, .unit label:first-child, #paused, #u
 	#response>section {
 		padding-bottom: 80%;
 	}
-	#response>section>* {
-		position: absolute;
-		height: 100%;
+	#response>section>div {
 		width: 100%;
-		top: 0;
-		border-radius: 50%;
-		margin: 0 0%;
+	}
+    
+    .deviceorientation #controls {
+		border-spacing: 1em;
 	}
         
     #response aside: {

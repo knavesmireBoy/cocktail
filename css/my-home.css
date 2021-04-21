@@ -278,7 +278,6 @@ form>ul:last-of-type li {
 		padding-left: calc(40px + (30) * (100vw - 320px) / (736 - 320));
 		padding-right: -webkit-calc(40px + (30) * (100vw - 320px) / (736 - 320));
 		padding-right: calc(40px + (30) * (100vw - 320px) / (736 - 320));
-        margin: 2em auto;
 	}
 	td, th, td.method {
 		font-size: 1.5rem;
