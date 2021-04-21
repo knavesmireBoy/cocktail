@@ -333,10 +333,8 @@ main>div:last-child form ul:nth-child(5) li {
     content: ' (pictured below).';
 }
 #response aside {
-	position: relative;
-	margin: 1em auto 0;
+	margin: 2em auto 0;
 	padding: .2em;
-	width: 16em;
 	border: solid 3px #FFF;
 	border-style: double;
 }
@@ -419,6 +417,7 @@ main>div:last-child form ul:nth-child(5) li {
 .esquire {
 	width: 5rem;
 	margin: 1em;
+    float: left;
 }
 #response .esquire img {
 	width: 100%;
@@ -583,6 +582,10 @@ input[type=submit], main>div:first-child>a, .unit label:first-child, #paused, #u
 		border-radius: 50%;
 		margin: 0 0%;
 	}
+        
+    #response aside: {
+        width: 28%;
+    }
 }
 @media only screen and (max-width: 736px) and (pointer: coarse) {
 	main>div:first-child>a {
@@ -640,14 +643,16 @@ input[type=submit], main>div:first-child>a, .unit label:first-child, #paused, #u
 		margin: 5px;
 	}
 }
-@media only screen and (min-width: 414px) {
+@media only screen and (min-width: 481px) {
 	#response aside {
 		float: left;
-		margin: .7em;
-		width: 16em;
+		margin: 1.4em 1em 0 1.4em;
 	}
-	.response #response {
-		padding: 1em 3em 0;
+}
+
+@media only screen and (orientation: portrait) and (max-width: 480px) {
+    #response aside:first-of-type {
+		width: 50%;
 	}
 }
 

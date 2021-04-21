@@ -150,13 +150,15 @@ form>ul:last-of-type li {
 	text-shadow: 1px 1px 1px #000;
 }
 #response p {
-    font-size: 18px;
+    font-size: 20px;
+    /*
 	font-size: -webkit-calc(16px + (19 - 16) * (100vw - 768px) / (1280 - 768));
 	font-size: calc(16px + (19 - 16) * (100vw - 768px) / (1280 - 768));
+    */
 }
 #response aside {
 	width: -webkit-calc(140px + (210 - 140) * (100vw - 667px) / (1280 - 667));
-	width: calc(140px + (210 - 140) * (100vw - 667px) / (1280 - 667));
+	width: calc(180px + (210 - 180) * (100vw - 667px) / (1280 - 667));
 	min-width: 140px;
 }
 #response p:first-of-type:first-letter {
@@ -237,8 +239,16 @@ form>ul:last-of-type li {
     */
     #response p {
     font-size: 18px;
-	font-size: 3.5vmax;
+    font-size: 3vmax;
 }
+    
+    .esquire {
+    width: 25vmax;
+    width: 50vmin;
+}
+    .esquire p {
+        line-height: 1;
+    }
 }
 @media only screen and (max-width: 736px) {
 	header ul li {
