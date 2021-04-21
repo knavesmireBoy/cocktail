@@ -6,7 +6,7 @@ html {
 header {
 	padding: .75rem .25rem .25rem;
 	border-bottom: solid 1px #FFF;
-	width: 26rem;
+	/*width: 26rem;*/
 }
 main {
 	position: relative;
@@ -50,7 +50,8 @@ svg {
 	width: 4rem;
 }
 h3 {
-	color: rgb(204, 0, 204);
+	color: #fd44ee;
+	color: hsl(305, 98%, 63%);
 	font-style: italic;
 	text-align: right;
 }
@@ -67,7 +68,7 @@ textarea {
 }
 legend {
 	color: #FFD700;
-	line-height: 1.6;
+	line-height: 1.2;
 	font-size: 1.25rem;
 	width: 100%;
 	text-indent: 2em;
@@ -119,7 +120,7 @@ form ul label {
 	width: 5.5em;
 	max-width: 7em;
 }
-form ul>* {
+form ul>*, ul li > * {
 	display: inline-block;
 }
 header ul li {
@@ -178,6 +179,12 @@ main>div:first-child {
 .response aside {
 	clear: both;
 }
+
+#response aside {
+    width: 25%;
+    width: 12rem;
+    width: calc(180px + (120) * (100vw - 320px) / (1280 - 320));
+}
 li.unit {
 	margin: 0 0 0 .5em;
 }
@@ -214,7 +221,8 @@ h1 em:hover {
 	margin: 0 9em 0 0;
 }
 .ingredients legend em {
-	color: rgba(204, 0, 204, .8);
+	color: #fd44ee;
+	color: hsl(305, 98%, 63%);
 }
 .svgfilters header ul a, .no-js header ul a {
 	background-position: 0 0;
@@ -341,6 +349,10 @@ main>div:last-child form ul:nth-child(5) li {
 	box-sizing: content-box;
 	display: block;
 	max-width: 100px;
+}
+#comb_bound {
+    margin: 2em;
+    display: block;
 }
 #lemoni svg {
 	position: absolute;
@@ -572,10 +584,7 @@ input[type=submit], main>div:first-child>a, .unit label:first-child, #paused, #u
 		position: absolute;
 		left: -9999px;
 	}
-	#controls button {
-		width: 3em;
-		height: 3em;
-	}
+
 	#response p:last-child {
 		text-align: left;
 	}
@@ -586,19 +595,20 @@ input[type=submit], main>div:first-child>a, .unit label:first-child, #paused, #u
 		text-align: center;
 		display: block;
 	}
-	header section {
+	header section:first-child {
 		width: 50rem;
 	}
 	header h1 {
-		font-size: 1.4em;
+		font-size: 1.5em;
+        letter-spacing: -1px;
 	}
 	header section>* {
 		text-align: center;
 		text-indent: 0;
 	}
-	header ul li {
-		width: 7em;
-		height: 9.3em;
+	header ul:last-child li {
+		width: 7.5em;
+		height: 10em;
 	}
 	#response p {
 		font-size: 18px;
@@ -659,7 +669,7 @@ input[type=submit], main>div:first-child>a, .unit label:first-child, #paused, #u
 		font-size: 1.5rem;
 	}
 }
-@media only screen and (max-width: 736px) and (pointer: coarse) {
+@media only screen and (max-width: 736px)  and (pointer: coarse) {
 	main>div:first-child>a {
 		position: relative;
 		top: 0;
@@ -676,6 +686,18 @@ input[type=submit], main>div:first-child>a, .unit label:first-child, #paused, #u
 	form {
 		margin: 0 auto;
 	}
+    	#controls button {
+		width: 3em;
+		height: 3em;
+	}
+    
+    form ul li input, form ul li textarea {
+        line-height: 1.5;
+        font-size: 16px;
+    }
+    #response form ul label {
+         font-size: 18px;
+    }
 }
 @media only screen and (orientation: portrait) and (max-width: 736px) {
 	legend {
@@ -718,8 +740,8 @@ input[type=submit], main>div:first-child>a, .unit label:first-child, #paused, #u
 	#response p {
 		font-size: 3.3vmax;
 	}
-	.esquire {
-		width: 180px;
+	div.esquire {
+		width: 170px;
 	}
 }
 @media only screen and (min-width: 481px) {
