@@ -6,12 +6,13 @@ html {
 header {
 	padding: .75rem .25rem .25rem;
 	border-bottom: solid 1px #FFF;
+	width: 26rem;
 }
 main {
 	position: relative;
 	overflow: hidden;
 	width: 100%;
-    border-bottom: 1px solid white;
+	border-bottom: 1px solid white;
 }
 form {
 	position: relative;
@@ -22,9 +23,8 @@ a {
 	color: rgb(204, 0, 204);
 }
 h1 {
-    text-indent: .5rem;
+	text-indent: .5rem;
 }
-
 table {
 	border-collapse: collapse;
 	color: #333;
@@ -36,6 +36,7 @@ tr {
 }
 td, th {
 	padding: .2em .5em;
+	font-size: .7rem;
 }
 td {
 	text-transform: capitalize;
@@ -43,17 +44,20 @@ td {
 th {
 	text-align: center;
 	color: red;
+	font-size: 1rem;
+}
+svg {
+	width: 4rem;
 }
 h3 {
 	color: rgb(204, 0, 204);
 	font-style: italic;
 	text-align: right;
 }
-
 h3, legend, h1 em, main h2 {
 	font-family: 'Bernhard Modern Std Bold It', mycochin, 'latin_modern_roman10BdIt', Georgia, serif;
-    font-weight: bold;
-    font-style: italic;
+	font-weight: bold;
+	font-style: italic;
 }
 fieldset {
 	border: 0;
@@ -64,6 +68,7 @@ textarea {
 legend {
 	color: #FFD700;
 	line-height: 1.6;
+	font-size: 1.25rem;
 	width: 100%;
 	text-indent: 2em;
 	font-style: italic;
@@ -112,12 +117,14 @@ header:after {
 }
 form ul label {
 	width: 5.5em;
-	display: inline-block;
+	max-width: 7em;
 }
 form ul>* {
 	display: inline-block;
 }
 header ul li {
+	width: 3.45em;
+	height: 4.6em;
 	border-right: 1px dotted #FFF;
 	display: inline-block;
 }
@@ -162,6 +169,12 @@ tr:last-child {
 fieldset.ingredients {
 	margin: .5em 0 0;
 }
+.ingredients input {
+	width: 9rem;
+}
+main>div:first-child {
+	width: 27rem;
+}
 .response aside {
 	clear: both;
 }
@@ -190,6 +203,9 @@ li.unit input {
 }
 li.unit label {
 	min-width: 1em;
+}
+form>ul:last-of-type li {
+	display: block;
 }
 h1 em:hover {
 	color: #0FF;
@@ -272,6 +288,12 @@ main>div:last-child form ul:nth-child(5) li {
 #dash {
 	margin-right: 1em;
 }
+#cocktail, #email, textarea {
+	width: 14.58rem;
+}
+#spirit {
+	width: 10em;
+}
 #controls {
 	text-align: center;
 	position: relative;
@@ -309,6 +331,25 @@ main>div:last-child form ul:nth-child(5) li {
 	padding: 0;
 	overflow: hidden;
 }
+#lemoni {
+	position: relative;
+	height: 0;
+	width: 20%;
+	padding: 0;
+	padding-bottom: 16.04%;
+	margin: 0 auto;
+	box-sizing: content-box;
+	display: block;
+	max-width: 100px;
+}
+#lemoni svg {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	margin: 0;
+}
 #controls button {
 	padding: 0;
 	display: table-cell;
@@ -329,14 +370,24 @@ main>div:last-child form ul:nth-child(5) li {
 	line-height: 1.3;
 }
 #response p:nth-of-type(2):after {
-    content: ' (pictured below).';
-    content: ' (pictured below).';
+	content: ' (pictured below).';
+	content: ' (pictured below).';
 }
 #response aside {
 	margin: 2em auto 0;
 	padding: .2em;
 	border: solid 3px #FFF;
 	border-style: double;
+	min-width: 140px
+}
+#response p:first-of-type:first-letter {
+	color: white;
+	font-size: 300%;
+	line-height: 1.1;
+	margin: -4px 10px 0 0;
+	padding: 0 6px;
+	float: left;
+	border: solid 1px magenta;
 }
 #response img {
 	width: 100%;
@@ -417,7 +468,7 @@ main>div:last-child form ul:nth-child(5) li {
 .esquire {
 	width: 5rem;
 	margin: 2em;
-    float: right;
+	float: right;
 }
 #response .esquire img {
 	width: 100%;
@@ -491,6 +542,18 @@ input[type=submit], main>div:first-child>a, .unit label:first-child, #paused, #u
 		position: absolute;
 		left: -9999px;
 	}
+	.ingredients input {
+		width: 13.33rem;
+	}
+	#spirit {
+		width: 12em;
+	}
+}
+@media only screen and (orientation: portrait) and (max-width: 1024px), (max-width: 768px) {
+	.wrapper main>div:first-child {
+		width: 100vw;
+		width: 100%;
+	}
 }
 @media only screen and (max-width: 930px) {
 	.insert:after {
@@ -513,26 +576,38 @@ input[type=submit], main>div:first-child>a, .unit label:first-child, #paused, #u
 		width: 3em;
 		height: 3em;
 	}
-    
-    #response p:last-child {
-	text-align: left;
-}
-    #response p:nth-of-type(2):after {
-    content: '.';
-}
- 
-}
-@media only screen and (orientation: portrait) and (max-width: 1024px), (max-width: 768px) {
-	/*form {
-		width: 96%;
+	#response p:last-child {
+		text-align: left;
 	}
-    */
-	.wrapper main>div:first-child {
-		width: 100vw;
-		width: 100%;
+	#response p:nth-of-type(2):after {
+		content: '.';
+	}
+	header>* {
+		text-align: center;
+		display: block;
+	}
+	header section {
+		width: 50rem;
+	}
+	header h1 {
+		font-size: 1.4em;
+	}
+	header section>* {
+		text-align: center;
+		text-indent: 0;
+	}
+	header ul li {
+		width: 7em;
+		height: 9.3em;
+	}
+	#response p {
+		font-size: 18px;
+		font-size: 3.3vmax;
+	}
+	.esquire p {
+		line-height: 1;
 	}
 }
-
 @media only screen and (max-width: 736px) {
 	svg {
 		width: 12vmax;
@@ -565,18 +640,24 @@ input[type=submit], main>div:first-child>a, .unit label:first-child, #paused, #u
 	#response>section>div {
 		width: 100%;
 	}
-    
-    .deviceorientation #controls {
+	.deviceorientation #controls {
 		border-spacing: 1em;
 	}
-        
-    #response aside: {
-        width: 28%;
-    }
-    
-    #response h2 {
-        
-    }
+	#response aside: {
+		width: 28%;
+	}
+	#cocktail, textarea {
+		width: 22em;
+	}
+	#spirit {
+		width: 15em;
+	}
+	.ingredients input, #m1 {
+		width: 15em;
+	}
+	td, th, td.method {
+		font-size: 1.5rem;
+	}
 }
 @media only screen and (max-width: 736px) and (pointer: coarse) {
 	main>div:first-child>a {
@@ -627,11 +708,18 @@ input[type=submit], main>div:first-child>a, .unit label:first-child, #paused, #u
 	.ingredients li:last-child {
 		border-width: 0 1px 1px;
 	}
-
 	#controls button {
 		width: 5em;
 		height: 5em;
 		margin: 5px;
+	}
+}
+@media only screen and (max-width: 736px), (pointer: coarse) {
+	#response p {
+		font-size: 3.3vmax;
+	}
+	.esquire {
+		width: 180px;
 	}
 }
 @media only screen and (min-width: 481px) {
@@ -640,19 +728,37 @@ input[type=submit], main>div:first-child>a, .unit label:first-child, #paused, #u
 		margin: 1.4em 1em 0 1.4em;
 	}
 }
-
-@media only screen and (orientation: portrait) and (max-width: 480px) {
-    #response aside:first-of-type {
+@media only screen and (max-width: 480px) and (orientation: portrait) {
+	/* in this layout lose the Measure labels in ingredients*/
+	.no-cssgrid header ul li {
+		width: 4em;
+		height: 5.32em;
+	}
+	.unit label:first-child, .ingredients ul li:nth-child(even) label {
+		position: absolute;
+		left: -9999px;
+	}
+	.no-cssgrid #cocktail {
+		width: 100%;
+	}
+	.wrapper .ingredients ul li {
+		margin: 0;
+		padding: 4px;
+		border-width: 0;
+	}
+	.ingredients input {
+		width: 26rem;
+	}
+	#response aside:first-of-type {
 		width: 50%;
 	}
 }
-
 @media only screen and (max-width: 1366px) and (orientation: portrait) and (pointer: coarse) {
-    main {
-        border-width: 0;
-    }
-    footer {
-        border-top: solid 1px white;
-    }
+	main {
+		border-width: 0;
+	}
+	footer {
+		border-top: solid 1px white;
+	}
 }
 /*https://css-tricks.com/almanac/selectors/n/nth-child/*/
