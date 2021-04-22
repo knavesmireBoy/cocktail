@@ -576,6 +576,8 @@ input[type=submit], #mix, .unit label:first-child, #paused, #unit, #lemon, .show
 		content: ' above';
 	}
 }
+
+
 @media only screen and (max-width: 768px) {
 	header>* {
 		text-align: center;
@@ -860,7 +862,7 @@ input[type=submit], #mix, .unit label:first-child, #paused, #unit, #lemon, .show
 }
 
  
-@media only screen and (min-width: 480px) and (max-width: 667px) {
+@media only screen and (min-width: 480px) and (max-width: 720px) {
 	li.unit {
 		margin: 0.5em 0 0 1em;
 	}
