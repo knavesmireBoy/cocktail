@@ -185,8 +185,8 @@ main>div:first-child {
 		width: calc(120px + (240 - 120) * (100vw - 320px) / (736 - 320));
 	}
 	.ingredients input, #m1 {
-		width: -webkit-calc(170px + (330 - 170) * (100vw - 320px) / (736 - 320));
-		width: calc(170px + (330 - 170) * (100vw - 320px) / (736 - 320));
+		width: -webkit-calc(150px + (330 - 150) * (100vw - 320px) / (736 - 320));
+		width: calc(150px + (330 - 150) * (100vw - 320px) / (736 - 320));
 	}
 	#response>section div {
 		padding-top: -webkit-calc(60px + (50) * (100vw - 320px) / (736 - 320));
@@ -213,3 +213,11 @@ main>div:first-child {
 		width: calc(200px + (320 - 200) * (100vw - 320px) / (480 - 320));
 	}
 }
+
+@media only screen and (min-width: 480px) and (max-width: 736px) and (orientation: landscape) {
+	select#spirit {
+		width: -webkit-calc(120px + (240 - 120) * (100vw - 480px) / (736 - 480));
+		width: calc(220px + (300 - 220) * (100vw - 480px) / (736 - 480));
+	}
+}
+

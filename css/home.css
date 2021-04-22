@@ -490,7 +490,7 @@ main>div:last-child form ul:nth-child(5) li {
 .showtime #controls:hover {
 	cursor: crosshair;
 }
-input[type=submit], main>div:first-child>a, .unit label:first-child, #paused, #unit, #lemon, .showtime #response, .inplay #mix, .inplay.playing #paused, .response main>div:first-child, .response form {
+input[type=submit], #mix, .unit label:first-child, #paused, #unit, #lemon, .showtime #response, .inplay #mix, .inplay.playing #paused, .response main>div:first-child, .response form {
 	position: absolute;
 	top: -9999px;
 	left: -9999px;
@@ -520,6 +520,16 @@ input[type=submit], main>div:first-child>a, .unit label:first-child, #paused, #u
 #response p a:hover {
 	color: #6200ff;
 }
+
+@media only screen and (max-width: 1366px) and (orientation: portrait) and (pointer: coarse) {
+	main {
+		border-width: 0;
+	}
+	footer {
+		border-top: solid 1px white;
+	}
+}
+
 @media only screen {
 	#controls button {
 		-o-background-size: 128%;
@@ -571,9 +581,7 @@ input[type=submit], main>div:first-child>a, .unit label:first-child, #paused, #u
 		text-align: center;
 		display: block;
 	}
-	form {
-		max-width: 600px;
-	}
+
 	header section {
 		font-size: 2.75rem;
 		margin: 0 auto 1rem;
@@ -648,13 +656,13 @@ input[type=submit], main>div:first-child>a, .unit label:first-child, #paused, #u
 		line-height: 1.5;
 		font-size: 16px;
 	}
-	.touchevents main>div:first-child>a {
+	.touchevents #mix {
 		position: relative;
 		top: 0;
 		left: 0;
 		text-align: center;
 		display: block;
-		font: italic bold 3em/normal cochin, 'latin_modern_roman10BdIt', serif;
+        font-size: 3rem;
 		margin: 1rem 0;
 	}
 	#cocktail, textarea {
@@ -698,6 +706,8 @@ input[type=submit], main>div:first-child>a, .unit label:first-child, #paused, #u
 		text-align: center;
 		display: block;
 		margin: 1rem 0;
+        font-size: 3rem;
+        font-family: 'Bernhard Modern Std Bold It', mycochin, Georgia, serif;
 	}
 	.showtime #mix {
 		position: absolute;
@@ -755,10 +765,16 @@ input[type=submit], main>div:first-child>a, .unit label:first-child, #paused, #u
 }
 
 @media only screen and (max-width: 480px) {
+    
+     header h1 {
+		letter-spacing: 0;
+	}
 	/*earlier browsers do not support nested calc until AROUND the same time support for grid so using that as fallback*/
 	html.no-cssgrid {
 		font-size: .75em;
 	}
+    
+   
 	.no-cssgrid header section {
 		font-size: 2em;
 		width: 100%;
@@ -805,6 +821,10 @@ input[type=submit], main>div:first-child>a, .unit label:first-child, #paused, #u
 	}
 }
 @media only screen and (max-width: 480px) and (orientation: portrait) {
+    
+    form textarea {
+        width: calc(100% - 1em);
+    }
 	/* in this layout lose the Measure labels in ingredients*/
 	.no-cssgrid header ul li {
 		width: 4em;
@@ -863,12 +883,5 @@ input[type=submit], main>div:first-child>a, .unit label:first-child, #paused, #u
 		width: 18em;
 	}
 }
-@media only screen and (max-width: 1366px) and (orientation: portrait) and (pointer: coarse) {
-	main {
-		border-width: 0;
-	}
-	footer {
-		border-top: solid 1px white;
-	}
-}
+
 /*https://css-tricks.com/almanac/selectors/n/nth-child/*/
