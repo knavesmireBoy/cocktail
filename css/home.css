@@ -199,6 +199,16 @@ li.unit {
 	display: table;
 	clear: both;
 }
+
+.placeholder img {
+   -webkit-mask: url('../img/masky.png') 0 0 / cover; 
+   mask: url('../img/masky.png') 0 0 / cover; 
+}
+
+.inplay .placeholder img {
+    -webkit-mask: url('../img/masky.png') center / 114%; 
+   mask: url('../img/masky.png') center / 114%; 
+}
 .insert:after {
 	content: ' left';
 }
@@ -495,9 +505,7 @@ main>div:last-child form ul:nth-child(5) li {
 	color: #000;
 	text-shadow: 1px 1px 1px rgba(255, 255, 255, .75);
 }
-.showtime #controls:hover {
-	cursor: crosshair;
-}
+
 input[type=submit], #mix, .unit label:first-child, #paused, #unit, #lemon, .showtime #response, .inplay #mix, .inplay.playing #paused, .response main>div:first-child, .response form {
 	position: absolute;
 	top: -9999px;
@@ -507,7 +515,11 @@ input[type=submit], #mix, .unit label:first-child, #paused, #unit, #lemon, .show
 	text-shadow: 1px 1px 1px rgba(255, 255, 255, .75);
 }
 .showtime #controls:hover {
-	cursor: crosshair;
+	cursor: url(../img/return.png), auto;
+}
+
+.playing #controls:hover {
+	cursor: none;
 }
 .response #response p:first-of-type {
 	padding: 1em 1em .5em;
@@ -893,16 +905,4 @@ input[type=submit], #mix, .unit label:first-child, #paused, #unit, #lemon, .show
 		width: 18em;
 	}
 }
-
-
-.placeholder img {
-   -webkit-mask: url('../img/masky.png') 0 0 / cover; 
-   mask: url('../img/masky.png') 0 0 / cover; 
-}
-
-.inplay .placeholder img {
-     -webkit-mask: url('../img/masky.png') center / 114%; 
-   mask: url('../img/masky.png') center / 114%; 
-}
-
 /*https://css-tricks.com/almanac/selectors/n/nth-child/*/
