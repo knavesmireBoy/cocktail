@@ -283,6 +283,7 @@ header ul li:nth-child(6) a {
 	border: dotted 1px #999900;
 	border: dotted 1px hsl(60, 100%, 30%);
 	/*padding: 1.8em 2em 1.8em 0;*/
+	padding: 1em;
 	background: #000;
 	float: none;
 }
@@ -894,9 +895,14 @@ input[type=submit], #mix, .unit label:first-child, #paused, #unit, #lemon, .show
 }
 
 
-.inplay .placeholder img {
+.placeholder img {
    -webkit-mask: url('../img/masky.png') 0 0 / cover; 
    mask: url('../img/masky.png') 0 0 / cover; 
+}
+
+.inplay .placeholder img {
+     -webkit-mask: url('../img/masky.png') center / 114%; 
+   mask: url('../img/masky.png') center / 114%; 
 }
 
 /*https://css-tricks.com/almanac/selectors/n/nth-child/*/

@@ -101,7 +101,7 @@
 		doCurry = utils.curryFactory,
 		cssopacity = getNativeOpacity(!window.addEventListener),
 		event_actions = ['preventDefault', 'stopPropagation', 'stopImmediatePropagation'],
-		drinks = ['dry_martini', 'manhattan', 'margarita', 'mai_tai', 'moscow_mule', 'sidecar', 'julep', 'daiquiri', 'floridita', 'cosmopolitan'],
+		drinks = ['dry_martini', 'manhattan', 'margarita', 'mai_tai', 'moscow_mule', 'sidecar', 'mint_julep', 'daiquiri', 'floridita', 'cosmopolitan'],
 		eventing = utils.eventer,
 		defer_once = doCurry(1, true),
 		twice = doCurry(2),
@@ -213,7 +213,7 @@
 					[cssopacity.getKey(), cssopacity.getValue(0.5)]
 				]
 			]);
-			return onLoad(img, 'img/pause.png');
+			return onLoad(img, 'img/pauser.png');
 		},
 		recur = (function (player) {
 			function doRecur() {

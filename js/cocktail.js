@@ -277,7 +277,7 @@
 		}()),
 		addKlasWhen = doComp(deferEach, thrice(utils.lazyVal)('concat')(callbacks), doComp(deferTabs, identity)),
 		//we need to obtain a function on the fly not capture it in a closure, manageQuery flips between two predicates for desktop/mobile and we obtain the correct one
-		deferContains = ptL(partial, twicedefer(getter)(0)(manageQuery)),
+		deferContains = ptL(par   tial, twicedefer(getter)(0)(manageQuery)),
 		$recipe = utils.COR(matchReg(/^R/i), ptL(utils.invokeWhen, deferContains, addKlasWhen)),
 		$method = utils.COR(matchReg(/^M/i), ptL(utils.invokeWhen, deferContains, addKlasWhen)),
 		$serve = utils.COR(matchReg(/^S/i), ptL(utils.invokeWhen, deferContains, addKlasWhen)),

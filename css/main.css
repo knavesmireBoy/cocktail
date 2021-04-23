@@ -129,6 +129,7 @@ main aside img {
 	display: block;
 	position: relative;
 	right: .6em;
+	right: 0;
 }
 main aside a {
 	color: #FFF;
@@ -279,7 +280,7 @@ header blockquote:after {
 	background-position: 30% 60%;
 }
 .c4 .therecipe {
-	background-image: url('../img/julep.jpg');
+	background-image: url('../img/mint_julep.jpg');
 	background-position: 90% 55%;
 }
 .c5 .therecipe {
@@ -386,12 +387,14 @@ p a:hover {
 .showtime aside {
 	overflow: hidden;
 }
+/*
 .c1 aside img {
 	right: 1.7em;
 }
 .c5 aside img {
 	right: 1.2em;
 }
+*/
 nav ul li a:hover {
 	color: #e6f075;
 	color: hsl(65, 80%, 70%);
@@ -400,8 +403,9 @@ nav>ul li a:hover {
 	color: white;
 	opacity: .5;
 }
+
 .c2 main aside a {
-	top: 5em;
+	top: 5.3em;
 	left: .5em;
 }
 .c4 main aside a {
@@ -413,16 +417,15 @@ nav>ul li a:hover {
 }
 .c7 main aside a {
 	top: 2.5em;
-	left: .7em;
 }
 .c8 main aside a {
 	top: 6em;
-	left: .4em;
 }
 .c9 main aside a {
-	top: 1.6em;
+	top: 1.4em;
 	left: .2em;
 }
+
 .show main>article .csstabs {
 	position: relative;
 	left: 0;
@@ -670,4 +673,9 @@ nav>ul li a:hover {
 	.content p {
 		font-size: 125%;
 	}
+}
+
+.sidebar img {
+   -webkit-mask: url('../img/masky.png') center / cover; 
+   mask: url('../img/masky.png') center / cover; 
 }
