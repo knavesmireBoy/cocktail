@@ -36,6 +36,7 @@ header ul li {
 	height: calc(83px + ((83 - 64) * (100vw - 768px) / (1280 - 768)) * 1.3333);
 }
 header ul a {
+	background-size: 100%;
 	background-size: cover;
 }
 .wrapper {
