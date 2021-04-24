@@ -5,7 +5,6 @@ html {
 }
 header {
 	padding: .75rem .25rem .25rem;
-	border-bottom: solid 1px #FFF;
 	/*width: 26rem;*/
 }
 main {
@@ -13,7 +12,11 @@ main {
 	overflow: hidden;
 	width: 100%;
 	height: 100%;
-	border-bottom: 1px solid white;
+	border: 1px solid white;
+    border-width: 1px 0;
+}
+main>* {
+	position: relative;
 }
 form {
 	position: relative;
@@ -23,9 +26,7 @@ form {
 a {
 	color: rgb(204, 0, 204);
 }
-h1 {
-	text-indent: .5rem;
-}
+
 table {
 	border-collapse: collapse;
 	color: #333;
@@ -47,9 +48,7 @@ th {
 	color: red;
 	font-size: 1rem;
 }
-svg {
-	width: 4rem;
-}
+
 h3 {
 	color: #fd44ee;
 	color: hsl(305, 98%, 63%);
@@ -70,14 +69,10 @@ legend {
 	text-indent: 2em;
 	font-style: italic;
 }
-i, cite, b {
-	color: #c0c0c0;
-}
-main>* {
-	position: relative;
-}
+
 header section {
 	font-size: 1.25rem;
+    width: 28rem;
 }
 main h2 {
 	color: #F00;
@@ -107,9 +102,7 @@ section img {
 	width: 100%;
 	height: 100%;
 }
-header section {
-	width: 28rem;
-}
+
 header:after {
 	content: "";
 	display: table;
@@ -173,10 +166,9 @@ tr:last-child {
 }
 .placeholder img {
 	display: block;
-	height: 100%;
-	width: 100%;
 	position: relative;
-	float: left;
+    height: 100%;
+	width: 100%;
 }
 fieldset.ingredients {
 	margin: .5em 0 0;
@@ -210,7 +202,7 @@ li.unit {
    mask: url('../img/masky.png') center / 114%; 
 }
 .insert:after {
-	content: ' left';
+	content: ' above';
 }
 main>div:first-child {
 	width: 27rem;
@@ -239,9 +231,6 @@ h1 em:hover {
 	color: #fd44ee;
 	color: hsl(305, 98%, 63%);
 }
-form>ul:last-of-type li {
-	display: block;
-}
 
 .svgfilters header ul a, .no-js header ul a {
 	background-position: 0 0;
@@ -255,9 +244,10 @@ header ul li:last-child {
 	border-width: 0;
 }
 form>ul:last-of-type li {
-	margin: 0 0 0;
+	margin: 0;
 	width: 100%;
 	text-align: center;
+    display: block;
 }
 header ul li:nth-child(1) a {
 	background-image: url("../img/gin_s.png")
@@ -276,14 +266,15 @@ header ul li:nth-child(5) a {
 }
 header ul li:nth-child(6) a {
 	background-image: url("../img/cognac_s.png");
-	border-width: 0;
 }
 .response .placeholder {
 	height: 100%;
 }
+/*
 .show fieldset.ingredients {
 	width: 80%;
 }
+*/
 .ingredients li:nth-child(even) label, label[for=m1] {
 	width: 4em;
 }
@@ -292,7 +283,6 @@ header ul li:nth-child(6) a {
 	margin: 1em auto;
 	border: dotted 1px #999900;
 	border: dotted 1px hsl(60, 100%, 30%);
-	/*padding: 1.8em 2em 1.8em 0;*/
 	padding: 1em;
 	background: #000;
 	float: none;
@@ -303,32 +293,30 @@ header ul li:nth-child(6) a {
 main>div:last-child form ul:nth-child(5) li {
 	width: 100%;
 }
+
 #response {
 	background-repeat: no-repeat;
 	padding: 0;
 	overflow: hidden;
 }
+/*
 #result {
 	width: 40%;
 	border-top: 1px dotted #EEE8AA;
 	margin-left: -2px;
 	padding: 0 5%;
 }
-#dash {
-	margin-right: 1em;
-}
+*/
+
 #cocktail, #email, textarea {
 	width: 14.58rem;
 }
-#spirit {
-	width: 10em;
-}
+
 #controls {
 	text-align: center;
 	position: relative;
 	display: table;
 	border-spacing: .5em;
-	width: 100%;
 	margin: 0 auto;
 	top: 0;
 	z-index: 2;
@@ -336,6 +324,7 @@ main>div:last-child form ul:nth-child(5) li {
 	border-width: 1px 0 0;
 	background-color: indigo;
 	background-color: hsl(275, 100%, 16%);
+    width: 100%;
 	min-width: 200px;
 }
 #myreset {
@@ -401,6 +390,7 @@ main>div:last-child form ul:nth-child(5) li {
 	padding: .5em 1em;
 	line-height: 1.3;
     font-size: 20px;
+    font-size: .75em;
 }
 
 #response aside {
@@ -560,10 +550,13 @@ input[type=submit], #mix, .unit label:first-child, #paused, #unit, #lemon, .show
 		background-image: url(../img/buttons_sprite.png);
 	}
 }
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 48em) {
 	header>* {
 		display: inline-block;
 	}
+    h1 {
+	text-indent: .5rem;
+}
 	main>div:first-child {
 		float: left;
 		border: dotted 1px white;
@@ -573,7 +566,7 @@ input[type=submit], #mix, .unit label:first-child, #paused, #unit, #lemon, .show
 		float: none;
 	}
 }
-@media only screen and (min-width: 667px) and (max-width: 1024px) {
+@media only screen and (min-width: 42em) and (max-width: 64em) {
 	.ingredients input {
 		width: 13.33rem;
 	}
@@ -585,32 +578,26 @@ input[type=submit], #mix, .unit label:first-child, #paused, #unit, #lemon, .show
 		width: 12em;
 	}
 }
-@media only screen and (orientation: portrait) and (max-width: 1024px), (max-width: 768px) {
+@media only screen and (orientation: portrait) and (max-width: 1024px), (max-width: 48em) {
 	.wrapper main>div:first-child {
 		width: 100%;
 		width: 100vw;
 	}
 }
-@media only screen and (max-width: 930px) {
-	.insert:after {
-		content: ' above';
-	}
-}
 
+@media only screen and (max-width: 48em) {
 
-@media only screen and (max-width: 768px) {
 	header>* {
 		text-align: center;
 		display: block;
 	}
 
 	header section {
-		font-size: 2.75rem;
-		margin: 0 auto 1rem;
+        font-size: 2.75rem;
+        margin: 0 auto 1rem;
 	}
 	header section>* {
 		text-align: center;
-		text-indent: 0;
 	}
 	header h1 {
 		font-size: 1.5em;
@@ -645,7 +632,7 @@ input[type=submit], #mix, .unit label:first-child, #paused, #unit, #lemon, .show
 		content: '.';
 	}
 }
-@media only screen and (max-width: 736px) {
+@media only screen and (max-width: 46em) {
 	svg {
 		width: 12vmax;
 		width: 12em;
@@ -716,7 +703,7 @@ input[type=submit], #mix, .unit label:first-child, #paused, #unit, #lemon, .show
 		left: -9999px;
 	}
 }
-@media only screen and (max-width: 736px) and (pointer: coarse) {
+@media only screen and (max-width: 46em) and (pointer: coarse) {
 	form ul li input, form ul li textarea, form ul li select {
 		line-height: 1.5;
 		font-size: 16px;
@@ -739,7 +726,7 @@ input[type=submit], #mix, .unit label:first-child, #paused, #unit, #lemon, .show
 		font-size: 18px;
 	}
 }
-@media only screen and (orientation: portrait) and (max-width: 736px) {
+@media only screen and (orientation: portrait) and (max-width: 46em) {
 	legend {
 		font-size: 4rem;
 	}
@@ -771,7 +758,7 @@ input[type=submit], #mix, .unit label:first-child, #paused, #unit, #lemon, .show
 		margin: 0 1em;
 	}
 }
-@media only screen and (max-width: 736px), (pointer: coarse) {
+@media only screen and (max-width: 46em), (pointer: coarse) {
 	div.esquire {
 		width: 170px;
 	}
