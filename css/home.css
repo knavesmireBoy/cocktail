@@ -165,8 +165,7 @@ tr:last-child {
 	height: 0px;
 }
 .placeholder img {
-	display: block;
-	position: relative;
+    float: left;
     height: 100%;
 	width: 100%;
 }
@@ -201,6 +200,7 @@ li.unit {
     -webkit-mask: url('../img/masky.png') center / 114%; 
    mask: url('../img/masky.png') center / 114%; 
 }
+
 .insert:after {
 	content: ' above';
 }
@@ -389,8 +389,7 @@ main>div:last-child form ul:nth-child(5) li {
 #response p {
 	padding: .5em 1em;
 	line-height: 1.3;
-    font-size: 20px;
-    font-size: .75em;
+
 }
 
 #response aside {
@@ -413,10 +412,10 @@ main>div:last-child form ul:nth-child(5) li {
 #response>section>* {
 	position: absolute;
 	height: 100%;
-	width: 48%;
+	width: 49%;
 	top: 0;
 	border-radius: 50%;
-	margin: 0 0%;
+    margin: 0;
 }
 #response p a {
 	font-family: 'Bernhard Modern Std', cochin, 'latin_modern_roman10BdIt', Georgia, serif;
@@ -481,7 +480,7 @@ main>div:last-child form ul:nth-child(5) li {
 }
 .inplay #slide, .inplay #paused {
 	margin-left: -100%;
-	display: block;
+    box-sizing: border-box;
 }
 #response .esquire img {
 	border-radius: 0;
@@ -578,7 +577,7 @@ input[type=submit], #mix, .unit label:first-child, #paused, #unit, #lemon, .show
 		width: 12em;
 	}
 }
-@media only screen and (orientation: portrait) and (max-width: 1024px), (max-width: 48em) {
+@media only screen and (orientation: portrait) and (max-width: 64em), (max-width: 48em) {
 	.wrapper main>div:first-child {
 		width: 100%;
 		width: 100vw;
@@ -761,10 +760,9 @@ input[type=submit], #mix, .unit label:first-child, #paused, #unit, #lemon, .show
 @media only screen and (max-width: 46em), (pointer: coarse) {
 	div.esquire {
 		width: 170px;
+		width: 6em;
 	}
-	#response p {
-		font-size: 3.3vmax;
-	}
+
 }
 @media only screen and (min-width: 481px) {
 	#response aside {

@@ -514,7 +514,7 @@ nav>ul li a:hover {
 		display: none;
 	}
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 48em) {
 	main {
 		position: static;
 		display: block;
@@ -522,12 +522,13 @@ nav>ul li a:hover {
 	h1 {
 		background-color: #333;
 		background-color: rgba(0, 0, 0, .75);
-		margin: 40% 0 7em;
+		margin: 20% 0 7em;
+		margin: 20rem 0 7rem;
 		font-size: .6em;
 		padding: .4em 0 .2em .5em;
 		border: dotted 1px white;
 		border-width: 1px 0;
-		top: 7em;
+		top: 7rem;
 	}
 	blockquote {
 		display: none;
@@ -548,7 +549,7 @@ nav>ul li a:hover {
 	}
 	header aside {
 		background-position: 100% 33%;
-		background-size: 140%;
+		background-size: cover;
 	}
 	main>article {
 		padding: 2em 2em 1em;
@@ -606,10 +607,9 @@ nav>ul li a:hover {
 	}
 	.c3 header aside {
 		background-image: url("../img/margarita.jpg");
-		background-position: 120% 77%;
 	}
 	.c4 header aside {
-		background-image: url("../img/julep.jpg");
+		background-image: url("../img/mint_julep.jpg");
 		background-position: 110% 55%;
 	}
 	.c5 header aside {

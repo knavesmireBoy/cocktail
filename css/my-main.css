@@ -317,11 +317,11 @@ main aside div:last-child {
 		right: 0;
 	}
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 48em) {
 	h1 {
 		font-size: 2em;
-		font-size: -webkit-calc(30px + (50 - 30) * (100vw - 320px) / (768 - 320));
-		font-size: calc(30px + (50 - 30) * (100vw - 320px) / (768 - 320));
+		font-size: -webkit-calc(30px + (45 - 30) * (100vw - 320px) / (768 - 320));
+		font-size: calc(30px + (45 - 30) * (100vw - 320px) / (768 - 320));
 		text-shadow: 1px 1px 1px #6200ff;
 	}
 	nav ul {
@@ -372,8 +372,8 @@ main aside div:last-child {
 		left: -9999px;
 	}
 	#menu-toggle:checked+nav ul li {
-		height: 2em;
-		font-size: 2em;
+		height: 3rem;
+		font-size: 2rem;
 		font-size: -webkit-calc(18px + (28 - 18) * (100vw - 320px) / (768 - 320));
 		font-size: calc(18px + (28 - 18) * (100vw - 320px) / (768 - 320));
 		display: block;
@@ -386,7 +386,7 @@ main aside div:last-child {
 	}
 	h1:after {
 		text-transform: uppercase;
-		font-size: 1em;
+		font-size: .7em;
 		letter-spacing: -1px;
 	}
 	.c1 h1:after {
