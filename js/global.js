@@ -1258,6 +1258,9 @@ speakEasy.Util = (function() {
 		},
         FauxPromise: FauxPromise,
 		findByClass: _.compose(curry2(getter)(0), _.partial(getPolyClass, document)),
+        findByTag: function (i) {
+			return _.compose(curryFactory(2)(getter)(i || 0), _.partial(mittleInvoke, 'getElementsByTagName'));
+		},
 		findIndex: function(collection, predicate) {
 			return _.findIndex(collection, predicate || always(true));
 		},

@@ -10,6 +10,10 @@
 	function getResult(arg) {
 		return _.isFunction(arg) ? arg() : arg;
 	}
+    
+    function minus(x, y){
+        return x - y;
+    }
 
 	function getGreater(a, b) {
 		return getResult(a) > getResult(b);
@@ -98,6 +102,18 @@
 			return el.getBoundingClientRect().height;
 		}
 	}
+    
+     function getRecipe(tag){
+        var ret = utils.findByClass('therecipe'),
+            article = utils.findByTag(0)('article'),
+            getLength = twice(utils.getter)('length'),
+            lastPara;
+        if(ret){
+            return ret;
+        }
+        lastPara = doComp(thrice(simple_invoke)(article)('p'), utils.findByTag,  twice(minus)(1), getLength, ptL(utils.getByTag, 'p', article))();
+        return doComp(ptL(klasAdd, 'therecipe'), twice(doMap)([['href', '.']]), utils.insert()(lastPara, article))(tag);
+    }
 
 	function resetLists() {
 		hidden = [];
@@ -343,7 +359,10 @@
 			$showtime();
 		},
 		undo = doComp($noShowtime, ptL(utils.climbDom, 2), utils.removeNodeOnComplete, utils.getZero, ptL(utils.getByClass, 'csstabs', document));
-	eventing('click', event_actions.slice(0, 1), doAltRecipe([ptL(execute, lookup[page_id]), undo]), ptL(utils.findByClass, 'therecipe', document)).execute();
+
+    
+    eventing('click', event_actions.slice(0, 1), doAltRecipe([ptL(execute, lookup[page_id]), undo]), ptL(getRecipe, 'a')).execute();
+    
 	$recipe.setSuccessor($method);
 	$method.setSuccessor($serve);
 	_.each(utils.getByTag('a', $('nav')), ptL(utils.invokeWhen, utils.getNext, doComp(utils.removeNodeOnComplete, utils.getNext)));
