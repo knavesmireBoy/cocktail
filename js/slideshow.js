@@ -163,16 +163,13 @@
 			args = args.length ? args : [function () {}];
 			loadImage(caller, id, new utils.FauxPromise(args));
 		},
-		locator = function (forward, back) {
+	
+        locator = function (forward, back) {
 			var getLoc = function (e) {
-				var ret = true,
-					box = {};
-				//allow function to be invoked directly it merely returnd a predicate 
-				if (e && e.target && e.clientX) {
-					box = e.target.getBoundingClientRect();
-					ret = e.clientX - box.left > box.width / 2;
-				}
-				return ret;
+				var box = e[mytarget].getBoundingClientRect(),
+                    threshold = (box.right - box.left) / 2;
+                //default to forward
+				return e.clientX ? (e.clientX - box.left) > threshold : true;
 			};
 			return function (e) {
 				return utils.getBest(function (agg) {
@@ -183,6 +180,8 @@
 				]);
 			};
 		},
+        
+        
 		locate = eventing('click', event_actions.slice(0), function (e) {
 			checkShowTime()();
 			locator(twicedefer(loader)('base')(nextcaller), twicedefer(loader)('base')(prevcaller))(e)[1]();
