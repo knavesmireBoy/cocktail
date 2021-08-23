@@ -803,28 +803,68 @@ speakEasy.Util = (function() {
 		return nested(pre(klas));
 	}
 
+	function toObject(arr) {
+		return _.object([
+			[arr[0], arr[1]]
+		]);
+	}
+
 	function attrMap(el, map, style) {
 		var k,
-		o;
+			o,
+            cont = true;
 		for (k in map) {
 			if (map.hasOwnProperty(k)) {
-				if (k.match(/^te?xt$/)) {
-					el.innerHTML = map[k];
-					continue;
+				if (k.match(/^te?xt$/i)) {
+					if (k.toUpperCase() === k) {
+						el.innerHTML += map[k];
+					} else {
+						el.innerHTML = map[k];
+					}
+					cont = false;
 				}
-				if (style) {
-					el.style.setProperty(k, map[k]);
-				} else {
-					//el.setAttribute(k, map[k]);
-                o = {};
-								o[k] =  map[k]; //to support ie 6,7
-          speakEasy.Util.setAttributes(o, el);
+				if (style && cont) {
+					if (speakEasy.slice_shim) {
+						el.style[toCamelCase(k)] = map[k];
+					} else {
+                        //https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/setProperty
+						el.style.setProperty(k, map[k], '');//third argument required in Opera 9.62
+					}
+				} else if (cont) {
+					o = {};
+					o[k] = map[k]; //to support ie 6,7
+					speakEasy.Util.setAttributes(o, el);
 				}
-			}
+			}//own
 		}
 		return el;
 	}
 
+	function doMapRecur(el, v) {
+		/*second argument (v) should be an array of arrays [[p,v], [p,v], [[p,v]]]
+		    with style properties wrapped in an extra array and sent last
+		    eg [id, 'fred'], [title, 'our fred'], [txt, 'freddie'], [[opacity: '0.5'], [background-color: 'blue']]*/
+        var tgt = v.length && v.splice(0, 1)[0],
+			pass;
+        if (!tgt) {
+			return el;
+		}
+		pass = _.isArray(tgt[0]);
+        tgt = pass ? tgt[0] : tgt;
+        el = attrMap(getResult(el), toObject(tgt), pass);
+        return doMapRecur(el, v);
+	}
+    
+    function doMappy(el, v){
+         var tgt,
+             pass = false;
+        _.each(v, function(arr){
+            pass = _.isArray(arr[0]);
+            tgt = pass ? arr[0] : arr;
+            el = attrMap(getResult(el), toObject(tgt), pass);
+        });
+        return el;
+    }
 	function reverseArray(array) {
 		var i,
 			L = array.length,
@@ -1174,22 +1214,7 @@ speakEasy.Util = (function() {
 		},
 		curryFactory: curryFactory,
 		doAlternate: doAlternate,
-		doMap: function doMap(el, v) {
-			if (Array.isArray(v[0][0])) {
-				_.each(v[0], function(sub) {
-					return attrMap(getResult(el), _.object([
-						[sub[0], sub[1]]
-					]), true);
-				});
-			} else {
-				_.each(v, function(sub) {
-					return attrMap(getResult(el), _.object([
-						[sub[0], sub[1]]
-					]));
-				});
-			}
-			return el;
-		},
+		doMap: doMapRecur,
 		/*USAGE:
         var once = doOnce(),
         actions = [func1, func2, ...];

@@ -123,17 +123,17 @@
 			],
 			mai_tai: [
 				["Shake with cracked ice.", "Strain into a chilled wine goblet or Collins glass filled with ice.", "Top with ½ oz dark rum.", "Garnish with a paper umbrella or a cherry and a flower blossom."],
-				['<a href="../c6/">Mai Tai</a>', '2½ oz rum — dark rum', '¾ oz lime juice', '½ oz orange curacao', 'splash of orgeat syrup', 'splash grenadine or simple syrup', '<b>Large collins glass</b>'],
+				['<a href=".">Mai Tai</a>', '2½ oz rum — dark rum', '¾ oz lime juice', '½ oz orange curacao', 'splash of orgeat syrup', 'splash grenadine or simple syrup', '<b>Large collins glass</b>'],
 				["Sip the Mai Tai to toast the Everyman of cocktails, the late Trader Vic. Although it’s impossible to ruin the taste of this drink, you could go wrong with the garnish. An attractive paper umbrella is really all the Mai Tai needs, so resist the temptaion to overdo it with a fruit bowl topping that looks like some over-the-top prop from a cruise ship.", "Because Jamaican rum is heavy-bodied and you are already using either simple syrup or grenadine, there is no need to splurge for Cointreau. Any curacao will work nicely in this drink. If you suspect your guests will expect a layered look, shake the rum, lime juice and curacao first; the strain the drink into its glass before adding a splash of grenadine.", "Similar drinks include the <a>Planter's Punch</a>."]
 			],
 			mint_julep: [
 				["Mix 3 ounces bourbon, 6 sprigs of mint, and 2 to 4 tablespoons simple syrup in a pint glass.", "Add three pieces of ice and muddle for about a minute. Let stand for several minutes. Strain into a glass filled with shaved ice.", "Top with soda water and a mint sprig.", "For a mintier version, remove the three pieces of ice, leave the mint, and pour all ingredients into the glass follwed by the ice."],
-				['<a href="../c4/">Mint Julep</a>', '3 oz bourbon', '6 sprigs mint', '2 to 4 tbsp simple syrup', '<b>Silver Beaker</b'],
+				['<a href=".">Mint Julep</a>', '3 oz bourbon', '6 sprigs mint', '2 to 4 tbsp simple syrup', '<b>Silver Beaker</b'],
 				['The Mint Julep is a simple, relaxing drink to mix, complicated only by tradition. Always remember one overriding dictum for this drink, as set out by Alben Barkley, a Kentucky-born statesmen: “A Mint Julep is not the product of a formula”.', "So-called purists will mix the mint and sugar the night before a gathering, In theory this allows the mint to further release its essence. In reality, it gives the sugar enough time to dominate.", "Some guests will counsel that a Mint Julep should always be served in a pewter cup and with Irish linen, because touching the glass with the bare hand will disturb the frost. Ignore them if you like, confident that with a little bravura and practice, your mixing traditions will rise above such chatter.", "Similar drinks include the Mojito."]
 			],
 			moscow_mule: [
 				["Stir vodka and juice together well in a chilled Collins glass.", "Add fresh cracked ice and a swizzle stick; top with chilled ginger beer.", "Garnish with a lime squeeze."],
-				['<a href="../c5/">Moscow Mule', '2 oz vodka', '1 oz lime juice', '4 oz ginger beer', '<b>Collins Glass or Copper Mug</b>'],
+				['<a href=".">Moscow Mule', '2 oz vodka', '1 oz lime juice', '4 oz ginger beer', '<b>Collins Glass or Copper Mug</b>'],
 				['“There is only one vodka left,”, Peter the Great, former czar of Russia, supposedly wrote to his wife from Paris. “I don’t know what to do.” We should have suggested mixing the vodka on Moscow Mules to make it last longer.', "As easily made for one as for twelve, the Moscow Mule garners interest whether served at a cocktail soiree or an after-game bash. It is also safe in the hands of the novice mixer. Store the drink’s vodka in the freezer and it will chill its soda to make certain that the drink will be cold.", "Ginger ale may be substituted, though be warned: it’ll be palatable, but far from memorable. If you must use this soda, add a few dahses of <strong>Angostura bitters</strong> or an extra squeeze of lime to give it an edge.", "Similar drinks include the Pimm’s Cup."]
 			],
 			manhattan: [
