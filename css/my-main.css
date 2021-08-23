@@ -186,8 +186,8 @@ main aside div:last-child {
 
 
 .c1 .quote-wrapper, .c4 .quote-wrapper, .c8 .quote-wrapper, .c9 .quote-wrapper {
-	font-size: -webkit-calc(18px + (24 - 18) * (100vw - 860px) / (1280 - 860));
-	font-size: calc(18px + (24 - 18) * (100vw - 860px) / (1280 - 860));
+	font-size: -webkit-calc(18px + (23 - 18) * (100vw - 860px) / (1280 - 860));
+	font-size: calc(18px + (23 - 18) * (100vw - 860px) / (1280 - 860));
 	line-height: -webkit-calc(22px + (28 - 22) * (100vw - 860px) / (1280 - 860));
 	line-height: calc(22px + (28 - 22) * (100vw - 860px) / (1280 - 860));
 }

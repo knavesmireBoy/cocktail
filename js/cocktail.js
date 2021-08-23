@@ -10,10 +10,6 @@
 	function getResult(arg) {
 		return _.isFunction(arg) ? arg() : arg;
 	}
-    
-    function minus(x, y){
-        return x - y;
-    }
 
 	function getGreater(a, b) {
 		return getResult(a) > getResult(b);
@@ -102,18 +98,8 @@
 			return el.getBoundingClientRect().height;
 		}
 	}
-    
-     function getRecipe(tag){
-        var ret = utils.findByClass('therecipe'),
-            article = utils.findByTag(0)('article'),
-            getLength = twice(utils.getter)('length'),
-            lastPara;
-        if(ret){
-            return ret;
-        }
-        lastPara = doComp(thrice(simple_invoke)(article)('p'), utils.findByTag,  twice(minus)(1), getLength, ptL(utils.getByTag, 'p', article))();
-        return doComp(ptL(klasAdd, 'therecipe'), twice(doMap)([['href', '.']]), utils.insert()(lastPara, article))(tag);
-    }
+
+	
 
 	function resetLists() {
 		hidden = [];
@@ -215,7 +201,7 @@
 				[k, v]
 			]);
 		},
-        /*
+		/*
 		inShown = doComp(twice(getGreater)(-.01), ptL(_.findIndex, shown)),
 		inHidden = doComp(twice(getGreater)(-.01), ptL(_.findIndex, hidden)),
         */
@@ -309,6 +295,15 @@
 		$method = utils.COR(matchReg(/^M/i), ptL(utils.invokeWhen, deferContains, addKlasWhen)),
 		$serve = utils.COR(matchReg(/^S/i), ptL(utils.invokeWhen, deferContains, addKlasWhen)),
 		isHead = ptL(utils.getBest, node_from_target, [doComp($recipe.handle.bind($recipe), toLower, drill([mytarget, 'innerHTML'])), cor.handle]),
+        getRecipe = function (tag) {
+            var tgt = utils.findByClass('therecipe'),
+                article = utils.findByTag(0)('article');
+            if (tgt) {
+                return tgt;
+            }
+            tgt = utils.getPreviousElement(article.lastChild);
+            return doComp(ptL(klasAdd, 'therecipe'), twice(doMap)([['href', '.']]), utils.insert()(tgt, article))(tag);
+        },
 		cb = _.wrap(doComp(invoke, isHead), function (f, e) {
 			var el = getCssTabs(),
 				hi = getHeight(el),
@@ -359,10 +354,7 @@
 			$showtime();
 		},
 		undo = doComp($noShowtime, ptL(utils.climbDom, 2), utils.removeNodeOnComplete, utils.getZero, ptL(utils.getByClass, 'csstabs', document));
-
-    
-    eventing('click', event_actions.slice(0, 1), doAltRecipe([ptL(execute, lookup[page_id]), undo]), ptL(getRecipe, 'a')).execute();
-    
+	eventing('click', event_actions.slice(0, 1), doAltRecipe([ptL(execute, lookup[page_id]), undo]), ptL(getRecipe, 'a')).execute();
 	$recipe.setSuccessor($method);
 	$method.setSuccessor($serve);
 	_.each(utils.getByTag('a', $('nav')), ptL(utils.invokeWhen, utils.getNext, doComp(utils.removeNodeOnComplete, utils.getNext)));
