@@ -44,6 +44,11 @@
 			return el.name;
 		});
 	}
+    
+    function applyArg(f, arg) {
+		arg = _.isArray(arg) ? arg : [arg];
+		return f.apply(null, arg);
+	}
 
 	function isInteger(arg) {
 		return !isNaN(parseFloat(arg));
@@ -80,6 +85,20 @@
 
 	function tagFactory(tag, ptl, txt) {
 		ptl(tag)(txt);
+	}
+
+	function getUrlParameter(sParam) {
+		var sPageURL = window.location.search.substring(1),
+			sURLVariables = sPageURL.split('&'),
+			sParameterName,
+			i;
+		for (i = 0; i < sURLVariables.length; i++) {
+			sParameterName = sURLVariables[i].split('=');
+			if (sParameterName[0] == sParam) {
+				return typeof sParameterName[1] === 'undefined' ? true : decodeURIComponent(sParameterName[1]);
+			}
+		}
+		return false;
 	}
 
 	function post(e) {
@@ -206,6 +225,22 @@
 			klasAdd('swap', utils.getBody);
 		}, el).execute();
 	}, window).execute();
-    
+	var urlParams = window.URLSearchParams ? new window.URLSearchParams(window.location.search) : {},
+        intro = "In the first few months after leaving North Wolds, before I got to spend a lot more time with estate agents, I enrolled on what should have been an advanced web design course, but the greater demand was for beginners/intermediates. I went ahead and in order to qualify for a certificate had to produce a three or four page website, which had to include a smattering of javascript and a form comprising the most common input types. This hobby site has been developed from that project. It would be a good candidate on which to learn a different stack.";
+	urlParams.has === urlParams.has || getUrlParameter;
+	if (urlParams.has('cv')) {
+        
+        
+		var header = utils.findByTag(0)('header'),
+            anc = utils.getDomChild(utils.getNodeByTag('section'))(header),
+            href = ['href', '?'],
+			exit = ['id', 'exit'],
+			cross = ['txt', 'close'];
+        _.compose(twice(utils.doMap)([
+			['txt', intro]
+		]), twice(applyArg)('p'), anCr, _.partial(utils.climbDom, 1), twice(utils.doMap)([href, exit, cross]), twice(applyArg)('a'), anCr, twice(utils.doMap)([
+			['id', 'intro']
+		]), anCrIn(anc, header))('div');
+	}
 }(Modernizr.mq('only all'), '(min-width: 736px)'));
 //create div=response, aside, img, p list, h3, span, [SECTION [div table] <a>img] <div class="esquire">
