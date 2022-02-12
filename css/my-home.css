@@ -167,6 +167,10 @@ main>div:first-child {
 	#lemoni {
 		margin-top: calc(0px + (50) * (100vw - 320px) / (736 - 320));
 	}
+    #intro {
+        font-size: 2em;
+        text-align: left;
+    }
 }
 
 @media only screen and (max-width: 736px) and (orientation: landscape) {
@@ -182,9 +186,7 @@ main>div:first-child {
     .ingredients input, #m1 {
 		width: calc(220px + (390 - 220) * (100vw - 480px) / (736 - 480));
 	}
-    #intro {
-        font-size: 2em;
-    }
+  
 }
 
 @media only screen and (orientation: portrait) and (max-width: 667px) {
