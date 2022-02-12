@@ -5,6 +5,7 @@ html {
 }
 header {
 	padding: .75rem .25rem .25rem;
+    position: relative;
 	/*width: 26rem;*/
 }
 main {
@@ -566,7 +567,6 @@ input[type=submit], #mix, .unit label:first-child, #paused, #unit, #lemon, .show
     top: 0;
     left: 0;
     box-shadow: 0px 20px 20px black;
-    font: .6em Georgia, serif;
 }
 
 #intro p {
@@ -816,7 +816,6 @@ input[type=submit], #mix, .unit label:first-child, #paused, #unit, #lemon, .show
 		width: 170px;
 		width: 6em;
 	}
-
 }
 @media only screen and (min-width: 481px) {
 	#response aside {

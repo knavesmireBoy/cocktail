@@ -26,7 +26,11 @@ legend {
 	font-size: calc(18px + (40 - 18) * (100vw - 320px) / (1280 - 320));
 }
 header section {
+    /*for some reason the absolutely positioned cv intro box interferes with the section width, override below*/
 	width: calc(360px + (768 - 385) * (100vw - 768px) / (1280 - 768));
+}
+#intro + section {
+	width: auto;
 }
 form ul label {
 	font-size: calc(16px + (18 - 16) * (100vw - 768px) / (1280 - 768));
@@ -178,6 +182,9 @@ main>div:first-child {
     .ingredients input, #m1 {
 		width: calc(220px + (390 - 220) * (100vw - 480px) / (736 - 480));
 	}
+    #intro {
+        font-size: 2em;
+    }
 }
 
 @media only screen and (orientation: portrait) and (max-width: 667px) {
