@@ -131,7 +131,7 @@ main aside img {
 	right: .6em;
 	right: 0;
 }
-main aside a {
+main aside a:first-child {
 	color: #FFF;
 	color: rgba(255, 255, 255, .9);
 	font-size: 2em;
@@ -404,24 +404,24 @@ nav>ul li a:hover {
 	opacity: .5;
 }
 
-.c2 main aside a {
+.c2 main aside a:first-child {
 	top: 5.3em;
 	left: .5em;
 }
-.c4 main aside a {
+.c4 main aside a:first-child {
 	top: 3.5em;
 }
-.c6 main aside a {
+.c6 main aside a:first-child {
 	top: 3em;
 	right: .9em;
 }
-.c7 main aside a {
+.c7 main aside a:first-child {
 	top: 2.5em;
 }
-.c8 main aside a {
+.c8 main aside a:first-child {
 	top: 6em;
 }
-.c9 main aside a {
+.c9 main aside a:first-child {
 	top: 1.4em;
 	left: .2em;
 }
@@ -500,13 +500,13 @@ nav>ul li a:hover {
 	.sidebar>div, .sidebar>div img {
 		height: 100%;
 	}
-	.c2 main aside a {
+	.c2 main aside a:first-child {
 		top: 2em;
 	}
-	.c4 main aside a {
+	.c4 main aside a:first-child {
 		top: 2em;
 	}
-	.c6 main aside a {
+	.c6 main aside a:first-child {
 		top: 2em;
 		right: 0em;
 	}
@@ -675,7 +675,7 @@ nav>ul li a:hover {
 	}
 }
 
-.sidebar img {
+.sidebar a img {
    -webkit-mask: url('../img/masky.png') center / cover; 
    mask: url('../img/masky.png') center / cover; 
 }
