@@ -654,12 +654,14 @@ nav>ul li a:hover {
 		background: silver;
 		background: rgba(0, 0, 0, .75);
 		padding: 0 0 0 .5em;
-		top: 7em;
+        margin: 0;
+        top: 0;
 	}
 	h1 a {
 		padding: 5px 0 0;
 		display: block;
 	}
+    
 	main>article {
 		padding: 1em;
 		border-width: 0;

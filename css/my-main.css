@@ -344,7 +344,7 @@ main aside div:last-child {
 		transition: height .9s ease-out;
 	}
 	.menu {
-		top: 2vw;
+		top: 4vw;
 		right: -webkit-calc(36px + (56 - 36) * (100vw - 320px) / (768 - 320));
 		right: calc(36px + (56 - 36) * (100vw - 320px) / (768 - 320));
 		height: -webkit-calc(48px + (72 - 48) * (100vw - 320px) / (768 - 320));
@@ -465,6 +465,17 @@ main aside div:last-child {
 	h1 em {
 		text-shadow: 1px 1px 1px rgba(0, 255, 255, .9);
 	}
+    aside h1:first-of-type:after {
+        content: none;
+    }
+    h1 a {
+        text-indent: -9999px;
+        padding: 20rem 0 7rem;
+    }
+    h1 {
+        background-color: transparent;
+        border-width: 0 0 1px;
+    }
 }
 
 @media print {
