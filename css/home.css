@@ -567,6 +567,7 @@ input[type=submit], #mix, .unit label:first-child, #paused, #unit, #lemon, .show
     top: 0;
     left: 0;
     box-shadow: 0px 20px 20px black;
+    font-size: .7em;
 }
 
 #intro p {
