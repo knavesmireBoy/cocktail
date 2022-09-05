@@ -113,12 +113,12 @@
 			],
 			dry_martini: [
 				['Stir with cracked ice; strain into a chilled cocktail glass.', "Garnish with a lemon twist or olive.", "For a wet Martini mix 1¼ ounces gin and 1¼ ounces dry vermouth, and for a sweet martini try 2¼ ounces gin and ¾ ounce sweet vermouth. A black olive makes it a Buckeye, and if an onion is used it's a Gibson.", 'A Martini with a splash of scotch is “smoky” and one with a spalsh of olive brine is “dirty”.'],
-				["<a href='.'>Dry Martini</a>", "4 oz gin", "1 Dry Vermouth", "<b>Cocktail Glass</b>"],
+				["<a href='.'>Dry Martini</a>", "4 oz gin", "1 oz Dry Vermouth", "<b>Cocktail Glass</b>"],
 				["Preparing a palatable Martini requires a unique style and masterful technique. First, completely fill the mixing vessel with the freshest, coldest ice available. The container can be glass, silver or stainless steel, but it must hold 16 ounces. Pour ½ oz of dry vermouth into the vessel in a circular motion, so as much vermouth as possible touches the ice. Next, strain the vermouth from the container. Whatever liquid stays on the surface of the ice will be enough for one or two Martinis.", "Add 3 ounces of your favorite gin. With a <strong>barspoon</strong>, stir in a clockwise motion, agitating the ice against the gin. If the ice and gin are moving at the same speed, you are not succeeding. Lastly, strain the liquid into a chilled cocktail glass. Garnish with a lemon twist or a stuffed olive.", "Similar drinks include the Martinez."]
 			],
 			sidecar: [
 				["Shake well with cracked ice.", "Strain into a chilled cocktail glass that has had its outside rim rubbed with lemon juice and dipped in sugar."],
-				["<a href='.'>Sidecar</a>", "1½ ounces cognac", "½ ounce Cointreau", "¾ ounce lemon juice", "<b>Cocktail Glass</b>"],
+				["<a href='.'>Sidecar</a>", "1½ oz cognac", "½ oz Cointreau", "¾ oz lemon juice", "<b>Cocktail Glass</b>"],
 				["Given it’s due diligence the Sidecar can be made well by even the most inexperienced of mixers. The drink’s recipe also lends itself to any other primary spirit. When apple brandy is substituted, the drink becomes the Apple Cart.", "Catching up with the growing wine trade, California has recently begun to produce some very fine brandies, although not aged as long as the very best <strong>COGNACS</strong>, show many distinct qualities that make them perfect for delicious for cocktails like the Sidecar. Such distillers as Carneros Alambic Distillery, Germain Robin and Clear Creek Distillers (Oregon) are producing spectacular spirits that you should sample the next time you're thinking of this classic.", "Similar drinks include the Newton's Special and the Jack Rose."]
 			],
 			mai_tai: [
