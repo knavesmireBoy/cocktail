@@ -142,9 +142,16 @@ main aside>div {
 	-o-transition: all 2s ease-in-out;
 	transition: all 2s ease-in-out;
 }
+main aside>div:first-child:after {
+    content: "";
+    display: block;
+    position: relative;
+    box-shadow: 0 0 5px 5px black;
+}
 main aside a:first-child {
 	text-shadow: 2px 2px 2px black;
 }
+
 nav>ul li {
 	-webkit-box-flex: 1;
 	-ms-flex: 1 0 0px;
