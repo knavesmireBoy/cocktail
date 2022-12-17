@@ -226,7 +226,7 @@
 		}, el).execute();
 	}, window).execute();
 	var urlParams = window.URLSearchParams ? new window.URLSearchParams(window.location.search) : {},
-        intro = "In the first few months after leaving North Wolds Printers, before I got to spend a lot more time with estate agents, I enrolled on what should have been an advanced web design course, but the greater demand was for beginners/intermediates. I went ahead and in order to qualify for a <a href='https://knavesmireboy.github.io/web_cert/'>certificate<a> had to produce a three or four page website, which had to include a smattering of javascript and a form comprising the most common input types. This hobby site has been developed from that project. It would be a good candidate on which to learn a different stack.";
+        intro = "In the first few months after leaving North Wolds Printers, before I got to spend a lot more time with estate agents, I enrolled on what should have been an advanced web design course, but the greater demand was for beginners/intermediates. I went ahead and in order to qualify for a <a href='https://knavesmireboy.github.io/web_cert/'>certificate</a> had to produce a three or four page website, which had to include a smattering of javascript and a form comprising the most common input types. This hobby site has been developed from that project. It would be a good candidate on which to learn a different stack.";
 	urlParams.has === urlParams.has || getUrlParameter;
 	if (urlParams.has('cv')) {
         
